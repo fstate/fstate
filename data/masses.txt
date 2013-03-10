@@ -1,0 +1,304 @@
+S000M           gamma MASS
+G033M           graviton MASS
+S043M           W MASS
+S044M           Z MASS
+S003M           e MASS
+S004M           mu MASS
+S035M           tau MASS
+Q004M           c-QUARK MASS
+Q005M           b-QUARK MASS
+S008M           pi+- MASS
+S009M           pi0 MASS
+S014M           eta MASS
+M014M           f(0)(500) BREIT-WIGNER MASS OR K-MATRIX POLE PARAMETERS
+M001M           omega(782) MASS
+M002M           eta'(958) MASS
+M004M           phi(1020) MASS
+M030M           h(1)(1170) MASS
+M011M           b(1)(1235) MASS
+M010M           a(1)(1260) MASS
+M005M           f(2)(1270) MASS
+M008M           f(1)(1285) MASS
+M037M           eta(1295) MASS
+M058M           pi(1300) MASS
+M147M           f(0)(1370) BREIT-WIGNER MASS OR K-MATRIX POLE PARAMETER
+M109M           h(1)(1380) MASS
+M111M           pi(1)(1400) MASS
+M125M           omega(1420) MASS
+M149M           a(0)(1450) MASS
+M152M           f(0)(1500) MASS
+M084M           f(1)(1510) MASS
+M123M           f(2)(1565) MASS
+M188M           rho(1570) MASS
+M166M           h(1)(1595) MASS
+M164M           pi(1)(1600) MASS
+M161M           a(1)(1640) MASS
+M117M           f(2)(1640) MASS
+M154M           eta(2)(1645) MASS
+M126M           omega(1650) MASS
+M045M           omega(3)(1670) MASS
+M034M           pi(2)(1670) MASS
+M015M           rho(3)(1690) MASS
+M162M           a(2)(1700) MASS
+M068M           f(0)(1710) MASS
+M114M           eta(1760) MASS
+M075M           pi(1800) MASS
+M038M           f(2)(1810) MASS
+M085M           X(1835) MASS
+M054M           phi(3)(1850) MASS
+M101M           eta(2)(1870) MASS
+M185M           pi(1880) MASS
+M170M           rho(1900) MASS
+M135M           f(2)(1950) MASS
+M167M           rho(3)(1990) MASS
+M106M           f(2)(2010) MASS
+M156M           f(0)(2020) MASS
+M017M           a(4)(2040) MASS
+M016M           f(4)(2050) MASS
+M020M           pi(2)(2100) MASS
+M168M           f(0)(2100) MASS
+M042M           f(2)(2150) MASS, COMBINED MODES (MeV)
+M103M           phi(2170) MASS
+M112M           f(0)(2200) MASS
+M082M           f(J)(2220) MASS
+M115M           eta(2225) MASS
+M107M           f(2)(2300) MASS
+M041M           f(4)(2300) MASS
+M169M           f(0)(2330) MASS
+M108M           f(2)(2340) MASS
+M033M           rho(5)(2350) MASS
+M024M           a(6)(2450) MASS
+M089M           f(6)(2510) MASS
+S010M           K+- MASS
+S011M           K0 MASS
+M174M           K(0)*(800) MASS
+M064M           K(1)(1400) MASS
+M094M           K*(1410) MASS
+M019M           K(0)*(1430) MASS
+M021M           K(1460) MASS
+M039M           K(2)(1580) MASS
+M160M           K(1630) MASS
+M099M           K(1)(1650) MASS
+M095M           K*(1680) MASS
+M023M           K(2)(1770) MASS
+M060M           K(3)*(1780) MASS
+M146M           K(2)(1820) MASS
+M088M           K(1830) MASS
+M134M           K(0)*(1950) MASS
+M104M           K(2)*(1980) MASS
+M035M           K(4)*(2045) MASS
+M040M           K(2)(2250) MASS
+M090M           K(3)(2320) MASS
+M098M           K(5)*(2380) MASS
+M091M           K(4)(2500) MASS
+M129M           K(3100) MASS
+S031M           D+- MASS
+S032M           D0 MASS
+M061M           D*(2007)0 MASS
+M062M           D*(2010)+- MASS
+M178M           D(0)*(2400)0 MASS
+M179M           D(0)*(2400)+- MASS
+M097M           D(1)(2420)0 MASS
+M120M           D(1)(2420)+- MASS
+M180M           D(1)(2430)0 MASS
+M119M           D(2)*(2460)0 MASS
+M150M           D(2)*(2460)+- MASS
+M198M           D(2550)0  MASS
+M199M           D(2600) MASS
+M158M           D*(2640)+- MASS
+M203M           D(2750) MASS
+S034M           D(s)+- MASS
+S074M           D(s)*+- MASS
+M172M           D(s0)*(2317)+- MASS
+M173M           D(s1)(2460)+- MASS
+M121M           D(s1)(2536)+- MASS
+M148M           D(s2)*(2573) MASS
+M182M           D(s1)*(2700)+ MASS
+M196M           D(sJ)*(2860)+ MASS
+M197M           D(sJ)(3040)+ MASS
+S041M           B+- MASS
+S042M           B0 MASS
+S085M           B* MASS
+M151M           B(J)*(5732) MASS
+M183M           B(1)(5721)0 MASS
+M184M           B(2)*(5747)0 MASS
+S086M           B(s)0 MASS
+S087M           B(s)* MASS
+M187M           B(s1)(5830)0 MASS
+M186M           B(s2)*(5840)0 MASS
+M153M           B(sJ)*(5850) MASS
+S091M           B(c)+- MASS
+M026M           eta(c)(1S) MASS
+M070M           J/psi(1S) MASS
+M056M           chi(c0)(1P) MASS
+M055M           chi(c1)(1P) MASS
+M144M           h(c)(1P) MASS
+M057M           chi(c2)(1P) MASS
+M059M           eta(c)(2S) MASS
+M071M           psi(2S) MASS
+M053M           psi(3770) MASS (MeV)
+M176M           X(3872) MASS FROM J/psi X MODE
+M159M           X(3915) MASS
+M050M           chi(c2)(2P) MASS
+M029M           X(3940) MASS
+M072M           psi(4040) MASS
+M191M           X(4050)+- MASS
+M193M           X(4140) MASS
+M025M           psi(4160) MASS
+M190M           X(4160) MASS
+M192M           X(4250)+- MASS
+M074M           X(4260) MASS
+M194M           X(4350) MASS
+M181M           X(4360) MASS
+M073M           psi(4415) MASS
+M195M           X(4430)+- MASS
+M189M           X(4660) MASS
+M171M           eta(b)(1S) MASS
+M049M           Upsilon(1S) MASS
+M076M           chi(b0)(1P) MASS
+M077M           chi(b1)(1P) MASS
+M204M           h(b)(1P) MASS
+M078M           chi(b2)(1P) MASS
+M052M           Upsilon(2S) MASS
+M177M           Upsilon(1D) MASS
+M079M           chi(b0)(2P) MASS
+M080M           chi(b1)(2P) MASS
+M205M           h(b)(2P) MASS
+M081M           chi(b2)(2P) MASS
+M048M           Upsilon(3S) MASS
+M206M           chi(b)(3P) MASS
+M047M           Upsilon(4S) MASS
+M207M           X(10610)+- MASS
+M208M           X(10650)+- MASS
+M092M           Upsilon(10860) MASS
+M093M           Upsilon(11020) MASS
+S016M           p MASS (MeV)
+S017M           n MASS (MeV)
+B061M           N(1440) BREIT-WIGNER MASS
+B062M           N(1520) BREIT-WIGNER MASS
+B063M           N(1535) BREIT-WIGNER MASS
+B066M           N(1650) BREIT-WIGNER MASS
+B064M           N(1675) BREIT-WIGNER MASS
+B065M           N(1680) BREIT-WIGNER MASS
+B092M           N(1685) MASS
+B018M           N(1700) BREIT-WIGNER MASS
+B014M           N(1710) BREIT-WIGNER MASS
+B015M           N(1720) BREIT-WIGNER MASS
+B009M           N(1860) BREIT-WIGNER MASS
+B016M           N(1875) BREIT-WIGNER MASS
+B087M           N(1880) BREIT-WIGNER MASS
+B004M           N(1895) BREIT-WIGNER MASS
+B144M           N(1900) BREIT-WIGNER MASS
+B017M           N(1990) BREIT-WIGNER MASS
+B006M           N(2000) BREIT-WIGNER MASS
+B159M           N(2040) MASS
+B005M           N(2060) BREIT-WIGNER MASS
+B132M           N(2100) BREIT-WIGNER MASS
+B024M           N(2120) BREIT-WIGNER MASS
+B071M           N(2190) BREIT-WIGNER MASS
+B090M           N(2220) BREIT-WIGNER MASS
+B113M           N(2250) BREIT-WIGNER MASS
+B120M           N(2600) BREIT-WIGNER MASS
+B121M           N(2700) BREIT-WIGNER MASS
+B128M           N(~3000) BREIT-WIGNER MASS
+B033M           MIXED CHARGES
+B019M           Delta(1600) BREIT-WIGNER MASS
+B082M           Delta(1620) BREIT-WIGNER MASS
+B010M           Delta(1700) BREIT-WIGNER MASS
+B145M           Delta(1750) BREIT-WIGNER MASS
+B030M           Delta(1900) BREIT-WIGNER MASS
+B011M           Delta(1905) BREIT-WIGNER MASS
+B012M           Delta(1910) BREIT-WIGNER MASS
+B117M           Delta(1920) BREIT-WIGNER MASS
+B013M           Delta(1930) BREIT-WIGNER MASS
+B136M           Delta(1940) BREIT-WIGNER MASS
+B083M           Delta(1950) BREIT-WIGNER MASS
+B139M           Delta(2000) BREIT-WIGNER MASS
+B137M           Delta(2150) BREIT-WIGNER MASS
+B135M           Delta(2200) BREIT-WIGNER MASS
+B123M           Delta(2300) BREIT-WIGNER MASS
+B134M           Delta(2350) BREIT-WIGNER MASS
+B133M           Delta(2390) BREIT-WIGNER MASS
+B124M           Delta(2400) BREIT-WIGNER MASS
+B084M           Delta(2420) BREIT-WIGNER MASS
+B125M           Delta(2750) BREIT-WIGNER MASS
+B126M           Delta(2950) BREIT-WIGNER MASS
+B127M           Delta(~3000) BREIT-WIGNER MASS
+S018M           Lambda MASS
+B038M           Lambda(1520) MASS
+B101M           Lambda(1600) MASS
+B040M           Lambda(1670) MASS
+B055M           Lambda(1690) MASS
+B036M           Lambda(1800) MASS
+B077M           Lambda(1810) MASS
+B039M           Lambda(1820) MASS
+B056M           Lambda(1830) MASS
+B060M           Lambda(1890) MASS
+B089M           Lambda(2000) MASS
+B027M           Lambda(2020) MASS
+B041M           Lambda(2100) MASS
+B035M           Lambda(2110) MASS
+B112M           Lambda(2325) MASS
+B042M           Lambda(2350) MASS
+B007M           Lambda(2585) MASS (BUMPS)
+S019M           Sigma+ MASS
+S021M           Sigma0 MASS
+S020M           Sigma- MASS
+B023M           Sigma(1480) MASS (PRODUCTION EXPERIMENTS)
+B080M           Sigma(1560) MASS (PRODUCTION EXPERIMENTS)
+B000M           Sigma(1580) MASS
+B032M           Sigma(1620) MASS
+B078M           Sigma(1620) MASS (PRODUCTION EXPERIMENTS)
+B079M           Sigma(1660) MASS
+B044M           Sigma(1670) MASS
+B051M           Sigma(1670) MASS (PRODUCTION EXPERIMENTS)
+B058M           Sigma(1690) MASS (PRODUCTION EXPERIMENTS)
+B057M           Sigma(1750) MASS
+B100M           Sigma(1770) MASS
+B045M           Sigma(1775) MASS
+B001M           Sigma(1840) MASS
+B067M           Sigma(1880) MASS
+B046M           Sigma(1915) MASS
+B098M           Sigma(1940) MASS
+B002M           Sigma(2000) MASS
+B047M           Sigma(2030) MASS
+B034M           Sigma(2070) MASS
+B088M           Sigma(2080) MASS
+B026M           Sigma(2100) MASS
+B048M           Sigma(2250) MASS
+B053M           Sigma(2455) MASS
+B054M           Sigma(2620) MASS
+B059M           Sigma(3000) MASS
+B118M           Sigma(3170) MASS (PRODUCTION EXPERIMENTS)
+S023M           Xi0 MASS
+S022M           Xi- MASS
+B021M           Xi(1620) MASS
+B105M           MIXED CHARGES
+B050M           Xi(1820) MASS
+B052M           Xi(1950) MASS
+B068M           Xi(2030) MASS
+B103M           Xi(2120) MASS
+B022M           Xi(2250) MASS
+B131M           Xi(2370) MASS
+B099M           Xi(2500) MASS
+S024M           Omega- MASS
+B141M           Omega(2250)- MASS
+B142M           Omega(2380)- MASS
+B143M           Omega(2470)- MASS
+S033M           Lambda(c)+ MASS
+B119M           Lambda(c)(2595)+ MASS
+B102M           Lambda(c)(2625)+ MASS
+B150M           Lambda(c)(2765)+ MASS
+B151M           Lambda(c)(2880)+ MASS
+B122M           Lambda(c)(2940)+ MASS
+S045M           Xi(c)+ MASS
+S048M           Xi(c)0 MASS
+S058M           Xi(c)'+ MASS
+S059M           Xi(c)'0 MASS
+B156M           Xi(c)(2930) MASS
+S047M           Omega(c)0 MASS
+S053M           Omega(c)(2770)0 MASS
+S065M           Xi(cc)+ MASS
+S040M           mass(Lambda(b)0)
+S063M           Omega(b)- MASS
+S071M           Direct Limits on Gravitational or String Mass Scale
