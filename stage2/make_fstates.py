@@ -1,4 +1,5 @@
 from database import * # build mongo on-the-go
+from operator import mul
 
 # First, lets build db:
 db = {}
@@ -31,31 +32,35 @@ decays.create_index("decay_id")
 
 from fstate import get_fstates
 
+#fstates.create_index("scheme", unique=True)
+
 for decay in db['B0']:
     for fs in get_fstates(decay[2], db):
-        first = decays.find_one({"decay_id": fs[0]})
-        second = decays.find_one({"decay_id": fs[1]})
+        decs = [decays.find_one({"decay_id": x}) for x in fs]
 
-        if not (first and second):
+        if None in decs:
             print "Bad decay {} and final state {}".format(decay, fs)
             continue
         
+        Br = reduce(mul, [x['branching'][0] for x in decs])
+        current_fstate = []
+        for d in decs:
+            for p in d['products'].split(' '):
+                current_fstate.append(p)
 
-        current_fstate = first['products'].split(" ") + second['products'].split(" ")
-        Br = first['branching'][0] * second['branching'][0]
+        scheme = ['B0'] + [x['decay_id'] for x in decs]
 
-        print "B0 --> ({} --> {})({} --> {}) with Br={} and fstate={}".format(
-                first['father'], first['products'],
-                second['father'], second['products'],
+        print "B0 --> {} aka {} with Br={} and fstate={}".format(
+                " ".join([x['father'] for x in decs]),
+                scheme,
                 Br, repr(current_fstate)
             )
-
+    
         fstates.insert({
             #'scheme': [DBRef('decays', first['_id']), DBRef('decays', second['_id'])],
-            'scheme': [fs[0], fs[1]], # write decay_id, instead DBref. Why not?
+            'scheme': scheme, # write decay_id, instead DBref. Why not?
             'branching': Br,
             'fstate': current_fstate
         })
-
 
 fstates.create_index("fstate")
