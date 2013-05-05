@@ -11,4 +11,4 @@ def multiparticle_fix(decay_str):
 
         return num * (m.group(2) + m.group(3) + " ")
 
-    return re.sub(r'(\d+)(pi|mu|e|K)([{0,+,-}]*)', repl, decay_str)
+    return re.sub(r'(\d+)(pi|mu|e|K)([{0,+,-}]*)^\d', repl, decay_str)

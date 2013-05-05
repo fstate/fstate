@@ -1,96 +1,61 @@
-import sys
-print "Limit is", sys.getrecursionlimit()
-#sys.setrecursionlimit(500000)
-particles = dict()
-skip = 0
-for line in open('decays.txt').readlines():
-    branching_str = str()
+from database import * # build mongo on-the-go
 
-    for c in line[:]:
-        branching_str += c
-        line = line[1:]
+# First, lets build db:
+db = {}
 
-        if c == ')':
-            break
+decay_id = 0
 
-    branching = branching_str[1:-1].split(',')
-    branching = [float(x) for x in branching[:]]
-    if branching[0] == 0.0:
-        skip += 1
-        continue
-
-    try:
-        father, daughters = line.split('-->')
-    except ValueError:
-        continue
-
-    father = father.strip()
-    daughters = daughters.strip()
-
-    if not father in particles:
-        particles[father] = {'decays': list()}
-
-    particles[father]['decays'].append((branching, daughters))
-print "Skipped", skip
-
-def get_fstates(br, p, particles):
-    br_start = br
-    fstates = []
-
-    for decay in particles[p]['decays']:
-        """if p == "B_s()0":
-            print decay"""
-
-        br = br_start
-        br *= decay[0][0] + decay[0][1]
-        
-        if (br == 0.0 or br < 1E-9) and p == "B_s()0":
-            print "Skipping", decay,br
-            continue
-
-        if (br == 0.0 or br < 1E-9):
-            continue
-
-        daughters = decay[1].split(' ')
-
-        try:
-            dec = [lookup(br, p, daughter, particles) for daughter in daughters]
-            """if p == "B_s()0" and decay[1] == "J/psi(1S) pi0":
-                print "="*40
-                print br, dec
-                print "="*40"""
-            fstates.append([p + ' -> ' + decay[1],br, dec])
-        except RuntimeError:
-            continue
-        
-    return fstates
-
-
-def lookup(br, p, daughters, particles):
-    #print "\t Looking up: ", daughters
-
-    #if len(daughters) != 1:
-    #    return [lookup(br, p, [daughters[0]], particles), lookup(br, p, daughters[1:], particles)]
+for x in open("../stage1/valid.txt").readlines():
+    branching, decay = x.split("|")
+    branching = tuple([float(x.strip()) for x in branching[1:-1].split(',')])
+    father, products = [t.strip() for t in decay.split("-->")]
     
+    if not father in db:
+        db[father] = []
+    
+    db[father].append( (decay_id, branching, products.split(' ')) )
 
-    p = daughters
+    entry = {
+        'father': father,
+        'decay_id': decay_id,
+        'branching': branching,
+        'products': products
+        }
+    decays.insert(entry)
+    decay_id += 1
 
-    if not p in particles:
-        return p
-    elif p in ['mu+', "mu-", 'e-', 'e+', 'gamma', 'pi+', 'pi-']:
-        return p
-    elif 'gamma' in p:
-        return p
-    else:
-        return get_fstates(br, p, particles)
+decays.create_index("decay_id")
+
+# Lets suppose that we have only one decay scheme:
+# A -> (B -> f1 f2) (C -> f3 f4), where f1,f2,f3,f4 are final state
+
+from fstate import get_fstates
+
+for decay in db['B0']:
+    for fs in get_fstates(decay[2], db):
+        first = decays.find_one({"decay_id": fs[0]})
+        second = decays.find_one({"decay_id": fs[1]})
+
+        if not (first and second):
+            print "Bad decay {} and final state {}".format(decay, fs)
+            continue
+        
+
+        current_fstate = first['products'].split(" ") + second['products'].split(" ")
+        Br = first['branching'][0] * second['branching'][0]
+
+        print "B0 --> ({} --> {})({} --> {}) with Br={} and fstate={}".format(
+                first['father'], first['products'],
+                second['father'], second['products'],
+                Br, repr(current_fstate)
+            )
+
+        fstates.insert({
+            #'scheme': [DBRef('decays', first['_id']), DBRef('decays', second['_id'])],
+            'scheme': [fs[0], fs[1]], # write decay_id, instead DBref. Why not?
+            'branching': Br,
+            'fstate': current_fstate
+        })
 
 
-"""particles = {
-    'B'   : {'decays': [(5,'Jpsi gamma'), (6, 'Jpsi pi0')]},
-    'Jpsi': {'decays' : [(1,'mu- mu-')]},
-    'pi0' : {'decays' : [(1,'gamma gamma')]},
-        }"""
-l = get_fstates(1.0, 'B_s()0', particles)
-for i in l:
-    print i
-    raw_input()
+fstates.create_index("fstate")
