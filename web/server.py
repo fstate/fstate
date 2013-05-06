@@ -17,7 +17,7 @@ def index():
     results = fstates.find({"fstate": {"$in": query_permutations}}).sort("branching", -1)
 
     print "Found ", results.count()
-    return render_template('results.html', query=query, results=results)
+    return render_template('results.html', query=" ".join(query), results=results)
 
 
 
