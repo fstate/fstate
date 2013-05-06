@@ -64,7 +64,7 @@
         {% for r in results %}
         <tr>
             <td>{{r.branching}}</td>
-            <td>B0 --> 
+            <td>{{r.scheme[0].father}} --> 
                 {% for p in r.scheme[1:] %}
                 ({{p.father}} --> {{p.products}})
                 {% endfor %}

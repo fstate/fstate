@@ -3,6 +3,7 @@ from operator import mul
 
 # First, lets build db:
 db = {}
+decay_db = {}
 
 decay_id = 0
 
@@ -16,13 +17,11 @@ for x in open("../stage1/valid.txt").readlines():
     
     db[father].append( (decay_id, branching, products.split(' ')) )
 
-    entry = {
-        'father': father,
-        'decay_id': decay_id,
+    decay_db[decay_id] = {
         'branching': branching,
+        'father': father,
         'products': products
         }
-    decays.insert(entry)
     decay_id += 1
 
 decays.create_index("decay_id")
@@ -32,35 +31,39 @@ decays.create_index("decay_id")
 
 from fstate import get_fstates
 
-#fstates.create_index("scheme", unique=True)
+for k in db.keys():
+    for decay in db[k]:
+        for fs in get_fstates(decay[2], db):
+            if type(fs) != list:
+                fs = [fs]
 
-for decay in db['B0']:
-    for fs in get_fstates(decay[2], db):
-        decs = [decays.find_one({"decay_id": x}) for x in fs]
+            try:
+                scheme = [decay_db[decay[0]]] + [decay_db[x] for x in fs]
+            except TypeError:
+                print "Error with fs={}, decay={}".format(fs, decay)
+                raw_input()
 
-        if None in decs:
-            print "Bad decay {} and final state {}".format(decay, fs)
-            continue
+            if None in scheme:
+                print "Bad decay {} and final state {}".format(decay, fs)
+                continue
         
-        Br = reduce(mul, [x['branching'][0] for x in decs])
-        current_fstate = []
-        for d in decs:
-            for p in d['products'].split(' '):
-                current_fstate.append(p)
+            Br = reduce(mul, [x['branching'][0] for x in scheme])
 
-        scheme = ['B0'] + [x['decay_id'] for x in decs]
+            current_fstate = []
 
-        print "B0 --> {} aka {} with Br={} and fstate={}".format(
-                " ".join([x['father'] for x in decs]),
-                scheme,
-                Br, repr(current_fstate)
-            )
-    
-        fstates.insert({
-            #'scheme': [DBRef('decays', first['_id']), DBRef('decays', second['_id'])],
-            'scheme': scheme, # write decay_id, instead DBref. Why not?
-            'branching': Br,
-            'fstate': current_fstate
-        })
+            for d in scheme[1:]:
+                for p in d['products'].split(' '):
+                    current_fstate.append(p)
 
-fstates.create_index("fstate")
+
+            print "{} --> {} with Br={} and fstate={}".format(
+                    scheme[0]['father'],
+                    " ".join([x['father'] for x in scheme[1:]]),
+                    Br, repr(current_fstate)
+                )
+
+            fstates.insert({
+                'scheme': scheme,
+                'branching': Br,
+                'fstate': current_fstate
+            })

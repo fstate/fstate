@@ -13,3 +13,4 @@ decays.drop()
 # Fstates collection
 fstates = db.fstates
 fstates.drop()
+fstates.create_index("fstate")
