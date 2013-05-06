@@ -10,6 +10,10 @@ decay_id = 0
 for x in open("../stage1/valid.txt").readlines():
     branching, decay = x.split("|")
     branching = tuple([float(x.strip()) for x in branching[1:-1].split(',')])
+
+    if branching[0] < 1E-15:
+        continue
+
     father, products = [t.strip() for t in decay.split("-->")]
     
     if not father in db:
@@ -48,6 +52,9 @@ for k in db.keys():
                 continue
         
             Br = reduce(mul, [x['branching'][0] for x in scheme])
+            
+            if Br < 1E-15:
+                continue
 
             current_fstate = []
 
