@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h3>Results for {{query}}</h3>
+<table class="table-striped" style="width: 100%">
+  <tr>
+      <td><strong>Branching &darr;</strong></td>
+      <td><strong>Mode</strong></td>
+      <td><strong>fstate</strong></td>
+  </tr>
+  {% for r in results %}
+  <tr>
+      <td>{{r.branching}}</td>
+      <td>{{r.scheme[0].father}} --> 
+          {% for p in r.scheme[1:] %}
+          ({{p.father}} --> {{p.products}})
+          {% endfor %}
+      </td>
+      <td>{{r.fstate}}</td>
+  </tr>
+  {% endfor %}
+</table>
+{% endblock %}
