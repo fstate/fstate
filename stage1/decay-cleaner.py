@@ -12,6 +12,7 @@ particles.add('-->')
 particles.add('gamma')
 particles.add('pi')
 
+
 for x in open('../data/decays.txt').readlines():
     particles.add(re.match(r'\([0-9.e-]*, [0-9.e-]*\)(.*)-->', x).group(1).split('-->')[0].strip())
 
@@ -30,7 +31,11 @@ decays = [re.sub(r'(\([0-9.e-]*, [0-9.e-]*\))', r'\1|', x).rstrip()
 
 GOOD, BADN, TOTAL = 0, 0, 0
 
-
+def mass(part):
+    for x in open('../data/masses-fin.txt').readlines():
+        if part == re.match(r'\((.*),(.*)\)(.*)', x).group(2).strip():
+            return float(re.match(r'\((.*),(.*)\)(.*)', x).group(1).strip().split(', ')[0])
+    return 0 
 
 def process(decay, lineno):
     global BADN, GOOD, TOTAL, particles
@@ -83,7 +88,13 @@ for line, decay in enumerate(decays):
 
     for dec in to_process:
         if process(dec, line+1):
-            print branching + "|" + dec
+            parts = dec.split(" ")
+            m = 0
+            for p in parts[1:]:
+                m += mass(p)
+            if m >= mass(parts[0]):
+                continue
+            print branching + "|" + dec 
             continue
 
 

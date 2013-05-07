@@ -37,7 +37,16 @@ from fstate import get_fstates
 
 for k in db.keys():
     for decay in db[k]:
-        for fs in get_fstates(decay[2], db):
+        for x in decay:
+            print x
+        history = k + '-->'
+        for i in decay[2]:
+            history = history + i
+        generic_decay = [decay[1][0], k, decay[2], history]
+        print generic_decay
+        get_fstates(generic_decay, db, fstates)
+        """
+        for fs in get_fstates(generic_decay, db, fstates):
             if type(fs) != list:
                 fs = [fs]
 
@@ -74,3 +83,4 @@ for k in db.keys():
                 'branching': Br,
                 'fstate': current_fstate
             })
+        """
