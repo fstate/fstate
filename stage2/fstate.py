@@ -1,4 +1,5 @@
 from itertools import izip
+from copy import deepcopy
 """
 def get_fstates(products, db):
     if len(products) == 1 and type(products) == list:
@@ -25,26 +26,33 @@ def get_fstates(products, db):
         return fstates
 """
 #decay: {'Br':[Br], 'Father':[father], 'fstate':["fstate"], 'history':["history"]}
-def get_fstates(decay, db, final_db):
-    if decay[0] < 1E-15:
+#    db_2.append([father, decay_id, branching, products.split(' ')])
+def get_fstates(decay,  db_2, final_db):
+    if decay[0] < 1E-10:
         return
-    print decay
+    #print decay
     final_db.insert({
     'scheme': decay[3],
     'branching': decay[0],
-    'fstate': decay[2]
+    'fstate': decay[2],
+    'father': decay[1]
     })
-    if len(decay[2]) < 2:
+    if len(decay[2]) == 1:
         return
     for p in decay[2]:
-        if p not in db:
-            return
-        decay[2].remove(p)
-        for d in db[p]:
-            decay[3] = decay[3] + '; ' + p + '-->'
-            for k in d[2]:
-                decay[2].append(k)
-                decay[3] = decay[3] + k
-            decay[0] = decay[0] * d[1][0]
-            get_fstates(decay, db, final_db)
+        for k in db_2:
+            if p == k[0]:
+                g_decay = []
+                g_decay = deepcopy(decay)
+                g_decay[2].remove(k[0])
+                g_decay[3] = g_decay[3] + '; ' + k[0] + ' -->'
+                for daught in k[3]:
+                    g_decay[2].append(daught)
+                    g_decay[3] = g_decay[3] + ' ' + daught
+                g_decay[0] = g_decay[0] * k[2][0]
+                get_fstates(g_decay, db_2, final_db)
+        #       for daught in k[3]:
+        #            decay[2].remove(daught)
+        #decay[2].append
+
 

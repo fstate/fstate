@@ -11,11 +11,7 @@
   {% for r in results %}
   <tr>
       <td>{{r.branching}}</td>
-      <td>{{r.scheme[0].father}} --> 
-          {% for p in r.scheme[1:] %}
-          ({{p.father}} --> {{p.products}})
-          {% endfor %}
-      </td>
+      <td>{{r.scheme}}</td>
       <td>{{r.fstate}}</td>
   </tr>
   {% endfor %}

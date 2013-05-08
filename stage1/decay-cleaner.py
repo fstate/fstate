@@ -52,6 +52,14 @@ def process(decay, lineno):
             BAD = True
             BAD_PARTICLES.append(particle)
 
+    for particle in parts:
+        if particle == "anything":
+            BAD = True
+
+    for particle in parts:
+        if particle == "X":
+            BAD = True
+
 
     if BAD or decay.count('-->') != 1:
         #print "BAD:\t", decay , "\t", str(BAD_PARTICLES)
@@ -89,16 +97,17 @@ for line, decay in enumerate(decays):
     for dec in to_process:
         if process(dec, line+1):
             parts = dec.split(" ")
-            m = 0
-            for p in parts[1:]:
-                m += mass(p)
-            if m >= mass(parts[0]):
-                continue
+            if mass(parts[0])>0:                
+                m = 0
+                for p in parts[1:]:
+                    m += mass(p)
+                if m >= mass(parts[0]):
+                    continue
             print branching + "|" + dec 
             continue
 
 
 
-print "GOOD: ", str(GOOD)
-print "BAD: ", str(BADN)
-print "TOTAL: ", str(TOTAL)
+#print "GOOD: ", str(GOOD)
+#print "BAD: ", str(BADN)
+#print "TOTAL: ", str(TOTAL)
