@@ -1,15 +1,12 @@
 from itertools import izip
 from copy import deepcopy
 
-#decay: {'Br':[Br], 'Father':[father], 'fstate':["fstate"], 'history':["history"]}
-#    db_2.append([father, decay_id, branching, products.split(' ')])
-# decay = [branching, father, products, history]
 def get_fstates(decay, db, final_db):
     if decay['branching'][0] < 1E-10:
         return
 
     print decay['history']
-    
+
     final_db.insert({
         'scheme': decay['history'],
         'branching': decay['branching'],
@@ -29,7 +26,8 @@ def get_fstates(decay, db, final_db):
             work_copy['products'].remove(k['father'])
             work_copy['products'] += k['products']
 
-            work_copy['history'] += '; {} --> {}'.format(k['father'], ' '.join(k['products']))
+            work_copy['history'] += '; {} --> {}'.format(
+                k['father'], ' '.join(k['products']))
 
             work_copy['branching'][0] *= k['branching'][0]
 
