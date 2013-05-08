@@ -6,7 +6,7 @@ def get_fstates(decay, db, final_db):
         return
 
     print decay['history']
-
+    print decay['products']
     final_db.insert({
         'scheme': decay['history'],
         'branching': decay['branching'],
@@ -14,10 +14,11 @@ def get_fstates(decay, db, final_db):
         'father': decay['father']
     })
 
-    if len(decay['products']) == 1:
+    if not 1 < len(decay['products']) < 6:
         return
 
     for p in decay['products']:
+        #print " p ",p
         if not p in db:
             continue
         for k in db[p]:

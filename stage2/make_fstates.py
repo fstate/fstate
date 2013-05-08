@@ -10,6 +10,7 @@ from fstate import get_fstates
 db = {}
 
 for x in open("../stage1/valid.txt").readlines():
+#for x in open("../stage1/test.txt").readlines():
     branching, decay = x.split("|")
     branching = tuple([float(x.strip()) for x in branching[1:-1].split(',')])
 
