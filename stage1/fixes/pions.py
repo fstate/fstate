@@ -3,7 +3,7 @@ def pipi(decay_str):
     Assuming that pi pi(once) is pi+ pi- everywhere.
     """
 
-    if decay_str.count("pi") == 2:
+    if decay_str.count("pi") == 2 and "pi pi" in decay_str:
         return [
                     decay_str.replace("pi pi", "pi+ pi-"),
                     decay_str.replace("pi pi", "pi0 pi0")
