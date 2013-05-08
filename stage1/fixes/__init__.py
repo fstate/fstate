@@ -7,10 +7,5 @@ from muons import mumu
 from phi import phi
 from omega import omega
 
-<<<<<<< HEAD
-fixlist = [multiparticle_fix, kbar, phi, mumu] 
+fixlist = [multiparticle_fix, kbar, phi, mumu, omega] 
 multiplexers = [pm, N, pipi]
-=======
-fixlist = [multiparticle_fix, kbar, phi, omega] 
-multiplexers = [pm, N]
->>>>>>> Omega-issue
