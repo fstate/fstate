@@ -47,6 +47,52 @@ def process(decay, lineno):
     BAD = False
     BAD_PARTICLES = []
 
+    if parts[0] == 'pi':
+        BAD = True        
+
+    if parts[0] == 'pi+':
+        BAD = True        
+
+    if parts[0] == 'pi-':
+        BAD = True        
+
+    if parts[0] == 'pi0':
+        BAD = True   
+
+    if parts[0] == 'mu':
+        BAD = True        
+
+    if parts[0] == 'mu+':
+        BAD = True        
+
+    if parts[0] == 'mu-':
+        BAD = True          
+
+    if parts[0] == 'K':
+        BAD = True        
+
+    if parts[0] == 'K+':
+        BAD = True        
+
+    if parts[0] == 'K-':
+        BAD = True        
+
+    if parts[0] == 'K0':
+        BAD = True        
+
+    if parts[0] == 'W':
+        BAD = True        
+
+    if parts[0] == 'W+':
+        BAD = True        
+
+    if parts[0] == 'W-':
+        BAD = True        
+
+    if parts[0] == 'Z':
+        BAD = True        
+
+
     for particle in parts:
         if (not particle in particles) and (particle != ''):
             BAD = True

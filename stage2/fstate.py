@@ -30,7 +30,7 @@ def get_fstates(products, db):
 def get_fstates(decay,  db_2, final_db):
     if decay[0] < 1E-10:
         return
-    #print decay
+    print decay[3]
     final_db.insert({
     'scheme': decay[3],
     'branching': decay[0],
