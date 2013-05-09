@@ -18,9 +18,12 @@ def index():
 
     results = fstates.find({"fstate": {"$in": query_permutations}}).sort("branching", -1)
 
+    html =  render_template('results.html', query=" ".join(query), results=results)
+    
     end = datetime.now()
-
-    return render_template('results.html', query=" ".join(query), results=results, timing=(end - start))
+    print 'Time for query "{}" - {}'.format(request.args.get('query'), end - start)
+    
+    return html
 
 
 if __name__ == "__main__":
