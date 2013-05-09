@@ -1,6 +1,7 @@
 from flask import *
 from db import *
 from itertools import permutations
+from datetime import datetime
 
 app = Flask(__name__)
 
@@ -11,15 +12,15 @@ def index():
     if not query:
         return render_template('index.html')
 
+    start = datetime.now()
     query = [x for x in query.split(' ') if x != '']
     query_permutations = list(permutations(query, len(query)))
 
     results = fstates.find({"fstate": {"$in": query_permutations}}).sort("branching", -1)
 
-    print "Found ", results.count()
-    return render_template('results.html', query=" ".join(query), results=results)
+    end = datetime.now()
 
-
+    return render_template('results.html', query=" ".join(query), results=results, timing=(end - start))
 
 
 if __name__ == "__main__":

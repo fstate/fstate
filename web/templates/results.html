@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 
 {% block content %}
-<h3>Results for <i>{{query}}</i></h3>
+<h3>Results for <i>{{ query }}</i></h3>
 <table class="table-striped" style="width: 100%">
   <tr>
       <td><strong>Branching &darr;</strong></td>
@@ -10,10 +10,12 @@
   </tr>
   {% for r in results %}
   <tr>
-      <td>{{r.branching}}</td>
-      <td>{{r.scheme}}</td>
-      <td>{{r.fstate}}</td>
+      <td>{{ r.branching }}</td>
+      <td>{{ r.scheme }}</td>
+      <td>{{ r.fstate }}</td>
   </tr>
   {% endfor %}
 </table>
+
+<p style="margin-top: 20px">Generated in <i>{{ timing }}</i></p>
 {% endblock %}

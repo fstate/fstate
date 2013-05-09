@@ -42,5 +42,4 @@ if __name__ == "__main__":
 
     end = datetime.now()
 
-    print "Took fucking {} seconds to build this shit!".format(
-        (end - start).seconds)
+    print "Took {} to build!".format(end - start)
