@@ -20,8 +20,8 @@ def get_fstates(decay):
     except pymongo.errors.DuplicateKeyError:
         return
 
-    if not 1 < len(decay['products']) < 6: # Not full db build
-    #if len(decay['products']) == 1: # Full DB build
+    #if not 1 < len(decay['products']) < 6: # Not full db build
+    if len(decay['products']) == 1: # Full DB build
         return
 
     for p in decay['products']:

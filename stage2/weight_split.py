@@ -5,7 +5,7 @@ def min_index(values):
 
 
 def get_jobs(procs):
-    data = [x.split() for x in open('max20.log').readlines()]
+    data = [x.split() for x in open('max.log').readlines()]
 
     for x in data:
         h, m, s = [float(y) for y in x[1].split(':')]
