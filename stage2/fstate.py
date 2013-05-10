@@ -1,16 +1,17 @@
 from itertools import izip
 from copy import deepcopy
-import pymongo
+from database import *
+from make_fstates import db
 
 
-def get_fstates(decay, db, final_db):
+def get_fstates(decay):
     if decay['branching'][0] < 1E-10:
         return
 
-    print decay['history'], decay['products']
+    #print decay['history'], decay['products']
 
     try:
-        final_db.insert({
+        fstates.insert({
             'scheme': decay['history'],
             'branching': decay['branching'],
             'fstate': decay['products'],
@@ -19,7 +20,8 @@ def get_fstates(decay, db, final_db):
     except pymongo.errors.DuplicateKeyError:
         return
 
-    if not 1 < len(decay['products']) < 6:
+    if not 1 < len(decay['products']) < 6: # Not full db build
+    #if len(decay['products']) == 1: # Full DB build
         return
 
     for p in decay['products']:
@@ -38,4 +40,4 @@ def get_fstates(decay, db, final_db):
 
             work_copy['branching'][0] *= k['branching'][0]
 
-            get_fstates(work_copy, db, final_db)
+            get_fstates(work_copy)
