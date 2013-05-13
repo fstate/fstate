@@ -56,7 +56,7 @@ if __name__ == "__main__":
 
     start = datetime.now()
 
-    workers  = cpu_count()
+    workers  = cpu_count() + 2
     p = Pool(processes=workers)
     p.map(do_work, get_jobs(workers))
 
