@@ -12,18 +12,22 @@ def index():
     if not query:
         return render_template('index.html')
 
-    start = datetime.now()
     query = [x for x in query.split(' ') if x != '']
     query_permutations = list(permutations(query, len(query)))
 
-    results = fstates.find({"fstate": {"$in": query_permutations}}).sort("branching", -1)
 
-    html =  render_template('results.html', query=" ".join(query), results=results)
-    
+    start = datetime.now()
+
+    results = list(fstates.find({"fstate": {"$in": query_permutations}}))
+
     end = datetime.now()
+    
+    results = sorted(results, key=lambda x: -x['branching'][0])
+    
+
     print 'Time for query "{}" - {}'.format(request.args.get('query'), end - start)
     
-    return html
+    return render_template('results.html', query=" ".join(query), results=results, timing=(end - start))
 
 
 if __name__ == "__main__":
