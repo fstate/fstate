@@ -13,12 +13,10 @@ def index():
         return render_template('index.html')
 
     query = [x for x in query.split(' ') if x != '']
-    query_permutations = list(permutations(query, len(query)))
-
 
     start = datetime.now()
 
-    results = list(fstates.find({"fstate": {"$in": query_permutations}}))
+    results = list(fstates.find({"fstate": {"$all": query, "$size": len(query)}}))
 
     end = datetime.now()
     
