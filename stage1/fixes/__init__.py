@@ -6,6 +6,8 @@ from pions import pipi
 from muons import mumu
 from phi import phi
 from omega import omega
+from rho import rho
+from kst import kst
 
-fixlist = [multiparticle_fix, kbar, phi, mumu, omega] 
+fixlist = [multiparticle_fix, kbar, phi, rho, mumu, omega, kst] 
 multiplexers = [pm, N, pipi]

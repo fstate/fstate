@@ -6,9 +6,19 @@ def multiparticle_fix(decay_str):
         Fixes things like 4pi+ to pi+ pi+ pi+ pi+
     """
 
+    #def repl(m):
+    #    num = int(m.group(1))
+    #    return num * (m.group(2) + m.group(3) + " ")
+    #return re.sub(r'(\d+)(pi|mu|e|K)([{0,+,-}]*)^\d', repl, decay_str)
+
     def repl(m):
-        num = int(m.group(1))
+        num = int(m.group(3))
+        return m.group(1) + " " + num * (m.group(4)) + m.group(5)
 
-        return num * (m.group(2) + m.group(3) + " ")
+    prog = re.compile(r'(.*?)(\s)(\d)(.*?\s|.*?\Z)(.*)')
 
-    return re.sub(r'(\d+)(pi|mu|e|K)([{0,+,-}]*)^\d', repl, decay_str)
+    while True:
+        decay_str = re.sub(prog, repl, decay_str)
+        if re.match(prog, decay_str) == None:
+            break
+    return decay_str
