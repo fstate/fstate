@@ -6,3 +6,13 @@ def pm(decay_str):
                     ]
     else:
         return decay_str
+
+def lepton(decay_str):
+    if 'lepton' in decay_str:    
+             return [
+                    decay_str.replace('lepton', 'e'),
+                    decay_str.replace('lepton', 'mu'),
+                    decay_str.replace('lepton', 'tau'),
+                    ]
+    else:
+        return decay_str

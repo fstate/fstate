@@ -59,7 +59,7 @@ def process(decay, lineno):
         BAD += "Cascade decay. " 
 
     for particle in parts:
-        if particle in ["anything","h+","h-","particles"]:
+        if particle in ["anything","h+","h-","particles","boson"]:
             BAD = ""
         if particle.find(">=")>-1:
             BAD = ""
@@ -69,6 +69,9 @@ def process(decay, lineno):
     for particle in parts:
         if particle == "X":
             BAD = ""
+
+    if 'ex.' in decay:
+        BAD = ""
 
     if parts[0] == 'pi':
         BAD = ""        

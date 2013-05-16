@@ -1,44 +1,8 @@
-lepton- not in particles. lepton- not in particles. lepton+ not in particles. 
-tau- --> lepton- lepton- lepton+ 
-
-( not in particles. e not in particles. )- not in particles. 
-tau- --> ( e mu+ mu- )- 
-
-( not in particles. mu not in particles. e not in particles. e not in particles. )- not in particles. 
-tau- --> ( mu e e )- 
-
 ( not in particles. e not in particles. )-, not in particles. all not in particles. charged not in particles. 
 tau- --> ( e pi K )-, all charged 
 
 ( not in particles. mu not in particles. )-, not in particles. all not in particles. charged not in particles. 
 tau- --> ( mu pi K )-, all charged 
-
-(a_1(1260) not in particles. h)- not in particles. 
-tau- --> (a_1(1260) h)- nu_tau 
-
-lepton+ not in particles. 
-tau- --> lepton+ pi- pi- 
-
-lepton- not in particles. 
-tau- --> lepton- pi+ pi- 
-
-lepton+ not in particles. 
-tau- --> lepton+ pi- K- 
-
-lepton- not in particles. 
-tau- --> lepton- pi+ K- 
-
-light not in particles. boson not in particles. 
-tau- --> e- light boson 
-
-light not in particles. boson not in particles. 
-tau- --> mu- light boson 
-
-(ex.K0) not in particles. 
-tau- --> K- pi0 pi0 nu_tau (ex.K0) 
-
-(ex.K0, not in particles. eta) not in particles. 
-tau- --> K- pi0 pi0 pi0 nu_tau (ex.K0, eta) 
 
 K_1(1270)- not in particles. 
 tau- --> K_1(1270)- nu_tau 
@@ -46,23 +10,8 @@ tau- --> K_1(1270)- nu_tau
 K_1(1400)- not in particles. 
 tau- --> K_1(1400)- nu_tau 
 
-(particles)- not in particles. 
-tau- --> K0S (particles)- nu_tau 
-
-(5pi)- not in particles. 
-tau- --> (5pi)- nu_tau 
-
 dummy not in particles. mode not in particles. used not in particles. by not in particles. the not in particles. fit not in particles. 
 tau- --> dummy mode used by the fit 
-
-(ex.K0) not in particles. 
-tau- --> pi- pi0 pi0 nu_tau (ex.K0) 
-
-(ex.K0) not in particles. 
-tau- --> pi- pi0 pi0 pi0 nu_tau (ex.K0) 
-
-(ex.K0) not in particles. 
-tau- --> eta pi- pi+ pi- nu_tau (ex.K0) 
 
 Cascade decay. 
 tau- --> eta a_1(1260)- nu_tau --> eta pi- rho(770) nu_tau 
@@ -70,32 +19,14 @@ tau- --> eta a_1(1260)- nu_tau --> eta pi- rho(770) nu_tau
 Cascade decay. 
 tau- --> f_1(1285) pi- nu_tau --> eta pi- pi+ pi- nu_tau 
 
-(Kbar^*(892) not in particles. pi)- not in particles. Cascade decay. 
-tau- --> (Kbar^*(892) pi)- nu_tau --> pi- Kbar0 pi0 nu_tau 
+Kbar^*(892)- not in particles. Cascade decay. 
+tau- --> Kbar^*(892)- nu_tau --> pi- Kbar0 pi0 nu_tau 
 
-(ex.K0) not in particles. 
-tau- --> pi- pi+ pi- nu_tau (ex.K0) 
+pi(1300)- not in particles. Cascade decay. 
+tau- --> pi(1300)- nu_tau --> rho- nu_tau --> nu_tau 
 
-(ex.K0,omega) not in particles. 
-tau- --> pi- pi+ pi- nu_tau (ex.K0,omega) 
-
-(ex.K0) not in particles. 
-tau- --> K- pi+ pi- nu_tau (ex.K0) 
-
-(ex.K0) not in particles. 
-tau- --> pi- pi+ pi- pi0 nu_tau (ex.K0) 
-
-(ex.K0,omega) not in particles. 
-tau- --> pi- pi+ pi- pi0 nu_tau (ex.K0,omega) 
-
-(ex.K0) not in particles. 
-tau- --> K- pi+ pi- pi0 nu_tau (ex.K0) 
-
-pi(1300)- not in particles. (rho not in particles. pi)- not in particles. (3pi)- not in particles. Cascade decay. 
-tau- --> pi(1300)- nu_tau --> (rho pi)- nu_tau --> (3pi)- nu_tau 
-
-pi(1300)- not in particles. ((pi not in particles. pi)(S-wave) not in particles. pi)- not in particles. (3pi)- not in particles. Cascade decay. 
-tau- --> pi(1300)- nu_tau --> ((pi pi)(S-wave) pi)- nu_tau --> (3pi)- nu_tau 
+pi(1300)- not in particles. pi-- not in particles. Cascade decay. 
+tau- --> pi(1300)- nu_tau --> pi-- nu_tau --> nu_tau 
 
 K^*(1410)- not in particles. 
 tau- --> K^*(1410)- nu_tau 
@@ -106,26 +37,11 @@ tau- --> K_0^*(1430)- nu_tau
 X- not in particles. (S=-1) not in particles. 
 tau- --> X- (S=-1) nu_tau 
 
-(ex.K0), not in particles. scalar not in particles. 
-tau- --> pi- pi0 pi0 nu_tau (ex.K0), scalar 
-
-(ex.K0), not in particles. vector not in particles. 
-tau- --> pi- pi0 pi0 nu_tau (ex.K0), vector 
-
-(ex.K0,eta) not in particles. 
-tau- --> K- pi+ pi- pi0 nu_tau (ex.K0,eta) 
-
 Cascade decay. 
 tau- --> K- rho(770) nu_tau --> K- pi+ pi- nu_tau 
 
-(ex.K0,omega) not in particles. 
-tau- --> K- pi+ pi- pi0 nu_tau (ex.K0,omega) 
-
 Lambdabar not in particles. 
 tau- --> Lambdabar pi- 
-
-(ex. not in particles. phi) not in particles. 
-tau- --> K- K+ K- nu_tau (ex. phi) 
 
 Cascade decay. 
 tau- --> K^*(892)- nu_tau --> pi- Kbar0 nu_tau 
@@ -222,9 +138,6 @@ phi(1020) --> eta neutrals
 
 + not in particles. 
 phi(1020) --> rho(770) pi + pi+ pi- pi0 
-
-lepton+ not in particles. lepton- not in particles. 
-phi(1020) --> lepton+ lepton- 
 
 (KKbar)+ not in particles. 
 b_1(1235) --> (KKbar)+ pi0 
@@ -559,9 +472,6 @@ K^*(892) --> (K pi)+
 (K not in particles. pi)- not in particles. 
 K^*(892) --> (K pi)- 
 
-(K not in particles. pi)0 not in particles. 
-K^*(892) --> (K pi)0 
-
 Lambdabar not in particles. 
 K_2(2250) --> p Lambdabar 
 
@@ -574,8 +484,14 @@ K_4(2500) --> p Lambdabar
 Sigma(1385)+ not in particles. 
 K(3100)0 --> Sigma(1385)+ pbar 
 
-semileptonic not in particles. 
-D+ --> e+ semileptonic 
+semieic not in particles. 
+D+ --> e+ semieic 
+
+semimuic not in particles. 
+D+ --> e+ semimuic 
+
+semitauic not in particles. 
+D+ --> e+ semitauic 
 
 A not in particles. dummy not in particles. mode not in particles. used not in particles. by not in particles. the not in particles. fit. not in particles. 
 D+ --> A dummy mode used by the fit. 
@@ -628,9 +544,6 @@ D+ --> eta^'(958) pi+ x B(eta^'(958) --> eta pi+ pi-) x B(eta --> pi+ pi- pi0)
 rho+, not in particles. Cascade decay. 
 D+ --> phi(1020) rho+, phi(1020) --> K+ K- 
 
-lepton+ not in particles. 
-D+ --> K+ K- lepton+ nu 
-
 x not in particles. B(phi not in particles. K-) not in particles. Cascade decay. 
 D+ --> phi(1020) e+ nu_e x B(phi --> K+ K-) 
 
@@ -642,9 +555,6 @@ D+ --> K^*(892)+ Kbar^*(892)0
 
 K^*(892)+ not in particles. Kbar^*(892)0, not in particles. K*+ not in particles. K(S)0 not in particles. pi+, not in particles. Kbar*0 not in particles. Cascade decay. 
 D+ --> K^*(892)+ Kbar^*(892)0, K*+ --> K(S)0 pi+, Kbar*0 --> K- pi+ 
-
-(Kbar^*(892) not in particles. pi)0 not in particles. 
-D+ --> (Kbar^*(892) pi)0 e+ nu_e 
 
 S-wave not in particles. 
 D+ --> Kbar^*(892)0 rho+ S-wave 
@@ -745,12 +655,6 @@ D+ --> K^*(892)- pi+ pi+ -body, -body, -body, K*(892)- --> K- pi0
 total not in particles. 
 D+ --> K0S rho(770) pi+ total 
 
-lepton+ not in particles. nu_lepton not in particles. 
-D+ --> Kbar0 lepton+ nu_lepton 
-
-lepton+ not in particles. nu_lepton not in particles. 
-D+ --> pi0 lepton+ nu_lepton 
-
 , not in particles. Kbar*(892)0 not in particles. Cascade decay. 
 D+ --> Kbar^*(892)0 mu+ nu_mu , Kbar*(892)0 --> K- pi+ 
 
@@ -763,14 +667,8 @@ D+ --> Kbar_0^*(1430)0 pi+, Kbar(0)*(1430)0 --> K- pi+
 Kbar^*(1680)0 not in particles. pi+, not in particles. Kbar*(1680)0 not in particles. Cascade decay. 
 D+ --> Kbar^*(1680)0 pi+, Kbar*(1680)0 --> K- pi+ 
 
-lepton+ not in particles. nu_lepton not in particles. 
-D+ --> Kbar^*(892)0 lepton+ nu_lepton 
-
 -body, not in particles. -body, not in particles. -body, not in particles. Kbar*(892)0 not in particles. Cascade decay. 
 D+ --> Kbar^*(892)0 pi+ pi0 -body, -body, -body, Kbar*(892)0 --> K- pi+ 
-
-lepton+ not in particles. nu_lepton not in particles. 
-D+ --> Kbar0 lepton+ nu_lepton 
 
 total not in particles. 
 D+ --> K^*(892)- pi+ pi+ total 
@@ -801,9 +699,6 @@ D+ --> Kbar^*(892)0 pi+ pi+ pi- no-rho
 
 nonresonant not in particles. 
 D+ --> K+ pi+ pi- nonresonant 
-
-lepton+ not in particles. nu_lepton not in particles. 
-D+ --> eta lepton+ nu_lepton 
 
 Kbar_1(1270)0 not in particles. 
 D+ --> Kbar_1(1270)0 mu+ nu_mu 
@@ -994,9 +889,6 @@ D0 --> K^*(892)+ K-, K^*(892)+ --> K0S pi+
 nonresonant not in particles. 
 D0 --> K+ K- pi+ pi- nonresonant 
 
-lepton+ not in particles. nu_lepton not in particles. 
-D0 --> K^*(892)- lepton+ nu_lepton 
-
 omega, not in particles. Cascade decay. 
 D0 --> K0S omega, omega(782) --> pi+ pi- pi0 
 
@@ -1093,8 +985,8 @@ D0 --> K- a_1(1260)+, a(1)(1260)+ --> pi+ pi+ pi-
 K_1(1270)- not in particles. pi+, not in particles. K(1)(1270)- not in particles. Cascade decay. 
 D0 --> K_1(1270)- pi+, K(1)(1270)- --> K- pi+ pi- 
 
-(Kbar^*(892) not in particles. pi)- not in particles. 
-D0 --> (Kbar^*(892) pi)- mu+ nu_mu 
+Kbar^*(892)- not in particles. 
+D0 --> Kbar^*(892)- mu+ nu_mu 
 
 nonresonant not in particles. 
 D0 --> K0S pi0 pi0 nonresonant 
@@ -1104,9 +996,6 @@ D0 --> Kbar_2^*(1430)0 pi0
 
 K_0^*(1430)- not in particles. 
 D0 --> K_0^*(1430)- pi+ 
-
-lepton+ not in particles. nu_lepton not in particles. 
-D0 --> K- lepton+ nu_lepton 
 
 f_0(980), not in particles. f(0)(980) not in particles. Cascade decay. 
 D0 --> K0S f_0(980), f(0)(980) --> pi+ pi- 
@@ -1159,8 +1048,14 @@ D0 --> K+ pi- or K+ pi- pi+ pi- via Dbar0
 or not in particles. 
 D0 --> K- pi+ or K- pi+ pi+ pi- 
 
-lepton- not in particles. nubar_lepton not in particles. via not in particles. Dbar0 not in particles. 
-D0 --> K+ lepton- nubar_lepton via Dbar0 
+via not in particles. Dbar0 not in particles. 
+D0 --> K+ e- nubar_e via Dbar0 
+
+via not in particles. Dbar0 not in particles. 
+D0 --> K+ mu- nubar_mu via Dbar0 
+
+via not in particles. Dbar0 not in particles. 
+D0 --> K+ tau- nubar_tau via Dbar0 
 
 or not in particles. via not in particles. Dbar0 not in particles. 
 D0 --> K+ pi- or K+ pi+ pi- pi- via Dbar0 
@@ -1486,8 +1381,14 @@ D_s()+ --> pi+ pi+ pi- nonresonant
 K^*(892)+ not in particles. 
 D_s()+ --> K^*(892)+ Kbar0 
 
-semileptonic not in particles. 
-D_s()+ --> e+ semileptonic 
+semieic not in particles. 
+D_s()+ --> e+ semieic 
+
+semimuic not in particles. 
+D_s()+ --> e+ semimuic 
+
+semitauic not in particles. 
+D_s()+ --> e+ semitauic 
 
 K^*(892)+ not in particles. 
 D_s()+ --> K^*(892)+ Kbar^*(892)0 
@@ -1606,11 +1507,11 @@ D_s1(2460)+ --> D_s0^*(2317)+ gamma
 all not in particles. other not in particles. D_s0^*()+ not in particles. 
 D_s1(2460)+ --> all other D_s0^*()+ gamma 
 
-( not in particles. )(S-wave) not in particles. 
-D_s1(2536)+ --> ( D^*(2010)+ K0 )(S-wave) 
+)(S-wave) not in particles. 
+D_s1(2536)+ --> K0 )(S-wave) 
 
-( not in particles. )(D-wave) not in particles. 
-D_s1(2536)+ --> ( D^*(2010)+ K0 )(D-wave) 
+)(D-wave) not in particles. 
+D_s1(2536)+ --> K0 )(D-wave) 
 
 D_s1^*(2700)+ not in particles. 
 D_s1^*(2700)+ --> D0 K+ 
@@ -1804,8 +1705,14 @@ B+ --> a_1(1260)+ a_1(1260)0
 D_s not in particles. D, not in particles. D_s^* not in particles. D, not in particles. D_s not in particles. D^*, not in particles. or not in particles. D_s^* not in particles. D^* not in particles. 
 B --> D_s D, D_s^* D, D_s D^*, or D_s^* D^* 
 
-lepton+ not in particles. nu_lepton not in particles. noncharmed not in particles. 
-B --> lepton+ nu_lepton noncharmed 
+noncharmed not in particles. 
+B --> e+ nu_e noncharmed 
+
+noncharmed not in particles. 
+B --> mu+ nu_mu noncharmed 
+
+noncharmed not in particles. 
+B --> tau+ nu_tau noncharmed 
 
 Dbar0 not in particles. pi+, not in particles. pi+, not in particles. Dbar^*(2007)0 not in particles. pi+, not in particles. or not in particles. 
 B --> Dbar0 pi+, D- pi+, Dbar^*(2007)0 pi+, or D^*(2010)- pi+ 
@@ -1819,11 +1726,23 @@ B+ --> J/psi(1S) K^*(892)+
 K^*(892)+ not in particles. 
 B+ --> psi(2S) K^*(892)+ 
 
-Dbar0 not in particles. lepton+ not in particles. nu_lepton not in particles. 
-B+ --> Dbar0 lepton+ nu_lepton 
+Dbar0 not in particles. 
+B+ --> Dbar0 e+ nu_e 
 
-Dbar^*(2007)0 not in particles. lepton+ not in particles. nu_lepton not in particles. 
-B+ --> Dbar^*(2007)0 lepton+ nu_lepton 
+Dbar0 not in particles. 
+B+ --> Dbar0 mu+ nu_mu 
+
+Dbar0 not in particles. 
+B+ --> Dbar0 tau+ nu_tau 
+
+Dbar^*(2007)0 not in particles. 
+B+ --> Dbar^*(2007)0 e+ nu_e 
+
+Dbar^*(2007)0 not in particles. 
+B+ --> Dbar^*(2007)0 mu+ nu_mu 
+
+Dbar^*(2007)0 not in particles. 
+B+ --> Dbar^*(2007)0 tau+ nu_tau 
 
 K_1(1400)0 not in particles. 
 B+ --> K_1(1400)0 pi+ 
@@ -1875,12 +1794,6 @@ B+ --> Dbar0 a_1(1260)+
 
 Dbar^*(2007)0 not in particles. 
 B+ --> Dbar^*(2007)0 rho+ 
-
-lepton+ not in particles. nu_lepton not in particles. 
-B+ --> omega(782) lepton+ nu_lepton 
-
-lepton+ not in particles. nu_lepton not in particles. 
-B+ --> rho(770) lepton+ nu_lepton 
 
 Dbar0 not in particles. 
 B+ --> Dbar0 D_s^*()+ 
@@ -2008,8 +1921,14 @@ B+ --> Dbar_1^*(2420)0 rho+
 K^*(892)+ not in particles. 
 B+ --> chi_c1(1P) K^*(892)+ 
 
-D^** not in particles. lepton+ not in particles. nu_lepton not in particles. 
-B --> D^** lepton+ nu_lepton 
+D^** not in particles. 
+B --> D^** e+ nu_e 
+
+D^** not in particles. 
+B --> D^** mu+ nu_mu 
+
+D^** not in particles. 
+B --> D^** tau+ nu_tau 
 
 Dbar^*(2007)0 not in particles. a_1(1260)+ not in particles. 
 B+ --> Dbar^*(2007)0 a_1(1260)+ 
@@ -2062,11 +1981,23 @@ B+ --> omega(782) K^*(892)+
 Dbar0 not in particles. 
 B+ --> Dbar0 K+ 
 
-Dbar_1(2420)0 not in particles. lepton+ not in particles. nu_lepton not in particles. x not in particles. B(Dbar(1)0 not in particles. D*- not in particles. pi+) not in particles. Cascade decay. 
-B+ --> Dbar_1(2420)0 lepton+ nu_lepton x B(Dbar(1)0 --> D*- pi+) 
+Dbar_1(2420)0 not in particles. x not in particles. B(Dbar(1)0 not in particles. D*- not in particles. pi+) not in particles. Cascade decay. 
+B+ --> Dbar_1(2420)0 e+ nu_e x B(Dbar(1)0 --> D*- pi+) 
 
-Dbar_2^*(2460)0 not in particles. lepton+ not in particles. nu_lepton not in particles. x not in particles. B(Dbar(2)*0 not in particles. D*- not in particles. pi+) not in particles. Cascade decay. 
-B+ --> Dbar_2^*(2460)0 lepton+ nu_lepton x B(Dbar(2)*0 --> D*- pi+) 
+Dbar_1(2420)0 not in particles. x not in particles. B(Dbar(1)0 not in particles. D*- not in particles. pi+) not in particles. Cascade decay. 
+B+ --> Dbar_1(2420)0 mu+ nu_mu x B(Dbar(1)0 --> D*- pi+) 
+
+Dbar_1(2420)0 not in particles. x not in particles. B(Dbar(1)0 not in particles. D*- not in particles. pi+) not in particles. Cascade decay. 
+B+ --> Dbar_1(2420)0 tau+ nu_tau x B(Dbar(1)0 --> D*- pi+) 
+
+Dbar_2^*(2460)0 not in particles. x not in particles. B(Dbar(2)*0 not in particles. D*- not in particles. pi+) not in particles. Cascade decay. 
+B+ --> Dbar_2^*(2460)0 e+ nu_e x B(Dbar(2)*0 --> D*- pi+) 
+
+Dbar_2^*(2460)0 not in particles. x not in particles. B(Dbar(2)*0 not in particles. D*- not in particles. pi+) not in particles. Cascade decay. 
+B+ --> Dbar_2^*(2460)0 mu+ nu_mu x B(Dbar(2)*0 --> D*- pi+) 
+
+Dbar_2^*(2460)0 not in particles. x not in particles. B(Dbar(2)*0 not in particles. D*- not in particles. pi+) not in particles. Cascade decay. 
+B+ --> Dbar_2^*(2460)0 tau+ nu_tau x B(Dbar(2)*0 --> D*- pi+) 
 
 Dbar^*(2007)0 not in particles. 
 B+ --> Dbar^*(2007)0 D^*(2010)+ 
@@ -2176,9 +2107,6 @@ B+ --> D_s0(2317)+ Dbar0 x B(D(s0)(2317)+ --> D(s)+ pi0)
 D_sJ(2457)+ not in particles. Dbar0 not in particles. 
 B+ --> D_sJ(2457)+ Dbar0 
 
-lepton+ not in particles. nu_lepton not in particles. 
-B+ --> eta lepton+ nu_lepton 
-
 Dbar0 not in particles. 
 B+ --> Dbar0 D+ K0 
 
@@ -2218,11 +2146,14 @@ B+ --> Dbar^*()0 D_sJ(2573)+ x B(D(sJ)(2573)+ --> D0 K+)
 Dbar^*(2007)0 not in particles. D_sJ(2573)+ not in particles. x not in particles. B(D(sJ)(2573)+ not in particles. K+) not in particles. Cascade decay. 
 B+ --> Dbar^*(2007)0 D_sJ(2573)+ x B(D(sJ)(2573)+ --> D0 K+) 
 
-lepton+ not in particles. lepton- not in particles. 
-B+ --> K+ lepton+ lepton- 
+K^*(892)+ not in particles. 
+B+ --> K^*(892)+ e+ e- 
 
-K^*(892)+ not in particles. lepton+ not in particles. lepton- not in particles. 
-B+ --> K^*(892)+ lepton+ lepton- 
+K^*(892)+ not in particles. 
+B+ --> K^*(892)+ mu+ mu- 
+
+K^*(892)+ not in particles. 
+B+ --> K^*(892)+ tau+ tau- 
 
 Dbar_2^*(2462)0 not in particles. x not in particles. B(Dbar(2)*(2462)0 not in particles. pi+) not in particles. Cascade decay. 
 B+ --> Dbar_2^*(2462)0 pi+ x B(Dbar(2)*(2462)0 --> D- pi+) 
@@ -2350,14 +2281,14 @@ B+ --> f_0(1500) K+ x B(f(0)(1500) --> pi+ pi-)
 x not in particles. B(f(2)'(1525) not in particles. pi-) not in particles. Cascade decay. 
 B+ --> f_2^'(1525) K+ x B(f(2)'(1525) --> pi+ pi-) 
 
-lepton+ not in particles. nu_lepton not in particles. 
-B+ --> pi0 lepton+ nu_lepton 
+D^*()- not in particles. 
+B+ --> D^*()- pi+ e+ nu_e 
 
-lepton+ not in particles. nu_lepton not in particles. 
-B+ --> D- pi+ lepton+ nu_lepton 
+D^*()- not in particles. 
+B+ --> D^*()- pi+ mu+ nu_mu 
 
-D^*()- not in particles. lepton+ not in particles. nu_lepton not in particles. 
-B+ --> D^*()- pi+ lepton+ nu_lepton 
+D^*()- not in particles. 
+B+ --> D^*()- pi+ tau+ nu_tau 
 
 [ not in particles. ](D) not in particles. 
 B+ --> [ pi+ pi- pi0 ](D) K- 
@@ -2494,20 +2425,14 @@ B+ --> Lambdabar_c()- Delta_X(1600)++
 Lambdabar_c()- not in particles. Delta_X(2420)++ not in particles. 
 B+ --> Lambdabar_c()- Delta_X(2420)++ 
 
-( not in particles. Lambdabar_c()- not in particles. )(s) not in particles. 
-B+ --> ( Lambdabar_c()- p )(s) pi+ 
+)(s) not in particles. 
+B+ --> p )(s) pi+ 
 
 X_c not in particles. 
 B+ --> e+ nu_e X_c 
 
-lepton+ not in particles. lepton- not in particles. 
-B+ --> pi+ lepton+ lepton- 
-
 nonresonant not in particles. 
 B+ --> J/psi(1S) pi+ pi0 nonresonant 
-
-lepton+ not in particles. nu_lepton not in particles. 
-B+ --> eta^'(958) lepton+ nu_lepton 
 
 [ not in particles. ](D) not in particles. 
 B+ --> [ K- pi+ pi0 ](D) K+ 
@@ -2566,14 +2491,32 @@ B+ --> Dbar()0 D_sJ(2700)+ x B(D(sJ)(2700)+ --> D0 K+)
 Kbar_0^*(1430)0 not in particles. 
 B+ --> K+ Kbar_0^*(1430)0 
 
-Dbar_1^'(2430)0 not in particles. lepton+ not in particles. nu_lepton not in particles. x not in particles. B(Dbar(1)'0 not in particles. D*- not in particles. pi+) not in particles. Cascade decay. 
-B+ --> Dbar_1^'(2430)0 lepton+ nu_lepton x B(Dbar(1)'0 --> D*- pi+) 
+Dbar_1^'(2430)0 not in particles. x not in particles. B(Dbar(1)'0 not in particles. D*- not in particles. pi+) not in particles. Cascade decay. 
+B+ --> Dbar_1^'(2430)0 e+ nu_e x B(Dbar(1)'0 --> D*- pi+) 
 
-Dbar_0^*(2420)0 not in particles. lepton+ not in particles. nu_lepton not in particles. x not in particles. B(Dbar(0)*0 not in particles. pi+) not in particles. Cascade decay. 
-B+ --> Dbar_0^*(2420)0 lepton+ nu_lepton x B(Dbar(0)*0 --> D- pi+) 
+Dbar_1^'(2430)0 not in particles. x not in particles. B(Dbar(1)'0 not in particles. D*- not in particles. pi+) not in particles. Cascade decay. 
+B+ --> Dbar_1^'(2430)0 mu+ nu_mu x B(Dbar(1)'0 --> D*- pi+) 
 
-Dbar_2^*(2460)0 not in particles. lepton+ not in particles. nu_lepton not in particles. x not in particles. B(Dbar(2)*0 not in particles. pi+) not in particles. Cascade decay. 
-B+ --> Dbar_2^*(2460)0 lepton+ nu_lepton x B(Dbar(2)*0 --> D- pi+) 
+Dbar_1^'(2430)0 not in particles. x not in particles. B(Dbar(1)'0 not in particles. D*- not in particles. pi+) not in particles. Cascade decay. 
+B+ --> Dbar_1^'(2430)0 tau+ nu_tau x B(Dbar(1)'0 --> D*- pi+) 
+
+Dbar_0^*(2420)0 not in particles. x not in particles. B(Dbar(0)*0 not in particles. pi+) not in particles. Cascade decay. 
+B+ --> Dbar_0^*(2420)0 e+ nu_e x B(Dbar(0)*0 --> D- pi+) 
+
+Dbar_0^*(2420)0 not in particles. x not in particles. B(Dbar(0)*0 not in particles. pi+) not in particles. Cascade decay. 
+B+ --> Dbar_0^*(2420)0 mu+ nu_mu x B(Dbar(0)*0 --> D- pi+) 
+
+Dbar_0^*(2420)0 not in particles. x not in particles. B(Dbar(0)*0 not in particles. pi+) not in particles. Cascade decay. 
+B+ --> Dbar_0^*(2420)0 tau+ nu_tau x B(Dbar(0)*0 --> D- pi+) 
+
+Dbar_2^*(2460)0 not in particles. x not in particles. B(Dbar(2)*0 not in particles. pi+) not in particles. Cascade decay. 
+B+ --> Dbar_2^*(2460)0 e+ nu_e x B(Dbar(2)*0 --> D- pi+) 
+
+Dbar_2^*(2460)0 not in particles. x not in particles. B(Dbar(2)*0 not in particles. pi+) not in particles. Cascade decay. 
+B+ --> Dbar_2^*(2460)0 mu+ nu_mu x B(Dbar(2)*0 --> D- pi+) 
+
+Dbar_2^*(2460)0 not in particles. x not in particles. B(Dbar(2)*0 not in particles. pi+) not in particles. Cascade decay. 
+B+ --> Dbar_2^*(2460)0 tau+ nu_tau x B(Dbar(2)*0 --> D- pi+) 
 
 x not in particles. B(f(0) not in particles. pi-) not in particles. Cascade decay. 
 B+ --> K+ f_0(1500) x B(f(0) --> pi+ pi-) 
@@ -2686,9 +2629,6 @@ B+ --> b_1()+ rho(770) x B(b(1)+ --> omega(782) pi+)
 b_1()0 not in particles. rho()+ not in particles. x not in particles. B(b(1)0 not in particles. pi0) not in particles. Cascade decay. 
 B+ --> b_1()0 rho()+ x B(b(1)0 --> omega(782) pi0) 
 
-lepton+ not in particles. nu_lepton not in particles. 
-B+ --> lepton+ nu_lepton gamma 
-
 Lambdabar not in particles. 
 B+ --> p Lambdabar rho(770) 
 
@@ -2743,8 +2683,14 @@ B+ --> Lambdabar0 mu+
 Lambdabar0 not in particles. 
 B+ --> Lambdabar0 e+ 
 
-D_s^*()- not in particles. lepton+ not in particles. nu_lepton not in particles. 
-B+ --> D_s^*()- K+ lepton+ nu_lepton 
+D_s^*()- not in particles. 
+B+ --> D_s^*()- K+ e+ nu_e 
+
+D_s^*()- not in particles. 
+B+ --> D_s^*()- K+ mu+ nu_mu 
+
+D_s^*()- not in particles. 
+B+ --> D_s^*()- K+ tau+ nu_tau 
 
 eta_c not in particles. K+, not in particles. eta(c) not in particles. K(S)0 not in particles. Cascade decay. 
 B+ --> eta_c K+, eta(c) --> K(S)0 K- pi+ 
@@ -2808,9 +2754,6 @@ B0 --> p Lambdabar pi-
 
 Dbar()0 not in particles. 
 B0 --> Dbar()0 rho(770) 
-
-lepton+ not in particles. nu_lepton not in particles. 
-B0 --> D- lepton+ nu_lepton 
 
 K_1(1270)0 not in particles. 
 B0 --> K_1(1270)0 gamma 
@@ -2878,11 +2821,14 @@ B0 --> (D- pi+ pi+ pi-) nonresonant
 a_1(1260)+ not in particles. 
 B0 --> D- a_1(1260)+ 
 
-lepton+ not in particles. nu_lepton not in particles. 
-B0 --> rho- lepton+ nu_lepton 
+D^** not in particles. 
+B0 --> D^** e+ nu_e 
 
-D^** not in particles. lepton+ not in particles. nu_lepton not in particles. 
-B0 --> D^** lepton+ nu_lepton 
+D^** not in particles. 
+B0 --> D^** mu+ nu_mu 
+
+D^** not in particles. 
+B0 --> D^** tau+ nu_tau 
 
 D_s0(2317)+ not in particles. x not in particles. B(D(s0)(2317)+ not in particles. D(s)+ not in particles. pi0) not in particles. Cascade decay. 
 B0 --> D_s0(2317)+ D^*(2010)- x B(D(s0)(2317)+ --> D(s)+ pi0) 
@@ -2947,9 +2893,6 @@ B0 --> Dbar^*(2007)0 eta^'(958)
 Dbar^*(2007)0 not in particles. 
 B0 --> Dbar^*(2007)0 omega(782) 
 
-lepton+ not in particles. nu_lepton not in particles. 
-B0 --> pi- lepton+ nu_lepton 
-
 + not in particles. 
 B0 --> D^*(2010)- D+ + D^*(2010)+ D- 
 
@@ -2967,9 +2910,6 @@ B0 --> Lambdabar_c()- p pi+ pi- pi+ pi-
 
 Lambdabar_c()- not in particles. 
 B0 --> Lambdabar_c()- p pi+ pi- 
-
-lepton+ not in particles. nu_lepton not in particles. 
-B0 --> D^*(2010)- lepton+ nu_lepton 
 
 Dbar^*(2007)0 not in particles. 
 B0 --> D^*(2007)0 Dbar^*(2007)0 
@@ -3097,12 +3037,6 @@ B0 --> D- D_sJ(2573)+ x B(D(sJ)(2573)+ --> D0 K+)
 D_sJ(2573)+ not in particles. x not in particles. B(D(sJ)(2573)+ not in particles. K+) not in particles. Cascade decay. 
 B0 --> D^*(2010)- D_sJ(2573)+ x B(D(sJ)(2573)+ --> D0 K+) 
 
-lepton+ not in particles. lepton- not in particles. 
-B0 --> K0 lepton+ lepton- 
-
-lepton+ not in particles. lepton- not in particles. 
-B0 --> K^*(892) lepton+ lepton- 
-
 K_x^*()0 not in particles. 
 B0 --> K_x^*()0 pi0 
 
@@ -3154,11 +3088,23 @@ B0 --> Theta(1540)+ pbar x B(Theta(1540)+ --> p K(S)0)
 X(3872)- not in particles. x not in particles. B(X(3872)- not in particles. pi0) not in particles. Cascade decay. 
 B0 --> X(3872)- K+ x B(X(3872)- --> J/psi(1S) pi- pi0) 
 
-Dbar0 not in particles. lepton+ not in particles. nu_lepton not in particles. 
-B0 --> Dbar0 pi- lepton+ nu_lepton 
+Dbar0 not in particles. 
+B0 --> Dbar0 pi- e+ nu_e 
 
-Dbar^*()0 not in particles. lepton+ not in particles. nu_lepton not in particles. 
-B0 --> Dbar^*()0 pi- lepton+ nu_lepton 
+Dbar0 not in particles. 
+B0 --> Dbar0 pi- mu+ nu_mu 
+
+Dbar0 not in particles. 
+B0 --> Dbar0 pi- tau+ nu_tau 
+
+Dbar^*()0 not in particles. 
+B0 --> Dbar^*()0 pi- e+ nu_e 
+
+Dbar^*()0 not in particles. 
+B0 --> Dbar^*()0 pi- mu+ nu_mu 
+
+Dbar^*()0 not in particles. 
+B0 --> Dbar^*()0 pi- tau+ nu_tau 
 
 x not in particles. B(X not in particles. pi-) not in particles. Cascade decay. 
 B0 --> X(3872) K0 x B(X --> J/psi pi+ pi-) 
@@ -3319,9 +3265,6 @@ B0 --> a_0(1450)- K+ x B(a(0)(1450)- --> eta pi-)
 x not in particles. B(f(0)(980) not in particles. pi-) not in particles. Cascade decay. 
 B0 --> eta f_0(980) x B(f(0)(980) --> pi+ pi-) 
 
-lepton+ not in particles. lepton- not in particles. 
-B0 --> pi0 lepton+ lepton- 
-
 Dbar_0^*(2400)- not in particles. x not in particles. B(D^*_0(2400)- not in particles. pi-) not in particles. Cascade decay. 
 B0 --> Dbar_0^*(2400)- pi+ x B(D^*_0(2400)- --> D0 pi-) 
 
@@ -3388,20 +3331,50 @@ B0 --> f_J(2220) K_0^*() x B(f(J)(2220) --> p pbar)
 Lambdabar_c()- not in particles. 
 B0 --> Lambdabar_c()- Lambda_c()+ 
 
-D_0^*(2400)- not in particles. lepton+ not in particles. nu_lepton not in particles. x not in particles. B(D(0)*- not in particles. Dbar0 not in particles. pi-) not in particles. Cascade decay. 
-B0 --> D_0^*(2400)- lepton+ nu_lepton x B(D(0)*- --> Dbar0 pi-) 
+D_0^*(2400)- not in particles. x not in particles. B(D(0)*- not in particles. Dbar0 not in particles. pi-) not in particles. Cascade decay. 
+B0 --> D_0^*(2400)- e+ nu_e x B(D(0)*- --> Dbar0 pi-) 
 
-D_2^*(2460)- not in particles. lepton+ not in particles. nu_lepton not in particles. x not in particles. B(D(2)*- not in particles. Dbar0 not in particles. pi-) not in particles. Cascade decay. 
-B0 --> D_2^*(2460)- lepton+ nu_lepton x B(D(2)*- --> Dbar0 pi-) 
+D_0^*(2400)- not in particles. x not in particles. B(D(0)*- not in particles. Dbar0 not in particles. pi-) not in particles. Cascade decay. 
+B0 --> D_0^*(2400)- mu+ nu_mu x B(D(0)*- --> Dbar0 pi-) 
 
-lepton+ not in particles. nu_lepton not in particles. x not in particles. B(D(1)- not in particles. Dbar*0 not in particles. pi-) not in particles. Cascade decay. 
-B0 --> D_1(2420)- lepton+ nu_lepton x B(D(1)- --> Dbar*0 pi-) 
+D_0^*(2400)- not in particles. x not in particles. B(D(0)*- not in particles. Dbar0 not in particles. pi-) not in particles. Cascade decay. 
+B0 --> D_0^*(2400)- tau+ nu_tau x B(D(0)*- --> Dbar0 pi-) 
 
-D_1^'(2430)- not in particles. lepton+ not in particles. nu_lepton not in particles. x not in particles. B(D(1)'- not in particles. Dbar*0 not in particles. pi-) not in particles. Cascade decay. 
-B0 --> D_1^'(2430)- lepton+ nu_lepton x B(D(1)'- --> Dbar*0 pi-) 
+D_2^*(2460)- not in particles. x not in particles. B(D(2)*- not in particles. Dbar0 not in particles. pi-) not in particles. Cascade decay. 
+B0 --> D_2^*(2460)- e+ nu_e x B(D(2)*- --> Dbar0 pi-) 
 
-D_2^*(2460)- not in particles. lepton+ not in particles. nu_lepton not in particles. x not in particles. B(D(2)*- not in particles. Dbar*0 not in particles. pi-) not in particles. Cascade decay. 
-B0 --> D_2^*(2460)- lepton+ nu_lepton x B(D(2)*- --> Dbar*0 pi-) 
+D_2^*(2460)- not in particles. x not in particles. B(D(2)*- not in particles. Dbar0 not in particles. pi-) not in particles. Cascade decay. 
+B0 --> D_2^*(2460)- mu+ nu_mu x B(D(2)*- --> Dbar0 pi-) 
+
+D_2^*(2460)- not in particles. x not in particles. B(D(2)*- not in particles. Dbar0 not in particles. pi-) not in particles. Cascade decay. 
+B0 --> D_2^*(2460)- tau+ nu_tau x B(D(2)*- --> Dbar0 pi-) 
+
+x not in particles. B(D(1)- not in particles. Dbar*0 not in particles. pi-) not in particles. Cascade decay. 
+B0 --> D_1(2420)- e+ nu_e x B(D(1)- --> Dbar*0 pi-) 
+
+x not in particles. B(D(1)- not in particles. Dbar*0 not in particles. pi-) not in particles. Cascade decay. 
+B0 --> D_1(2420)- mu+ nu_mu x B(D(1)- --> Dbar*0 pi-) 
+
+x not in particles. B(D(1)- not in particles. Dbar*0 not in particles. pi-) not in particles. Cascade decay. 
+B0 --> D_1(2420)- tau+ nu_tau x B(D(1)- --> Dbar*0 pi-) 
+
+D_1^'(2430)- not in particles. x not in particles. B(D(1)'- not in particles. Dbar*0 not in particles. pi-) not in particles. Cascade decay. 
+B0 --> D_1^'(2430)- e+ nu_e x B(D(1)'- --> Dbar*0 pi-) 
+
+D_1^'(2430)- not in particles. x not in particles. B(D(1)'- not in particles. Dbar*0 not in particles. pi-) not in particles. Cascade decay. 
+B0 --> D_1^'(2430)- mu+ nu_mu x B(D(1)'- --> Dbar*0 pi-) 
+
+D_1^'(2430)- not in particles. x not in particles. B(D(1)'- not in particles. Dbar*0 not in particles. pi-) not in particles. Cascade decay. 
+B0 --> D_1^'(2430)- tau+ nu_tau x B(D(1)'- --> Dbar*0 pi-) 
+
+D_2^*(2460)- not in particles. x not in particles. B(D(2)*- not in particles. Dbar*0 not in particles. pi-) not in particles. Cascade decay. 
+B0 --> D_2^*(2460)- e+ nu_e x B(D(2)*- --> Dbar*0 pi-) 
+
+D_2^*(2460)- not in particles. x not in particles. B(D(2)*- not in particles. Dbar*0 not in particles. pi-) not in particles. Cascade decay. 
+B0 --> D_2^*(2460)- mu+ nu_mu x B(D(2)*- --> Dbar*0 pi-) 
+
+D_2^*(2460)- not in particles. x not in particles. B(D(2)*- not in particles. Dbar*0 not in particles. pi-) not in particles. Cascade decay. 
+B0 --> D_2^*(2460)- tau+ nu_tau x B(D(2)*- --> Dbar*0 pi-) 
 
 rho(1450)- not in particles. 
 B0 --> K+ rho(1450)- 
@@ -3631,8 +3604,14 @@ B --> D_s^*()+ Dbar**(*)
 D_s^*()- not in particles. Dbar**(*) not in particles. 
 B --> D_s^*()- Dbar**(*) 
 
-s not in particles. lepton+ not in particles. lepton- not in particles. 
-B --> s lepton+ lepton- 
+s not in particles. 
+B --> s e+ e- 
+
+s not in particles. 
+B --> s mu+ mu- 
+
+s not in particles. 
+B --> s tau+ tau- 
 
 D_s not in particles. D, not in particles. D_s^* not in particles. D, not in particles. D_s not in particles. D^*, not in particles. or not in particles. D_s^* not in particles. D^* not in particles. 
 B --> D_s D, D_s^* D, D_s D^*, or D_s^* D^* 
@@ -3643,8 +3622,14 @@ B --> s e+ e-
 s not in particles. 
 B --> s mu+ mu- 
 
-lepton+ not in particles. nu_lepton not in particles. noncharmed not in particles. 
-B --> lepton+ nu_lepton noncharmed 
+noncharmed not in particles. 
+B --> e+ nu_e noncharmed 
+
+noncharmed not in particles. 
+B --> mu+ nu_mu noncharmed 
+
+noncharmed not in particles. 
+B --> tau+ nu_tau noncharmed 
 
 Dbar0 not in particles. pi+, not in particles. pi+, not in particles. Dbar^*(2007)0 not in particles. pi+, not in particles. or not in particles. 
 B --> Dbar0 pi+, D- pi+, Dbar^*(2007)0 pi+, or D^*(2010)- pi+ 
@@ -3742,17 +3727,17 @@ B --> Sigmabar_c()0 N(~3000) (N = p or n)
 D_s+ not in particles. pi-, not in particles. D_s^*+ not in particles. pi-, not in particles. D_s+ not in particles. rho-, not in particles. D_s^*+ not in particles. rho-, not in particles. D_s+ not in particles. pi0, not in particles. D_s^*+ not in particles. pi0, not in particles. D_s+ not in particles. eta, not in particles. D_s^*+ not in particles. eta, not in particles. D_s+ not in particles. rho0, not in particles. D_s^*+ not in particles. rho0, not in particles. D_s+ not in particles. omega, not in particles. D_s^*+ not in particles. 
 B --> D_s+ pi-, D_s^*+ pi-, D_s+ rho-, D_s^*+ rho-, D_s+ pi0, D_s^*+ pi0, D_s+ eta, D_s^*+ eta, D_s+ rho0, D_s^*+ rho0, D_s+ omega, D_s^*+ omega(782) 
 
-Dbar^** not in particles. lepton+ not in particles. nu_lepton not in particles. 
-B --> Dbar^** lepton+ nu_lepton 
+Dbar^** not in particles. 
+B --> Dbar^** e+ nu_e 
+
+Dbar^** not in particles. 
+B --> Dbar^** mu+ nu_mu 
+
+Dbar^** not in particles. 
+B --> Dbar^** tau+ nu_tau 
 
 sbar not in particles. Cascade decay. 
 B --> bbar --> sbar gamma 
-
-lepton+ not in particles. lepton- not in particles. 
-B --> K lepton+ lepton- 
-
-lepton+ not in particles. lepton- not in particles. 
-B --> K^*(892) lepton+ lepton- 
 
 Dbar not in particles. D_s0(2317) not in particles. 
 B --> Dbar D_s0(2317) 
@@ -3760,11 +3745,23 @@ B --> Dbar D_s0(2317)
 Dbar not in particles. D_sJ(2457) not in particles. 
 B --> Dbar D_sJ(2457) 
 
-X_u not in particles. lepton+ not in particles. nu_lepton not in particles. 
-B --> X_u lepton+ nu_lepton 
+X_u not in particles. 
+B --> X_u e+ nu_e 
 
-lepton+ not in particles. nu_lepton not in particles. charm not in particles. 
-B --> lepton+ nu_lepton charm 
+X_u not in particles. 
+B --> X_u mu+ nu_mu 
+
+X_u not in particles. 
+B --> X_u tau+ nu_tau 
+
+charm not in particles. 
+B --> e+ nu_e charm 
+
+charm not in particles. 
+B --> mu+ nu_mu charm 
+
+charm not in particles. 
+B --> tau+ nu_tau charm 
 
 rho/omega not in particles. 
 B --> rho/omega gamma 
@@ -3775,11 +3772,14 @@ B --> K X(3915) x B(X --> omega(782) J/psi)
 x not in particles. B(X not in particles. Dbar0 not in particles. pi0) not in particles. Cascade decay. 
 B --> K X(3872) x B(X --> D0 Dbar0 pi0) 
 
-lepton not in particles. nu_lepton not in particles. 
-B --> pi lepton nu_lepton 
+e not in particles. 
+B --> pi e nu_e 
 
-lepton+ not in particles. lepton- not in particles. 
-B --> pi lepton+ lepton- 
+mu not in particles. 
+B --> pi mu nu_mu 
+
+tau not in particles. 
+B --> pi tau nu_tau 
 
 D not in particles. 
 B --> D tau+ nu_tau 
@@ -3793,8 +3793,14 @@ B --> K^*() nu nubar
 dbar not in particles. Cascade decay. 
 B --> bbar --> dbar gamma 
 
-Dbar0 not in particles. lepton+ not in particles. nu_lepton not in particles. 
-B --> Dbar0 lepton+ nu_lepton 
+Dbar0 not in particles. 
+B --> Dbar0 e+ nu_e 
+
+Dbar0 not in particles. 
+B --> Dbar0 mu+ nu_mu 
+
+Dbar0 not in particles. 
+B --> Dbar0 tau+ nu_tau 
 
 x not in particles. B(X not in particles. D*0 not in particles. D0) not in particles. Cascade decay. 
 B --> K X(3872) x B(X --> D*0 D0) 
@@ -3802,8 +3808,14 @@ B --> K X(3872) x B(X --> D*0 D0)
 x not in particles. B(X not in particles. D*0 not in particles. D0) not in particles. Cascade decay. 
 B --> K X(3940) x B(X --> D*0 D0) 
 
-Dbar not in particles. lepton not in particles. nu_lepton not in particles. 
-B --> Dbar lepton nu_lepton 
+Dbar not in particles. e not in particles. 
+B --> Dbar e nu_e 
+
+Dbar not in particles. mu not in particles. 
+B --> Dbar mu nu_mu 
+
+Dbar not in particles. tau not in particles. 
+B --> Dbar tau nu_tau 
 
 gluon not in particles. (charmless) not in particles. 
 B --> K+ gluon (charmless) 
@@ -3826,8 +3838,14 @@ bbar --> hadron+ hadron-
 B_c not in particles. 
 bbar --> B_c 
 
-charmless not in particles. lepton not in particles. nubar_lepton not in particles. 
-bbar --> charmless lepton nubar_lepton 
+charmless not in particles. e not in particles. 
+bbar --> charmless e nubar_e 
+
+charmless not in particles. mu not in particles. 
+bbar --> charmless mu nubar_mu 
+
+charmless not in particles. tau not in particles. 
+bbar --> charmless tau nubar_tau 
 
 sbar not in particles. 
 bbar --> sbar nubar nu 
@@ -4852,14 +4870,14 @@ psi(4160) --> D^* Dbar^*
 Dbar^*(2007)0 not in particles. 
 psi(4160) --> D^*(2007)0 Dbar^*(2007)0 
 
-+c.c. not in particles. (excl. not in particles. D*(2007)0 not in particles. Dbar0 not in particles. +c.c., not in particles. D*(2010)+ not in particles. +c.c.) not in particles. 
-psi(4160) --> D0 D- pi+ +c.c. (excl. D*(2007)0 Dbar0 +c.c., D*(2010)+ D- +c.c.) 
++c.c. not in particles. excl.0 not in particles. Dbar0 not in particles. +c.c., not in particles. D*(2010)+ not in particles. +c.c.) not in particles. 
+psi(4160) --> D0 D- pi+ +c.c. excl.0 Dbar0 +c.c., D*(2010)+ D- +c.c.) 
 
 D not in particles. Dbar^* not in particles. +c.c. not in particles. (excl. not in particles. D* not in particles. Dbar*) not in particles. 
 psi(4160) --> D Dbar^* pi +c.c. (excl. D* Dbar*) 
 
-D^*()- not in particles. +c.c. not in particles. (excl. not in particles. D*(2010)+ not in particles. D*(2010)-) not in particles. 
-psi(4160) --> D0 D^*()- pi+ +c.c. (excl. D*(2010)+ D*(2010)-) 
+D^*()- not in particles. +c.c. not in particles. excl.+ not in particles. D*(2010)-) not in particles. 
+psi(4160) --> D0 D^*()- pi+ +c.c. excl.+ D*(2010)-) 
 
 +c.c. not in particles. 
 psi(4160) --> D_s^*()+ D_s()- +c.c. 
@@ -4930,11 +4948,11 @@ X(4260) --> D^*(2007)0 Dbar^*(2007)0
 D not in particles. Dbar not in particles. +c.c. not in particles. 
 X(4260) --> D Dbar pi +c.c. 
 
-+c.c. not in particles. (excl. not in particles. D*(2007)0 not in particles. Dbar*0 not in particles. +c.c., not in particles. D*(2010)+ not in particles. +c.c.) not in particles. 
-X(4260) --> D0 D- pi+ +c.c. (excl. D*(2007)0 Dbar*0 +c.c., D*(2010)+ D- +c.c.) 
++c.c. not in particles. excl.0 not in particles. Dbar*0 not in particles. +c.c., not in particles. D*(2010)+ not in particles. +c.c.) not in particles. 
+X(4260) --> D0 D- pi+ +c.c. excl.0 Dbar*0 +c.c., D*(2010)+ D- +c.c.) 
 
-D^*()- not in particles. +c.c. not in particles. (excl. not in particles. D*(2010)+ not in particles. D*(2010)-) not in particles. 
-X(4260) --> D0 D^*()- pi+ +c.c. (excl. D*(2010)+ D*(2010)-) 
+D^*()- not in particles. +c.c. not in particles. excl.+ not in particles. D*(2010)-) not in particles. 
+X(4260) --> D0 D^*()- pi+ +c.c. excl.+ D*(2010)-) 
 
 D^*()- not in particles. 
 X(4360) --> D0 D^*()- pi+ 
@@ -5899,12 +5917,6 @@ Lambda(2100) --> Sigma pi
 Xi not in particles. 
 Lambda(2100) --> Xi K 
 
-lepton+ not in particles. 
-Sigma+ --> n lepton+ nu 
-
-lepton- not in particles. 
-Sigma- --> n lepton- nubar 
-
 Sigma not in particles. 
 Sigma(1385) --> Sigma pi 
 
@@ -6046,9 +6058,6 @@ Lambda_c()+ --> p (K- pi+)(nonresonant) pi0
 Xi(1530)0 not in particles. 
 Lambda_c()+ --> Xi(1530)0 K+ 
 
-lepton+ not in particles. nu_lepton not in particles. 
-Lambda_c()+ --> Lambda lepton+ nu_lepton 
-
 Sigma(1385)+ not in particles. 
 Lambda_c()+ --> Sigma(1385)+ eta 
 
@@ -6124,23 +6133,23 @@ Xi_c()+ --> Xi(1690)0 K+, Xi(1690)0 --> Sigma+ K-
 x not in particles. B(b not in particles. Lambda(b)0) not in particles. Cascade decay. 
 Lambda_b()0 --> J/psi(1S) Lambda x B(b --> Lambda(b)0) 
 
-lepton- not in particles. nubar_lepton not in particles. 
-Lambda_b()0 --> Lambda_c()+ lepton- nubar_lepton 
+Sigma_c(2455)0 not in particles. 
+Lambda_b()0 --> Sigma_c(2455)0 pi+ e- nubar_e 
 
-lepton- not in particles. nubar_lepton not in particles. 
-Lambda_b()0 --> Lambda_c()+ pi+ pi- lepton- nubar_lepton 
+Sigma_c(2455)0 not in particles. 
+Lambda_b()0 --> Sigma_c(2455)0 pi+ mu- nubar_mu 
 
-lepton- not in particles. nubar_lepton not in particles. 
-Lambda_b()0 --> Lambda_c(2595)+ lepton- nubar_lepton 
+Sigma_c(2455)0 not in particles. 
+Lambda_b()0 --> Sigma_c(2455)0 pi+ tau- nubar_tau 
 
-lepton- not in particles. nubar_lepton not in particles. 
-Lambda_b()0 --> Lambda_c(2625)+ lepton- nubar_lepton 
+Sigma_c(2455)++ not in particles. 
+Lambda_b()0 --> Sigma_c(2455)++ pi- e- nubar_e 
 
-Sigma_c(2455)0 not in particles. lepton- not in particles. nubar_lepton not in particles. 
-Lambda_b()0 --> Sigma_c(2455)0 pi+ lepton- nubar_lepton 
+Sigma_c(2455)++ not in particles. 
+Lambda_b()0 --> Sigma_c(2455)++ pi- mu- nubar_mu 
 
-Sigma_c(2455)++ not in particles. lepton- not in particles. nubar_lepton not in particles. 
-Lambda_b()0 --> Sigma_c(2455)++ pi- lepton- nubar_lepton 
+Sigma_c(2455)++ not in particles. 
+Lambda_b()0 --> Sigma_c(2455)++ pi- tau- nubar_tau 
 
 pi-, not in particles. Lambda(c)(2595)+ not in particles. Lambda(c)+ not in particles. Cascade decay. 
 Lambda_b()0 --> Lambda_c(2595)+ pi-, Lambda(c)(2595)+ --> Lambda(c)+ pi+ pi- 
