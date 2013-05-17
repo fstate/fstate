@@ -1,6 +1,8 @@
 def N(decay_str):
     if (' N ' in decay_str):
         return [
+                decay_str.replace(" N ", " p "),
+                decay_str.replace(" N ", " n "),
                 decay_str.replace(" N ", " N(1440) "),
                 decay_str.replace(" N ", " N(1520) "),
                 decay_str.replace(" N ", " N(1535) "),
@@ -31,3 +33,12 @@ def N(decay_str):
                ]
     else:
         return decay_str
+
+
+
+def pipii(decay_str):
+    return decay_str.replace("(pipi)**I = 0(S-wave)", "pi pi")
+
+def nporn(decay_str):
+    return decay_str.replace("(N = p or n)", "")
+    

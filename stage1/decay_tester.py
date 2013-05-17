@@ -10,7 +10,7 @@ pattern = r'\((.*),(.*)\)(.*)-->'
 particles = set([re.match(r'\((.*),(.*)\)(.*)', x).group(2).strip() for x in open('../data/masses-fin.txt').readlines()])
 particles.add('-->')
 particles.add('gamma')
-for k in ['a_1(1260)-','K^*(892)-','K_2^*(1430)-']:
+for k in ['a_1(1260)-','K^*(892)-','Kbar^*(892)-','K_2^*(1430)-','K_1(1270)-','K_1(1400)-','K_0^*(1430)-','K_0^*(1430)+','pi(1300)-','K^*(1410)-','Lambdabar','a_1(1260)+','a_2(1320)+','Nbar','rho(1450)0','K^*(892)+']:
     particles.add(k)
 particles.add('pi')
 
@@ -58,8 +58,12 @@ def process(decay, lineno):
     if decay.count('-->') != 1:
         BAD += "Cascade decay. " 
 
+    """
+    Pay attention!!! In next line can be exclusion of c.c.!!! You shouldn't use it in final version!!
+    """
+
     for particle in parts:
-        if particle in ["anything","h+","h-","particles","boson"]:
+        if particle in ["u","d","c","s","b","g","q","anything","h+","h-","particles","boson","dummy","other","modes","X-","invisible","neutrals","tracks","c.c."]:
             BAD = ""
         if particle.find(">=")>-1:
             BAD = ""

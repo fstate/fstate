@@ -16,3 +16,12 @@ def lepton(decay_str):
                     ]
     else:
         return decay_str
+
+def gamma(decay_str):
+    if '(gamma)' in decay_str:    
+             return [
+                    decay_str.replace('(gamma)', ''),
+                    decay_str.replace('(gamma)', 'gamma')                    
+                    ]
+    else:
+        return decay_str
