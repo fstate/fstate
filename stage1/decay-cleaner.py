@@ -7,15 +7,17 @@
 import re
 
 pattern = r'\((.*),(.*)\)(.*)-->'
-particles = set([re.match(r'\((.*),(.*)\)(.*)', x).group(2).strip() for x in open('../data/masses-fin.txt').readlines()])
+particles = set([re.match(r'\((.*),(.*)\)(.*)', x).group(
+    2).strip() for x in open('../data/masses-fin.txt').readlines()])
 particles.add('-->')
 particles.add('gamma')
 particles.add('pi')
-for k in ['a_1(1260)-','K^*(892)-','K_2^*(1430)-']:
+for k in ['a_1(1260)-', 'K^*(892)-', 'K_2^*(1430)-']:
     particles.add(k)
 
 for x in open('../data/decays.txt').readlines():
-    particles.add(re.match(r'\([0-9.e-]*, [0-9.e-]*\)(.*)-->', x).group(1).split('-->')[0].strip())
+    particles.add(re.match(r'\([0-9.e-]*, [0-9.e-]*\)(.*)-->', x)
+                  .group(1).split('-->')[0].strip())
 
 # Now let's print BAD decays.
 # Conditions when decay is BAD:
@@ -24,75 +26,36 @@ for x in open('../data/decays.txt').readlines():
 from fixes import fixlist, multiplexers
 
 
-
-decays = [re.sub(r'(\([0-9.e-]*, [0-9.e-]*\))', r'\1|', x).rstrip() 
-    for x in open('../data/decays.txt').readlines() 
-    if float(x[1:].split(',')[0]) > 1E-9] # branching check
+decays = [re.sub(r'(\([0-9.e-]*, [0-9.e-]*\))', r'\1|', x).rstrip()
+          for x in open('../data/decays.txt').readlines()
+          if float(x[1:].split(',')[0]) > 1E-9]  # branching check
 
 
 GOOD, BADN, TOTAL = 0, 0, 0
+
 
 def mass(part):
     for x in open('../data/masses-fin.txt').readlines():
         if part == re.match(r'\((.*),(.*)\)(.*)', x).group(2).strip():
             return float(re.match(r'\((.*),(.*)\)(.*)', x).group(1).strip().split(', ')[0])
-    return 0 
+    return 0
+
 
 def process(decay, lineno):
     global BADN, GOOD, TOTAL, particles
 
     TOTAL += 1
-    
+
     parts = decay.split(' ')
-    
+
     BAD = False
     BAD_PARTICLES = []
 
-    if parts[0] == 'pi':
-        BAD = True        
+    bads = set(['pi', 'pi+', 'pi-', 'pi0', 'mu', 'mu+', 'mu-', 'K',
+               'K+', 'K-', 'K0', 'W', 'W+', 'W-', 'Z'])
 
-    if parts[0] == 'pi+':
-        BAD = True        
-
-    if parts[0] == 'pi-':
-        BAD = True        
-
-    if parts[0] == 'pi0':
-        BAD = True   
-
-    if parts[0] == 'mu':
-        BAD = True        
-
-    if parts[0] == 'mu+':
-        BAD = True        
-
-    if parts[0] == 'mu-':
-        BAD = True          
-
-    if parts[0] == 'K':
-        BAD = True        
-
-    if parts[0] == 'K+':
-        BAD = True        
-
-    if parts[0] == 'K-':
-        BAD = True        
-
-    if parts[0] == 'K0':
-        BAD = True        
-
-    if parts[0] == 'W':
-        BAD = True        
-
-    if parts[0] == 'W+':
-        BAD = True        
-
-    if parts[0] == 'W-':
-        BAD = True        
-
-    if parts[0] == 'Z':
-        BAD = True        
-
+    if parts[0] in bads:
+        BAD = True
 
     for particle in parts:
         if (not particle in particles) and (particle != ''):
@@ -106,7 +69,6 @@ def process(decay, lineno):
     for particle in parts:
         if particle == "X":
             BAD = True
-
 
     if BAD or decay.count('-->') != 1:
         #print "BAD:\t", decay , "\t", str(BAD_PARTICLES)
@@ -122,7 +84,7 @@ for line, decay in enumerate(decays):
     #decay = re.sub(r'\([0-9.e-]*, [0-9.e-]*\)', '', decay).rstrip()
     decay += " "
     branching, decay = decay.split('|')
-    
+
     # Apply fixes:
     for fix in fixlist:
         decay = fix(decay)
@@ -141,17 +103,16 @@ for line, decay in enumerate(decays):
 
         to_process = step
 
-
     for dec in to_process:
-        if process(dec, line+1):
+        if process(dec, line + 1):
             parts = dec.split(" ")
-            if mass(parts[0])>0:                
+            if mass(parts[0]) > 0:
                 m = 0
                 for p in parts[1:]:
                     m += mass(p)
                 if m >= mass(parts[0]):
                     continue
-            print branching + "|" + dec 
+            print branching + "|" + dec
             continue
 
 

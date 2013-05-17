@@ -1,4 +1,4 @@
-from multiparticles import multiparticle_fix # should be automatic
+from multiparticles import multiparticle_fix
 from wave import wave
 from wave import wave2
 from nbaryon import N
