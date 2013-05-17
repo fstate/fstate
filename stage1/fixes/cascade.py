@@ -6,7 +6,7 @@ def cascade1(decay_str):
         Fixes cascades like A --> B C, C --> E
     """
 
-    return re.sub(r',\s.*?\-\->.*', "", decay_str)
+    return re.sub(r',\s.*?\-\->.*', " ", decay_str)
 
 def cascade2(decay_str):
     """

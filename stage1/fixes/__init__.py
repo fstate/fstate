@@ -22,9 +22,11 @@ from pipi import pipi
 from threebody import tbody
 from space import space
 from sigma import sigma
+from sigma import sigmahimass
 from nbaryon import pipii
 from nbaryon import nporn
+from nbaryon import Delta
 
-fixlist = [pipii, nporn, pipi, space, sigma, multiparticle_fix, brakets, kbar, phi, rho, omega, kst, cascade1, cascade2, cascade3, cascade4, including, wave, wave2, tbody] 
-multiplexers = [lepton, pm, N, pipi, gamma]
+fixlist = [pipii, nporn, pipi, space, sigma, multiparticle_fix, brakets, kbar, phi, omega, kst, cascade1, cascade2, cascade3, cascade4, rho, including, wave, wave2, tbody] 
+multiplexers = [sigmahimass, lepton, pm, N, pipi, gamma, Delta]
 

@@ -34,6 +34,37 @@ def N(decay_str):
     else:
         return decay_str
 
+def Delta(decay_str):
+    if (' Delta ' in decay_str):
+        return [
+                decay_str.replace(" Delta ", " Delta(1232) "),
+                decay_str.replace(" Delta ", " Delta(1600) "),
+                decay_str.replace(" Delta ", " Delta(1620) "),
+                decay_str.replace(" Delta ", " Delta(1700) "),
+                decay_str.replace(" Delta ", " Delta(1750) "),
+                decay_str.replace(" Delta ", " Delta(1900) "),
+                decay_str.replace(" Delta ", " Delta(1905) "),
+                decay_str.replace(" Delta ", " Delta(1910) "),
+                decay_str.replace(" Delta ", " Delta(1920) "),
+                decay_str.replace(" Delta ", " Delta(1930) "),
+                decay_str.replace(" Delta ", " Delta(1940) "),
+                decay_str.replace(" Delta ", " Delta(1950) "),
+                decay_str.replace(" Delta ", " Delta(2000) "),
+                decay_str.replace(" Delta ", " Delta(2150) "),
+                decay_str.replace(" Delta ", " Delta(2200) "),
+                decay_str.replace(" Delta ", " Delta(2300) "),
+                decay_str.replace(" Delta ", " Delta(2350) "),
+                decay_str.replace(" Delta ", " Delta(2390) "),
+                decay_str.replace(" Delta ", " Delta(2400) "),
+                decay_str.replace(" Delta ", " Delta(2420) "),
+                decay_str.replace(" Delta ", " Delta(2750) "),
+                decay_str.replace(" Delta ", " Delta(2950) "),
+                decay_str.replace(" Delta ", " Delta(~3000) "),                
+               ]
+    else:
+        return decay_str
+
+Delta
 
 
 def pipii(decay_str):

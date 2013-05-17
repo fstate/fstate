@@ -10,7 +10,9 @@ pattern = r'\((.*),(.*)\)(.*)-->'
 particles = set([re.match(r'\((.*),(.*)\)(.*)', x).group(2).strip() for x in open('../data/masses-fin.txt').readlines()])
 particles.add('-->')
 particles.add('gamma')
-for k in ['a_1(1260)-','K^*(892)-','Kbar^*(892)-','K_2^*(1430)-','K_1(1270)-','K_1(1400)-','K_0^*(1430)-','K_0^*(1430)+','pi(1300)-','K^*(1410)-','Lambdabar','a_1(1260)+','a_2(1320)+','Nbar','rho(1450)0','K^*(892)+']:
+for k in ['a_1(1260)-','K^*(892)-','Kbar^*(892)-','K_2^*(1430)-','K_1(1270)-','K_1(1400)-','K_0^*(1430)-','K_0^*(1430)+','pi(1300)-',
+'K^*(1410)-','Lambdabar','a_1(1260)+','a_2(1320)+','Nbar','rho(1450)0','K^*(892)+','Sigma_c(2455)++','Sigma_c(2455)0','Xi(1690)0','Sigma(1385)+','Sigma_c(2455)0**','Sigma_c(2455)++',
+'Sigma_c(2520)0**','Sigma_c(2520)++','Sigma(1385)-','Delta(1232)++','Xi(1530)0']:
     particles.add(k)
 particles.add('pi')
 
@@ -63,7 +65,7 @@ def process(decay, lineno):
     """
 
     for particle in parts:
-        if particle in ["u","d","c","s","b","g","q","anything","h+","h-","particles","boson","dummy","other","modes","X-","invisible","neutrals","tracks","c.c."]:
+        if particle in ["u","d","c","s","b","g","q","anything","h+","h-","particles","boson","dummy","other","modes","X-","invisible","neutrals","tracks","c.c.","fit","except","prongs","total"]:
             BAD = ""
         if particle.find(">=")>-1:
             BAD = ""
