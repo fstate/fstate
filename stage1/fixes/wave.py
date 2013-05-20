@@ -3,7 +3,7 @@ import re
 
 def wave(decay_str):
     """
-        Fixes cascades like ( A --> B C)(S wave)
+        Fixes decays like ( A --> B C)(S wave)
     """
 
     def repl(m):
@@ -25,7 +25,7 @@ def wave(decay_str):
 
 def wave2(decay_str):
     """
-        Fixes cascades like ( A --> B C)(S wave)
+        Fixes decays like ( A --> B C)(S wave)
     """
 
     def repl(m):
@@ -33,3 +33,26 @@ def wave2(decay_str):
         return text + " "
 
     return re.sub(r'(.*?)(\([A-Z]\-wave\)\s)', repl, decay_str)
+
+def wave3(decay_str):
+    """
+        Fixes decays like  A --> B C S-wave
+    """
+
+    def repl(m):
+        text = m.group(1)
+        return text + " "
+
+    return re.sub(r'(.*?)(\s[A-Z]\-wave.*?)', repl, decay_str)
+
+
+def wavel(decay_str):
+    """
+        Fixes decays like  A --> B C longitudinal
+    """
+
+    def repl(m):
+        text = m.group(1)
+        return text + " "
+
+    return re.sub(r'(.*?)(\slongitudinal.*?|\slong\..*?|\stransverse.*?|\svia\sDbar0.*?)', repl, decay_str)
