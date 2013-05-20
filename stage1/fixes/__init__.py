@@ -26,7 +26,10 @@ from sigma import sigmahimass
 from nbaryon import pipii
 from nbaryon import nporn
 from nbaryon import Delta
+from gammast import gammast
+from plus import plus1
+from plus import plus2
 
-fixlist = [pipii, nporn, pipi, space, sigma, multiparticle_fix, brakets, kbar, phi, omega, kst, cascade1, cascade2, cascade3, cascade4, rho, including, wave, wave2, tbody] 
-multiplexers = [sigmahimass, lepton, pm, N, pipi, gamma, Delta]
+fixlist = [pipii, nporn, pipi, space, sigma, multiparticle_fix, brakets, kbar, phi, omega, kst, cascade1, cascade2, cascade3, cascade4, rho, including, wave, wave2, tbody, gammast] 
+multiplexers = [sigmahimass, lepton, pm, N, pipi, gamma, Delta, plus1, plus2]
 
