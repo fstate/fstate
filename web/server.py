@@ -8,7 +8,8 @@ app = Flask(__name__)
 
 
 def do_search(query):
-    query_permutations = list(permutations(query, len(query)))
+    # convertion to set is done for removing duplicates.
+    query_permutations = list(set(permutations(query, len(query))))
 
     return sorted(list(fstates.find(
         {"fstate": {"$in": query_permutations}}, 
