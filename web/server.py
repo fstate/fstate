@@ -8,10 +8,12 @@ app = Flask(__name__)
 
 
 def do_search(query):
-    return list(fstates.find(
-        {"fstate": {"$all": query, "$size": len(query)}}, 
+    query_permutations = list(permutations(query, len(query)))
+
+    return sorted(list(fstates.find(
+        {"fstate": {"$in": query_permutations}}, 
         {'_id': False})
-    )
+    ), key=lambda x: -x['branching'][0])
 
 
 @app.route("/")
@@ -25,7 +27,7 @@ def index():
 
     start = datetime.now()
 
-    results = sorted(do_search(query), key=lambda x: -x['branching'][0])
+    results = do_search(query)
 
     end = datetime.now()
     
@@ -43,7 +45,7 @@ def json(query):
     query = [x for x in query.split(' ') if x != '']
 
     start = datetime.now()
-    result = sorted(do_search(query), key=lambda x: -x['branching'][0])
+    result = do_search(query)
     end = datetime.now()
 
     
@@ -64,7 +66,7 @@ def txt(query):
 
     start = datetime.now()
 
-    result = sorted(do_search(query), key=lambda x: -x['branching'][0])
+    result = do_search(query)
 
     end = datetime.now()
 
