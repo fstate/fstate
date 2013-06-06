@@ -4,15 +4,13 @@
 <h3>Results for <i>{{ query }}</i></h3>
 <table class="table-striped" style="width: 100%">
   <tr>
-      <td><strong>Branching &darr;</strong></td>
-      <td><strong>Mode</strong></td>
-      <td><strong>fstate</strong></td>
+      <td style="width: 20%"><strong>Approximate branching fraction &darr;</strong></td>
+      <td style="width: 80%"><strong>Mode</strong></td>
   </tr>
   {% for r in results %}
   <tr>
-      <td>{{ r.branching }}</td>
-      <td>{{ r.scheme }}</td>
-      <td>{{ r.fstate }}</td>
+      <td style="width: 20%">{{ r.branching[0] }}</td>
+      <td style="width: 80%">{{ r.scheme }}</td>
   </tr>
   {% endfor %}
 </table>

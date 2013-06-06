@@ -13,6 +13,13 @@ def do_search(query):
         {'_id': False})
     )
 
+@app.route("/about")
+def about():
+    return render_template('about.html')
+
+@app.route("/HowToSearch")
+def howtosearch():
+    return render_template('HowToSearch.html')
 
 @app.route("/")
 def index():

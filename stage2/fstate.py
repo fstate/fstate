@@ -5,7 +5,7 @@ from make_fstates import db
 
 
 def get_fstates(decay):
-    if decay['branching'][0] < 1E-10:
+    if decay['branching'][0] < 1E-30:
         return
 
     #print decay['history'], decay['products']
@@ -20,7 +20,7 @@ def get_fstates(decay):
     except pymongo.errors.DuplicateKeyError:
         return
 
-    if not 1 < len(decay['products']) < 5: # Not full db build
+    if not 1 < len(decay['products']) < 6: # Not full db build
     #if len(decay['products']) == 1: # Full DB build
         return
 

@@ -13,7 +13,7 @@ for x in open("../stage1/valid.txt").readlines():
     branching, decay = x.split("|")
     branching = tuple([float(x.strip()) for x in branching[1:-1].split(',')])
 
-    if branching[0] < 1E-10:
+    if branching[0] < 1E-30:
         continue
 
     father, products = [t.strip() for t in decay.split("-->")]
