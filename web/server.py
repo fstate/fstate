@@ -18,13 +18,13 @@ def do_search(query):
                         "$size": len(query)}}, 
             {'_id': False}))
     else:
-         # convertion to set is done for removing duplicates.
+        # convertion to set is done for removing duplicates.
         query_permutations = list(set(permutations(query, len(query))))
  
         return sorted(list(
         fstates.find(
-         {"fstate": {"$in": query_permutations}}, 
-         {'_id': False})
+             {"fstate": {"$in": query_permutations}}, 
+             {'_id': False})
         ), key=lambda x: -x['branching'][0])
     
 

@@ -2,18 +2,80 @@
 
 {% block content %}
 
-<div class="row">
-  <div class="span6 offset3" style="margin-top: 30%">
-    <form class="form-search" method="get">
-      final state: <input name="query" type="text" class="input-large search-query">
-      <button type="submit" class="btn">Search</button>
-      <hr/>
-      <p>Dear colleagues, we are happy to greet you at the closed &beta;-test of  <strong>fstate</strong> project, which allow to find decays by the final state.</p>
-      <p>At this moment you can try to search decays with up to 5 particles in the final state (try pi+ pi- mu+ mu-, for example). More powerfull search is expected soon.</p>
-      <p>If you have some comments or see a bug, we would appreciate if you could <a href="mailto:ilya.komarov@epfl.ch,a.baranov@cern.ch?Subject=fstate%20feedback">
-        write</a> us about it.
-    </form>
+<script src="/static/js/jquery.js"></script>
+<script src="/static/js/bootstrap.min.js"></script>
+<script src="/static/js/spin.min.js"></script>
 
+<script type="text/javascript">
+var opts = {
+  lines: 13, // The number of lines to draw
+  length: 20, // The length of each line
+  width: 10, // The line thickness
+  radius: 30, // The radius of the inner circle
+  corners: 1, // Corner roundness (0..1)
+  rotate: 0, // The rotation offset
+  direction: 1, // 1: clockwise, -1: counterclockwise
+  color: '#000', // #rgb or #rrggbb
+  speed: 1, // Rounds per second
+  trail: 46, // Afterglow percentage
+  shadow: true, // Whether to render a shadow
+  hwaccel: false, // Whether to use hardware acceleration
+  className: 'spinner', // The CSS class to assign to the spinner
+  zIndex: 2e9, // The z-index (defaults to 2000000000)
+  top: 'auto', // Top position relative to parent in px
+  left: 'auto' // Left position relative to parent in px
+};
+
+
+function do_search()
+{
+  var query = $("#query").val();
+  if (query == "") return;
+  $("#search_input").hide();
+  $("#search_results").show();
+
+  var target = document.getElementById('loading');
+  var spinner = new Spinner(opts).spin(target);
+
+  $.getJSON('/' + query + '.json', function(data) {
+    $("#search_results").html('<table id="results" class="table-striped">\
+      <tr>\
+          <td><strong>Approximate branching fraction &darr;</strong></td>\
+          <td><strong>Mode</strong></td>\
+      </tr></table>');
+
+    
+    for ( var i in data['result']) {
+      var result = data['result'][i];
+
+
+      $('#results tr:last').after("<tr>\
+      <td>"+ result['branching'][0] +"</td>\
+      <td>"+ result['scheme'] +"</td>\
+      </tr>");
+    }
+
+    $("#search_results").append("<p>Generated in "+ data['time'] +"</p>");
+  });
+}
+</script>
+
+
+<div class="row">
+  <div class="span12">
+
+      <div id="search_input" class="span6 offset3">
+        final state: <input name="query" type="text" class="input-large search-query" id="query" value="pi+ pi- K+ K-">
+        <button class="btn" onclick="do_search()">Search</button>
+        <hr/>
+        <p>Dear colleagues, we are happy to greet you at the closed &beta;-test of  <strong>fstate</strong> project, which allow to find decays by the final state.</p>
+        <p>At this moment you can try to search decays with up to 5 particles in the final state (try pi+ pi- mu+ mu-, for example). More powerfull search is expected soon.</p>
+        <p>If you have some comments or see a bug, we would appreciate if you could <a href="mailto:ilya.komarov@epfl.ch,a.baranov@cern.ch?Subject=fstate%20feedback">
+          write</a> us about it.</p>
+      </div>
+      <div id="search_results" display="none">
+        <div id="loading"></div>
+      </div>
   </div>
 </div>
 
