@@ -41,7 +41,6 @@ def do_search(query):
         ), key=lambda x: -x['branching'][0])
 
     mc[cache_key(query)] = result
-    print "Memcached key {} value: \n\n{}\n\n{}".format(str(query), result, mc[cache_key(query)])
     return result
     
 
@@ -66,13 +65,8 @@ def index():
     query = [x for x in query.split(' ') if x != '']
 
     start = datetime.now()
-
-    results = sorted(do_search(query), key=lambda x: -x['branching'][0])
-
+    results = do_search(query)
     end = datetime.now()
-    
-
-    print 'Time for query "{}" - {}'.format(request.args.get('query'), end - start)
     
     return render_template('results.html', query=request.args.get('query'), results=results, timing=(end - start))
 
@@ -106,9 +100,7 @@ def txt(query):
     query = [x for x in query.split(' ') if x != '']
 
     start = datetime.now()
-
-    result = sorted(do_search(query), key=lambda x: -x['branching'][0])
-
+    result = do_search(query)
     end = datetime.now()
 
     for r in result:
