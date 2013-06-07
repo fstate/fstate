@@ -4,39 +4,40 @@ from itertools import permutations
 from datetime import datetime
 from copy import deepcopy
 from printer import TablePrinter
+from json import dumps as json_dump
 
 app = Flask(__name__)
 
 
 def do_search(query):
-    workq = []
-    for i in query:
-        if i not in workq:
-            workq.append(i)
-    if len(query)==len(workq):
+    if len(query) == len(set(query)):
+        # Search without duplicates
         return list(fstates.find(
             {"fstate": {
                         "$all": query, 
                         "$size": len(query)}}, 
             {'_id': False}))
-    done = []
-    lst = []
-    a = []
-    for k in permutations(query):
-        if k not in done:
-            a = list(fstates.find( {"fstate": k }, {'_id': False}))
-            lst += a
-            done.append(k)
-    return lst
+    else:
+         # convertion to set is done for removing duplicates.
+        query_permutations = list(set(permutations(query, len(query))))
+ 
+        return sorted(list(
+        fstates.find(
+         {"fstate": {"$in": query_permutations}}, 
+         {'_id': False})
+        ), key=lambda x: -x['branching'][0])
     
+
 
 @app.route("/about")
 def about():
     return render_template('about.html')
 
-@app.route("/HowToSearch")
+
+@app.route("/howto-search")
 def howtosearch():
     return render_template('HowToSearch.html')
+
 
 @app.route("/")
 def index():
@@ -56,7 +57,7 @@ def index():
 
     print 'Time for query "{}" - {}'.format(request.args.get('query'), end - start)
     
-    return render_template('results.html', query=" ".join(query), results=results, timing=(end - start))
+    return render_template('results.html', query=request.args.get('query'), results=results, timing=(end - start))
 
 
 @app.route('/<query>.json')
@@ -71,13 +72,14 @@ def json(query):
     end = datetime.now()
 
     
-    return Response(result, mimetype='application/json')
+    return Response(json_dump({'result' : result, 'time': str(end-start)}), mimetype='application/json')
 
 
 format = [
     ('Branching',       'branching',   15),
     ('Scheme',          'scheme',       120),
 ]
+
 
 @app.route('/<query>.txt')
 def txt(query):
