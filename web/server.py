@@ -1,4 +1,5 @@
 from flask import *
+from flask.ext.cache import Cache
 from db import *
 from itertools import permutations
 from datetime import datetime
@@ -7,8 +8,11 @@ from printer import TablePrinter
 from json import dumps as json_dump
 
 app = Flask(__name__)
+cache = Cache()
+cache.init_app(app, config={'CACHE_TYPE': 'simple'})
 
 
+@cache.memoize()
 def do_search(query):
     if len(query) == len(set(query)):
         # Search without duplicates
