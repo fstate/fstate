@@ -88,23 +88,11 @@ B+ --> Lambdabar_c(2593)- / Lambdabar_c(2625)- p pi+
 D_s not in particles. D, not in particles. D_s^* not in particles. D, not in particles. D_s not in particles. D^*, not in particles. or not in particles. D_s^* not in particles. 
 B --> D_s D, D_s^* D, D_s D^*, or D_s^* D^* 
 
-noncharmed not in particles. 
-B --> e+ nu_e noncharmed 
-
-noncharmed not in particles. 
-B --> mu+ nu_mu noncharmed 
-
-noncharmed not in particles. 
-B --> tau+ nu_tau noncharmed 
-
 pi+, not in particles. pi+, not in particles. pi+, not in particles. or not in particles. 
 B --> Dbar0 pi+, D- pi+, Dbar^*(2007)0 pi+, or D^*(2010)- pi+ 
 
 pi-, not in particles. D_s^*+ not in particles. pi-, not in particles. rho-, not in particles. D_s^*+ not in particles. rho-, not in particles. pi0, not in particles. D_s^*+ not in particles. pi0, not in particles. eta, not in particles. D_s^*+ not in particles. eta, not in particles. rho0, not in particles. D_s^*+ not in particles. rho0, not in particles. omega, not in particles. D_s^*+ not in particles. 
 B --> D_s+ pi-, D_s^*+ pi-, D_s+ rho-, D_s^*+ rho-, D_s+ pi0, D_s^*+ pi0, D_s+ eta, D_s^*+ eta, D_s+ rho0, D_s^*+ rho0, D_s+ omega, D_s^*+ omega(782) 
-
-cbar not in particles. 
-bbar --> cbar 
 
 ~ not in particles. 
 B+ --> K+ pi- pi+ gamma ~ 
@@ -181,9 +169,6 @@ B+ --> b_1()+ rho0
 rho()+ not in particles. 
 B+ --> b_1()0 rho()+
 
-K_1(1270)0 not in particles. 
-B+ --> K_1(1270)0 pi+ 
-
 [ not in particles. ]((D not in particles. pi)) not in particles. 
 B+ --> [ K- pi+ ]((D pi)) pi+ 
 
@@ -196,65 +181,11 @@ B+ --> [ K- pi+ ]((D gamma)) pi+
 [ not in particles. ]((D not in particles. gamma)) not in particles. 
 B+ --> [ K+ pi- ]((D gamma)) pi+ 
 
-Lambda0 not in particles. 
-B+ --> Lambda0 mu+ 
-
-Lambda0 not in particles. 
-B+ --> Lambda0 e+ 
-
-Lambdabar0 not in particles. 
-B+ --> Lambdabar0 mu+ 
-
-Lambdabar0 not in particles. 
-B+ --> Lambdabar0 e+ 
-
-Lambdabar0 not in particles. 
-B+ --> p Lambdabar0 Dbar0 
-
-Lambdabar0 not in particles. 
-B+ --> p Lambdabar0 Dbar^*(2007)0 
-
-Bbar0 not in particles. via not in particles. mixing not in particles. 
+via not in particles. mixing not in particles. 
 B0 --> Bbar0 via mixing 
-
-a_2(1320)- not in particles. 
-B0 --> a_2(1320)- pi+ 
-
-K_1(1270)0 not in particles. 
-B0 --> K_1(1270)0 gamma 
-
-K_3^*(1780)0 not in particles. 
-B0 --> K_3^*(1780)0 gamma 
-
-K_4^*(2045)0 not in particles. 
-B0 --> K_4^*(2045)0 gamma 
-
-Delta0 not in particles. 
-B0 --> Delta0 Deltabar0 
-
-Deltabar-- not in particles. 
-B0 --> Delta++ Deltabar-- 
-
-charmless not in particles. 
-B0 --> K0 pi+ pi- charmless 
 
 (D- not in particles. pi-) not in particles. 
 B0 --> (D- pi+ pi+ pi-)  
-
-D()- not in particles. 
-B0 --> D_sJ(2457)+ D()-
-
-Dbar_2^*(2460)- not in particles. 
-B0 --> Dbar_2^*(2460)- pi+
-
-Dbar_2^*(2460)- not in particles. 
-B0 --> Dbar_2^*(2460)- rho+ 
-
-K(1270)0 not in particles. 
-B0 --> J/psi(1S) K(1270)0 
-
-Dbar^*(2010)- not in particles. 
-B0 --> Dbar^*(2010)- omega(782) pi+ 
 
 X0 not in particles. (Familon) not in particles. 
 B0 --> K0S X0 (Familon) 
@@ -268,173 +199,17 @@ B0 --> K+ pi- gamma ~
 hidden not in particles. 
 B0 --> Sigmabar_c(2455)-- p pi+ hidden 
 
-Sigmabar_c(2520)-- not in particles. 
-B0 --> Sigmabar_c(2520)-- p pi+ 
-
 hidden not in particles. 
 B0 --> Sigmabar_c(2455)0 p pi- hidden 
-
-Sigmabar0 not in particles. 
-B0 --> p Sigmabar0 pi- 
-
-K_x^*()0 not in particles. 
-B0 --> K_x^*()0 pi0 
-
-K_x^*()+ not in particles. 
-B0 --> K_x^*()+ pi- 
-
-D()- not in particles. 
-B0 --> D_sJ(2457)+ D()-
-
-D()- not in particles. 
-B0 --> D_sJ(2457)+ D()-
-
-D()- not in particles. 
-B0 --> D_sJ(2457)+ D()-
-
-D()- not in particles. 
-B0 --> D_s0(2317)+ D()-
-
-Theta(1540)+ not in particles. 
-B0 --> Theta(1540)+ pbar
-
-X(3872)- not in particles. 
-B0 --> X(3872)- K+
-
-D_2^*(2460)- not in particles. 
-B0 --> D_2^*(2460)- K+
-
-D_s0(2317)- not in particles. 
-B0 --> D_s0(2317)- K+
-
-D_s0(2317)- not in particles. 
-B0 --> D_s0(2317)- pi+
-
-D_{sJ}(2457)- not in particles. 
-B0 --> D_{sJ}(2457)- K+
-
-D_{sJ}(2457)- not in particles. 
-B0 --> D_{sJ}(2457)- pi+
-
-X(3872)- not in particles. 
-B0 --> X(3872)- K+ 
-
-D^*_2(2460)- not in particles. 
-B0 --> D^*_2(2460)- pi+
-
-Kbar^*()0 not in particles. 
-B0 -->  Kbar^*()0 K0 K^*()0 Kbar0 
 
 (K not in particles. pi)***0(0) not in particles. 
 B0 --> phi(1020) (K pi)***0(0) 
 
-a_0()- not in particles. 
-B0 --> D_s()+ a_0()- 
-
-a_0()- not in particles. 
-B0 --> D_s^*()+ a_0()- 
-
-a_2()- not in particles. 
-B0 --> D_s()+ a_2()- 
-
-a_2()- not in particles. 
-B0 --> D_s^*()+ a_2()- 
-
-Dbar^**-() not in particles. 
-B0 --> Dbar^**-() pi+ 
-
-Xibar_c()- not in particles. 
-B0 --> Xibar_c()- Lambda_c()+
-
 () not in particles. 
 B0 --> Lambdabar_c()- p pi+ pi- () 
 
-Theta_c not in particles. 
-B0 --> Theta_c pbar pi+
-
-Theta_c not in particles. 
-B0 --> Theta_c pbar pi+
-
-a_0(1450)+ not in particles. 
-B0 --> a_0(1450)+ pi-
-
-a_0(1450)- not in particles. 
-B0 --> a_0(1450)- pi+
-
-a_0(1450)+ not in particles. 
-B0 --> a_0(1450)+ K-
-
-a_0(1450)- not in particles. 
-B0 --> a_0(1450)- K+
-
-Dbar_0^*(2400)- not in particles. 
-B0 --> Dbar_0^*(2400)- pi+
-
-f_2 not in particles. 
-B0 --> Dbar()0 f_2 
-
-f_2 not in particles. 
-B0 --> J/psi(1S) f_2 
-
 (K not in particles. pi)***0(0) not in particles. (1.60<mass(K not in particles. pi)<2.15) not in particles. 
 B0 --> phi(1020) (K pi)***0(0) (1.60<mass(K pi)<2.15) 
-
-K^*(1780)0 not in particles. 
-B0 --> K^*(1780)0 phi(1020) 
-
-K^*(2045)0 not in particles. 
-B0 --> K^*(2045)0 phi(1020) 
-
-b_1()- not in particles. 
-B0 --> b_1()- K+
-
-b_1()- not in particles. 
-B0 --> b_1()- pi+
-
-Sigmabar(1385)- not in particles. 
-B0 --> p Sigmabar(1385)- 
-
-Delta0 not in particles. 
-B0 --> Delta0 Lambdabar 
-
-K_0^*() not in particles. 
-B0 --> f_J(2220) K_0^*()
-
-D_0^*(2400)- not in particles. 
-B0 --> D_0^*(2400)- e+ nu_e
-
-D_0^*(2400)- not in particles. 
-B0 --> D_0^*(2400)- mu+ nu_mu
-
-D_0^*(2400)- not in particles. 
-B0 --> D_0^*(2400)- tau+ nu_tau
-
-D_2^*(2460)- not in particles. 
-B0 --> D_2^*(2460)- e+ nu_e
-
-D_2^*(2460)- not in particles. 
-B0 --> D_2^*(2460)- mu+ nu_mu
-
-D_2^*(2460)- not in particles. 
-B0 --> D_2^*(2460)- tau+ nu_tau
-
-D_1^'(2430)- not in particles. 
-B0 --> D_1^'(2430)- e+ nu_e
-
-D_1^'(2430)- not in particles. 
-B0 --> D_1^'(2430)- mu+ nu_mu
-
-D_1^'(2430)- not in particles. 
-B0 --> D_1^'(2430)- tau+ nu_tau
-
-D_2^*(2460)- not in particles. 
-B0 --> D_2^*(2460)- e+ nu_e
-
-D_2^*(2460)- not in particles. 
-B0 --> D_2^*(2460)- mu+ nu_mu
-
-D_2^*(2460)- not in particles. 
-B0 --> D_2^*(2460)- tau+ nu_tau
 
 (Kpi)(0)*+ not in particles. 
 B0 --> (Kpi)(0)*+ pi-
@@ -442,38 +217,11 @@ B0 --> (Kpi)(0)*+ pi-
 (Kpi)(0)*0 not in particles. 
 B0 --> (Kpi)(0)*0 pi0
 
-X(4051)+ not in particles. 
-B0 --> X(4051)+ K-
-
-X(4248)+ not in particles. 
-B0 --> X(4248)+ K-
-
-N0 not in particles. 
-B0 --> Sigmabar_c(2455)0 N0
-
 (Kpi)(0)*0 not in particles. 
 B0 --> omega(782) (Kpi)(0)*0 
 
-b_1()- not in particles. 
-B0 --> b_1()- K^*()+
-
-b_1()- not in particles. 
-B0 --> b_1()- rho+
-
 rho0 not in particles. 
 B0 --> b_1()0 rho0
-
-f_x(1300) not in particles. 
-B0 --> f_x(1300) K0
-
-X(214) not in particles. 
-B0 --> K^*(892) X(214)
-
-X(214) not in particles. 
-B0 --> rho(770) X(214)
-
-Sigma_c(2455)- not in particles. 
-B0 --> Sigma_c(2455)- p 
 
 D**(*) not in particles. Dbar**(*) not in particles. D**(*) not in particles. Dbar**(*) not in particles. 
 B -->  D**(*) Dbar**(*) K0 D**(*) Dbar**(*) K+ 
@@ -505,53 +253,11 @@ B --> D_s^*()- Dbar**(*)
 D_s not in particles. D, not in particles. D_s^* not in particles. D, not in particles. D_s not in particles. D^*, not in particles. or not in particles. D_s^* not in particles. 
 B --> D_s D, D_s^* D, D_s D^*, or D_s^* D^* 
 
-noncharmed not in particles. 
-B --> e+ nu_e noncharmed 
-
-noncharmed not in particles. 
-B --> mu+ nu_mu noncharmed 
-
-noncharmed not in particles. 
-B --> tau+ nu_tau noncharmed 
-
 pi+, not in particles. pi+, not in particles. pi+, not in particles. or not in particles. 
 B --> Dbar0 pi+, D- pi+, Dbar^*(2007)0 pi+, or D^*(2010)- pi+ 
 
 pi-, not in particles. D_s^*+ not in particles. pi-, not in particles. rho-, not in particles. D_s^*+ not in particles. rho-, not in particles. pi0, not in particles. D_s^*+ not in particles. pi0, not in particles. eta, not in particles. D_s^*+ not in particles. eta, not in particles. rho0, not in particles. D_s^*+ not in particles. rho0, not in particles. omega, not in particles. D_s^*+ not in particles. 
 B --> D_s+ pi-, D_s^*+ pi-, D_s+ rho-, D_s^*+ rho-, D_s+ pi0, D_s^*+ pi0, D_s+ eta, D_s^*+ eta, D_s+ rho0, D_s^*+ rho0, D_s+ omega, D_s^*+ omega(782) 
-
-Dbar^** not in particles. 
-B --> Dbar^** e+ nu_e 
-
-Dbar^** not in particles. 
-B --> Dbar^** mu+ nu_mu 
-
-Dbar^** not in particles. 
-B --> Dbar^** tau+ nu_tau 
-
-D_s0(2317) not in particles. 
-B --> Dbar D_s0(2317) 
-
-D_sJ(2457) not in particles. 
-B --> Dbar D_sJ(2457) 
-
-X_u not in particles. 
-B --> X_u e+ nu_e 
-
-X_u not in particles. 
-B --> X_u mu+ nu_mu 
-
-X_u not in particles. 
-B --> X_u tau+ nu_tau 
-
-charm not in particles. 
-B --> e+ nu_e charm 
-
-charm not in particles. 
-B --> mu+ nu_mu charm 
-
-charm not in particles. 
-B --> tau+ nu_tau charm 
 
 rho/omega not in particles. 
 B --> rho/omega gamma 
@@ -565,12 +271,6 @@ B --> pi mu nu_mu
 tau not in particles. 
 B --> pi tau nu_tau 
 
-D^*() not in particles. 
-B --> D^*() tau+ nu_tau 
-
-K^*() not in particles. 
-B --> K^*() nu nubar 
-
 e not in particles. 
 B --> Dbar e nu_e 
 
@@ -580,122 +280,23 @@ B --> Dbar mu nu_mu
 tau not in particles. 
 B --> Dbar tau nu_tau 
 
-gluon not in particles. (charmless) not in particles. 
-B --> K+ gluon (charmless) 
-
-gluon not in particles. (charmless) not in particles. 
-B --> K0 gluon (charmless) 
-
-gluon not in particles. (charmless) not in particles. 
-B --> pi+ gluon (charmless) 
-
-charmless not in particles. 
-bbar --> charmless 
-
-hadron+ not in particles. hadron- not in particles. 
-bbar --> hadron+ hadron- 
-
-B_c not in particles. 
-bbar --> B_c 
-
-charmless not in particles. e not in particles. 
-bbar --> charmless e nubar_e 
-
-charmless not in particles. mu not in particles. 
-bbar --> charmless mu nubar_mu 
-
-charmless not in particles. tau not in particles. 
-bbar --> charmless tau nubar_tau 
-
-sbar not in particles. 
-bbar --> sbar nubar nu 
-
-sbar not in particles. 
-bbar --> sbar gamma 
-
-cbar not in particles. 
-bbar --> cbar 
-
-(X) not in particles. 
-B_J^*(5732) --> B^* pi (X) 
-
-B^*()+ not in particles. 
-B_1(5721)0 --> B^*()+ pi- 
-
-B^*()+ not in particles. 
-B_2^*(5747)0 --> B^*()+ pi- 
-
-D_s^(*)()- not in particles. 
-B_s()0 --> D_s^(*)()+ D_s^(*)()- 
-
-D_s1(2536)- not in particles. 
-B_s()0 --> D_s1(2536)- mu+ nu_mu  
-
-K^*0() not in particles. 
-B_s()0 --> J/psi(1S) K^*0() 
-
-B_s not in particles. 
-B_s^* --> B_s gamma 
-
-B^*()+ not in particles. 
-B_s1(5830)0 --> B^*()+ K- 
-
-Kbar^*()0 not in particles. 
-eta_c(1S) --> K^*()0 Kbar^*()0 pi+ pi- 
-
-virtual not in particles. 
-J/psi(1S) --> virtual gamma 
-
-a_2(1320)- not in particles. 
-J/psi(1S) --> a_2(1320)- pi+ 
-
-b_1(1235)+ not in particles. 
-J/psi(1S) --> b_1(1235)+ pi- 
-
 b_1(1235)- not in particles. 
 J/psi(1S) --> b_1(1235)- pi+ 
 
-Xibar+ not in particles. 
-J/psi(1S) --> Xi- Xibar+ 
-
-Sigmabar0 not in particles. 
-J/psi(1S) --> Sigma0 Sigmabar0 
-
-Deltabar(1232)-- not in particles. 
-J/psi(1S) --> Delta(1232)++ Deltabar(1232)-- 
-
-Sigmabar(1385)+ not in particles. (or not in particles. c.c.) not in particles. 
+(or not in particles. c.c.) not in particles. 
 J/psi(1S) --> Sigma(1385)- Sigmabar(1385)+ (or c.c.) 
 
-Sigmabar+ not in particles. (or not in particles. c.c.) not in particles. 
+(or not in particles. c.c.) not in particles. 
 J/psi(1S) --> Sigma(1385)- Sigmabar+ (or c.c.) 
 
-Sigmabar- not in particles. (or not in particles. c.c.) not in particles. 
+(or not in particles. c.c.) not in particles. 
 J/psi(1S) --> Lambda Sigmabar- pi+ (or c.c.) 
 
-Sigmabar0 not in particles. 
-J/psi(1S) --> p K- Sigmabar0 
-
 eta(1405/1475) not in particles. 
 J/psi(1S) --> gamma eta(1405/1475) 
 
-Xi(1530)- not in particles. Xibar+ not in particles. 
-J/psi(1S) --> Xi(1530)- Xibar+ 
-
-Xibar0 not in particles. 
-J/psi(1S) --> Xi(1530)0 Xibar0 
-
-Sigma(1385)0 not in particles. 
-J/psi(1S) --> Sigma(1385)0 Lambdabar 
-
-Delta(1232)+ not in particles. 
-J/psi(1S) --> Delta(1232)+ pbar 
-
 eta(1405/1475) not in particles. 
 J/psi(1S) --> gamma eta(1405/1475) 
-
-b_1(1235)0 not in particles. 
-J/psi(1S) --> b_1(1235)0 pi0 
 
 eta(1405/1475) not in particles. 
 J/psi(1S) --> gamma eta(1405/1475) 
@@ -718,21 +319,6 @@ J/psi(1S) --> 3 ( pi+ pi- ) eta
 (non not in particles. resonant) not in particles. 
 J/psi(1S) --> gamma f_2(1270) f_2(1270) (non resonant) 
 
-Theta(1540) not in particles. Thetabar(1540) not in particles. 
-J/psi(1S) --> Theta(1540) Thetabar(1540) 
-
-Theta(1540) not in particles. 
-J/psi(1S) --> Theta(1540) K- nbar 
-
-Theta(1540) not in particles. 
-J/psi(1S) --> Theta(1540) K0S pbar 
-
-Thetabar(1540) not in particles. 
-J/psi(1S) --> Thetabar(1540) K+ n 
-
-Thetabar(1540) not in particles. 
-J/psi(1S) --> Thetabar(1540) K0S p 
-
 eta(1405/1475) not in particles. 
 J/psi(1S) --> gamma eta(1405/1475) 
 
@@ -741,102 +327,6 @@ J/psi(1S) -->phi f_0(980)
 
 -->phi not in particles. 
 J/psi(1S) -->phi f_0(980) 
-
-Sigmabar- not in particles. 
-J/psi(1S) --> Sigma+ Sigmabar- 
-
-Xibar0 not in particles. 
-J/psi(1S) --> Xi0 Xibar0 
-
-A not in particles. 
-J/psi(1S) --> gamma A 
-
-Kbar^*(892)+ not in particles. 
-J/psi(1S) --> K^*(892)- Kbar^*(892)+ 
-
-Kbar^*(800)- not in particles. 
-J/psi(1S) --> K^*(892)+ Kbar^*(800)- 
-
-Kbar^*(800)+ not in particles. 
-J/psi(1S) --> K^*(892)- Kbar^*(800)+ 
-
-Xibar+ not in particles. 
-chi_c0(1P) --> Xi- Xibar+ 
-
-Sigmabar0 not in particles. 
-chi_c0(1P) --> Sigma0 Sigmabar0 
-
-Sigmabar- not in particles. 
-chi_c0(1P) --> Sigma+ Sigmabar- 
-
-Xibar0 not in particles. 
-chi_c0(1P) --> Xi0 Xibar0 
-
-Xibar+ not in particles. 
-chi_c1(1P) --> Xi- Xibar+ 
-
-Sigmabar0 not in particles. 
-chi_c1(1P) --> Sigma0 Sigmabar0 
-
-Sigmabar- not in particles. 
-chi_c1(1P) --> Sigma+ Sigmabar- 
-
-Xibar0 not in particles. 
-chi_c1(1P) --> Xi0 Xibar0 
-
-Xibar+ not in particles. 
-chi_c2(1P) --> Xi- Xibar+ 
-
-Sigmabar0 not in particles. 
-chi_c2(1P) --> Sigma0 Sigmabar0 
-
-Sigmabar- not in particles. 
-chi_c2(1P) --> Sigma+ Sigmabar- 
-
-Xibar0 not in particles. 
-chi_c2(1P) --> Xi0 Xibar0 
-
-Kbar^*()0 not in particles. 
-eta_c(2S) --> K^*()0 Kbar^*()0 
-
-virtual not in particles. 
-psi(2S) --> virtual gamma 
-
-Xibar+ not in particles. 
-psi(2S) --> Xi- Xibar+ 
-
-b_1()- not in particles. 
-psi(2S) --> b_1()- pi+ 
-
-Deltabar-- not in particles. 
-psi(2S) --> Delta++ Deltabar-- 
-
-Sigmabar0 not in particles. 
-psi(2S) --> Sigma0 Sigmabar0 
-
-Sigmabar(1385)- not in particles. 
-psi(2S) --> Sigma(1385)+ Sigmabar(1385)- 
-
-Xibar(1530)0 not in particles. 
-psi(2S) --> Xi(1530)0 Xibar(1530)0 
-
-Omegabar+ not in particles. 
-psi(2S) --> Omega- Omegabar+ 
-
-Theta(1540) not in particles. Thetabar(1540) not in particles. 
-psi(2S) --> Theta(1540) Thetabar(1540) 
-
-Theta(1540) not in particles. 
-psi(2S) --> Theta(1540) K- nbar 
-
-Theta(1540) not in particles. 
-psi(2S) --> Theta(1540) K0S pbar 
-
-Thetabar(1540) not in particles. 
-psi(2S) --> Thetabar(1540) K+ n 
-
-Thetabar(1540) not in particles. 
-psi(2S) --> Thetabar(1540) K0S p 
 
 +c.c. not in particles. 
 psi(2S) --> K^*(892) K- pi+ pi0 +c.c. 
@@ -850,59 +340,11 @@ psi(2S) --> K^*(892)+ K- rho(770) +c.c.
 +c.c. not in particles. 
 psi(2S) --> K^*(892) K- rho+ +c.c. 
 
-Sigmabar- not in particles. 
-psi(2S) --> Sigma+ Sigmabar- 
-
-Xibar0 not in particles. 
-psi(2S) --> Xi0 Xibar0 
-
-eta_c() not in particles. 
-psi(2S) --> eta_c() pi+ pi- pi0 
-
-Kbar^*()0 not in particles. 
-psi(2S) --> gamma K^*()0 Kbar^*()0 
-
 h_c not in particles. 
 psi(2S) --> pi0 h_c 
 
-N_1^*(1440) not in particles. 
-psi(2S) --> N_1^*(1440) pbar 
-
-N^*(1535) not in particles. 
-psi(2S) --> N^*(1535) pbar 
-
-chi_c1() not in particles. 
-psi(3770) --> gamma chi_c1() 
-
 (dummy not in particles. mode not in particles. for not in particles. fitting) not in particles. 
 psi(3770) --> D Dbar (dummy mode for fitting) 
-
-chi_c1 not in particles. 
-X(3872) --> gamma chi_c1 
-
-chi_c1 not in particles. 
-psi(4040) --> chi_c1 gamma 
-
-chi_c2 not in particles. 
-psi(4040) --> chi_c2 gamma 
-
-chi_c1 not in particles. 
-psi(4040) --> chi_c1 pi+ pi- pi0 
-
-chi_c2 not in particles. 
-psi(4040) --> chi_c2 pi+ pi- pi0 
-
-chi_c1 not in particles. 
-psi(4160) --> chi_c1 gamma 
-
-chi_c2 not in particles. 
-psi(4160) --> chi_c2 gamma 
-
-chi_c1 not in particles. 
-psi(4160) --> chi_c1 pi+ pi- pi0 
-
-chi_c2 not in particles. 
-psi(4160) --> chi_c2 pi+ pi- pi0 
 
 +c.c. not in particles. excl.0 not in particles. +c.c., not in particles. D*(2010)+ not in particles. +c.c.) not in particles. 
 psi(4160) --> D0 D- pi+ +c.c. excl.0 Dbar0 +c.c., D*(2010)+ D- +c.c.) 
@@ -916,32 +358,11 @@ psi(4160) --> D0 D^*()- pi+ +c.c. excl.+ D*(2010)-)
 +c.c. not in particles. 
 psi(4160) --> D_s^*()+ D_s()- +c.c. 
 
-D^*() not in particles. Dbar^*() not in particles. 
-X(4160) --> D^*() Dbar^*() 
-
-chi_c1 not in particles. 
-X(4260) --> chi_c1 gamma 
-
-chi_c2 not in particles. 
-X(4260) --> chi_c2 gamma 
-
-chi_c1 not in particles. 
-X(4260) --> chi_c1 pi+ pi- pi0 
-
-chi_c2 not in particles. 
-X(4260) --> chi_c2 pi+ pi- pi0 
-
-D^*() not in particles. +c.c. not in particles. 
++c.c. not in particles. 
 X(4260) --> D^*() Dbar +c.c. 
 
-D^*() not in particles. Dbar^*() not in particles. 
-X(4260) --> D^*() Dbar^*() 
-
-Dbar^*() not in particles. +c.c. not in particles. (excl. not in particles. D* not in particles. Dbar*) not in particles. 
++c.c. not in particles. (excl. not in particles. D* not in particles. Dbar*) not in particles. 
 X(4260) --> D Dbar^*() pi +c.c. (excl. D* Dbar*) 
-
-D^*() not in particles. Dbar^*() not in particles. 
-X(4260) --> D^*() Dbar^*() pi 
 
 +c.c. not in particles. 
 X(4260) --> D_s^*()+ D_s()- +c.c. 
@@ -964,35 +385,11 @@ X(4260) --> D0 D- pi+ +c.c. excl.0 Dbar*0 +c.c., D*(2010)+ D- +c.c.)
 +c.c. not in particles. excl.+ not in particles. D*(2010)-) not in particles. 
 X(4260) --> D0 D^*()- pi+ +c.c. excl.+ D*(2010)-) 
 
-a_1()0 not in particles. 
-Upsilon(1S) --> gamma a_1()0 
-
-a_1()0 not in particles. 
-Upsilon(1S) --> gamma a_1()0 
-
-chi_c1() not in particles. 
-Upsilon(1S) --> gamma chi_c1() 
-
-A0 not in particles. 
-Upsilon(2S) --> gamma A0 
-
-chi_c1() not in particles. 
-Upsilon(2S) --> gamma chi_c1() 
-
 chi_bJ(1P) not in particles. 
 Upsilon(1D) --> gamma chi_bJ(1P) 
 
 eta_b(2S) not in particles. 
 Upsilon(3S) --> gamma eta_b(2S) 
-
-a_1()0 not in particles. 
-Upsilon(3S) --> gamma a_1()0 
-
-A0 not in particles. 
-Upsilon(3S) --> gamma A0 
-
-Bbar0 not in particles. 
-Upsilon(4S) --> B0 Bbar0 
 
 (J/psi not in particles. ,eta_c) not in particles. 
 Upsilon(4S) --> J/psi K0S (J/psi ,eta_c) K0S 
@@ -1002,9 +399,6 @@ Upsilon(10860) --> B_s^*() Bbar_s^*()
 
 Bbar^{(*)}() not in particles. 
 Upsilon(10860) --> B() Bbar^{(*)}() pi 
-
-B_s^(*)() not in particles. Bbar_s^(*)() not in particles. (X) not in particles. 
-Upsilon(10860) --> B_s^(*)() Bbar_s^(*)() (X) 
 
 B_s^(*)() not in particles. Bbar_s^(*)() not in particles. 
 Upsilon(10860) --> B_s^(*)() Bbar_s^(*)() 

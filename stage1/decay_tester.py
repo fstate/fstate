@@ -36,7 +36,17 @@ for k in ['a_1(1260)-', 'K^*(892)-', 'Kbar^*(892)-', 'K_2^*(1430)-',
           'f_0(1370)0', 'rho^0(1450)', 'X(4260)0', 'Sigmabar()0','X_0(1550)','K^*()+','X(3915)0','Z(3930)0','Lambda_c()-',
           'Dbar^**0()','Xibar_c()0','Delta_X(1600)++','Delta_X(2420)++','a_1()+','b_1()0','Sigmabar(1385)0','Delta+',
           'K^*()+','D_sJ(2700)+',"Dbar_1^'(2430)0",'Dbar_0^*(2420)0','b_1()+','K^*(1410)+','K_2^*(1770)+','K_2^*(1820)+',
-          'Sigmabar_c(2800)0','K^*()+','X(1812)','chi_c2()','X(214)'
+          'Sigmabar_c(2800)0','K^*()+','X(1812)','chi_c2()','X(214)','a_0()-','a_0()+','a_2()-','Dbar^**-()','Xibar_c()- ',
+          'Theta_c','a_0(1450)+','a_0(1450)-','Dbar_0^*(2400)-','f_2','K^*(1780)0','K^*(2045)0','b_1()-','Sigmabar(1385)-',
+          'Delta0','K_0^*()','D_0^*(2400)-','D_2^*(2460)-',"D_1^'(2430)-", 'X(4248)+','N0',"K(1270)0",'Dbar^*(2010)-',
+          'Sigmabar_c(2520)--','B0 --> Sigmabar_c(2455)0','B0 --> Sigmabar_c(2520)--','Sigmabar0','K_x^*()0',
+          'D()-','Theta(1540)+','X(3872)-', 'D_s0(2317)-','D_{sJ}(2457)-','D^*_2(2460)-','Kbar^*()0', 'Xibar_c()-',
+          'X(4051)+','f_x(1300)','Sigma_c(2455)-','Dbar^**','D_s0(2317)','D^*()','K^*()','B_c','B^*()+',
+          'D_s^(*)()-','D_s1(2536)-','B_s','B^*()+','a_2(1320)-','K_1(1270)0','Lambda0','Lambdabar0','Bbar0','K_1(1270)0','K_3^*(1780)0',
+          'K_4^*(2045)0','Deltabar--','Dbar_2^*(2460)-','K_x^*()+','D_sJ(2457)','K^*0()','b_1(1235)+','Xibar+','Deltabar(1232)--',
+          'Sigmabar(1385)+','Sigmabar+','Sigmabar-','Xi(1530)-','Xibar0','Sigma(1385)0','Delta(1232)+','b_1(1235)0',
+          'Theta(1540)','Thetabar(1540)','Sigmabar-', 'A','Kbar^*(892)+', 'Kbar^*(800)-','Kbar^*(800)+','Xibar+','Xibar0','A0','chi_c1()','a_1()0',
+          'Dbar^*()','chi_c2','chi_c1','N^*(1535)','N_1^*(1440)','eta_c()','Omegabar+','Xibar(1530)0'
 
           ]:
     particles.add(k)
@@ -94,7 +104,8 @@ def process(decay, lineno):
     for particle in parts:
         if particle in set(["u", "d", "c", "s", "b", "g", "q", "anything", "h+", "h-", "particles", 
             "boson", "dummy", "other", "modes", "X-", "invisible", "neutrals", "tracks", "c.c.", 
-            "fit", "except", "prongs", "total","hadrons","pi)(s)","semitauic","semimuic","semieic","any","X_c"]):
+            "fit", "except", "prongs", "total","hadrons","pi)(s)","semitauic","semimuic","semieic","any","noncharmed",'X_u','X_c',
+            "charm","gluon","charmless","hadron+","hadron-","sbar","cbar","(X)",'virtual']):
             BAD = ""
         if particle.find(">=") > -1:
             BAD = ""
