@@ -10,5 +10,8 @@ db = client.fstate
 decays = db.decays
 decays.drop()
 
+# Particle collection
+particles = db.particles
+
 # Fstates collection
 fstates = db.fstates
