@@ -39,7 +39,7 @@ def NormalNameConjugate(name):
         new_name=new_name.replace('+', '-')
     elif '-' in new_name:
         new_name=new_name.replace('-', '+')
-    else:
+    if '+' not in new_name and '-' not in new_name:
         if 'bar' in name:
             new_name = name.replace('bar', '')
         else:
