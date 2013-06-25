@@ -2,12 +2,17 @@ from operator import mul
 from copy import deepcopy
 from datetime import datetime
 from multiprocessing import Pool, cpu_count
-from ParcticleDescriptors import *
 
 from weight_split import get_jobs
 from database import *
 from NameConjugate import *
 
+bosons = ['W','Z','gamma']
+leptons = ['e','mu','tau','nu_e','nu_mu','nu_tau']
+mesons = ['pi','K']
+baryons = ['N','Omega', 'Delta', 'Lambda', 'Sigma', 'Xi', 'Chi']
+
+neutrals = ['Z', 'gamma', 'pi', 'b_', 'rho', 'a_', 'eta', 'h_', 'omega', 'phi', 'f', 'X', 'chi', 'psi', 'Y']
 
 particles.drop()
 particles.create_index("keys", unique=True)
@@ -25,7 +30,16 @@ def AddToDB(prt,aprt):
     	print 'Dublicate exceprion!'
         return
 
+allparticles = []
+
 for x in open("../data/masses-fin.txt").readlines():
+    allparticles.append(x)
+
+for x in open("AdditionalParticles.txt").readlines():
+    allparticles.append(x)
+
+
+for x in allparticles:
     prt = ['mass','name','isBaryon','isNeutral']
     aprt = ['mass','name','isBaryon','isNeutral']
     prt[0] = x.split(', ')[0][1:]

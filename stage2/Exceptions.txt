@@ -1,0 +1,666 @@
+W+ --> e+ nu  replace with W+ --> e+ nu_e
+W+ --> mu+ nu  replace with W+ --> mu+ nu_mu
+W+ --> e+ nu gamma  replace with W+ --> e+ nu_e gamma
+W+ --> mu+ nu gamma  replace with W+ --> mu+ nu_mu gamma
+W+ --> tau+ nu  replace with W+ --> tau+ nu_tau
+Z --> e+- mu-+  replace with Z --> e+ mu-
+Z --> lepton+ lepton-  replace with Z --> e+ e-
+Z --> lepton+ lepton-  replace with Z --> mu+ mu-
+Z --> lepton+ lepton-  replace with Z --> tau+ tau-
+Z --> pi+- W-+  replace with Z --> pi+ W-
+Z --> rho+- W-+  replace with Z --> rho+ W-
+Z --> e+- tau-+  replace with Z --> e+ tau-
+Z --> mu+- tau-+  replace with Z --> mu+ tau-
+Z --> lepton+ lepton- gamma gamma  replace with Z --> e+ e- gamma gamma
+Z --> lepton+ lepton- gamma gamma  replace with Z --> mu+ mu- gamma gamma
+Z --> lepton+ lepton- gamma gamma  replace with Z --> tau+ tau- gamma gamma
+Z --> nu nubar gamma gamma  replace with Z --> nu_e nubar_e gamma gamma
+Z --> nu nubar gamma gamma  replace with Z --> nu_mu nubar_mu gamma gamma
+Z --> nu nubar gamma gamma  replace with Z --> nu_tau nubar_tau gamma gamma
+Z --> p e  replace with Z --> p e-
+Z --> p mu  replace with Z --> p mu-
+tau- --> pi- rho0 nu_tau  replace with tau- --> pi- rho(770) nu_tau
+W+ --> lepton+ nu  replace with W+ --> e+ nu_e
+W+ --> lepton+ nu  replace with W+ --> mu+ nu_mu
+W+ --> lepton+ nu  replace with W+ --> tau+ nu_tau
+tau- --> mu- rho0  replace with tau- --> mu- rho(770)
+tau- --> e- rho0  replace with tau- --> e- rho(770)
+tau- --> 3h- 2h+ nu_tau (ex.K0)  replace with skip
+tau- --> 3h- 2h+ pi0 nu_tau (ex.K0)  replace with skip
+tau- --> h- omega nu_tau  replace with skip
+tau- --> K- >=1 (pi0 or K0 or gamma) nu_tau  replace with skip
+tau- --> pi- pi- pi+ non-rho(770)0 nu_tau  replace with skip
+tau- --> h- >= 2pi0 nu_tau  replace with skip
+tau- --> pi- pi0 non-rho(770) nu_tau  replace with skip
+tau- --> h- 3pi0 nu_tau  replace with skip
+tau- --> h- 2pi0 nu_tau (ex.K0)  replace with skip
+tau- --> mu- charged particles  replace with skip
+tau- --> e- charged particles  replace with skip
+tau- --> pi- >=2 pi0 nu_tau  replace with skip
+tau- --> h- >= 3pi0 nu_tau  replace with skip
+tau- --> lepton- lepton- lepton+  replace with tau- --> e- e- e+
+tau- --> lepton- lepton- lepton+  replace with tau- --> mu- mu- mu+
+tau- --> ( e mu mu )-  replace with tau- --> e- mu+ mu-
+tau- --> ( e mu mu )-  replace with tau- --> e+ mu- mu-
+tau- --> ( mu e e )-  replace with tau- --> mu- e+ e-
+tau- --> ( mu e e )-  replace with tau- --> mu+ e- e-
+tau- --> e-+ pi+- pi-  replace with tau- --> e- pi+ pi-
+tau- --> e-+ pi+- pi-  replace with tau- --> e+ pi- pi-
+tau- --> mu-+ pi+- pi-  replace with tau- --> mu- pi+ pi-
+tau- --> mu-+ pi+- pi-  replace with tau- --> mu+ pi- pi-
+tau- --> ( e pi K )-, all charged  replace with tau- --> e- pi- K+
+tau- --> ( e pi K )-, all charged  replace with tau- --> e- pi+ K-
+tau- --> ( e pi K )-, all charged  replace with tau- --> e+ pi- K-
+tau- --> ( mu pi K )-, all charged  replace with tau- --> mu- pi- K+
+tau- --> ( mu pi K )-, all charged  replace with tau- --> mu- pi+ K-
+tau- --> ( mu pi K )-, all charged  replace with tau- --> mu+ pi- K-
+tau- --> e- pi+- K-+  replace with skip
+tau- --> mu- pi+- K-+  replace with skip
+tau- --> h- rho pi0 nu_tau  replace with skip
+tau- --> h- rho+ h- nu_tau  replace with skip
+tau- --> (a_1(1260) h)- nu_tau  replace with skip
+tau- --> h- (rho pi)0 nu_tau  replace with skip
+tau- --> lepton+- pi-+ pi-  replace with tau- --> e- pi+ pi-
+tau- --> lepton+- pi-+ pi-  replace with tau- --> e+ pi- pi-
+tau- --> lepton+- pi-+ pi-  replace with tau- --> mu- pi+ pi-
+tau- --> lepton+- pi-+ pi-  replace with tau- --> mu+ pi- pi-
+tau- --> lepton+- pi-+ K-  replace with skip
+tau- --> e- light boson  replace with skip
+tau- --> mu- light boson  replace with skip
+tau- --> h- 4pi0 nu_tau (ex.K0,eta)  replace with skip
+tau- --> h- omega pi0 nu_tau  replace with skip
+tau- --> K- 2pi0 nu_tau (ex.K0)  replace with tau- --> K- pi0 pi0 nu_tau
+tau- --> K- 3pi0 nu_tau (ex.K0, eta)  replace with tau- --> K- pi0 pi0 pi0 nu_tau
+tau- --> pi- K+ pi- >=0 neut. nu_tau  replace with skip
+tau- --> K- K+ pi- >=0 neut. nu_tau  replace with skip
+tau- --> K- pi+ K- >=0 neut. nu_tau  replace with skip
+tau- --> K- K+ K- >=0 neut. nu_tau  replace with skip
+tau- --> K0S (particles)- nu_tau  replace with skip
+tau- --> 3h- 2h+ 2pi0 nu_tau  replace with skip
+tau- --> (5pi)- nu_tau  replace with tau- --> pi0 pi0 pi0 pi0 pi- nu_tau
+tau- --> (5pi)- nu_tau  replace with tau- --> pi0 pi0 pi+ pi- pi- nu_tau
+tau- --> (5pi)- nu_tau  replace with tau- --> pi+ pi+ pi- pi- pi- nu_tautau- --> K^*(892)- >=0(h0not=K(S)0) nu_tau  replace with skip
+tau- --> pi- Kbar0 (non-K*(892)-) nu_tau  replace with tau- --> pi- Kbar0 nu_tau
+tau- --> h- pi0 nu_tau  replace with skip
+tau- --> h- >=0K(L)0 nu_tau  replace with skip
+tau- --> e- charged particles + mu-charged particles  replace with skip
+tau- --> K- >=0pi0 >=0K0 >= nu_tau  replace with skip
+tau- --> pi- 2pi0 nu_tau (ex.K0)  replace with tau- --> pi- pi0 pi0 nu_tau
+tau- --> pi- 3pi0 nu_tau (ex.K0)  replace with tau- --> pi- pi0 pi0 pi0 nu_tau
+tau- --> h- Kbar0 nu_tau  replace with skip
+tau- --> h- Kbar0 pi0 nu_tau  replace with skip
+tau- --> h- nu_tau  replace with skip
+tau- --> h- 2pi0 nu_tau  replace with skip
+tau- --> h- 4pi0 nu_tau (ex.K0)  replace with skip
+tau- --> eta pi- pi+ pi- nu_tau (ex.K0)  replace with tau- --> eta pi- pi+ pi- nu_tau
+tau- --> eta a_1(1260)- nu_tau --> eta pi- rho0 nu_tau  replace with tau- --> eta a_1(1260)- nu_tau
+tau- --> eta a_1(1260)- nu_tau --> eta pi- rho0 nu_tau  replace with a_1(1260)- --> pi- rho(770)
+tau- --> h- omega 2pi0 nu_tau  replace with skip
+tau- --> (Kbar^*(892) pi)- nu_tau --> pi- Kbar0 pi0 nu_tau  replace with tau- --> Kbar^*(892)0 pi- nu_tau
+tau- --> (Kbar^*(892) pi)- nu_tau --> pi- Kbar0 pi0 nu_tau  replace with tau- --> K^*(892)- pi0 nu_tau
+tau- --> pi- pi+ pi- nu_tau (ex.K0)  replace with tau- --> pi- pi+ pi- nu_tau
+tau- --> pi- pi+ pi- nu_tau (ex.K0,omega)  replace with tau- --> pi- pi+ pi- nu_tau
+tau- --> K- pi+ pi- nu_tau (ex.K0)  replace with tau- --> K- pi+ pi- nu_tau
+tau- --> pi- pi+ pi- pi0 nu_tau (ex.K0)  replace with tau- --> pi- pi+ pi- pi0 nu_tau
+tau- --> pi- pi+ pi- pi0 nu_tau (ex.K0,omega)  replace with tau- --> pi- pi+ pi- pi0 nu_tau
+tau- --> K- pi+ pi- pi0 nu_tau (ex.K0)  replace with tau- --> K- pi+ pi- pi0 nu_tau
+tau- --> pbar 2pi0  replace with tau- --> pbar pi0 pi0
+tau- --> pi- Kbar0 >=1pi0 nu_tau  replace with tau- --> pi- Kbar0 pi0 nu_tau
+tau- --> pi- Kbar0 >=1pi0 nu_tau  replace with tau- --> pi- Kbar0 pi0 pi0 nu_tau
+tau- --> pi- Kbar0 >=1pi0 nu_tau  replace with tau- --> pi- Kbar0 pi0 pi0 pi0 nu_tau
+tau- --> K- K0 >=0pi0 nu_tau  replace with tau- --> K- K0 pi0 nu_tau
+tau- --> K- K0 >=0pi0 nu_tau  replace with tau- --> K- K0 pi0 nu_tau pi0
+tau- --> K- K0 >=0pi0 nu_tau  replace with tau- --> K- K0 pi0 nu_tau pi0 pi0
+tau- --> K- pi+ pi- >=0pi0 nu_tau (ex.K0)  replace with tau- --> K- pi+ pi- nu_tau pi0
+tau- --> K- pi+ pi- >=0pi0 nu_tau (ex.K0)  replace with tau- --> K- pi+ pi- nu_tau pi0 pi0
+tau- --> K- pi+ pi- >=0pi0 nu_tau (ex.K0)  replace with tau- --> K- pi+ pi- nu_tau pi0 pi0 pi0
+tau- --> pi(1300)- nu_tau --> (rho pi)- nu_tau --> (3pi)- nu_tau  replace with tau- --> pi(1300)- nu_tau
+tau- --> pi(1300)- nu_tau --> (rho pi)- nu_tau --> (3pi)- nu_tau  replace with pi(1300)- --> rho(770) pi-
+tau- --> pi(1300)- nu_tau --> (rho pi)- nu_tau --> (3pi)- nu_tau  replace with pi(1300)- --> rho- pi0
+tau- --> pi(1300)- nu_tau --> ((pi pi)(S-wave) pi)- nu_tau --> (3pi)- nu_tau  replace with pi(1300)- --> pi- pi- pi+
+tau- --> pi(1300)- nu_tau --> ((pi pi)(S-wave) pi)- nu_tau --> (3pi)- nu_tau  replace with pi(1300)- --> pi0 pi0 pi-
+tau- --> pi- 2pi0 nu_tau (ex.K0), scalar  replace with tau- --> pi- pi0 pi0 nu_tau
+tau- --> pi- 2pi0 nu_tau (ex.K0), vector  replace with skip
+tau- --> pi- pi+ pi- nu_tau (ex.K0), non-axial vector  replace with tau- --> pi- pi+ pi- nu_tau
+tau- --> K- pi+ pi- pi0 nu_tau (ex.K0,eta)  replace with tau- --> K- pi+ pi- pi0 nu_tau
+tau- --> K- rho0 nu_tau --> K- pi+ pi- nu_tau  replace with tau- --> K- rho(770) nu_tau
+tau- --> K- pi+ pi- pi0 nu_tau (ex.K0,omega)  replace with tau- --> K- pi+ pi- pi0 nu_tau
+tau- --> K- pi+ pi- pi0 nu_tau (ex.K0,omega)  replace with skip
+tau- --> h- >= 1pi0 nu_tau (ex.K0)  replace with skip
+tau- --> h- >= 3pi0 nu_tau (ex. K0)  replace with skip
+tau- --> h- 2omega nu_tau  replace with skip
+tau- --> K- K+ K- nu_tau (ex. phi)  replace with tau- --> K- K+ K- nu_tau
+tau- --> eta K- pi0 (non-K*(892)) nu_tau  replace with tau- --> eta K- pi0 nu_tau
+pi+ --> mu- e+ e+ nu  replace with pi+ --> mu- e+ e+ nu_mu
+pi+ --> mu- e+ e+ nu  replace with pi+ --> mu- e+ e+ nu_e
+pi+ --> e+ nu_e nu nubar  replace with pi+ --> e+ nu_e nubar_e nu_e
+pi+ --> e+ nu_e nu nubar  replace with pi+ --> e+ nu_e nu_mu nubar_mu
+pi+ --> e+ nu_e nu nubar  replace with pi+ --> e+ nu_e nu_tau nubar_tau
+pi+ --> mu+ nu  replace with pi+ --> mu+ nu_mu
+pi0 --> nu nubar  replace with pi0 --> nu_e nubar_e
+pi0 --> nu nubar  replace with pi0 --> nu_mu nubar_mu
+pi0 --> nu nubar  replace with pi0 --> nu_tau nubar_tau
+pi0 --> mu+ e- + mu- e+  replace with pi0 --> mu+ e-
+pi0 --> mu+ e- + mu- e+  replace with pi0 --> mu- e+
+pi0 --> gamma nu nubar  replace with pi0 --> gamma nu_e nubar_e
+pi0 --> gamma nu nubar  replace with pi0 --> gamma nu_mu nubar_mu
+pi0 --> gamma nu nubar  replace with pi0 --> gamma nu_tau nubar_tau
+pi0 --> gamma positronium  replace with pi0 --> gamma e+ e-
+eta --> 3pi0  replace with eta --> pi0 pi0 pi0
+eta --> pi+ pi- e+ e- (gamma)  replace with eta --> pi+ pi- e+ e-
+eta --> pi+ pi- e+ e- (gamma)  replace with eta --> pi+ pi- e+ e- gamma
+eta --> mu+ e- + mu- e+  replace with eta --> mu+ e-
+eta --> mu+ e- + mu- e+  replace with eta --> mu- e+
+eta --> 2pi0  replace with eta --> pi0 pi0
+eta --> 4pi0  replace with eta --> pi0 pi0 pi0 pi0
+eta --> 2e+ 2e-  replace with eta --> e+ e+ e- e-
+eta --> 2pi0 gamma  replace with eta --> pi0 pi0 gamma
+eta --> 2pi0 gamma gamma  replace with eta --> pi0 pi0 gamma gamma
+eta --> 3pi0 gamma  replace with eta --> pi0 pi0 pi0 gamma
+eta --> 4 gamma  replace with eta --> gamma gamma gamma gamma
+eta --> 2mu+ 2mu-  replace with eta --> mu+ mu+ mu- mu-
+f_0(400-1200) --> pi pi  replace with f_0()(500) --> pi0 pi0
+f_0(400-1200) --> pi pi  replace with f_0()(500) --> pi+ pi-
+f_0(400-1200) --> pi pi  replace with f_0(980) --> pi0 pi0
+f_0(400-1200) --> pi pi  replace with f_0(980) --> pi+ pi-
+rho(770) --> pi pi  replace with rho(770) --> pi+ pi-
+rho(770) --> pi pi  replace with rho(770) --> pi0 pi0
+rho(770) --> 4pi  replace with rho(770) -->  pi0 pi0 pi+ pi-
+rho(770) --> 4pi  replace with rho(770) --> pi0 pi0 pi0 pi0
+rho(770) --> 4pi  replace with rho(770) --> pi+ pi- pi+ pi-
+rho(770) --> pi+- gamma  replace with rho(770) --> pi0 gamma
+rho(770) --> pi+- gamma  replace with rho+ --> pi+ gamma
+rho(770) --> pi+- eta  replace with rho+ --> pi+ eta
+rho(770) --> pi+- pi0  replace with rho+ --> pi+ pi0
+rho(770) --> pi+- pi+ pi- pi0  replace with rho+ --> pi+ pi+ pi- pi0
+omega(782) --> 3pi0  replace with omega(782) --> pi0 pi0 pi0
+omega(782) --> charged particles  replace with skip
+omega(782) --> 2pi0  replace with omega(782) --> pi0 pi0
+eta^'(958) --> pi+ pi- gamma (including rho0 gamma)  replace with eta^'(958) --> pi+ pi- gamma
+eta^'(958) --> pi+ pi- gamma (including rho0 gamma)  replace with eta^'(958) --> rho(770) gamma
+eta^'(958) --> 3pi0  replace with eta^'(958) --> pi0 pi0 pi0
+eta^'(958) --> rho0 gamma (including non-resonant pi+ pi- gamma)  replace with eta^'(958) --> rho(770) gamma
+eta^'(958) --> rho0 gamma (including non-resonant pi+ pi- gamma)  replace with eta^'(958) --> pi+ pi- gamma
+eta^'(958) --> 2pi  replace with eta^'(958) --> pi+ pi-
+eta^'(958) --> 2pi  replace with eta^'(958) --> pi0 pi0
+eta^'(958) --> 3pi  replace with eta^'(958) --> pi0 pi0 pi0
+eta^'(958) --> 3pi  replace with eta^'(958) --> pi0 pi+ pi-
+eta^'(958) --> 4pi  replace with eta^'(958) --> pi0 pi0 pi0 pi0
+eta^'(958) --> 4pi  replace with eta^'(958) --> pi0 pi0 pi+ pi-
+eta^'(958) --> 4pi  replace with eta^'(958) --> pi+ pi+ pi- pi-
+eta^'(958) --> 5pi  replace with eta^'(958) --> pi0 pi0 pi0 pi0 pi0
+eta^'(958) --> 5pi  replace with eta^'(958) --> pi0 pi0 pi0 pi+ pi-
+eta^'(958) --> 5pi  replace with eta^'(958) --> pi0 pi- pi+ pi- pi+
+eta^'(958) --> 2(pi+ pi-) 2pi0  replace with eta^'(958) --> pi+ pi- pi+ pi- pi0 pi0
+eta^'(958) --> pi0 rho0  replace with eta^'(958) --> pi0 rho(770)
+eta^'(958) --> 4pi0  replace with eta^'(958) --> pi0 pi0 pi0 pi0
+eta^'(958) --> e mu  replace with eta^'(958) --> e+ mu-
+eta^'(958) --> e mu  replace with eta^'(958) --> e- mu+
+eta^'(958) --> 2(pi+ pi-)  replace with eta^'(958) --> pi+ pi- pi+ pi-
+eta^'(958) --> 2(pi+ pi-) pi0  replace with eta^'(958) --> pi+ pi- pi+ pi- pi0
+eta^'(958) --> pi+ pi- eta(neutral decay)  replace with eta^'(958) --> pi+ pi- eta
+eta^'(958) --> pi+ pi- eta(charged decay)  replace with skip
+eta^'(958) --> pi0 pi0 eta(neutral decay)  replace with eta^'(958) --> pi0 pi0 eta
+eta^'(958) --> pi pi eta  replace with skip
+eta^'(958) --> pi0 pi0 eta (charged decay)  replace with skip
+eta^'(958) --> omega (charged decay) gamma  replace with eta^'(958) --> omega gamma
+eta^'(958) --> pi0 pi0 eta (3pi0 decay)  replace with skip
+eta^'(958) --> pi+ pi- 2pi0  replace with eta^'(958) --> pi0 pi0 pi+ pi-
+f_0(980) --> K Kbar  replace with f_0(980) --> K+ K-
+f_0(980) --> K Kbar  replace with f_0(980) --> K0 Kbar0
+f_0(980) --> pi pi  replace with f_0(980) --> pi+ pi-
+f_0(980) --> pi pi  replace with f_0(980) --> pi0 pi0
+a_0(980) --> eta pi  replace with a_0(980) --> eta pi0
+a_0(980) --> rho pi  replace with a_0(980) --> rho+ pi-
+a_0(980) --> rho pi  replace with a_0(980) --> rho(770) pi0
+a_0(980) --> K Kbar  replace with a_0(980) --> K+ K-
+a_0(980) --> K Kbar  replace with a_0(980) --> K0 Kbar0
+phi(1020) --> rho gamma  replace with phi(1020) --> rho(770) gamma
+phi(1020) --> rho pi  replace with phi(1020) --> rho- pi+
+phi(1020) --> rho pi  replace with phi(1020) --> rho(770) pi0
+phi(1020) --> rho pi + pi+ pi- pi0  replace with phi(1020) --> pi+ pi- pi0
+phi(1020) --> K Kbar  replace with phi(1020) --> K+ K-
+phi(1020) --> K Kbar  replace with phi(1020) --> K0 Kbar0
+phi(1020) --> rho gamma gamma  replace with phi(1020) --> rho(770) gamma gamma
+phi(1020) --> lepton+ lepton-  replace with phi(1020) --> e+ e-
+phi(1020) --> lepton+ lepton-  replace with phi(1020) --> mu+ mu-
+phi(1020) --> lepton+ lepton-  replace with phi(1020) --> tau+ tau-
+phi(1020) --> e+- mu-+  replace with phi(1020) --> e+ mu-
+h_1(1170) --> rho pi  replace with h_1(1170) --> rho+ pi-
+h_1(1170) --> rho pi  replace with h_1(1170) --> rho(770) pi0
+b_1(1235) --> omega pi  replace with b_1(1235) --> omega pi0
+b_1(1235) --> omega pi  replace with b_1(1235)- --> omega pi-
+b_1(1235) --> K Kbar  replace with b_1(1235) --> K+ K-
+b_1(1235) --> K Kbar  replace with b_1(1235) --> K0 Kbar0
+b_1(1235) --> pi pi  replace with b_1(1235) --> pi0 pi0
+b_1(1235) --> pi pi  replace with b_1(1235) --> pi+ pi-
+b_1(1235) --> phi pi  replace with b_1(1235) --> phi(1020) pi0
+b_1(1235) --> phi pi  replace with b_1(1235)- --> phi(1020) pi-
+b_1(1235) --> eta pi  replace with b_1(1235) --> eta pi0
+b_1(1235) --> eta pi  replace with b_1(1235)- --> eta pi-
+b_1(1235) --> K Kbar pi  replace with b_1(1235) --> K0 Kbar0 pi0
+b_1(1235) --> K Kbar pi  replace with b_1(1235) --> K+ K- pi0
+b_1(1235) --> K Kbar pi  replace with b_1(1235)- --> K+ K- pi-
+b_1(1235) --> K Kbar pi  replace with b_1(1235)- --> K0 Kbar0 pi-
+b_1(1235) --> eta rho  replace with b_1(1235) --> eta rho(770)
+b_1(1235) --> eta rho  replace with b_1(1235)- --> eta rho-
+b_1(1235) --> pi+- gamma  replace with b_1(1235)- --> pi- gamma
+b_1(1235) --> K0S K0S pi+-  replace with b_1(1235)- --> K0S K0S pi-
+b_1(1235) --> K0S K0L pi+-  replace with b_1(1235)- --> K0S K0L pi-
+b_1(1235) --> K^*(892)+- K-+  replace with b_1(1235) --> K^*(892)+ K-
+a_1(1260) --> rho pi  replace with a_1(1260) --> rho(770) pi0
+a_1(1260) --> rho pi  replace with a_1(1260) --> rho+ pi-
+a_1(1260) --> rho pi  replace with a_1(1260)- --> rho- pi0
+a_1(1260) --> rho pi  replace with a_1(1260)- --> rho(770) pi-
+a_1(1260) --> Kbar K  replace with a_1(1260) --> K+ K-
+a_1(1260) --> Kbar K  replace with a_1(1260) --> K0 Kbar0
+a_1(1260) --> pi (pipi)(Swave)  replace with a_1(1260)- --> pi- pi- pi+
+a_1(1260) --> pi (pipi)(Swave)  replace with a_1(1260)- --> pi- pi0 pi0
+a_1(1260) --> pi (pipi)(Swave)  replace with a_1(1260) --> pi0 pi0 pi0
+a_1(1260) --> pi (pipi)(Swave)  replace with a_1(1260) --> pi0 pi- pi+
+a_1(1260) --> pi gamma  replace with a_1(1260) --> pi0 gamma
+a_1(1260) --> pi gamma  replace with a_1(1260)- --> pi- gamma
+a_1(1260) --> eta pi  replace with a_1(1260) --> eta pi0
+a_1(1260) --> eta pi  replace with a_1(1260)- --> eta pi-
+a_1(1260) --> eta^'(958) pi  replace with a_1(1260) --> eta^'(958) pi0
+a_1(1260) --> eta^'(958) pi  replace with a_1(1260)- --> eta^'(958) pi-
+a_1(1260) --> ( rho pi )(S-wave)  replace with skip
+a_1(1260) --> ( rho pi )(D-wave)  replace with skip
+a_1(1260) --> ( rho(1450) pi )(S-wave)  replace with a_1(1260) --> rho(1450) pi0
+a_1(1260) --> ( rho(1450) pi )(S-wave)  replace with a_1(1260) --> rho(1450)- pi+
+a_1(1260) --> ( rho(1450) pi )(S-wave)  replace with a_1(1260)- --> rho(1450)- pi0
+a_1(1260) --> ( rho(1450) pi )(S-wave)  replace with a_1(1260)- --> rho(1450) pi-
+a_1(1260) --> ( rho(1450) pi )(D-wave)  replace with skip
+a_1(1260) --> f_0(980) pi  replace with a_1(1260) --> f_0(980) pi0
+a_1(1260) --> f_0(980) pi  replace with a_1(1260)- --> f_0(980) pi-
+a_1(1260) --> f_0(1370) pi  replace with a_1(1260) --> f_0(1370) pi0
+a_1(1260) --> f_0(1370) pi  replace with a_1(1260)- --> f_0(1370) pi-
+a_1(1260) --> f_2(1270) pi  replace with a_1(1260) --> f_2(1270) pi0
+a_1(1260) --> f_2(1270) pi  replace with a_1(1260)- --> f_2(1270) pi-
+a_1(1260) --> K Kbar^*(892) + c.c.  replace with a_1(1260) --> Kbar^*(892)0 K0
+a_1(1260) --> K Kbar^*(892) + c.c.  replace with a_1(1260) --> K^*(892)+ K-
+a_1(1260) --> pi(1300) pi  replace with a_1(1260) --> pi(1300) pi0
+a_1(1260) --> pi(1300) pi  replace with a_1(1260)- --> pi(1300) pi-
+a_1(1260) --> pi(1300) pi  replace with a_1(1260) --> pi(1300)+ pi-
+a_1(1260) --> pi(1300) pi  replace with a_1(1260)- --> pi(1300)- pi0
+a_1(1260) --> pi(1300) pi  replace with a_1(1260)- --> pi(1300) pi-
+a_1(1260) --> sigma pi  replace with a_1(1260) --> f_0()(500) pi0
+a_1(1260) --> sigma pi  replace with a_1(1260)- --> f_0()(500) pi-
+f_2(1270) --> K Kbar  replace with f_2(1270) --> K+ K-
+f_2(1270) --> K Kbar  replace with f_2(1270) --> K0 Kbar0
+f_2(1270) --> K0 K- pi+ + c.c.  replace with f_2(1270) --> K0 K- pi+
+f_2(1270) --> eta pi pi  replace with f_2(1270) --> eta pi+ pi-
+f_2(1270) --> eta pi pi  replace with f_2(1270) --> eta pi0 pi0
+f_1(1285) --> K Kbar pi  replace with f_1(1285) --> K+ K- pi0
+f_1(1285) --> K Kbar pi  replace with f_1(1285) --> K0 Kbar0 pi0
+f_1(1285) --> rho0 pi0 pi0  replace with f_1(1285) --> rho(770) pi0 pi0
+f_1(1285) --> eta pi pi  replace with f_1(1285) --> eta pi0 pi0
+f_1(1285) --> eta pi pi  replace with f_1(1285) --> eta pi+ pi-
+f_1(1285) --> a_0(980) pi ~[ignoring a(0)(980) --> K Kbar]  replace with f_1(1285) --> a_0(980) pi0
+f_1(1285) --> eta pi pi ~[excluding a(0)(980) pi]  replace with f_1(1285) --> eta pi+ pi-
+f_1(1285) --> eta pi pi ~[excluding a(0)(980) pi]  replace with f_1(1285) --> eta pi0 pi0
+f_1(1285) --> K Kbar^*(892)  replace with f_1(1285) --> K+ K^*(892)-
+f_1(1285) --> K Kbar^*(892)  replace with f_1(1285) --> K0 Kbar^*(892)0
+f_1(1285) --> rho0 rho0  replace with f_1(1285) --> rho(770) rho(770)
+f_1(1285) --> gamma rho0  replace with f_1(1285) --> gamma rho(770)
+f_1(1285) --> 2pi+ 2pi-  replace with f_1(1285) --> pi+ pi+ pi- pi-
+f_1(1285) --> 4pi  replace with f_1(1285) --> pi0 pi0 pi0 pi0
+f_1(1285) --> 4pi  replace with f_1(1285) --> pi0 pi0 pi+ pi-
+f_1(1285) --> rho0 pi+ pi-  replace with f_1(1285) --> rho(770) pi+ pi-
+f_1(1285) --> K Kbar pi0  replace with f_1(1285) --> K+ K- pi0
+f_1(1285) --> K Kbar pi0  replace with f_1(1285) --> K0 Kbar0 pi0
+f_1(1285) --> 2pi+ 2pi- (including rho0 pi+ pi-)  replace with f_1(1285) --> pi+ pi+ pi- pi-
+f_1(1285) --> rho pi pi (excluding rho0 pi+ pi-)  replace with f_1(1285) --> rho(770) pi0 pi0
+f_1(1285) --> rho+- pi-+  replace with f_1(1285) --> rho+ pi-
+eta(1295) --> a_0(980) pi  replace with eta(1295) --> a_0(980) pi0
+eta(1295) --> eta (pipi)(Swave)  replace with skip
+eta(1295) --> eta (pipi)(Swave)  replace with skip
+eta(1295) --> sigma eta  replace with eta(1295) --> f_0()(500) eta
+eta(1295) --> K Kbar pi  replace with eta(1295) --> K+ K- pi0
+eta(1295) --> K Kbar pi  replace with eta(1295) --> K0 Kbar0 pi0
+eta(1295) --> (pipi)(Swave)} eta  replace with skip
+pi(1300) --> rho pi  replace with pi(1300) --> rho+ pi-
+pi(1300) --> rho pi  replace with pi(1300) --> rho(770) pi0
+pi(1300) --> rho pi  replace with pi(1300)- --> rho- pi0
+pi(1300) --> rho pi  replace with pi(1300)- --> rho(770) pi-
+pi(1300) --> f_0(1370) pi  replace with pi(1300) --> f_0(1370) pi0
+pi(1300) --> f_0(1370) pi  replace with pi(1300)- --> f_0(1370) pi-
+pi(1300) --> pi (pipi)(Swave)  replace with pi(1300) --> pi0 pi0 pi0
+pi(1300) --> pi (pipi)(Swave)  replace with pi(1300)- --> pi- pi- pi+
+pi(1300) --> pi (pipi)(Swave)  replace with pi(1300) --> pi0 pi+ pi-
+pi(1300) --> pi (pipi)(Swave)  replace with pi(1300)- --> pi- pi0 pi0
+a_2(1320) --> 3 pi  replace with a_2(1320) --> pi0 pi0 pi0
+a_2(1320) --> 3 pi  replace with a_2(1320) --> pi0 pi+ pi-
+a_2(1320) --> 3 pi  replace with a_2(1320)- --> pi- pi0 pi0
+a_2(1320) --> 3 pi  replace with a_2(1320)- --> pi- pi+ pi-
+a_2(1320) --> K Kbar  replace with a_2(1320) --> K0 Kbar0
+a_2(1320) --> K Kbar  replace with a_2(1320) --> K+ K-
+a_2(1320) --> eta pi  replace with a_2(1320) --> eta pi0
+a_2(1320) --> eta pi  replace with a_2(1320)- --> eta pi-
+a_2(1320) --> omega pi pi  replace with a_2(1320) --> omega pi+ pi-
+a_2(1320) --> omega pi pi  replace with a_2(1320) --> omega pi0 pi0
+a_2(1320) --> pi+- gamma  replace with a_2(1320)- --> pi- gamma
+a_2(1320) --> pi+- gamma  replace with a_2(1320)- --> pi- pi- pi+
+a_2(1320) --> eta^'(958) pi  replace with a_2(1320) --> eta^'(958) pi0
+a_2(1320) --> eta^'(958) pi  replace with a_2(1320)- --> eta^'(958) pi-
+a_2(1320) --> rho(770) pi  replace with a_2(1320) --> rho(770) pi0
+a_2(1320) --> rho(770) pi  replace with a_2(1320)- --> rho(770) pi-
+a_2(1320) --> f_2(1270) pi  replace with a_2(1320) --> f_2(1270) pi0
+a_2(1320) --> f_2(1270) pi  replace with a_2(1320)- --> f_2(1270) pi-
+a_2(1320) --> rho(1450) pi  replace with a_2(1320) --> rho(1450) pi0
+a_2(1320) --> rho(1450) pi  replace with a_2(1320)- --> rho(1450) pi-
+a_2(1320) --> rho(1450) pi  replace with a_2(1320) --> rho(1450)- pi+
+a_2(1320) --> rho(1450) pi  replace with a_2(1320)- --> rho(1450)- pi0
+f_0(1370) --> pi pi  replace with f_0(1370) --> pi+ pi-
+f_0(1370) --> pi pi  replace with f_0(1370) --> pi0 pi0
+f_0(1370) --> 4pi0  replace with f_0(1370) --> pi0 pi0 pi0 pi0
+f_0(1370) --> 2pi+ 2pi-  replace with f_0(1370) --> pi+ pi+ pi- pi-
+f_0(1370) --> pi+ pi- 2pi0  replace with f_0(1370) --> pi+ pi- pi0 pi0
+f_0(1370) --> 6pi  replace with f_0(1370) --> pi+ pi+ pi+ pi- pi- pi-
+f_0(1370) --> 6pi  replace with f_0(1370) --> pi+ pi+ pi- pi- pi0 pi0
+f_0(1370) --> 6pi  replace with f_0(1370) --> pi+ pi- pi0 pi0 pi0 pi0
+f_0(1370) --> 6pi  replace with f_0(1370) --> pi0 pi0 pi0 pi0 pi0 pi0
+f_0(1370) --> 2omega  replace with f_0(1370) --> omega omega
+f_0(1370) --> 4pi  replace with f_0(1370) --> pi+ pi- pi+ pi-
+f_0(1370) --> 4pi  replace with f_0(1370) --> pi+ pi- pi0 pi0
+f_0(1370) --> 4pi  replace with f_0(1370) --> pi0 pi0 pi0 pi0
+f_0(1370) --> K Kbar  replace with f_0(1370) --> K+ K-
+f_0(1370) --> K Kbar  replace with f_0(1370) --> K0 Kbar0
+f_0(1370) --> rho rho  replace with f_0(1370) --> rho+ rho-
+f_0(1370) --> rho rho  replace with f_0(1370) --> rho(770) rho(770)
+f_0(1370) --> 2(pipi)(Swave)  replace with skip
+f_0(1370) --> pi(1300) pi  replace with f_0(1370) --> pi(1300) pi0
+f_0(1370) --> pi(1300) pi  replace with f_0(1370) --> pi(1300)- pi+
+f_0(1370) --> a_1(1260) pi  replace with f_0(1370) --> a_1(1260) pi0
+f_0(1370) --> a_1(1260) pi  replace with f_0(1370) --> a_1(1260)- pi+
+f_0(1370) --> K Kbar n pi  replace with f_0(1370) --> K+ K- n pi0
+f_0(1370) --> K Kbar n pi  replace with f_0(1370) --> K0 Kbar0 n pi0
+f_0(1370) --> 6 pi  replace with skip
+h_1(1380) --> K Kbar^*(892) + c.c.  replace with h_1(1380) --> K+ K^*(892)-
+h_1(1380) --> K Kbar^*(892) + c.c.  replace with h_1(1380) --> K0 Kbar^*(892)0
+pi_1(1400) --> rho pi  replace with pi_1(1400) --> rho+ pi-
+pi_1(1400) --> rho pi  replace with pi_1(1400) --> rho(770) pi0
+pi_1(1400) --> eta^'(958) pi  replace with pi_1(1400) --> eta^'(958) pi0
+pi_1(1400) --> eta^'(958) pi  replace with pi_1(1400)- --> eta^'(958) pi-
+eta(1405) --> K Kbar^*(892) + c.c.  replace with eta(1405) --> K+ K^*(892)-
+eta(1405) --> K Kbar^*(892) + c.c.  replace with eta(1405) --> K^*(892)0 Kbar0
+eta(1405) --> K Kbar pi  replace with eta(1405) --> K+ K- pi0
+eta(1405) --> K Kbar pi  replace with eta(1405) --> K0 Kbar0 pi0
+eta(1405) --> a_0(980) pi  replace with eta(1405) --> a_0(980) pi0
+eta(1405) --> eta pi pi  replace with eta(1405) --> eta pi+ pi-
+eta(1405) --> eta pi pi  replace with eta(1405) --> eta pi0 pi0
+eta(1405) --> 4pi  replace with eta(1405) --> pi+ pi- pi+ pi-
+eta(1405) --> 4pi  replace with eta(1405) --> pi+ pi- pi0 pi0
+eta(1405) --> 4pi  replace with eta(1405) --> pi0 pi0 pi0 pi0
+eta(1405) --> rho0 gamma  replace with eta(1405) --> rho(770) gamma
+eta(1405) --> eta (pipi)(Swave)  replace with eta(1405) --> eta pi+ pi-
+eta(1405) --> eta (pipi)(Swave)  replace with eta(1405) --> eta pi0 pi0
+eta(1405) --> K^*(892) K  replace with eta(1405) --> K^*(892)0 K0
+eta(1405) --> K^*(892) K  replace with eta(1405) --> K^*(892)+ K-
+eta(1405) --> rho rho  replace with eta(1405) --> rho+ rho-
+eta(1405) --> rho rho  replace with eta(1405) --> rho(770) rho(770)
+f_1(1420) --> K Kbar^*(892) + c.c.  replace with f_1(1420) --> K+ K^*(892)-
+f_1(1420) --> K Kbar^*(892) + c.c.  replace with f_1(1420) --> K0 Kbar^*(892)0
+f_1(1420) --> K Kbar pi  replace with f_1(1420) --> K+ K- pi0
+f_1(1420) --> K Kbar pi  replace with f_1(1420) --> K0 Kbar0 pi0
+f_1(1420) --> pi pi rho  replace with f_1(1420) --> pi0 pi0 rho(770)
+f_1(1420) --> pi pi rho  replace with f_1(1420) --> pi+ pi- rho(770)
+f_1(1420) --> pi pi rho  replace with f_1(1420) --> pi+ pi0 rho+
+f_1(1420) --> a_0(980) pi  replace with f_1(1420) --> a_0(980) pi0
+f_1(1420) --> eta pi pi  replace with f_1(1420) --> eta pi+ pi-
+f_1(1420) --> eta pi pi  replace with f_1(1420) --> eta pi0 pi0
+f_1(1420) --> 4pi  replace with f_1(1420) --> pi0 pi0 pi0 pi0
+f_1(1420) --> 4pi  replace with f_1(1420) --> pi+ pi- pi0 pi0
+f_1(1420) --> 4pi  replace with f_1(1420) --> pi+ pi- pi+ pi-
+f_1(1420) --> rho0 gamma  replace with f_1(1420) --> rho(770) gamma
+omega(1420) --> rho pi  replace with omega(1420) --> rho(770) pi0
+omega(1420) --> rho pi  replace with omega(1420) --> rho+ pi-
+omega(1420) --> omega pi pi  replace with omega(1420) --> omega pi+ pi-
+omega(1420) --> omega pi pi  replace with omega(1420) --> omega pi0 pi0
+omega(1420) --> b_1(1235) pi  replace with omega(1420) --> b_1(1235)+ pi-
+omega(1420) --> b_1(1235) pi  replace with omega(1420) --> b_1(1235) pi0
+f_2(1430) --> K Kbar  replace with f_2(1430) --> K+ K-
+f_2(1430) --> K Kbar  replace with f_2(1430) --> K0 Kbar0
+f_2(1430) --> pi pi  replace with f_2(1430) --> pi+ pi-
+f_2(1430) --> pi pi  replace with f_2(1430) --> pi0 pi0
+a_0(1450) --> pi eta  replace with a_0(1450) --> pi0 eta
+a_0(1450) --> pi eta^'(958)  replace with a_0(1450) --> pi0 eta^'(958)
+a_0(1450) --> K Kbar  replace with a_0(1450) --> K+ K-
+a_0(1450) --> K Kbar  replace with a_0(1450) --> K0 Kbar0
+a_0(1450) --> omega pi pi  replace with a_0(1450) --> omega pi+ pi-
+a_0(1450) --> omega pi pi  replace with a_0(1450) --> omega pi0 pi0
+a_0(1450) --> a_0(980) pi pi  replace with a_0(1450) --> a_0(980) pi+ pi-
+a_0(1450) --> a_0(980) pi pi  replace with a_0(1450) --> a_0(980) pi0 pi0
+rho(1450) --> pi pi  replace with rho(1450) --> pi+ pi-
+rho(1450) --> pi pi  replace with rho(1450) --> pi0 pi0
+rho(1450) --> 4pi  replace with rho(1450) --> pi+ pi- pi+ pi-
+rho(1450) --> 4pi  replace with rho(1450) --> pi0 pi0 pi+ pi-
+rho(1450) --> 4pi  replace with rho(1450) --> pi0 pi0 pi0 pi0
+rho(1450) --> eta rho  replace with rho(1450) --> eta rho(770)
+rho(1450) --> eta rho  replace with rho(1450)- --> eta rho-
+rho(1450) --> phi pi  replace with rho(1450) --> phi(1020) pi0
+rho(1450) --> phi pi  replace with rho(1450)- --> phi(1020) pi-
+rho(1450) --> omega pi  replace with rho(1450) --> omega pi0
+rho(1450) --> omega pi  replace with rho(1450) --> omega pi-
+rho(1450) --> K Kbar  replace with rho(1450) --> K+ K-
+rho(1450) --> K Kbar  replace with rho(1450) --> K0 Kbar0
+rho(1450) --> a_2(1320) pi  replace with rho(1450) --> a_2(1320) pi0
+rho(1450) --> a_1(1260) pi  replace with rho(1450) --> a_1(1260) pi0
+rho(1450) --> h_1(1170) pi  replace with rho(1450) --> h_1(1170) pi0
+rho(1450) --> pi(1300) pi  replace with rho(1450) --> pi(1300) pi0
+rho(1450) --> pi(1300) pi  replace with rho(1450) --> pi(1300)+ pi-
+rho(1450) --> rho rho  replace with rho(1450) --> rho+ rho-
+rho(1450) --> rho rho  replace with rho(1450) --> rho(770) rho(770)
+rho(1450) --> rho (pipi)(Swave)  replace with rho(1450) --> rho(770) pi+ pi-
+rho(1450) --> rho (pipi)(Swave)  replace with rho(1450) --> rho(770) pi0 pi0
+rho(1450) --> K Kbar^*(892) + c.c.  replace with rho(1450) --> K+ K^*(892)-
+rho(1450) --> K Kbar^*(892) + c.c.  replace with rho(1450) --> K0 Kbar^*(892)0
+rho(1450) --> f_0(500) gamma  replace with rho(1450) --> f_0()(500) gamma
+eta(1475) --> K Kbar^*(892) + c.c.  replace with eta(1475) --> K+ K^*(892)-
+eta(1475) --> K Kbar^*(892) + c.c.  replace with eta(1475) --> Kbar0 K^*(892)0
+eta(1475) --> K Kbar pi  replace with eta(1475) --> K0 Kbar0 pi0
+eta(1475) --> K Kbar pi  replace with eta(1475) --> K+ K- pi0
+eta(1475) --> a_0(980) pi  replace with eta(1475) --> a_0(980) pi0
+f_0(1500) --> 2pi0  replace with f_0(1500) --> pi0 pi0
+f_0(1500) --> K Kbar  replace with f_0(1500) --> K+ K-
+f_0(1500) --> K Kbar  replace with f_0(1500) --> K0 Kbar0
+f_0(1500) --> 4pi0  replace with f_0(1500) --> pi0 pi0 pi0 pi0
+f_0(1500) --> 2pi+ 2pi-  replace with f_0(1500) --> pi+ pi- pi+ pi-
+f_0(1500) --> 4pi  replace with f_0(1500) --> pi+ pi- pi0 pi0
+f_0(1500) --> pi pi  replace with f_0(1500) --> pi+ pi-
+f_0(1500) --> pi pi  replace with f_0(1500) --> pi0 pi0
+f_0(1500) --> 2(pipi)(Swave)  replace with skip
+f_0(1500) --> rho rho  replace with f_0(1500) --> rho+ rho-
+f_0(1500) --> rho rho  replace with f_0(1500) --> rho(770) rho(770)
+f_0(1500) --> pi(1300) pi  replace with f_0(1500) --> pi(1300) pi0
+f_0(1500) --> pi(1300) pi  replace with f_0(1500) --> pi(1300)+ pi-
+f_0(1500) --> a_1(1260) pi  replace with f_0(1500) --> a_1(1260)- pi+
+f_0(1500) --> a_1(1260) pi  replace with f_0(1500) --> a_1(1260) pi0
+f_1(1510) --> K Kbar^*(892) + c.c.  replace with f_1(1510) --> K+ K^*(892)-
+f_1(1510) --> K Kbar^*(892) + c.c.  replace with f_1(1510) --> Kbar0 K^*(892)0
+f_2^'(1525) --> pi pi  replace with f_2^'(1525) --> pi+ pi-
+f_2^'(1525) --> pi pi  replace with f_2^'(1525) --> pi0 pi0
+f_2^'(1525) --> K Kbar  replace with f_2^'(1525) --> K+ K-
+f_2^'(1525) --> K Kbar  replace with f_2^'(1525) --> K0 Kbar0
+tau- --> K^*(892)- >=0(h0not=K(S)0) nu_tau  replace with skip
+f_0(400-1200) --> K+ K-  replace with skip
+f_0(400-1200) --> K0 Kbar0  replace with skip
+f_0(400-1200) --> K Kbar  replace with skip
+f_0(400-1200) --> eta eta  replace with skip
+f_0(400-1200) --> e+ e-  replace with skip
+f_0(400-1200) --> gamma gamma  replace with skip
+b_1(1235) --> (KKbar)+- pi0  replace with b_1(1235) --> K+ K- pi0
+b_1(1235) --> (KKbar)+- pi0  replace with b_1(1235) --> K0 Kbar0 pi0tau- --> phi pi- nu_tau  replace with tau- --> phi(1020) pi- nu_tau
+f_2^'(1525) --> pi K+ K-   replace with f_2^'(1525) --> pi0 K+ K-
+f_2^'(1525) --> pi K0 Kbar0   replace with f_2^'(1525) --> pi0 K0 Kbar0
+f_2(1565) --> rho0 rho0  replace with f_2(1565) --> rho(770) rho(770)
+f_2(1565) --> pi+ pi-+ pi+ pi--  replace with f_2(1565) --> pi+ pi-
+f_2(1565) --> a_2(1320) pi  replace with f_2(1565) --> a_2(1320) pi0
+f_2(1565) --> a_2(1320) pi  replace with f_2(1565) --> a_2(1320)- pi+
+rho(1570) --> phi(1020) pi  replace with rho(1570) --> phi(1020) pi0
+rho(1570) --> omega pi  replace with rho(1570) --> omega pi0
+pi_1(1600) --> pi+ pi- pi  replace with pi_1(1600) --> pi+ pi- pi0
+pi_1(1600) --> pi+ pi- pi  replace with pi_1(1600)- --> pi- pi+ pi-
+pi_1(1600) --> pi0 pi0 pi  replace with pi_1(1600) --> pi0 pi0 pi0
+pi_1(1600) --> pi0 pi0 pi  replace with pi_1(1600)- --> pi0 pi0 pi-
+pi_1(1600) --> b_1(1235) pi  replace with pi_1(1600) --> b_1(1235) pi0
+pi_1(1600) --> b_1(1235) pi  replace with pi_1(1600)- --> b_1(1235)- pi0
+pi_1(1600) --> b_1(1235) pi  replace with pi_1(1600)- --> b_1(1235) pi-
+pi_1(1600) --> b_1(1235) pi  replace with pi_1(1600) --> b_1(1235)- pi+
+pi_1(1600) --> f_1(1285) pi  replace with pi_1(1600) --> f_1(1285) pi0
+pi_1(1600) --> f_1(1285) pi  replace with pi_1(1600)- --> f_1(1285) pi-
+a_1(1640) --> f_2(1270) pi  replace with a_1(1640) --> f_2(1270) pi0
+a_1(1640) --> f_0()(500) pi  replace with a_1(1640) --> f_0()(500) pi0
+a_1(1640) --> pi+ pi- pi  replace with a_1(1640) --> pi+ pi- pi0
+a_1(1640) --> pi0 pi0 pi  replace with a_1(1640) --> pi0 pi0 pi0
+a_1(1640) --> rho pi(D-wave)  replace with skip
+a_1(1640) --> f_1(1285) pi  replace with a_1(1640) --> f_1(1285) pi0
+a_1(1640) --> rho pi(S-wave)  replace with skip
+eta_2(1645) --> a_2(1320) pi  replace with eta_2(1645) --> a_2(1320) pi0
+eta_2(1645) --> K+ K-  pi  replace with eta_2(1645) --> K+ K- pi0
+eta_2(1645) --> K0 Kbar0  pi  replace with eta_2(1645) --> K0 Kbar0 pi0
+eta_2(1645) --> K^* Kbar  replace with eta_2(1645) --> K^*(892)0 Kbar0
+eta_2(1645) --> K^* Kbar  replace with eta_2(1645) --> K^*(892)+ K-
+eta_2(1645) --> K^* Kbar  replace with eta_2(1645) --> K^*(1410) Kbar0
+eta_2(1645) --> K^* Kbar  replace with eta_2(1645) --> K^*(1410)+ K-eta_2(1645) --> a_0(980) pi  replace with eta_2(1645) --> a_0(980) pi0
+omega(1650) --> rho pi  replace with omega(1650) --> rho+ pi-
+omega(1650) --> rho pi  replace with omega(1650) --> rho(770) pi0
+omega_3(1670) --> rho pi  replace with omega_3(1670) --> rho+ pi-
+omega_3(1670) --> rho pi  replace with omega_3(1670) --> rho(770) pi0
+omega_3(1670) --> b_1(1235) pi  replace with omega_3(1670) --> b_1(1235) pi0
+omega_3(1670) --> b_1(1235) pi  replace with omega_3(1670) --> b_1(1235)+ pi-
+omega_3(1670) --> 5pi  replace with omega_3(1670) --> pi0 pi+ pi- pi+ pi-
+omega_3(1670) --> 5pi  replace with omega_3(1670) --> pi0 pi0 pi0 pi+ pi-
+omega_3(1670) --> 5pi  replace with omega_3(1670) --> pi0 pi0 pi0 pi0 pi0
+eta_2(1645) --> a_0(980) pi  replace with eta_2(1645) --> a_0(980) pi0
+pi_2(1670) --> rho pi  replace with pi_2(1670) --> rho- pi+
+pi_2(1670) --> rho pi  replace with pi_2(1670) --> rho(770) pi0
+pi_2(1670) --> eta pi  replace with pi_2(1670) --> eta pi0
+pi_2(1670) --> eta pi  replace with pi_2(1670)- --> eta pi-
+pi_2(1670) --> pi+- pi+ pi+ pi- pi-  replace with pi_2(1670)- --> pi- pi+ pi+ pi- pi-
+pi_2(1670) --> K+ K-  pi  replace with pi_2(1670) --> K+ K- pi0
+pi_2(1670) --> K+ K-  pi  replace with pi_2(1670)- --> K+ K- pi-
+pi_2(1670) --> K0 Kbar0  pi  replace with pi_2(1670) --> K0 Kbar0 pi0
+pi_2(1670) --> K0 Kbar0  pi  replace with pi_2(1670)- --> K0 Kbar0 pi-
+pi_2(1670) --> f_2(1270) pi  replace with pi_2(1670) --> f_2(1270) pi0
+pi_2(1670) --> f_2(1270) pi  replace with pi_2(1670)- --> f_2(1270) pi-
+pi_2(1670) --> pi+- pi+ pi-  replace with pi_2(1670)- --> pi- pi+ pi-
+pi_2(1670) --> (pipi)(Swave)  replace with skip
+pi_2(1670) --> f_0()(500) pi  replace with pi_2(1670) --> f_0()(500) pi0
+pi_2(1670) --> f_0()(500) pi  replace with pi_2(1670)- --> f_0()(500) pi-
+pi_2(1670) --> omega rho  replace with pi_2(1670) --> omega rho(770)
+pi_2(1670) --> omega rho  replace with pi_2(1670)- --> omega rho-
+pi_2(1670) --> rho(1450) pi  replace with pi_2(1670)- --> rho(1450) pi-
+pi_2(1670) --> rho(1450) pi  replace with pi_2(1670) --> rho(1450) pi0
+pi_2(1670) --> b_1(1235) pi  replace with pi_2(1670) --> b_1(1235) pi0
+pi_2(1670) --> b_1(1235) pi  replace with pi_2(1670) --> b_1(1235)- pi+
+pi_2(1670) --> b_1(1235) pi  replace with pi_2(1670)- --> b_1(1235)- pi0
+pi_2(1670) --> b_1(1235) pi  replace with pi_2(1670)- --> b_1(1235) pi-
+pi_2(1670) --> f_1(1285) pi  replace with pi_2(1670) --> f_1(1285) pi0
+pi_2(1670) --> f_1(1285) pi  replace with pi_2(1670)- --> f_1(1285) pi-
+pi_2(1670) --> a_2(1320) pi  replace with pi_2(1670) --> a_2(1320) pi0
+pi_2(1670) --> a_2(1320) pi  replace with pi_2(1670) --> a_2(1320)- pi+
+pi_2(1670) --> a_2(1320) pi  replace with pi_2(1670)- --> a_2(1320)- pi0
+pi_2(1670) --> a_2(1320) pi  replace with pi_2(1670)- --> a_2(1320) pi-
+phi(1680) --> K0S K pi  replace with phi(1680) --> K0S K+ pi-
+phi(1680) --> K0S K pi  replace with phi(1680) --> K0S K0 pi0
+rho_3(1690) --> K+ K-  pi  replace with rho_3(1690) --> K+ K- pi0
+rho_3(1690) --> K+ K-  pi  replace with rho_3(1690)- --> K+ K- pi-
+rho_3(1690) --> K0 Kbar0  pi  replace with rho_3(1690) --> K0 Kbar0 pi0
+rho_3(1690) --> K0 Kbar0  pi  replace with rho_3(1690)- --> K0 Kbar0 pi-
+rho_3(1690) --> pi+ pi- rho  replace with rho_3(1690) --> pi+ pi- rho(770)
+rho_3(1690) --> pi+ pi- rho  replace with rho_3(1690)- --> pi+ pi- rho-
+rho_3(1690) --> pi0 pi0 rho  replace with rho_3(1690) --> pi0 pi0 rho(770)
+rho_3(1690) --> pi0 pi0 rho  replace with rho_3(1690)- --> pi0 pi0 rho-
+rho_3(1690) --> a_2(1320) pi  replace with rho_3(1690) --> a_2(1320) pi0
+rho_3(1690) --> a_2(1320) pi  replace with rho_3(1690) --> a_2(1320)- pi+
+rho_3(1690) --> a_2(1320) pi  replace with rho_3(1690)- --> a_2(1320) pi-
+rho_3(1690) --> a_2(1320) pi  replace with rho_3(1690)- --> a_2(1320)- pi0
+rho_3(1690) --> omega pi  replace with rho_3(1690) --> omega pi0
+rho_3(1690) --> rho rho  replace with rho_3(1690) --> rho(770) rho(770)
+rho_3(1690) --> rho rho  replace with rho_3(1690) --> rho+ rho-
+rho_3(1690) --> phi(1020) pi  replace with rho_3(1690) --> phi(1020) pi0
+rho_3(1690) --> phi(1020) pi  replace with rho_3(1690)- --> phi(1020) pi-
+rho_3(1690) --> eta pi  replace with rho_3(1690) --> eta pi0
+rho_3(1690) --> eta pi  replace with rho_3(1690)- --> eta pi-
+rho_3(1690) --> pi+- pi+ pi- pi0  replace with rho_3(1690)- --> pi- pi+ pi- pi0
+rho_3(1690) --> pi+- pi+ pi+ pi- pi- pi0  replace with rho_3(1690)- --> pi- pi+ pi+ pi- pi- pi0
+rho(1700) --> 2(pi+ pi-)  replace with rho(1700) --> pi+ pi- pi+ pi-
+rho(1700) --> rho+- pi-+ pi0  replace with rho(1700) --> rho+ pi- pi0
+rho(1700) --> eta rho  replace with rho(1700) --> eta rho(770)
+rho(1700) --> rho pi+ pi-  replace with rho(1700) --> rho(770) pi+ pi-
+rho(1700) --> rho pi0 pi0  replace with rho(1700) --> rho(770) pi0 pi0
+rho(1700) --> a_2(1320) pi  replace with rho(1700) --> a_2(1320)+ pi-
+rho(1700) --> a_2(1320) pi  replace with rho(1700) --> a_2(1320) pi0
+rho(1700) --> a_1(1260) pi  replace with rho(1700) --> a_1(1260)+ pi-
+rho(1700) --> a_1(1260) pi  replace with rho(1700) --> a_1(1260) pi0
+rho(1700) --> h_1(1170) pi  replace with rho(1700) --> h_1(1170) pi0
+rho(1700) --> pi(1300) pi  replace with rho(1700) --> pi(1300)+ pi-
+rho(1700) --> pi(1300) pi  replace with rho(1700) --> pi(1300) pi0
+rho(1700) --> rho rho  replace with rho(1700) --> rho(770) rho(770)
+rho(1700) --> rho rho  replace with rho(1700) --> rho+ rho-
+a_2(1700) --> rho pi  replace with a_2(1700) --> rho(770) pi0
+a_2(1700) --> rho pi  replace with a_2(1700) --> rho+ pi-
+a_2(1700) --> f_2(1270) pi  replace with a_2(1700) --> f_2(1270) pi0
+a_2(1700) --> eta pi  replace with a_2(1700) --> eta pi0
+a_2(1700) --> omega rho  replace with a_2(1700) --> omega rho(770)
+f_0(1710) --> rho rho  replace with f_0(1710) --> rho(770) rho(770)
+f_0(1710) --> rho rho  replace with f_0(1710) --> rho+ rho-
+pi(1800) --> rho pi-  replace with pi(1800) --> rho+ pi-
+pi(1800) --> K_0^*(1430) K-  replace with pi(1800) --> K_0()^*(1430) K-
+pi(1800) --> K^*(892) K-  replace with pi(1800) --> K^*(892)0 K-
+pi(1800) --> K^*(892) K-  replace with pi(1800) --> K^*(892)+ K-
+pi(1800) --> f_0(500) pi-  replace with pi(1800) --> f_0()(500) pi-
+pi(1800) --> f_2(1270) pi  replace with pi(1800) --> f_2(1270) pi0
+pi(1800) --> f_2(1270) pi  replace with pi(1800) --> f_2(1270) pi-
+f_2(1810) --> 4pi0  replace with f_2(1810) --> pi0 pi0 pi0 pi0
+eta_2(1870) --> a_0(980) pi  replace with eta_2(1870) --> a_0(980) pi0
+eta_2(1870) --> a_2(1320) pi  replace with eta_2(1870) --> a_2(1320)+ pi-
+eta_2(1870) --> a_2(1320) pi  replace with eta_2(1870) --> a_2(1320) pi0
+pi_2(1880) --> f_0(1500) pi  replace with pi_2(1880) --> f_0(1500) pi+
+pi_2(1880) --> f_0(1500) pi  replace with pi_2(1880) --> f_0(1500) pi0
+pi_2(1880) --> f_1(1285) pi  replace with pi_2(1880) --> f_1(1285) pi+
+pi_2(1880) --> f_1(1285) pi  replace with pi_2(1880) --> f_1(1285) pi0
+rho(1900) --> 3pi+ 3pi-  replace with rho(1900) --> pi+ pi+ pi+ pi- pi- pi-
+rho(1900) --> Nbar N  replace with rho(1900) --> pbar p
+rho(1900) --> Nbar N  replace with rho(1900) --> nbar n
+rho(1900) --> 6pi  replace with rho(1900) --> pi0 pi0 pi0 pi0 pi0 pi0
+rho(1900) --> 6pi  replace with rho(1900) --> pi0 pi0 pi0 pi0 pi+ pi-
+rho(1900) --> 6pi  replace with rho(1900) --> pi0 pi0 pi+ pi- pi+ pi-
+rho(1900) --> 6pi  replace with rho(1900) --> pi+ pi- pi+ pi- pi+ pi-
+rho(1900) --> phi(1020) pi  replace with rho(1900) --> phi(1020) pi0
+rho(1900) --> phi(1020) pi  replace with rho(1900) --> phi(1020) pi-
+rho(1900) --> phi(1020) pi  replace with rho(1900) --> phi(1020) pi+
+f_2(1910) --> 4pi0  replace with f_2(1910) --> pi0 pi0 pi0 pi0
+f_2(1910) --> rho rho  replace with f_2(1910) --> rho(770) rho(770)
+f_2(1910) --> rho rho  replace with f_2(1910) --> rho+ rho-
+f_2(1910) --> a_2(1320) pi  replace with f_2(1910) --> a_2(1320)+ pi-
+f_2(1910) --> a_2(1320) pi  replace with f_2(1910) --> a_2(1320) pi0
+f_2(1950) --> K^*(892) Kbar^*(892)  replace with f_2(1950) --> K^*(892)0 Kbar^*(892)0
+f_2(1950) --> K^*(892) Kbar^*(892)  replace with f_2(1950) --> K^*(892)+ K^*(892)-
+f_2(1950) --> a_2(1320) pi  replace with f_2(1950) --> a_2(1320)+ pi-
+f_2(1950) --> a_2(1320) pi  replace with f_2(1950) --> a_2(1320) pi0
+f_0(2020) --> rho pi+ pi-  replace with f_0(2020) --> rho(770) pi+ pi-
+f_0(2020) --> rho pi0 pi0  replace with f_0(2020) --> rho(770) pi0 pi0
+f_0(2020) --> rho rho  replace with f_0(2020) --> rho(770) rho(770)
+f_0(2020) --> rho rho  replace with f_0(2020) --> rho+ rho-
+a_4(2040) --> eta^'(958) pi  replace with a_4(2040) --> eta^'(958) pi+
+a_4(2040) --> eta^'(958) pi  replace with a_4(2040) --> eta^'(958) pi0
+a_4(2040) --> rho pi  replace with a_4(2040) --> rho+ pi-
+a_4(2040) --> rho pi  replace with a_4(2040) --> rho(770) pi0
+a_4(2040) --> f_2(1270) pi  replace with a_4(2040) --> f_2(1270) pi0
+a_4(2040) --> f_2(1270) pi  replace with a_4(2040) --> f_2(1270) pi-
+a_4(2040) --> omega rho  replace with a_4(2040) --> omega rho(770)
+a_4(2040) --> omega rho  replace with a_4(2040) --> omega rho-
+f_4(2050) --> 4pi0  replace with f_4(2050) --> pi0 pi0 pi0 pi0
+f_4(2050) --> a_2(1320) pi  replace with f_4(2050) --> a_2(1320) pi0
+f_4(2050) --> a_2(1320) pi  replace with f_4(2050) --> a_2(1320)- pi+
+pi_2(2100) --> rho pi  replace with pi_2(2100) --> rho- pi+
+pi_2(2100) --> rho pi  replace with pi_2(2100) --> rho(770) pi0
+pi_2(2100) --> f_2(1270) pi  replace with pi_2(2100) --> f_2(1270) pi+
+pi_2(2100) --> f_2(1270) pi  replace with pi_2(2100) --> f_2(1270) pi0
+pi_2(2100) --> (pi pi)(s) pi  replace with skip
+f_2(2150) --> a_2(1320) pi  replace with f_2(2150) --> a_2(1320) pi0
+f_2(2150) --> a_2(1320) pi  replace with f_2(2150) --> a_2(1320)- pi+
+rho(2150) --> 3(pi+ pi-)  replace with rho(2150) --> pi+ pi- pi+ pi- pi+ pi-
+rho(2150) --> 2(pi+ pi- pi0)  replace with rho(2150) --> pi+ pi- pi0 pi+ pi- pi0
