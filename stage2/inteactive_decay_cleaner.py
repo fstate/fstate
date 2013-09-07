@@ -12,6 +12,8 @@ import re
 #from fixes import fixlist, multiplexers
 
 from mfix import *
+GetParticles()
+GetExceptions()
 
 def process(decay):
 
@@ -28,6 +30,7 @@ def process(decay):
 
 decays = [re.sub(r'(\([0-9.e-]*, [0-9.e-]*\))', r'\1|', x).rstrip()
           for x in open('../data/decays.txt').readlines()]  # branching check
+
 
 for decay in decays:
     process(decay)

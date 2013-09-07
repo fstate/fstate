@@ -72,13 +72,13 @@ def AutomaticFixes(decay, branching):
         else:
             NormalRecord(new_decay, branching)
 
-    if '3pi' in decay:
-        new_decay = decay.replace('3pi', 'pi+ pi- pi0')
+    if ' 3pi ' in decay:
+        new_decay = decay.replace(' 3pi ', ' pi+ pi- pi0 ')
         if Wrong(new_decay):
             ManualFix(new_decay, branching)
         else:
             NormalRecord(new_decay, branching)
-        new_decay = decay.replace('3pi', 'pi0 pi0 pi0')
+        new_decay = decay.replace(' 3pi ', ' pi0 pi0 pi0 ')
         if Wrong(new_decay):
             ManualFix(new_decay, branching)
         else:
@@ -95,6 +95,59 @@ def AutomaticFixes(decay, branching):
             ManualFix(new_decay, branching)
         else:
             NormalRecord(new_decay, branching)
+
+    if ' lepton+ nu_lepton ' in decay:
+        new_decay = decay.replace(' lepton+ nu_lepton ', ' e+ nu_e ')
+        if Wrong(new_decay):
+            ManualFix(new_decay, branching)
+        else:
+            NormalRecord(new_decay, branching)
+        new_decay = decay.replace(' lepton+ nu_lepton ', ' mu+ nu_mu ')
+        if Wrong(new_decay):
+            ManualFix(new_decay, branching)
+        else:
+            NormalRecord(new_decay, branching)
+        new_decay = decay.replace(' lepton+ nu_lepton ', ' tau+ nu_tau ')
+        if Wrong(new_decay):
+            ManualFix(new_decay, branching)
+        else:
+            NormalRecord(new_decay, branching)
+
+    if ' lepton- nubar_lepton ' in decay:
+        new_decay = decay.replace(' lepton- nubar_lepton ', ' e+ nu_e ')
+        if Wrong(new_decay):
+            ManualFix(new_decay, branching)
+        else:
+            NormalRecord(new_decay, branching)
+        new_decay = decay.replace(' lepton- nubar_lepton ', ' mu+ nu_mu ')
+        if Wrong(new_decay):
+            ManualFix(new_decay, branching)
+        else:
+            NormalRecord(new_decay, branching)
+        new_decay = decay.replace(' lepton- nubar_lepton ', ' tau+ nu_tau ')
+        if Wrong(new_decay):
+            ManualFix(new_decay, branching)
+        else:
+            NormalRecord(new_decay, branching)
+
+
+    if ' lepton+ lepton- ' in decay:
+        new_decay = decay.replace(' lepton+ lepton- ', ' e+ e- ')
+        if Wrong(new_decay):
+            ManualFix(new_decay, branching)
+        else:
+            NormalRecord(new_decay, branching)
+        new_decay = decay.replace(' lepton+ lepton- ', ' mu+ mu- ')
+        if Wrong(new_decay):
+            ManualFix(new_decay, branching)
+        else:
+            NormalRecord(new_decay, branching)
+        new_decay = decay.replace(' lepton+ lepton- ', ' tau+ tau- ')
+        if Wrong(new_decay):
+            ManualFix(new_decay, branching)
+        else:
+            NormalRecord(new_decay, branching)
+
 
     if '4pi' in decay:
         new_decay = decay.replace('4pi', 'pi+ pi- pi+ pi-')
