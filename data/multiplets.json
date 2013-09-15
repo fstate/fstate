@@ -1197,11 +1197,12 @@
     ],
     "antimultiplet": "B_1(H)"
   },
-  "p": {
+  "N": {
     "particles": [
-      "p+"
+      "p+",
+      "n0"
     ],
-    "antimultiplet": "p~"
+    "antimultiplet": "N~"
   },
   "D*(2007)": {
     "particles": [
@@ -2380,12 +2381,6 @@
     ],
     "antimultiplet": "Omega_b"
   },
-  "n": {
-    "particles": [
-      "n0"
-    ],
-    "antimultiplet": "n~"
-  },
   "Xi_b~": {
     "particles": [
       "Xi_b~+",
@@ -3051,11 +3046,12 @@
     ],
     "antimultiplet": "h_b(2P)"
   },
-  "p~": {
+  "N~": {
     "particles": [
-      "p~-"
+      "p~-",
+      "n~0"
     ],
-    "antimultiplet": "p"
+    "antimultiplet": "N"
   },
   "eta_c(2S)": {
     "particles": [
@@ -3345,12 +3341,6 @@
       "KL0"
     ],
     "antimultiplet": "KL0"
-  },
-  "n~": {
-    "particles": [
-      "n~0"
-    ],
-    "antimultiplet": "n"
   },
   "f_2(1950)": {
     "particles": [
