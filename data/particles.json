@@ -6637,7 +6637,7 @@
     "PythiaID": -4314
   },
   "n~0": {
-    "multiplet": "n",
+    "multiplet": "N~",
     "Name": "n~0",
     "MaxWidth": 0.0,
     "PdgID": -2112,
@@ -8497,7 +8497,7 @@
     "PythiaID": 0
   },
   "p+": {
-    "multiplet": "p",
+    "multiplet": "N",
     "Name": "p+",
     "MaxWidth": 0.0,
     "PdgID": 2212,
@@ -11031,7 +11031,7 @@
     "PythiaID": 0
   },
   "p~-": {
-    "multiplet": "p",
+    "multiplet": "N~",
     "Name": "p~-",
     "MaxWidth": 0.0,
     "PdgID": -2212,
@@ -12389,7 +12389,7 @@
     "PythiaID": -10211
   },
   "n0": {
-    "multiplet": "n",
+    "multiplet": "N",
     "Name": "n0",
     "MaxWidth": 0.0,
     "PdgID": 2112,
