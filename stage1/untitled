@@ -1,0 +1,12 @@
+import re
+
+
+def wave(decay_str):
+    """
+        Fixes cascades like ( A --> B C)(S wave)
+    """
+
+    def repl(m):
+        return m.group(1)
+
+    return re.sub(r'\((.*?)\)\(.*?wave\)', repl, decay_str)
