@@ -14,7 +14,7 @@ def get_fstates(decay):
         fstates.insert({
             'scheme': decay['history'],
             'branching': decay['branching'],
-            'fstate': decay['products'],
+            'fstate': ' '.join(decay['products']),
             'father': decay['father']
         })
     except pymongo.errors.DuplicateKeyError:
