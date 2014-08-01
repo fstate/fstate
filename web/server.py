@@ -1,5 +1,5 @@
 from flask import *
-import pylibmc
+# import pylibmc
 from db import *
 from itertools import permutations
 from datetime import datetime
@@ -8,9 +8,9 @@ from printer import TablePrinter
 from json import dumps as json_dump
 
 app = Flask(__name__)
-mc = pylibmc.Client(["127.0.0.1"], binary=True,
-                     behaviors={"tcp_nodelay": True,
-                                "ketama": True})
+# mc = pylibmc.Client(["127.0.0.1"], binary=True,
+#                      behaviors={"tcp_nodelay": True,
+#                                 "ketama": True})
 
 def cache_key(query):
     return str(" ".join(query))
@@ -18,31 +18,20 @@ def cache_key(query):
 
 def do_search(query):
     # Set conversion is done for duplicate removing
-    query_permutations = list(set(permutations(query, len(query))))
-    
+    query_permutations = [" ".join(x) for x in set(permutations(query, len(query)))]
+
     # Cache check
-    for q in query_permutations:
-        if cache_key(q) in mc:
-            return mc[cache_key(q)]
+    # if cache_key(query) in mc:
+    #     return mc[cache_key(query)]
 
-    if len(query) == len(set(query)):
-        # Search without duplicates
-        result = sorted(list(fstates.find(
-            {"fstate": {
-                        "$all": query, 
-                        "$size": len(query)}}, 
-            {'_id': False})),  key=lambda x: -x['branching'][0])
-    else:
-        # Duplicates in query
-        result = sorted(list(
-        fstates.find(
-             {"fstate": {"$in": query_permutations}}, 
-             {'_id': False})
-        ), key=lambda x: -x['branching'][0])
+    result = sorted(list(fstates.find(
+            {"fstate": {"$in": query_permutations}}, 
+            {"_id": False})),  key=lambda x: -x['branching'][0])
 
-    mc[cache_key(query)] = result
+    # for q in query_permutations:
+    #     mc[cache_key(q)] = result
+
     return result
-    
 
 
 @app.route("/about")
