@@ -22,7 +22,7 @@ def parse_branching_line(line):
     line = line.split("</td>")[0]
 
     if "seen" in line:
-        return line+" || "
+        return line+" || 0 || "
 
 
     line = line.replace("$","")
