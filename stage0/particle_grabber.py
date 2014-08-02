@@ -44,10 +44,24 @@ def parse_branching_line(line):
         for l in line.split(" "):
             if l!="":
                 nl += l + "e" + p + " "
+        while line[0] ==" ":
+            line=line[1:]
+
         line = nl
+
     if line == "":
         line += "Branchning not found"
-    return line+" || "
+    if "<" in line:
+        return "UL || "+str(float(line.split("<")[1].split(" ")[0]))+" || "
+    if "~" in line:
+        return "Approx || "+line.split("~")[1].split(" ")[0]+" || "
+
+    try:
+        float(line.split(" ")[0])
+        return "OK || "+str(float(line.split(" ")[0]))+" || "
+    except ValueError:
+        return line+" || 0 || "
+
 
 
 def get_branching(html_big, i):
