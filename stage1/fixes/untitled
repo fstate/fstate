@@ -1,4 +1,0 @@
-def phi(decay_str):
-    if (' phi ' in decay_str):
-        return decay_str.replace(" phi ", " phi(1020) ")
-                
