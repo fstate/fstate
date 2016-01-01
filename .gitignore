@@ -39,3 +39,6 @@ config.py
 
 #virtualenv
 env/*
+
+#database dump
+fstate_dump/*

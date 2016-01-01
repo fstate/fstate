@@ -1,1 +1,0 @@
-{ "indexes" : [ { "v" : 1, "key" : { "_id" : 1 }, "name" : "_id_", "ns" : "fstate.fstates" }, { "v" : 1, "key" : { "fstate" : 1 }, "name" : "fstate_1", "ns" : "fstate.fstates" }, { "v" : 1, "unique" : true, "key" : { "scheme" : 1 }, "name" : "scheme_1", "ns" : "fstate.fstates" } ] }
