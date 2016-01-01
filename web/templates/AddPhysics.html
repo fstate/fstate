@@ -1,0 +1,126 @@
+{% extends "base.html" %}
+
+{% block head_before %}
+<script type="text/javascript">
+//auto expand textarea
+
+var num_daughters=2;
+
+function add_daughter(){
+	num_daughters++;
+
+	var plus_sign = document.createElement("font");
+	plus_sign.appendChild(document.createTextNode("+"))
+	plus_sign.size=6;
+
+	var d_name = "daughter"+num_daughters.toString();
+	
+	var daughter = document.createElement("input");
+	daughter.type="text";
+	daughter.placeholder="Daughter "+num_daughters.toString();
+	daughter.name=d_name;
+
+	var boxes = document.getElementById("daughter_text_boxes");
+
+	boxes.appendChild(document.createTextNode(" "));
+	boxes.appendChild(plus_sign);
+	boxes.appendChild(document.createTextNode(" "));
+    boxes.appendChild(daughter);
+}
+
+function rm_daughter(){
+
+	var boxes = document.getElementById("daughter_text_boxes");
+	
+	if (boxes.childNodes.length > 2){
+		boxes.removeChild(boxes.lastChild);
+		boxes.removeChild(boxes.lastChild);
+		boxes.removeChild(boxes.lastChild);
+		boxes.removeChild(boxes.lastChild);
+		num_daughters--;
+	}
+}
+
+function make_new_particle(){
+	$("#choose_particle_type_buttons").css("display", "none");
+	$("#new_particle_submit_buttons").css("display", "block");
+
+	var name = document.createElement("input");
+	name.type="text";
+	name.placeholder = "Name of Particle";
+
+	var mass = document.createElement("input");
+	mass.type="text";
+	mass.placeholder="Mass in GeV";
+
+	span=$("#new_particle_submit_buttons");
+	span.prepend(mass);
+	span.prepend(name);
+
+}
+
+function make_new_excitation(){
+	$("#choose_particle_type_buttons").css("display", "none");
+	$("#new_particle_submit_buttons").css("display", "block");
+
+	//var name = 
+}
+
+
+function adjust_textarea(h) {
+    h.style.height = "20px";
+    h.style.height = (h.scrollHeight)+"px";
+}
+
+</script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="/static/css/pretty-form2.css">
+{% endblock %}
+
+{% block content %}
+<div class="row">
+	<h2 class="text-left">Submit A New Decay Channel</h2>
+	<p>If you have noticed there is a decay which is not in our system, we greatly appreciate your help in notifying us with the form below!</p>
+	<div class="col-sm-8 text-center" id="decay-channel">
+
+		<form>
+			<span id="decay_boxes">
+		    <input type="text" name="mother" placeholder="Mother Particle" /> <font size="6">&rArr;</font>
+		    <span id="daughter_text_boxes">
+		    	<input type="text" name="daughter1" id="daughter1"placeholder="Daughter 1" /> <font size="6">+</font>
+		    	<input type="text" name="daughter2" id="daughter2" placeholder="Daughter 2" /> 
+			</span>
+		    
+		    <input type="button" class="btn btn-success" value="+" style="vertical-align: top" onclick="add_daughter()" data-toggle="tooltip" title="Add Daughter"/>
+
+		    <input type="button" class="btn btn-danger" value="-" style="vertical-align: top" onclick="rm_daughter()" data-toggle="tooltip" title="Remove Daughter"/>
+			</span>
+
+		    <p><textarea style="height: 28px; width: 500px" id="decay_comment" placeholder="Comment" onkeyup="adjust_textarea(this)"></textarea> <br />
+		    <input type="text" name="source" id="decay_link"placeholder="Link to Source" data-toggle="tooltip" title="Please include a link to a citation of the decay if one can be provided"/></p>
+		    <p><input type="button" class="btn btn-primary" value="Add Decay" /></p>
+	  </form>
+	</div>
+</div>
+
+<div class="row">
+	<h2 class="text-left">Submit A New Particle</h2>
+	<p>If you have noticed there is a particle missing from the list on the <a href="howto-search">how to search</a> page, we greatly appreciate your help in notifying us with the form below!</p>
+	<div class="col-sm-8 text-center" id="new-particle">
+
+		<form>
+			<span id="choose_particle_type_buttons">
+		    <input type="button" class="btn btn-primary" onclick="make_new_particle()" value="Add A New Particle"/>
+		    <input type="button" class="btn btn-primary" onclick="make_new_excitation()" value="Add An Excited State"/>
+			</span>
+
+		    <span id="new_particle_submit_buttons" style="display: none"><p><textarea style="height: 28px; width: 500px" id="decay_comment" placeholder="Comment" onkeyup="adjust_textarea(this)"></textarea> <br />
+		    <input type="text" name="source" id="decay_link"placeholder="Link to Source" data-toggle="tooltip" title="Please include a link to a citation of the decay if one can be provided"/></p>
+		    <p><input type="button" class="btn btn-primary" value="Add Particle" /></p></span>
+	  </form>
+	</div>
+</div>
+
+
+
+{% endblock %}

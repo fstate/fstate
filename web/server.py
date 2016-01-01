@@ -15,6 +15,9 @@ app = Flask(__name__)
 def cache_key(query):
     return str(" ".join(query))
 
+@app.route("/add-physics")
+def add_physics():
+    return render_template('AddPhysics.html')
 
 def do_search(query):
     # Set conversion is done for duplicate removing
@@ -43,6 +46,9 @@ def about():
 def howtosearch():
     return render_template('HowToSearch.html')
 
+#@app.route("/results/<query>")
+#def showResults(query):
+
 
 @app.route("/")
 def index():
@@ -60,7 +66,7 @@ def index():
     return render_template('results.html', query=request.args.get('query'), results=results, timing=(end - start))
 
 
-@app.route('/<query>.json')
+@app.route('/results/<query>.json')
 def json(query):
     if not query:
         return redirect('/')

@@ -36,3 +36,6 @@ config.py
 
 #Mac
 .DS_Store
+
+#virtualenv
+env/*
