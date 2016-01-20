@@ -76,8 +76,7 @@ def main():
 
         process_tokens(tokens)
 
-    for k,v in result['decays'].items():
-        print k,v
+    print json.dumps(result)
 
 
 if __name__ == '__main__':
