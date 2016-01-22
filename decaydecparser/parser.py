@@ -1,7 +1,8 @@
 import json
 
 DECAY_DEC_PATH = "../data/DECAY.DEC"
-MODELS = set(["PHSP", "PHSP;", "HELAMP", "ISGW2;", "PHOTOS", "SVS", "SVS;", "SVV_HELAMP", "PYTHIA", "HQET2", "HQET2;", "ISGW2;"])
+PARTICLES_LIST_PATH = "../data/particles.txt"
+MODELS = set(["PHSP", "PHSP;", "HELAMP", "ISGW2;", "PHOTOS", "SVS", "SVS;", "SVV_HELAMP", "PYTHIA", "HQET2", "HQET2;", "ISGW2;","VVS_PWAVE","TAUSCALARNU","VSP_PWAVE;","VUB","VUB;","BTOXSGAMMA","SLN;","SLN","CB3PI-MPP"])
 
 
 # Global dict to return
@@ -12,8 +13,21 @@ result = {
     'decays': {}
 }
 
+particles = []
+
 current_particle = None
 
+def fill_particles():
+    """
+    Fill particles list from known particles in data/particles.txt
+    """
+    return True
+
+def check_if_particle_exist(particle):
+    """
+    Check if this particle is known before add it to list!
+    """
+    return True
 
 def read_lines_from_decaydec():
     f = open(DECAY_DEC_PATH)
@@ -39,6 +53,10 @@ def process_decay(tokens):
         "daughters": []
     }
     for d in tokens[1:]:
+        #We have a big enough list of Models, we need to add more smart things here.
+        if not check_if_particle_exist(d):
+            break
+
         if d in MODELS:
             break
 
@@ -76,7 +94,8 @@ def main():
 
         process_tokens(tokens)
 
-    print json.dumps(result)
+    print json.dumps(result, sort_keys=True, indent=4)
+    #print result['decays'].keys()
 
 
 if __name__ == '__main__':
