@@ -1,4 +1,5 @@
 import json
+import pickle
 
 DECAY_DEC_PATH = "../data/DECAY.DEC"
 PARTICLES_LIST_PATH = "../data/particles.txt"
@@ -95,6 +96,8 @@ def main():
         process_tokens(tokens)
 
     print json.dumps(result, sort_keys=True, indent=4)
+    with open('parsed_decays.pkl', 'wb') as basket:
+        pickle.dump(result, basket)
     #print result['decays'].keys()
 
 
