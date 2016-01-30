@@ -6,6 +6,7 @@ from datetime import datetime
 from copy import deepcopy
 from printer import TablePrinter
 from json import dumps as json_dump
+from bson import ObjectId
 
 app = Flask(__name__)
 # mc = pylibmc.Client(["127.0.0.1"], binary=True,
@@ -86,7 +87,6 @@ format = [
     ('Scheme',          'scheme',       120),
 ]
 
-
 @app.route('/<query>.txt')
 def txt(query):
     if not query:
@@ -102,6 +102,66 @@ def txt(query):
         r['branching'] = "%0.4g" % r['branching'][0]
     
     return Response(TablePrinter(format, ul='-')(result), mimetype='text/plain')
+
+
+## -------- Bobak's Code -------- ##
+
+@app.route("/add_decay", methods=["POST"])
+def addDecay():
+    """Adds POST data to new_physics collection, displays a thank you message"""
+    request.get_data()
+    
+    document = {"type": "decay", "mother": "", "daughters": [], "source": "", "comment": ""}
+
+    document["mother"] = request.form["mother"]
+    document["source"] = request.form["source"]
+    document["comment"] = request.form["comment"]
+
+    for i in request.form:
+        if "daughter" in i:
+            document["daughters"].append(request.form[i])
+
+
+    new_physics.insert_one(document)
+
+    return render_template("physics-added.html")
+
+@app.route("/add_particle", methods=["POST"])
+def addParticle():
+    """Adds POST data to new_physics collection, displays a thank you message"""
+    request.get_data()
+    print(request.form)
+    document = {"type": "particle", "name": "", "mass": "", "source": "", "comment": ""}
+
+    document["name"] = request.form["name"]
+    document["mass"] = request.form["mass"]
+    document["source"] = request.form["source"]
+    document["comment"] = request.form["comment"]
+
+    new_physics.insert_one(document)
+
+    return render_template("physics-added.html")
+
+def getNewPhysics(t):
+    """Returns all rows of the new_physics table with type t as a list"""
+    rows = new_physics.find({"type": t})
+    return [i for i in rows]
+
+def addDecayLive(document):
+    """Adds decay specified by document to the live fstate decays table"""
+    pass
+
+@app.route("/admin_panel", methods=["GET", "POST"])
+def adminPanel():
+    """Renders admin panel, also accepts post arguments that let you remove a preliminary decay/particle or add it to the live table"""
+    request.get_data()
+
+    decs = getNewPhysics("decay")
+    particles = getNewPhysics("particle")
+    return render_template("admin_panel.html", decs=decs, particles=particles)
+
+## -------- Bobak's Code -------- ##
+
 
 if __name__ == "__main__":
     app.run(debug=True)

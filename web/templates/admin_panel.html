@@ -1,0 +1,139 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h2 class="text-left">New Decays:</h2>
+
+<table class="table-striped" style="width: 100%">
+  <tr>
+      <td style="width: 15%"><strong>Mother</strong></td>
+      <td style="width: 35%"><strong>Daughters</strong></td>
+      <td style="width: 15%"><strong>Source</strong></td>
+      <td style="width: 20%"><strong>Comment</strong></td>
+      <td style="width: 15%"><strong>Action</strong></td>
+  </tr>
+  {% for d in decs %}
+  <tr>
+      <form>
+        <td style="width: 15%"><span name="mother" id="mother_{{ d._id }}">{{ d.mother }}</span><input id="mother_{{ d._id }}_input" style="display: none"></input></td>
+        <td style="width: 35%"><span name="daughters" id="daughters_{{ d._id }}">{{ d.daughters }}</span> <input id="daughters_{{ d._id }}_input" style="display: none"></input></td>
+        <td style="width: 15%">{{ d.source }}</td>
+        <td style="width: 20%">{{ d.comment }}</td>
+        <td style="width: 15%"><input type="submit" class="btn btn-success" value="Approve" /> <input type="submit" class="btn btn-danger" value="Deny" /></td>
+      </form>
+  </tr>
+  {% endfor %}
+</table>
+
+<h2 class="text-left">New Particles:</h2>
+
+<table class="table-striped" style="width: 100%">
+  <tr>
+      <td style="width: 15%"><strong>Name</strong></td>
+      <td style="width: 15%"><strong>Mass (GeV)</strong></td>
+      <td style="width: 20%"><strong>Source</strong></td>
+      <td style="width: 35%"><strong>Comment</strong></td>
+      <td style="width: 15%"><strong>Action</strong></td>
+  </tr>
+  {% for p in particles %}
+  <tr>
+      <form>
+        <td style="width: 15%"><span name="name" id="name_{{ p._id }}">{{ p.name }}</span><input id="name_{{ p._id }}_input" style="display: none"></input></td>
+        <td style="width: 15%"><span name="mass" id="mass_{{ p._id }}">{{ p.mass }}</span> <input id="mass_{{ p._id }}_input" style="display: none"></input></td>
+        <td style="width: 20%">{{ p.source }}</td>
+        <td style="width: 25%">{{ p.comment }}</td>
+        <td style="width: 15%"><input type="submit" class="btn btn-success" value="Approve" /> <input type="submit" class="btn btn-danger" value="Deny" /></td>
+      </form>
+  </tr>
+  {% endfor %}
+</table>
+
+
+<!-- This makes the mother and daughter text editable for decays -->
+<script type="text/javascript">
+  //Make mother and daughter particles editable
+  {% for d in decs %}
+
+  //Span text onclick
+  $('#mother_{{ d._id }}').click(function() {
+    $('#mother_{{ d._id }}').css('display', 'none');
+    $('#mother_{{ d._id }}_input')
+      .val($('#mother_{{ d._id }}').text())
+      .css('display', '')
+      .focus()
+  })
+
+  //Text input blur
+  $('#mother_{{ d._id }}_input').blur(function() {
+    $('#mother_{{ d._id }}_input').css('display', 'none');
+    $('#mother_{{ d._id }}')
+      .text($('#mother_{{ d._id }}_input').val())
+      .css('display', '')
+  })
+
+
+  //Span text onclick
+  $('#daughters_{{ d._id }}').click(function() {
+    $('#daughters_{{ d._id }}').css('display', 'none');
+    $('#daughters_{{ d._id }}_input')
+      .val($('#daughters_{{ d._id }}').text())
+      .css('display', '')
+      .focus()
+  })
+
+  //Text input blur
+  $('#daughters_{{ d._id }}_input').blur(function() {
+    $('#daughters_{{ d._id }}_input').css('display', 'none');
+    $('#daughters_{{ d._id }}')
+      .text($('#daughters_{{ d._id }}_input').val())
+      .css('display', '')
+  })
+  
+  {% endfor %}
+</script>
+<!-- //////////////////////////////////////////////// -->
+
+<!-- This makes the name and mass text editable for new particles -->
+<script type="text/javascript">
+  //Make mother and daughter particles editable
+  {% for p in particles %}
+
+  //Span text onclick
+  $('#name_{{ p._id }}').click(function() {
+    $('#name_{{ p._id }}').css('display', 'none');
+    $('#name_{{ p._id }}_input')
+      .val($('#name_{{ p._id }}').text())
+      .css('display', '')
+      .focus()
+  })
+
+  //Text input blur
+  $('#name_{{ p._id }}_input').blur(function() {
+    $('#name_{{ p._id }}_input').css('display', 'none');
+    $('#name_{{ p._id }}')
+      .text($('#name_{{ p._id }}_input').val())
+      .css('display', '')
+  })
+
+
+  //Span text onclick
+  $('#mass_{{ p._id }}').click(function() {
+    $('#mass_{{ p._id }}').css('display', 'none');
+    $('#mass_{{ p._id }}_input')
+      .val($('#mass_{{ p._id }}').text())
+      .css('display', '')
+      .focus()
+  })
+
+  //Text input blur
+  $('#mass_{{ p._id }}_input').blur(function() {
+    $('#mass_{{ p._id }}_input').css('display', 'none');
+    $('#mass_{{ p._id }}')
+      .text($('#mass_{{ p._id }}_input').val())
+      .css('display', '')
+  })
+  
+  {% endfor %}
+</script>
+<!-- //////////////////////////////////////////////// -->
+{% endblock %}

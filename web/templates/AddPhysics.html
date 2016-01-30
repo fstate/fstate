@@ -48,10 +48,12 @@ function make_new_particle(){
 	var name = document.createElement("input");
 	name.type="text";
 	name.placeholder = "Name of Particle";
+	name.name="name";
 
 	var mass = document.createElement("input");
 	mass.type="text";
 	mass.placeholder="Mass in GeV";
+	mass.name="mass"
 
 	span=$("#new_particle_submit_buttons");
 	span.prepend(mass);
@@ -83,7 +85,7 @@ function adjust_textarea(h) {
 	<p>If you have noticed there is a decay which is not in our system, we greatly appreciate your help in notifying us with the form below!</p>
 	<div class="col-sm-8 text-center" id="decay-channel">
 
-		<form>
+		<form action="/add_decay" method="post">
 			<span id="decay_boxes">
 		    <input type="text" name="mother" placeholder="Mother Particle" /> <font size="6">&rArr;</font>
 		    <span id="daughter_text_boxes">
@@ -96,9 +98,9 @@ function adjust_textarea(h) {
 		    <input type="button" class="btn btn-danger" value="-" style="vertical-align: top" onclick="rm_daughter()" data-toggle="tooltip" title="Remove Daughter"/>
 			</span>
 
-		    <p><textarea style="height: 28px; width: 500px" id="decay_comment" placeholder="Comment" onkeyup="adjust_textarea(this)"></textarea> <br />
+		    <p><textarea name="comment" style="height: 28px; width: 500px" id="decay_comment" placeholder="Comment" onkeyup="adjust_textarea(this)"></textarea> <br />
 		    <input type="text" name="source" id="decay_link"placeholder="Link to Source" data-toggle="tooltip" title="Please include a link to a citation of the decay if one can be provided"/></p>
-		    <p><input type="button" class="btn btn-primary" value="Add Decay" /></p>
+		    <p><input type="submit" class="btn btn-primary" value="Add Decay" /></p>
 	  </form>
 	</div>
 </div>
@@ -108,15 +110,15 @@ function adjust_textarea(h) {
 	<p>If you have noticed there is a particle missing from the list on the <a href="howto-search">how to search</a> page, we greatly appreciate your help in notifying us with the form below!</p>
 	<div class="col-sm-8 text-center" id="new-particle">
 
-		<form>
+		<form action="/add_particle" method="post">
 			<span id="choose_particle_type_buttons">
 		    <input type="button" class="btn btn-primary" onclick="make_new_particle()" value="Add A New Particle"/>
 		    <input type="button" class="btn btn-primary" onclick="make_new_excitation()" value="Add An Excited State"/>
 			</span>
-
-		    <span id="new_particle_submit_buttons" style="display: none"><p><textarea style="height: 28px; width: 500px" id="decay_comment" placeholder="Comment" onkeyup="adjust_textarea(this)"></textarea> <br />
+			
+		    <span id="new_particle_submit_buttons" style="display: none"><p><textarea style="height: 28px; width: 500px" name="comment" id="decay_comment" placeholder="Comment" onkeyup="adjust_textarea(this)"></textarea> <br />
 		    <input type="text" name="source" id="decay_link"placeholder="Link to Source" data-toggle="tooltip" title="Please include a link to a citation of the decay if one can be provided"/></p>
-		    <p><input type="button" class="btn btn-primary" value="Add Particle" /></p></span>
+		    <p><input type="submit" class="btn btn-primary" value="Add Particle" /></p></span>
 	  </form>
 	</div>
 </div>
