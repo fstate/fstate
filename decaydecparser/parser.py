@@ -1,9 +1,13 @@
 import json
 import pickle
+import sys
+sys.path.insert(0, '/Users/ilya/fstate/parrticleparser')
+from database import *
+from particle_model import Particle
 
 DECAY_DEC_PATH = "../data/DECAY.DEC"
 PARTICLES_LIST_PATH = "../data/particles.txt"
-MODELS = set(["PHSP", "PHSP;", "HELAMP", "ISGW2;", "PHOTOS", "SVS", "SVS;", "SVV_HELAMP", "PYTHIA", "HQET2", "HQET2;", "ISGW2;","VVS_PWAVE","TAUSCALARNU","VSP_PWAVE;","VUB","VUB;","BTOXSGAMMA","SLN;","SLN","CB3PI-MPP"])
+MODELS = set(["PHSP", "PHSP;", "HELAMP", "ISGW2;", "PHOTOS", "SVS", "SVS;", "SVV_HELAMP", "PYTHIA", "HQET2", "HQET2;", "ISGW2;","VVS_PWAVE","TAUSCALARNU","VSP_PWAVE;","VUB","VUB;","BTOXSGAMMA","SLN;","SLN","CB3PI-MPP","VSS","VSS;"])
 
 
 # Global dict to return
@@ -28,7 +32,9 @@ def check_if_particle_exist(particle):
     """
     Check if this particle is known before add it to list!
     """
-    return True
+    for p in Particle.objects(alias=particle):
+        return p.name
+    return False
 
 def read_lines_from_decaydec():
     f = open(DECAY_DEC_PATH)
@@ -57,6 +63,8 @@ def process_decay(tokens):
         #We have a big enough list of Models, we need to add more smart things here.
         if not check_if_particle_exist(d):
             break
+        else:
+            d=check_if_particle_exist(d)
 
         if d in MODELS:
             break
@@ -75,7 +83,9 @@ def process_tokens(tokens):
         value = tokens[2]
         result[tokens[0]][key] = value
     elif tokens[0] == "Decay":
-        current_particle = tokens[1]
+        if not check_if_particle_exist(tokens[1]):
+            return "Please add alias for "+tokens[1]
+        current_particle = check_if_particle_exist(tokens[1])
         result["decays"][current_particle] = []
     elif tokens[0] == "Enddecay":
         current_particle = None
@@ -95,7 +105,7 @@ def main():
 
         process_tokens(tokens)
 
-    print json.dumps(result, sort_keys=True, indent=4)
+    #print json.dumps(result, sort_keys=True, indent=4)
     with open('parsed_decays.pkl', 'wb') as basket:
         pickle.dump(result, basket)
     #print result['decays'].keys()
