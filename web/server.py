@@ -111,11 +111,12 @@ def addDecay():
     """Adds POST data to new_physics collection, displays a thank you message"""
     request.get_data()
     
-    document = {"type": "decay", "mother": "", "daughters": [], "source": "", "comment": ""}
+    document = {"type": "decay", "mother": "", "daughters": [], "source": "", "comment": "", "br_frac": ""}
 
     document["mother"] = request.form["mother"]
-    document["source"] = request.form["source"]
-    document["comment"] = request.form["comment"]
+    document["source"] = request.form["decay_source"]
+    document["comment"] = request.form["decay_comment"]
+    document["br_frac"] = request.form["branching_fraction"]
 
     for i in request.form:
         if "daughter" in i:
@@ -131,12 +132,14 @@ def addParticle():
     """Adds POST data to new_physics collection, displays a thank you message"""
     request.get_data()
     print(request.form)
-    document = {"type": "particle", "name": "", "mass": "", "source": "", "comment": ""}
+    document = {"type": "particle", "name": "", "mass": "", "source": "", "comment": "", "charge" : "", "antiparticle": ""}
 
-    document["name"] = request.form["name"]
-    document["mass"] = request.form["mass"]
-    document["source"] = request.form["source"]
-    document["comment"] = request.form["comment"]
+    document["name"] = request.form["new_particle_name"]
+    document["mass"] = request.form["new_particle_mass"]
+    document["source"] = request.form["new_particle_source"]
+    document["comment"] = request.form["new_particle_comment"]
+    document["charge"] = request.form["new_particle_charge"]
+    document["antiparticle"] = request.form["new_particle_antiparticle"]
 
     new_physics.insert_one(document)
 
@@ -151,11 +154,21 @@ def addDecayLive(document):
     """Adds decay specified by document to the live fstate decays table"""
     pass
 
-@app.route("/admin_panel", methods=["GET", "POST"])
-def adminPanel():
-    """Renders admin panel, also accepts post arguments that let you remove a preliminary decay/particle or add it to the live table"""
-    request.get_data()
+@app.route("/admin_panel/rm/<table>/<id>")
+def rmNewPhys(table,id):
+    """also accepts post arguments that let you remove a preliminary decay/particle or add it to the live table"""
+    try:
+        ret=new_physics.remove({"_id":ObjectId(id), "type": table})
+        if ret['n'] == 1:
+            return Response(json_dump({'result' : True, "err": ""}), mimetype='application/json')
+        else:
+            return Response(json_dump({'result' : False, "err": "%i rows removed" % ret['n'] }), mimetype='application/json') 
+    except Exception as err:
+        return Response(json_dump({'result' : true, "err": str(err)}), mimetype='application/json')
 
+@app.route("/admin_panel")
+def adminPanel():
+    """Renders admin panel"""
     decs = getNewPhysics("decay")
     particles = getNewPhysics("particle")
     return render_template("admin_panel.html", decs=decs, particles=particles)
