@@ -98,8 +98,8 @@ function adjust_textarea(h) {
 		    <input type="button" class="btn btn-danger" value="-" style="vertical-align: top" onclick="rm_daughter()" data-toggle="tooltip" title="Remove Daughter"/>
 			</span>
 
-		    <p><textarea name="comment" style="height: 28px; width: 500px" id="decay_comment" placeholder="Comment" onkeyup="adjust_textarea(this)"></textarea> <br />
-		    <input type="text" name="source" id="decay_link"placeholder="Link to Source" data-toggle="tooltip" title="Please include a link to a citation of the decay if one can be provided"/></p>
+		    <p><textarea name="decay_comment" style="height: 28px; width: 500px" id="decay_comment" placeholder="Comment" onkeyup="adjust_textarea(this)"></textarea> <br />
+		    <input type="text" name="branching_fraction" id="branching_fraction"placeholder="Branching Fraction" /> <input type="text" name="decay_source" id="decay_source"placeholder="Link to Source" data-toggle="tooltip" title="Please include a link to a citation of the decay if one can be provided"/></p>
 		    <p><input type="submit" class="btn btn-primary" value="Add Decay" /></p>
 	  </form>
 	</div>
@@ -109,15 +109,11 @@ function adjust_textarea(h) {
 	<h2 class="text-left">Submit A New Particle</h2>
 	<p>If you have noticed there is a particle missing from the list on the <a href="howto-search">how to search</a> page, we greatly appreciate your help in notifying us with the form below!</p>
 	<div class="col-sm-8 text-center" id="new-particle">
-
 		<form action="/add_particle" method="post">
-			<span id="choose_particle_type_buttons">
-		    <input type="button" class="btn btn-primary" onclick="make_new_particle()" value="Add A New Particle"/>
-		    <input type="button" class="btn btn-primary" onclick="make_new_excitation()" value="Add An Excited State"/>
-			</span>
-			
-		    <span id="new_particle_submit_buttons" style="display: none"><p><textarea style="height: 28px; width: 500px" name="comment" id="decay_comment" placeholder="Comment" onkeyup="adjust_textarea(this)"></textarea> <br />
-		    <input type="text" name="source" id="decay_link"placeholder="Link to Source" data-toggle="tooltip" title="Please include a link to a citation of the decay if one can be provided"/></p>
+		    <input type="text" name="new_particle_name" placeholder="Particle Name"> <input type="text" name="new_particle_mass" placeholder="Mass (GeV)"> 
+		    <br><input type="text" name="new_particle_charge" placeholder="Particle Charge (e)"> <input type="text" name="new_particle_antiparticle" placeholder="Antiparticle (Blank for self)"> 
+		    <p><textarea style="height: 28px; width: 500px" name="new_particle_comment" id="new_particle_comment" placeholder="Comment" onkeyup="adjust_textarea(this)"></textarea> <br />
+		    <input type="text" name="new_particle_source" id="new_particle_source" placeholder="Link to Source" data-toggle="tooltip" title="Please include a link to a citation of an observation of the particle if one can be provided"/></p>
 		    <p><input type="submit" class="btn btn-primary" value="Add Particle" /></p></span>
 	  </form>
 	</div>
