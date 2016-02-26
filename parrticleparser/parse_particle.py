@@ -2,7 +2,7 @@ import json
 import pickle
 from particle_model import Particle
 PARTICLES_LIST_PATH = "../data/particles.txt"
-from database import *
+#from database import *
 
 def read_lines_from_decaydec():
     f = open(PARTICLES_LIST_PATH)

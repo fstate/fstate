@@ -1,6 +1,6 @@
 import json
 from particle_model import Particle
-from database import *
+#from database import *
 
 def save_particle_to_db(name, charge, mass, antiparticle, alias=[], antiparticle_alias=[]):
     """

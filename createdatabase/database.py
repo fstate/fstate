@@ -7,11 +7,12 @@ db = client.fstate
 
 
 # Decays collection
-decays = db.decays
-decays.drop()
+#decays = db.decays
+#decays.drop()
 
 # Particle collection
-particles = db.particles
+#particles = db.particles
+#particles.drop()
 
 # Fstates collection
-fstates = db.fstates
+#fstates = db.fstates

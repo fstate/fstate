@@ -2,7 +2,7 @@ import json
 import pickle
 import sys
 sys.path.insert(0, '/Users/ilya/fstate/parrticleparser')
-from database import *
+#from database import *
 from particle_model import Particle
 
 DECAY_DEC_PATH = "../data/DECAY.DEC"
@@ -56,7 +56,7 @@ def split_line_to_tokens(line):
 def process_decay(tokens):
     # Example: ['0.000127000', 'anti-Sigma+', 'gamma', 'PHSP;']
     result = {
-        "braching": float(tokens[0]),
+        "branching": float(tokens[0]),
         "daughters": []
     }
     for d in tokens[1:]:
@@ -105,7 +105,7 @@ def main():
 
         process_tokens(tokens)
 
-    #print json.dumps(result, sort_keys=True, indent=4)
+    print json.dumps(result, sort_keys=True, indent=4)
     with open('parsed_decays.pkl', 'wb') as basket:
         pickle.dump(result, basket)
     #print result['decays'].keys()

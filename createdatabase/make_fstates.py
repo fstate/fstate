@@ -4,7 +4,8 @@ from datetime import datetime
 from multiprocessing import Pool, cpu_count
 
 from weight_split import get_jobs
-from database import *
+#from database import *
+from decay_model import Decay
 
 import pickle
 
@@ -18,18 +19,19 @@ for father in test_set['decays']:
             db[father] = []
 
     for d in test_set['decays'][father]:
-        if d['braching'] < 1E-30:
+        if d['branching'] < 1E-30:
             continue    
-        if d['braching'] >= 1:
+        if d['branching'] >= 1:
             continue    
         db[father].append({
-            'branching': d['braching'],
+            'branching': d['branching'],
             'father': father,
             'products': d['daughters']
         })
 
 
 def do_work(fathers):
+    global db
     for father in fathers:
         start = datetime.now()
 
@@ -47,23 +49,23 @@ def do_work(fathers):
 
 if __name__ == "__main__":
     from fstate import get_fstates
-
-    fstates.drop()
-    fstates.create_index("fstate")
-    fstates.create_index("scheme", unique=True)
+    Decay.objects().delete()
+    #fstates.drop()
+    #fstates.create_index("fstate")
+    #fstates.create_index("scheme", unique=True)
 
 
     #do_work(test_set['decays'].keys())
 
     print "DB build started on {}.".format(datetime.now())
-
+    
     start = datetime.now()
-
+    
     workers  = cpu_count()
     p = Pool(processes=workers)
     p.map(do_work, get_jobs(workers))
-
-
+    
+    
     end = datetime.now()
-
+    
     print "Took {} to build!".format(end - start)
