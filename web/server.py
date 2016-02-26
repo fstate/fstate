@@ -7,7 +7,10 @@ from copy import deepcopy
 from printer import TablePrinter
 from json import dumps as json_dump
 from bson import ObjectId
-
+import sys
+import os
+sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+from createdatabase.decay_model import Decay
 app = Flask(__name__)
 # mc = pylibmc.Client(["127.0.0.1"], binary=True,
 #                      behaviors={"tcp_nodelay": True,
@@ -27,10 +30,18 @@ def do_search(query):
     # Cache check
     # if cache_key(query) in mc:
     #     return mc[cache_key(query)]
+    #Decay.objects(fstate_in = query_permutations)
+    #for d in Decay.objects(fstate__in = query_permutations):
+    #    d.printdecay()
+        #json_dump(d.to_json)
+    #result = sorted(Decay.objects(fstate__in = query_permutations),  key=lambda x: -x['branching'])
+    result = []
+    for d in Decay.objects(fstate__in = query_permutations):
+        result.append(d.to_dict())
 
-    result = sorted(list(fstates.find(
-            {"fstate": {"$in": query_permutations}}, 
-            {"_id": False})),  key=lambda x: -x['branching'][0])
+    #result = sorted(list(fstates.find(
+    #        {"fstate": {"$in": query_permutations}}, 
+    #        {"_id": False})),  key=lambda x: -x['branching'][0])
 
     # for q in query_permutations:
     #     mc[cache_key(q)] = result
@@ -77,7 +88,6 @@ def json(query):
     start = datetime.now()
     result = do_search(query)
     end = datetime.now()
-
     
     return Response(json_dump({'result' : result, 'time': str(end-start)}), mimetype='application/json')
 
