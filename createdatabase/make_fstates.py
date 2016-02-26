@@ -4,10 +4,11 @@ from datetime import datetime
 from multiprocessing import Pool, cpu_count
 
 from weight_split import get_jobs
-#from database import *
 from decay_model import Decay
+from config import br_cutoff
 
 import pickle
+
 
 db = {}
 
@@ -19,7 +20,7 @@ for father in test_set['decays']:
             db[father] = []
 
     for d in test_set['decays'][father]:
-        if d['branching'] < 1E-30:
+        if d['branching'] < br_cutoff:
             continue    
         if d['branching'] >= 1:
             continue    

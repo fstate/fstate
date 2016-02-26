@@ -77,6 +77,14 @@ def index():
     
     return render_template('results.html', query=request.args.get('query'), results=results, timing=(end - start))
 
+def nice_br(br):
+    e = 0
+    if br>1:
+        return str(br).split(".")[0]+"."+str(br).split(".")[1][1]
+    while br<1:
+        e+=1
+        br*=10
+    return str(br).split(".")[0]+"."+str(br).split(".")[1][0]+"e-"+str(e)
 
 @app.route('/results/<query>.json')
 def json(query):
@@ -87,8 +95,11 @@ def json(query):
 
     start = datetime.now()
     result = do_search(query)
-    end = datetime.now()
-    
+    end = datetime.now()   
+    for r in result:
+        r['branching'] = nice_br(r['branching'])
+        #r['branching'] = "%0.4g" % r['branching']       
+
     return Response(json_dump({'result' : result, 'time': str(end-start)}), mimetype='application/json')
 
 
@@ -108,8 +119,11 @@ def txt(query):
     result = do_search(query)
     end = datetime.now()
 
+
     for r in result:
-        r['branching'] = "%0.4g" % r['branching'][0]
+        r['branching'] = nice_br(r['branching'])
+        #r['branching'] = "%0.4g" % r['branching']
+        #r['branching'] = "%0.4g" % r['branching'][0]
     
     return Response(TablePrinter(format, ul='-')(result), mimetype='text/plain')
 

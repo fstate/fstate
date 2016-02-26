@@ -6,6 +6,7 @@ import pickle
 import json
 from decay_model import Decay
 import copy
+from config import br_cutoff, max_decay_chain
 #class Decay(Document):
 #    father = StringField(required = True)
 #    scheme = StringField(required = True, unique = True)
@@ -17,7 +18,6 @@ import copy
 with open('../decaydecparser/parsed_decays.pkl', 'r') as basket:
     test_set = pickle.load(basket)
 
-br_cutoff = 1e-4
 
 def add_decay(father, decay, history = "", uniterated_daughters = []):
     """
@@ -37,7 +37,7 @@ def add_decay(father, decay, history = "", uniterated_daughters = []):
         history = "{} --> {}".format(father, ' '.join(decay['daughters']))
     #if uniterated_daughters == []:
     #    uniterated_daughters = decay["daughters"]
-    if decay["branching"]>br_cutoff:
+    if ((decay["branching"]>br_cutoff) and (1<len(decay["daughters"])<max_decay_chain)):
         db_dec = Decay(father = father, scheme = history, branching = decay["branching"], fstate = ' '.join(decay["daughters"]))
         #db_dec.printdecay()
         try:

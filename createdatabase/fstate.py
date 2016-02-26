@@ -1,13 +1,17 @@
 from itertools import izip
 from copy import deepcopy
-from database import *
+#from database import *
 from make_fstates import db
+from config import br_cutoff, max_decay_chain
 import json
 from decay_model import Decay
 
+
+
 def get_fstates(decay):
     global db
-    if decay['branching'] < 1E-4:
+    global br_cutoff
+    if decay['branching'] < br_cutoff:
         return
 
     #print decay['history'], decay['products']
@@ -30,7 +34,7 @@ def get_fstates(decay):
     #except pymongo.errors.DuplicateKeyError:
     #    return
 
-    if not 1 < len(decay['products']) < 6: # Not full db build
+    if not 1 < len(decay['products']) < max_decay_chain: # Not full db build
     #if len(decay['products']) == 1: # Full DB build
         return
 

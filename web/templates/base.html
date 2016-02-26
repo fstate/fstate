@@ -78,8 +78,8 @@ function show_results(data)
       var father = data['result'][i]['father'];
 
       $('#results tr:last').after("<tr class=\"decay father-"+father+"\">\
-      <td>"+ (father in masses ? masses[father][0] : "Dunno") +"</td>\
-      <td>"+ result['branching'][0] +"</td>\
+      <td>"+ (father in masses ? masses[father][0] : "---") +"</td>\
+      <td>"+ result['branching'] +"</td>\
       <td>"+ result['scheme'] +"</td>\
       </tr>");
     }
