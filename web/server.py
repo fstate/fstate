@@ -11,6 +11,10 @@ import sys
 import os
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from createdatabase.decay_model import Decay
+from createdatabase.save_decay import add_decay
+from particleparser.save_particle import save_particle_to_db
+import thread
+
 app = Flask(__name__)
 # mc = pylibmc.Client(["127.0.0.1"], binary=True,
 #                      behaviors={"tcp_nodelay": True,
@@ -176,6 +180,19 @@ def getNewPhysics(t):
 
 def addDecayLive(document):
     """Adds decay specified by document to the live fstate decays table"""
+    #Ilya: I don't know waht the document is, but it should contain:
+    # - name of decayed particle (father)
+    # - branching of the decay (branching)
+    # - list of daughter particles (list_of_daughters)
+    #After it, decay should be saved by this command:
+    #thread.start_new_thread(add_decay, (father, {"branching":branching, "daughters":list_of_daughters))
+    #for example:
+    #thread.start_new_thread(add_decay, ("anti-B0", {"branching":0.0493, "daughters":["e-",
+    #                                                       "nu_e~",
+    #                                                       "nu_tau",
+    #                                                       "gamma"
+    #                                                   ]}))
+    #The process of adding the decay is moved to separate thread to run in the background.
     pass
 
 @app.route("/admin_panel/rm/<table>/<id>")
