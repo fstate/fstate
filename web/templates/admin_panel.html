@@ -1,7 +1,6 @@
 {% extends "base.html" %}
 
 {% block content %}
-
 <h2 class="text-left">New Decays:</h2>
 
 <table class="table-striped" id="decays_table" style="width: 100%">
@@ -13,7 +12,7 @@
       <td style="width: 10%"><strong>Branching</strong></td>
       <td style="width: 15%"><strong>Action</strong></td>
   </tr>
-  {% for d in decs %}
+  {% for d in decs_pending %}
   <tr id="row_decays_{{ d._id }}">
       <td style="width: 10%"><span name="mother" class="text-editable" id="mother_{{ d._id }}">{{ d.mother }}</span><input class="input-editable" id="mother_{{ d._id }}_input" style="display: none"></input></td>
       <td style="width: 35%"><span name="daughters" class="text-editable" id="daughters_{{ d._id }}">{{ d.daughters }}</span> <input class="input-editable" id="daughters_{{ d._id }}_input" style="display: none"></input></td>
@@ -37,7 +36,7 @@
       <td style="width: 20%"><strong>Comment</strong></td>
       <td style="width: 15%"><strong>Action</strong></td>
   </tr>
-  {% for p in particles %}
+  {% for p in particles_pending %}
   <tr id="row_particles_{{ p._id }}">
       <td style="width: 15%"><span name="name" class="text-editable" id="name_{{ p._id }}">{{ p.name }}</span><input class="input-editable" id="name_{{ p._id }}_input" style="display: none"></input></td>
       <td style="width: 10%"><span name="mass"  class="text-editable" id="mass_{{ p._id }}">{{ p.mass }}</span> <input class="input-editable" id="mass_{{ p._id }}_input" style="display: none"></input></td>
@@ -48,7 +47,76 @@
       <td style="width: 15%"><input type="submit" class="btn btn-success approve approve-particle" name="approve_{{ p._id }}" value="Approve" /> <input type="submit" class="btn btn-danger deny deny-particle" name="deny_{{ p._id }}" value="Deny" /></td>
   </tr>
   {% endfor %}
-</table>
+  </table>
+
+    <h2 class="text-left">Considered Decays:</h2>
+    
+    <table class="table-striped" id="decays_table" style="width: 100%">
+      <tr>
+          <td style="width: 10%"><strong>Mother</strong></td>
+          <td style="width: 35%"><strong>Daughters</strong></td>
+          <td style="width: 15%"><strong>Source</strong></td>
+          <td style="width: 15%"><strong>Comment</strong></td>
+          <td style="width: 10%"><strong>Branching</strong></td>
+          <td style="width: 10%"><strong>Status</strong></td>
+      </tr>
+      {% for d in decs_approved %}
+      <tr id="row_decays_{{ d._id }}">
+      <td style="width: 10%">{{ d.mother }}</td>
+      <td style="width: 35%">{{ d.daughters }}</td>
+          <td style="width: 15%">{{ d.source }}</td>
+          <td style="width: 15%">{{ d.comment }}</td>
+          <td style="width: 10%">{{ d.br_frac }}</td>
+          <td style="width: 10%">Approved</td>
+      </tr>
+      {% endfor %}
+      {% for d in decs_declined %}
+      <tr id="row_decays_{{ d._id }}">
+      <td style="width: 10%">{{ d.mother }}</td>
+      <td style="width: 35%">{{ d.daughters }}</td>
+          <td style="width: 15%">{{ d.source }}</td>
+          <td style="width: 15%">{{ d.comment }}</td>
+          <td style="width: 10%">{{ d.br_frac }}</td>
+          <td style="width: 10%">Declined</td>
+      </tr>
+      {% endfor %}
+    </table>
+    
+    <h2 class="text-left">Considered Particles:</h2>
+    
+    <table class="table-striped" id="particles_table" style="width: 100%">
+      <tr>
+          <td style="width: 15%"><strong>Name</strong></td>
+          <td style="width: 10%"><strong>Mass (GeV)</strong></td>
+          <td style="width: 10%"><strong>Charge (e)</strong></td>
+          <td style="width: 15%"><strong>Antiparticle</strong></td>
+          <td style="width: 15%"><strong>Source</strong></td>
+          <td style="width: 20%"><strong>Comment</strong></td>
+          <td style="width: 20%"><strong>Status</strong></td>
+      </tr>
+      {% for p in particles_approved %}
+      <tr id="row_particles_{{ p._id }}">
+      <td style="width: 15%">{{ p.name }}</td>
+      <td style="width: 10%">{{ p.mass }}</td>
+          <td style="width: 10%">{{ p.charge }}</td>
+          <td style="width: 15%">{{ p.antiparticle }}</td>
+          <td style="width: 15%">{{ p.source }}</td>
+          <td style="width: 20%">{{ p.comment }}</td>
+          <td style="width: 20%">Approved</td>
+      </tr>
+      {% endfor %}
+      {% for p in particles_declined %}
+      <tr id="row_particles_{{ p._id }}">
+      <td style="width: 15%">{{ p.name }}</td>
+      <td style="width: 10%">{{ p.mass }}</td>
+          <td style="width: 10%">{{ p.charge }}</td>
+          <td style="width: 15%">{{ p.antiparticle }}</td>
+          <td style="width: 15%">{{ p.source }}</td>
+          <td style="width: 20%">{{ p.comment }}</td>
+          <td style="width: 20%">Declined</td>
+      </tr>
+      {% endfor %}
+      </table>
 
 
 <!-- This makes the mother and daughter text editable for decays -->
@@ -126,6 +194,7 @@
     $("#"+row_id).remove()
   }
 
+
   $('.deny').click(function(){
     var type = ""
     
@@ -139,7 +208,7 @@
 
     //Extract ID:
     var id = $(this).attr("name").substring(5)
-    //alert(type+" "+id)
+    alert(type+" "+id)
 
     $.getJSON('/admin_panel/rm/'+type+"/"+id, function(data) {
       if (data['result']){
@@ -149,7 +218,35 @@
         alert("There was an error removing the row from the table: "+data["err"]+"\n Please try again later.")
       }
   });
-  })
+  }
+  )
+
+  $('.approve').click(function(){
+    var type = ""
+    
+    //Find Type:
+    if ($(this).hasClass("approve-particle")){
+      type="particle"
+    }
+    else{
+      type="decay"
+    }
+
+    //Extract ID:
+    var id = $(this).attr("name").substring(8)
+    alert(type+" "+id)
+
+    $.getJSON('/admin_panel/add/'+type+"/"+id, function(data) {
+      if (data['result']){
+        removeRow(type, id)
+      }
+      else{
+        alert("There was an error removing the row from the table: "+data["err"]+"\n Please try again later.")
+      }
+  });
+  }
+
+  )
 
 </script>
 

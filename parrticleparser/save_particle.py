@@ -23,7 +23,7 @@ def save_particle_to_db(name, charge, mass, antiparticle, alias=[], antiparticle
         db_part.save()
     except:
         print "Failed to save particle:"
-        print json.dumps(part,sort_keys=True, indent=4)
+        print json.dumps(db_part.to_dict(),sort_keys=True, indent=4)
         return False
     if not antiparticle == name:
         if antiparticle_alias == []:
@@ -37,7 +37,7 @@ def save_particle_to_db(name, charge, mass, antiparticle, alias=[], antiparticle
             db_part.save()
         except:
             print "Failed to save particle:"
-            print json.dumps(part,sort_keys=True, indent=4)
+            print json.dumps(db_part.to_dict(),sort_keys=True, indent=4)
             return False
     return True
 

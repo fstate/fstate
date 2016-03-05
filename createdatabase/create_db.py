@@ -78,11 +78,11 @@ def add_decay(father, decay, history = "", uniterated_daughters = []):
 
 def main():
     Decay.objects().delete()
-    for part in Particle.objects().order_by('mass'):
-        print "Working on "+part.name
-        if part.name in test_set['decays']:
-            for dec in test_set['decays'][part.name]:                
-                add_decay(part.name, dec, "", dec["daughters"])
+#    for part in Particle.objects().order_by('mass'):
+#        print "Working on "+part.name
+#        if part.name in test_set['decays']:
+#            for dec in test_set['decays'][part.name]:                
+#                add_decay(part.name, dec, "", dec["daughters"])
             #print part.name + " found!"        
         #else:
             #print part.name + " not found!"        

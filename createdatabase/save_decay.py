@@ -42,12 +42,30 @@ def add_decay(father, decay, history = "", uniterated_daughters = [], test_mode=
             db_dec.printdecay()
         try:
             db_dec.save()
+            if test_mode:
+                print "Decay saved!"
+
         except:
             print "Failed to save decay!"
             db_dec.printdecay()
+        db_dec.update_ancestors()
+        try:
+            #Now need to update all decays having this particle in final state with this mode of decay
+            #db_dec.update_ancestors()
+            if test_mode:
+                print "Ancestors updated!"
+        except:
+            print "Failed to update ancestors"
+            db_dec.printdecay()
         if uniterated_daughters:
+            if test_mode:
+                print "Iterating over the daughters"
             for i, daughter in enumerate(uniterated_daughters):
+                if test_mode:
+                    print "Daughter "+daughter
                 for saved_dec in Decay.objects(father = daughter):
+                    if test_mode:
+                        print "decay: "+saved_dec.scheme
                     subst = history.split('; ') + saved_dec.scheme.split('; ')
                     new_history = '; '.join(subst[:1] + sorted(subst[1:]))
                     daughters = []
@@ -63,19 +81,19 @@ def add_decay(father, decay, history = "", uniterated_daughters = [], test_mode=
                     branching = decay["branching"]*saved_dec.branching
                     new_decay = {"branching":branching, "daughters":copy.deepcopy(daughters)}
                     if i == 0:
-                        add_decay(father, new_decay, new_history, new_uniterated_daughters)
+                        add_decay(father, new_decay, new_history, new_uniterated_daughters, test_mode)
                     else:
-                        add_decay(father, new_decay, new_history, [])
+                        add_decay(father, new_decay, new_history, [], test_mode)
     return True
 
 if __name__ == '__main__':
     print "Example of adding decay to DB"
 
-    father = 'anti-B0'
-    decay = {"branching":0.0493,
-            "daughters" = ['D*+','e-','anti-nu_e' ]}
+    father = 'K+'
+    decay = {"branching":0.99,
+            "daughters" : ['e+','gamma' ]}
 
     print "Lets add this decay:"
     json.dumps(decay, sort_keys=True, indent=4)
-    add_decay(father, decay, test_mode = True)
+    add_decay(father, decay, "", decay['daughters'], test_mode = True)
 

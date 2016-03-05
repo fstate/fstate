@@ -11,8 +11,9 @@ import sys
 import os
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from createdatabase.decay_model import Decay
+from parrticleparser.particle_model import Particle
 from createdatabase.save_decay import add_decay
-from particleparser.save_particle import save_particle_to_db
+from parrticleparser.save_particle import save_particle_to_db
 import thread
 
 app = Flask(__name__)
@@ -25,7 +26,10 @@ def cache_key(query):
 
 @app.route("/add-physics")
 def add_physics():
-    return render_template('AddPhysics.html')
+    p_list = []
+    for p in Particle.objects():
+        p_list.append(p.to_print())
+    return render_template('AddPhysics.html', p_list = p_list)
 
 def do_search(query):
     # Set conversion is done for duplicate removing
@@ -60,7 +64,10 @@ def about():
 
 @app.route("/howto-search")
 def howtosearch():
-    return render_template('HowToSearch.html')
+    p_list = []
+    for p in Particle.objects():
+        p_list.append(p.to_print())
+    return render_template('HowToSearch.html', p_list = p_list)
 
 #@app.route("/results/<query>")
 #def showResults(query):
@@ -102,9 +109,12 @@ def json(query):
     end = datetime.now()   
     for r in result:
         r['branching'] = nice_br(r['branching'])
-        #r['branching'] = "%0.4g" % r['branching']       
+        #r['branching'] = "%0.4g" % r['branching']   
+    p_list = {}
+    for p in Particle.objects():
+        p_list[p.to_dict()["name"]]=p.to_print()
 
-    return Response(json_dump({'result' : result, 'time': str(end-start)}), mimetype='application/json')
+    return Response(json_dump({'result' : result, 'time': str(end-start), 'p_list':p_list}), mimetype='application/json')
 
 
 format = [
@@ -139,7 +149,7 @@ def addDecay():
     """Adds POST data to new_physics collection, displays a thank you message"""
     request.get_data()
     
-    document = {"type": "decay", "mother": "", "daughters": [], "source": "", "comment": "", "br_frac": ""}
+    document = {"type": "decay", "mother": "", "daughters": [], "source": "", "comment": "", "br_frac": "", "status":"pending"}
 
     document["mother"] = request.form["mother"]
     document["source"] = request.form["decay_source"]
@@ -160,7 +170,7 @@ def addParticle():
     """Adds POST data to new_physics collection, displays a thank you message"""
     request.get_data()
     print(request.form)
-    document = {"type": "particle", "name": "", "mass": "", "source": "", "comment": "", "charge" : "", "antiparticle": ""}
+    document = {"type": "particle", "name": "", "mass": "", "source": "", "comment": "", "charge" : "", "antiparticle": "", "status":"pending"}
 
     document["name"] = request.form["new_particle_name"]
     document["mass"] = request.form["new_particle_mass"]
@@ -173,33 +183,34 @@ def addParticle():
 
     return render_template("physics-added.html")
 
-def getNewPhysics(t):
+def getNewPhysics(t, status):
     """Returns all rows of the new_physics table with type t as a list"""
-    rows = new_physics.find({"type": t})
+    rows = new_physics.find({"type": t, "status":status})
     return [i for i in rows]
+
 
 def addDecayLive(document):
     """Adds decay specified by document to the live fstate decays table"""
-    #Ilya: I don't know waht the document is, but it should contain:
-    # - name of decayed particle (father)
-    # - branching of the decay (branching)
-    # - list of daughter particles (list_of_daughters)
-    #After it, decay should be saved by this command:
-    #thread.start_new_thread(add_decay, (father, {"branching":branching, "daughters":list_of_daughters))
-    #for example:
-    #thread.start_new_thread(add_decay, ("anti-B0", {"branching":0.0493, "daughters":["e-",
-    #                                                       "nu_e~",
-    #                                                       "nu_tau",
-    #                                                       "gamma"
-    #                                                   ]}))
-    #The process of adding the decay is moved to separate thread to run in the background.
+    thread.start_new_thread(add_decay, (document["father"], 
+                                        {"branching":document["branching"], 
+                                        "daughters":document["daughters"]}, "", document["daughters"]))
+    pass
+
+def addParticleLive(document):
+    """Adds decay specified by document to the live fstate decays table"""
+    save_particle_to_db(name = document["name"],
+                        charge = document["charge"],
+                        mass = document["mass"],
+                        antiparticle = document["antiparticle"])
     pass
 
 @app.route("/admin_panel/rm/<table>/<id>")
-def rmNewPhys(table,id):
+def rmNewPhys(table,id, status = "declined"):
     """also accepts post arguments that let you remove a preliminary decay/particle or add it to the live table"""
     try:
-        ret=new_physics.remove({"_id":ObjectId(id), "type": table})
+        #ret=new_physics.remove({"_id":ObjectId(id), "type": table})
+        ret=new_physics.update({"_id":ObjectId(id), "type": table}, 
+                                {'$set':{'status': status}})
         if ret['n'] == 1:
             return Response(json_dump({'result' : True, "err": ""}), mimetype='application/json')
         else:
@@ -207,12 +218,43 @@ def rmNewPhys(table,id):
     except Exception as err:
         return Response(json_dump({'result' : true, "err": str(err)}), mimetype='application/json')
 
+@app.route("/admin_panel/add/<table>/<id>")
+def addNewPhys(table,id):
+    for ret in new_physics.find({"_id":ObjectId(id), "type": table}):
+        if table == 'particle':
+            if not ret["antiparticle"] == "":
+                document = {"name": ret["name"],
+                            "charge": int(ret["charge"]),
+                            "mass": float(ret["mass"])*1000,
+                            "antiparticle": ret["antiparticle"]}
+            else:
+                document = {"name": ret["name"],
+                            "charge": int(ret["charge"]),
+                            "mass": float(ret["mass"])*1000,
+                            "antiparticle": ret["name"]}
+            addParticleLive(document)
+            print "Particle added"
+            return rmNewPhys(table,id, "approved")
+        if table == 'decay':
+            document = {"father":ret['mother'], 
+                        "branching":ret["br_frac"], 
+                        "daughters":ret["daughters"]}
+            addDecayLive(document)
+            print "Adding decay, may take some time."
+            return rmNewPhys(table,id, "approved")
+
 @app.route("/admin_panel")
 def adminPanel():
     """Renders admin panel"""
-    decs = getNewPhysics("decay")
-    particles = getNewPhysics("particle")
-    return render_template("admin_panel.html", decs=decs, particles=particles)
+    decs_pending = getNewPhysics("decay","pending")
+    particles_pending = getNewPhysics("particle","pending")
+    decs_approved = getNewPhysics("decay","approved")
+    particles_approved = getNewPhysics("particle","approved")
+    decs_declined = getNewPhysics("decay","declined")
+    particles_declined = getNewPhysics("particle","declined")
+    return render_template("admin_panel.html", decs_pending=decs_pending, particles_pending=particles_pending, 
+                                               decs_approved=decs_approved, particles_approved=particles_approved,
+                                               decs_declined=decs_declined, particles_declined=particles_declined)
 
 ## -------- Bobak's Code -------- ##
 

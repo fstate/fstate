@@ -16,7 +16,7 @@ function add_daughter(){
 	var d_name = "daughter"+num_daughters.toString();
 	
 	var daughter = document.createElement("input");
-	daughter.type="text";
+	daughter.list="particles";
 	daughter.placeholder="Daughter "+num_daughters.toString();
 	daughter.name=d_name;
 
@@ -87,10 +87,15 @@ function adjust_textarea(h) {
 
 		<form action="/add_decay" method="post">
 			<span id="decay_boxes">
-		    <input type="text" name="mother" placeholder="Mother Particle" /> <font size="6">&rArr;</font>
+			<datalist id="particles">
+		     {% for p in p_list %}
+		      <option>{{ p.name }}</option>
+		     {% endfor %}
+			</datalist> 
+		    <input list="particles" name="mother" placeholder="Mother Particle" /> <font size="6">&rArr;</font>
 		    <span id="daughter_text_boxes">
-		    	<input type="text" name="daughter1" id="daughter1"placeholder="Daughter 1" /> <font size="6">+</font>
-		    	<input type="text" name="daughter2" id="daughter2" placeholder="Daughter 2" /> 
+		    	<input list="particles" name="daughter1" id="daughter1"placeholder="Daughter 1" /> <font size="6">+</font>
+		    	<input list="particles" name="daughter2" id="daughter2" placeholder="Daughter 2" /> 
 			</span>
 		    
 		    <input type="button" class="btn btn-success" value="+" style="vertical-align: top" onclick="add_daughter()" data-toggle="tooltip" title="Add Daughter"/>
