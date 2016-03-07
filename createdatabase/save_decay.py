@@ -44,19 +44,30 @@ def add_decay(father, decay, history = "", uniterated_daughters = [], test_mode=
             db_dec.save()
             if test_mode:
                 print "Decay saved!"
-
         except:
             print "Failed to save decay!"
             db_dec.printdecay()
-        db_dec.update_ancestors()
+            
         try:
             #Now need to update all decays having this particle in final state with this mode of decay
-            #db_dec.update_ancestors()
+            db_dec.update_ancestors()
             if test_mode:
                 print "Ancestors updated!"
         except:
             print "Failed to update ancestors"
             db_dec.printdecay()
+        
+        if test_mode:
+            print "cc-ing decay"
+        db_dec_cc = db_dec.do_cc()
+        if db_dec_cc:
+            if test_mode:
+                print "decay cc-ed"
+            db_dec_cc.save()
+            db_dec_cc.update_ancestors()
+        elif test_mode:
+            print "failed to cc decay"
+
         if uniterated_daughters:
             if test_mode:
                 print "Iterating over the daughters"

@@ -45,6 +45,8 @@ def check_if_particle_exist(particle):
     """
     for p in Particle.objects(alias=particle):
         return p.name
+    for p in Particle.objects(name=particle):
+        return p.name
     return False
 
 def read_lines_from_decaydec():

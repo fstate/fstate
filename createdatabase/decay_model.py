@@ -1,5 +1,9 @@
 from mongoengine import *
 import json
+import sys
+import os
+sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+from parrticleparser.particle_model import Particle
 
 class Decay(Document):
 
@@ -34,9 +38,9 @@ class Decay(Document):
         for d in Decay.objects(fstate__contains = self.father):
             new_fstate = []
             #d.printdecay()
-            print "Oparations of fstate"
+            #print "Oparations of fstate"
             for p in d.fstate.split(" "):
-                print p
+                #print p
                 #if p == self.father:
                 #    print "father in the fstate"
                 new_fstate.append(p)
@@ -57,6 +61,62 @@ class Decay(Document):
         return True
 
     def do_cc(self):
-        return True
+        cc_is_done = False
+        for p in Particle.objects(name = self.father):
+            if p.name != p.antiparticle:
+                cc_is_done = True 
+            cc_father = p.antiparticle
+            break
+        cc_fstate = ""
+        for part in self.fstate.split(" "):
+            #if not Particle.objects(name = part):
+                #print part+" not in particle db!"
+                #print "Failed to cc decay"
+                #return False
+            for p in Particle.objects(name = part):
+                if p.name != p.antiparticle:
+                   cc_is_done = True 
+                cc_fstate += p.antiparticle+" "                
+                break
+
+        cc_fstate =cc_fstate[:-1]
+        cc_scheme=""
+        for part in self.scheme.split(" "):
+            if part == "-->":
+                cc_scheme += part+" "
+                continue
+            have_comma = False
+            if part[-1]==";":
+                have_comma=True
+                part = part[:-1]
+            #if not Particle.objects(name = part):
+                #print part+" not in particle db!"
+                #print "Failed to cc decay"
+                #return False
+            for p in Particle.objects(name = part):
+                if p.name != p.antiparticle:
+                   cc_is_done = True 
+
+                if have_comma:
+                    cc_scheme += p.antiparticle+"; "
+                else:
+                    cc_scheme += p.antiparticle+" "
+                break
+        cc_scheme =cc_scheme[:-1]
+        new_dec = Decay(father = cc_father,
+                        scheme = cc_scheme,
+                        branching = self.branching,
+                        fstate = cc_fstate)
+        if cc_is_done:
+            #print "Decay cc-ed:"
+            #self.printdecay()
+            #print " to :"
+            #new_dec.printdecay()
+            return new_dec
+        else:
+            #print "Failed to cc decay:"
+            #self.printdecay()
+            return False
+
 
 connect("fstate")
