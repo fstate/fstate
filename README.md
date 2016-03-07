@@ -1,16 +1,17 @@
 fstate
 ======
 
-Final state search engine, based on PDG.
+Final state search engine based on decay.dec of LHCb
 
+To run from scratch:
 
-
-Project structure:
-
-- [Stage 0](https://bitbucket.org/sasha_b/fstate/wiki/Stage0) — Download data into `data` folder
-- [Stage 1](https://bitbucket.org/sasha_b/fstate/wiki/Stage1) — Cleanup data before database build procedure
-- [Stage 2](https://bitbucket.org/sasha_b/fstate/wiki/Stage2) — Database build
-
-DB dump can be found here:
-
-/afs/cern.ch/user/i/ikomarov/public/MongoCopy
+```
+cd parrticleparser
+python parse_particle.py
+cd ../decaydecparser
+python parser.py
+cd ../createdatabase
+python make_fstates.py  #(here you may use pypy as well. parameters of compiled db are in config.py)
+cd ../web
+python server.py
+```
