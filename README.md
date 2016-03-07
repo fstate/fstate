@@ -3,8 +3,11 @@ fstate
 
 Final state search engine based on decay.dec of LHCb
 
-To run from scratch:
-
+To run from scratch run mongo server first:
+```
+mongod
+```
+Than in new terminal:
 ```
 cd parrticleparser
 python parse_particle.py
@@ -13,5 +16,5 @@ python parser.py
 cd ../createdatabase
 python make_fstates.py  #(here you may use pypy as well. parameters of compiled db are in config.py)
 cd ../web
-python server.py
+python server.py 
 ```
