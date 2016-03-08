@@ -2,7 +2,7 @@ from operator import mul
 from copy import deepcopy
 from datetime import datetime
 from multiprocessing import Pool, cpu_count
-
+from mongoengine import connect
 from weight_split import get_jobs
 from decay_model import Decay
 from config import br_cutoff
@@ -33,9 +33,10 @@ for father in test_set['decays']:
 
 def do_work(fathers):
     global db
+    connect("fstate")
     for father in fathers:
         start = datetime.now()
-
+        
         for decay in db[father]:
             work_copy = deepcopy(decay)
             work_copy['history'] = "{} --> {}".format(
@@ -50,6 +51,7 @@ def do_work(fathers):
 
 if __name__ == "__main__":
     from fstate import get_fstates
+    connect("fstate")
     Decay.objects().delete()
     #fstates.drop()
     #fstates.create_index("fstate")

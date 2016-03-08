@@ -7,7 +7,6 @@ import json
 from decay_model import Decay
 
 
-
 def get_fstates(decay):
     global db
     global br_cutoff
@@ -15,11 +14,11 @@ def get_fstates(decay):
         return
 
     #print decay['history'], decay['products']
-    db_dec = Decay(father = decay['father'], scheme = decay['history'], branching = decay["branching"], fstate = ' '.join(decay['products']))
-        #db_dec.printdecay()
+    db_dec = Decay(father = decay['father'], scheme = decay['history'], branching = decay["branching"], fstate = ' '.join(decay['products'])).order_history()
+    #db_dec.printdecay()
     try:
         db_dec.save()
-    except pymongo.errors.DuplicateKeyError:
+    except:
         #print "Failed to save decay!"
         #db_dec.printdecay()
         return

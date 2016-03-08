@@ -36,7 +36,7 @@ def add_decay(father, decay, history = "", uniterated_daughters = [], test_mode=
             print "with unexisting particle   "+d
             return False
     if ((decay["branching"]>br_cutoff) and (1<len(decay["daughters"])<max_decay_chain)):
-        db_dec = Decay(father = father, scheme = history, branching = decay["branching"], fstate = ' '.join(decay["daughters"]))
+        db_dec = Decay(father = father, scheme = history, branching = decay["branching"], fstate = ' '.join(decay["daughters"])).order_history()
         if test_mode:
             print "Trying to save decay:"
             db_dec.printdecay()
@@ -59,12 +59,16 @@ def add_decay(father, decay, history = "", uniterated_daughters = [], test_mode=
         
         if test_mode:
             print "cc-ing decay"
-        db_dec_cc = db_dec.do_cc()
+        db_dec_cc = db_dec.do_cc().order_history()
         if db_dec_cc:
             if test_mode:
                 print "decay cc-ed"
-            db_dec_cc.save()
-            db_dec_cc.update_ancestors()
+            try:
+                db_dec_cc.save()
+                db_dec_cc.update_ancestors()
+            except:
+                print "Failed to save decay!"
+                db_dec_cc.printdecay()
         elif test_mode:
             print "failed to cc decay"
 

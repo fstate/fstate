@@ -4,11 +4,28 @@ import sys
 import os
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from parrticleparser.particle_model import Particle
+particles = {}
+for part in Particle.objects():
+    particles[part.name]=part.to_dict()
+
+
+def order_particles(p_list):
+    DATA=[]
+    for p in p_list:
+        DATA.append((p, particles[p]['mass'], particles[p]['charge']))
+    DATA.sort(key=lambda row:row[2], reverse=True)
+    DATA.sort(key=lambda row: row[1], reverse=True)
+    o_list=[]
+    for d in DATA:
+        o_list.append(d[0])
+    return o_list
+
+
 
 class Decay(Document):
 
     father = StringField(required = True)
-    scheme = StringField(required = True)
+    scheme = StringField(required = True, unique=True)
     branching = FloatField(required = True)
     fstate = StringField(required = True)
 
@@ -33,6 +50,27 @@ class Decay(Document):
             "fstate" : self.fstate}
         return decay
 
+    def order_history(self):
+        """
+        This function orders history in standard way:
+            - Heavy particles go first
+            - Charged prticles ordred as such: + 0 -
+        "D(2S)+ --> D*(2010)+ pi0; D*(2010)+ --> D+ pi0; pi0 --> gamma gamma"            
+        """
+        #return True
+        new_history = []
+        decs = self.scheme.split("; ")
+        p_decs={}
+        for d in decs:
+            father = d.split(" ")[0]
+            daughters = d.split(" --> ")[1].split(" ")
+            p_decs[father]=father+' --> '+' '.join(order_particles(daughters))
+        for f in order_particles(p_decs.keys()):
+            new_history.append(p_decs[f])
+        #print "history ordered from "+self.scheme+" to "+'; '.join(new_history)
+        self.scheme='; '.join(new_history)
+        return self
+
     def update_ancestors(self):
         print "Trying to update ancestors"
         for d in Decay.objects(fstate__contains = self.father):
@@ -54,7 +92,7 @@ class Decay(Document):
             new_dec = Decay(father = d.father,
                             scheme = new_scheme,
                             branching = new_br,
-                            fstate = ' '.join(new_fstate))
+                            fstate = ' '.join(new_fstate)).order_history()
             #new_dec.printdecay()
             new_dec.save()
 
@@ -62,22 +100,14 @@ class Decay(Document):
 
     def do_cc(self):
         cc_is_done = False
-        for p in Particle.objects(name = self.father):
-            if p.name != p.antiparticle:
-                cc_is_done = True 
-            cc_father = p.antiparticle
-            break
+        if particles[self.father]['name']!=particles[self.father]['antiparticle']:
+            cc_is_done = True
+        cc_father = particles[self.father]['antiparticle']
         cc_fstate = ""
         for part in self.fstate.split(" "):
-            #if not Particle.objects(name = part):
-                #print part+" not in particle db!"
-                #print "Failed to cc decay"
-                #return False
-            for p in Particle.objects(name = part):
-                if p.name != p.antiparticle:
-                   cc_is_done = True 
-                cc_fstate += p.antiparticle+" "                
-                break
+            if particles[part]['name']!=particles[part]['antiparticle']:
+                cc_is_done = True
+                cc_fstate += particles[part]['antiparticle']+" "
 
         cc_fstate =cc_fstate[:-1]
         cc_scheme=""
@@ -89,24 +119,18 @@ class Decay(Document):
             if part[-1]==";":
                 have_comma=True
                 part = part[:-1]
-            #if not Particle.objects(name = part):
-                #print part+" not in particle db!"
-                #print "Failed to cc decay"
-                #return False
-            for p in Particle.objects(name = part):
-                if p.name != p.antiparticle:
-                   cc_is_done = True 
 
-                if have_comma:
-                    cc_scheme += p.antiparticle+"; "
-                else:
-                    cc_scheme += p.antiparticle+" "
-                break
+            if particles[part]['name']!=particles[part]['antiparticle']:
+                cc_is_done = True 
+            if have_comma:
+                cc_scheme += particles[part]['antiparticle']+"; "
+            else:
+                cc_scheme += particles[part]['antiparticle']+" "
         cc_scheme =cc_scheme[:-1]
         new_dec = Decay(father = cc_father,
                         scheme = cc_scheme,
                         branching = self.branching,
-                        fstate = cc_fstate)
+                        fstate = cc_fstate).order_history()
         if cc_is_done:
             #print "Decay cc-ed:"
             #self.printdecay()
