@@ -189,11 +189,13 @@ function do_search()
               <li><a href="mailto:ilya.komarov@epfl.ch,a.baranov@cern.ch?Subject=fstate%20feedback">Feedback</a></li>
             </ul>
 
-            <input id="query" type="text" class="navbar-search search-query" value="pi+ pi- K+ K-">
+            <input id="query" list="queries" class="navbar-search search-query" value="pi+ pi- K+ K-">
           </div><!--/.nav-collapse --> 
         </div>
       </div>
     </div>
+
+    <datalist id="queries"></datalist> 
 
     <div class="container">
       <div id="block_content">
@@ -230,12 +232,53 @@ function do_search()
     -->
 
     <script type="text/javascript">
+      var dataList = document.getElementById('queries');
+      var input = document.getElementById('query');
+      var request = new XMLHttpRequest();
+      // Handle state changes for the request.
+      request.onreadystatechange = function(response) {
+        if (request.readyState === 4) {
+          if (request.status === 200) {
+            // Parse the JSON
+            var jsonOptions = JSON.parse(request.responseText);
+            var options = "";
+      
+            // Loop over the JSON array.
+            jsonOptions['p_names'].forEach(function(item) {
+              // Create a new <option> element.
+              var option = "<option value ='"+item+"'>"
+              options = options + option;
+              // Set the value using the item in the JSON array.
+              //option.value = item;
+              // Add the <option> element to the <datalist>.
+              //dataList.appendChild(option);
+            });
+            dataList.innerHTML = options;
+            // Update the placeholder text.
+            input.placeholder = "e.g. pi+";
+          } else {
+            // An error occured :(
+            input.placeholder = "Couldn't load datalist options";
+          }
+        }
+      };
+      request.open('GET', 'queries/null.json', true);
+      request.send();
+      // Update the placeholder text.
+      input.placeholder = "e.g. pi+ pi- K+ K-";
+      
       $("#query").keyup(function(event){
         if(event.keyCode == 13){
          do_search();
         }
+        if((event.keyCode >47)&&(event.keyCode <91)){
+         var found = $("#query").val();
+         // Set up and make the request.
+         request.open('GET', 'queries/'+found+'.json', true);
+         request.send();
+         return false;
+        }
       }); 
-
     </script>
   </body>
 </html>

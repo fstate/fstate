@@ -116,6 +116,25 @@ def json(query):
 
     return Response(json_dump({'result' : result, 'time': str(end-start), 'p_list':p_list}), mimetype='application/json')
 
+@app.route('/queries/<query>.json')
+def p_json(query):
+    if query=="null":
+        p_names = []
+        for p in Particle.objects():
+            p_names.append(p.name)
+        return Response(json_dump({'p_names':p_names}), mimetype='application/json')
+    p_names = []
+    last = query.split(" ")[-1]
+    n_tot=10
+    for p in Particle.objects():
+        if last == p.name[0:len(last)]:
+            p_names.append(query[:-len(last)]+p.name)
+            n_tot-=1
+        if n_tot<1:
+            break
+    return Response(json_dump({'p_names':p_names}), mimetype='application/json')
+
+
 
 format = [
     ('Branching',       'branching',   15),
