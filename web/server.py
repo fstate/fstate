@@ -252,14 +252,14 @@ def addNewPhys(table,id):
                             "mass": float(ret["mass"])*1000,
                             "antiparticle": ret["name"]}
             addParticleLive(document)
-            print "Particle added"
+            print("Particle added")
             return rmNewPhys(table,id, "approved")
         if table == 'decay':
             document = {"father":ret['mother'], 
                         "branching":ret["br_frac"], 
                         "daughters":ret["daughters"]}
             addDecayLive(document)
-            print "Adding decay, may take some time."
+            print("Adding decay, may take some time.")
             return rmNewPhys(table,id, "approved")
 
 @app.route("/admin_panel")
