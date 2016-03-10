@@ -39,7 +39,7 @@ class Decay(Document):
             "scheme" : self.scheme,
             "branching" : self.branching,
             "fstate" : self.fstate}
-        print json.dumps(decay,sort_keys=True, indent=4)
+        print(json.dumps(decay,sort_keys=True, indent=4))
         return True
 
     def to_dict(self):
@@ -72,7 +72,7 @@ class Decay(Document):
         return self
 
     def update_ancestors(self):
-        print "Trying to update ancestors"
+        print("Trying to update ancestors")
         for d in Decay.objects(fstate__contains = self.father):
             new_fstate = []
             #d.printdecay()

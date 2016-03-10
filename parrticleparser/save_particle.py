@@ -1,5 +1,5 @@
 import json
-from particle_model import Particle
+from parrticleparser.particle_model import Particle
 
 def save_particle_to_db(name, charge, mass, antiparticle, alias=[], antiparticle_alias=[]):
     """
@@ -22,8 +22,8 @@ def save_particle_to_db(name, charge, mass, antiparticle, alias=[], antiparticle
     try: 
         db_part.save()
     except:
-        print "Failed to save particle:"
-        print json.dumps(db_part.to_dict(),sort_keys=True, indent=4)
+        print("Failed to save particle:")
+        print(json.dumps(db_part.to_dict(),sort_keys=True, indent=4))
         return False
     if not antiparticle == name:
         if antiparticle_alias == []:
@@ -36,32 +36,32 @@ def save_particle_to_db(name, charge, mass, antiparticle, alias=[], antiparticle
         try: 
             db_part.save()
         except:
-            print "Failed to save particle:"
-            print json.dumps(db_part.to_dict(),sort_keys=True, indent=4)
+            print("Failed to save particle:")
+            print(json.dumps(db_part.to_dict(),sort_keys=True, indent=4))
             return False
     return True
 
 
 if __name__ == '__main__':
-    print "Example of adding particle to DB"
-    print "We will add particle 'Delta-'"
+    print("Example of adding particle to DB")
+    print("We will add particle 'Delta-'")
     for p in Particle.objects(name = 'Delta-'):
         p.printparticle()    
-    print "First, let's remove if from DB together with its CC"
+    print("First, let's remove if from DB together with its CC")
     Particle.objects(name = 'Delta-').delete()
     Particle.objects(name = 'Delta~+').delete()
-    print "Ans let's check if it is deleted:"
+    print("Ans let's check if it is deleted:")
     for p in Particle.objects(name__in = ['Delta-','Delta~+']):
         p.printparticle()
-    print "Now let's add it:"
+    print("Now let's add it:")
     save_particle_to_db(
     name = "Delta-",
     charge = -1.0,
     mass = 1232.0,
     antiparticle = "Delta~+")
-    print "And let's check if Delta- is here:"
+    print("And let's check if Delta- is here:")
     for p in Particle.objects(name = 'Delta-'):
         p.printparticle()    
-    print "And it's antiparticle:"
+    print("And it's antiparticle:")
     for p in Particle.objects(name = 'Delta~+'):
         p.printparticle()        

@@ -79,13 +79,13 @@ def process_decay(tokens):
             d = ALIAS[d]
         #We have a big enough list of Models, we need to add more smart things here.
         if not check_if_particle_exist(d):
-            print "Unknown particle "+d
+            print("Unknown particle "+d)
             break
         else:
             d=check_if_particle_exist(d)
         result['daughters'].append(d)
     if result['daughters'] == []:
-        print "Empty fstate!"
+        print("Empty fstate!")
         return False
     return result
 
@@ -109,9 +109,9 @@ def process_tokens(tokens):
         if process_decay(tokens):
             result['decays'][current_particle].append(process_decay(tokens))
         else:
-            print "problem with decay of "+current_particle
+            print("problem with decay of "+current_particle)
     else:
-        print "Dont know what to do with:", tokens
+        print("Dont know what to do with:", tokens)
 
 
 def main():

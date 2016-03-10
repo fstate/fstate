@@ -15,7 +15,7 @@ class Particle(Document):
             "mass" : self.mass,
             "alias" : self.alias,
             "antiparticle" : self.antiparticle}
-        print json.dumps(particle,sort_keys=True, indent=4)
+        print(json.dumps(particle,sort_keys=True, indent=4))
         return True
 
     def to_dict(self):

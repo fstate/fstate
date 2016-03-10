@@ -14,7 +14,7 @@ from createdatabase.decay_model import Decay
 from parrticleparser.particle_model import Particle
 from createdatabase.save_decay import add_decay
 from parrticleparser.save_particle import save_particle_to_db
-import thread
+import threading
 
 app = Flask(__name__)
 # mc = pylibmc.Client(["127.0.0.1"], binary=True,
@@ -209,11 +209,11 @@ def getNewPhysics(t, status):
 
 
 def addDecayLive(document):
-    """Adds decay specified by document to the live fstate decays table"""
-    thread.start_new_thread(add_decay, (document["father"], 
+    """Spawns a thread that calls the add_decay method to insert the decay specified by document to the live fstate decays table"""
+    t=threading.Thread(target=add_decay, args=(document["father"], 
                                         {"branching":document["branching"], 
                                         "daughters":document["daughters"]}, "", document["daughters"]))
-    pass
+    t.start()
 
 def addParticleLive(document):
     """Adds decay specified by document to the live fstate decays table"""

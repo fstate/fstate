@@ -15,7 +15,7 @@ def line_to_dict(line):
     try:
         name = line.split("|")[1].strip()
     except:
-        print "Failed to parse name in line \n"+line
+        print("Failed to parse name in line \n"+line)
         return False
     try:
         charge = line.split("|")[3].strip()
@@ -24,28 +24,28 @@ def line_to_dict(line):
         else:
             charge = float(charge)
     except:
-        print "Failed to parse charge in line \n"+line
+        print("Failed to parse charge in line \n"+line)
         return False
     try:
         mass = float(line.split("|")[4].strip().replace(" MeV"," ").replace(" eV","e-6").replace(" GeV","e3").replace(" TeV","e6"))
     except:
-        print "Failed to parse mass in line \n"+line
+        print("Failed to parse mass in line \n"+line)
         return False
     try:
         alias = [line.split("|")[7].strip()]
     except:
-        print "Failed to parse alias in line \n"+line
+        print("Failed to parse alias in line \n"+line)
         return False
     try:
         antiparticle = line.split("|")[9].strip()
         if antiparticle == "self-cc":
             antiparticle=name
     except:
-        print "Failed to parse antiparticle in line \n"+line
+        print("Failed to parse antiparticle in line \n"+line)
         return False
 
     if antiparticle == '-':
-        print "Wrong antiparticle of "+name
+        print("Wrong antiparticle of "+name)
         return False
 
     particle = {
@@ -77,7 +77,7 @@ def main():
         try:
             db_part.save()
         except:
-            print json.dumps(part,sort_keys=True, indent=4)
+            print(json.dumps(part,sort_keys=True, indent=4))
             continue
 
 if __name__ == '__main__':

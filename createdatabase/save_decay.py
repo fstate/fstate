@@ -5,9 +5,10 @@ from parrticleparser.particle_model import Particle
 from decaydecparser.parser import check_if_particle_exist
 import pickle
 import json
-from decay_model import Decay
+from createdatabase.decay_model import Decay
+#import Decay
 import copy
-from config import br_cutoff, max_decay_chain
+#from config import br_cutoff, max_decay_chain
 
 
 def add_decay(father, decay, history = "", uniterated_daughters = [], test_mode=False):
@@ -22,7 +23,7 @@ def add_decay(father, decay, history = "", uniterated_daughters = [], test_mode=
                     "gamma"
                 ]
             }
-    This function add decay to the existing DB (No need to full rebuild)
+    This function adds a decay to the existing DB (No need to full rebuild)
     Please keep in mind, that all particles in the decay should be in particle DB 
     """
     global br_cutoff
@@ -31,56 +32,56 @@ def add_decay(father, decay, history = "", uniterated_daughters = [], test_mode=
         history = "{} --> {}".format(father, ' '.join(decay['daughters']))
     for d in decay['daughters']:
         if not check_if_particle_exist(d):
-            print "Trying to add decay of "+father
-            print json.dumps(decay,sort_keys=True, indent=4)
-            print "with unexisting particle   "+d
+            print("Trying to add decay of "+father)
+            print(json.dumps(decay,sort_keys=True, indent=4))
+            print("with unexisting particle   "+d)
             return False
     if ((decay["branching"]>br_cutoff) and (1<len(decay["daughters"])<max_decay_chain)):
         db_dec = Decay(father = father, scheme = history, branching = decay["branching"], fstate = ' '.join(decay["daughters"])).order_history()
         if test_mode:
-            print "Trying to save decay:"
+            print("Trying to save decay:")
             db_dec.printdecay()
         try:
             db_dec.save()
             if test_mode:
-                print "Decay saved!"
+                print("Decay saved!")
         except:
-            print "Failed to save decay!"
+            print("Failed to save decay!")
             db_dec.printdecay()
             
         try:
             #Now need to update all decays having this particle in final state with this mode of decay
             db_dec.update_ancestors()
             if test_mode:
-                print "Ancestors updated!"
+                print("Ancestors updated!")
         except:
-            print "Failed to update ancestors"
+            print("Failed to update ancestors")
             db_dec.printdecay()
         
         if test_mode:
-            print "cc-ing decay"
+            print("cc-ing decay")
         db_dec_cc = db_dec.do_cc().order_history()
         if db_dec_cc:
             if test_mode:
-                print "decay cc-ed"
+                print("decay cc-ed")
             try:
                 db_dec_cc.save()
                 db_dec_cc.update_ancestors()
             except:
-                print "Failed to save decay!"
+                print("Failed to save decay!")
                 db_dec_cc.printdecay()
         elif test_mode:
-            print "failed to cc decay"
+            print("failed to cc decay")
 
         if uniterated_daughters:
             if test_mode:
-                print "Iterating over the daughters"
+                print("Iterating over the daughters")
             for i, daughter in enumerate(uniterated_daughters):
                 if test_mode:
-                    print "Daughter "+daughter
+                    print("Daughter "+daughter)
                 for saved_dec in Decay.objects(father = daughter):
                     if test_mode:
-                        print "decay: "+saved_dec.scheme
+                        print("decay: "+saved_dec.scheme)
                     subst = history.split('; ') + saved_dec.scheme.split('; ')
                     new_history = '; '.join(subst[:1] + sorted(subst[1:]))
                     daughters = []
@@ -102,13 +103,13 @@ def add_decay(father, decay, history = "", uniterated_daughters = [], test_mode=
     return True
 
 if __name__ == '__main__':
-    print "Example of adding decay to DB"
+    print("Example of adding decay to DB")
 
     father = 'K+'
     decay = {"branching":0.99,
             "daughters" : ['e+','gamma' ]}
 
-    print "Lets add this decay:"
+    print("Lets add this decay:")
     json.dumps(decay, sort_keys=True, indent=4)
     add_decay(father, decay, "", decay['daughters'], test_mode = True)
 
