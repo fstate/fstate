@@ -1,4 +1,5 @@
 from flask import *
+from flask.ext.login import LoginManager
 # import pylibmc
 from db import *
 from itertools import permutations
@@ -17,6 +18,9 @@ from parrticleparser.save_particle import save_particle_to_db
 import threading
 
 app = Flask(__name__)
+login_manager=LoginManager()
+login_manager.init_app(app)
+
 # mc = pylibmc.Client(["127.0.0.1"], binary=True,
 #                      behaviors={"tcp_nodelay": True,
 #                                 "ketama": True})
