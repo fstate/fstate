@@ -49,7 +49,7 @@ Logged in as {{ current_user.id }}. <a href="/logout">Logout</a>
       <td style="width: 10%">{{ p.source }}</td>
       <td style="width: 10%">{{ p.comment }}</td>
       <td style="width: 30%"><input type="submit" class="btn btn-success approve approve-particle" name="approve_{{ p._id }}" value="Approve" /> <input type="submit" class="btn btn-warning deny deny-particle" name="deny_{{ p._id }}" value="Deny" />
-      <input type="submit" class="btn btn-danger delete delete-particle" name="delete_{{ d._id }}" value="Delete" />
+      <input type="submit" class="btn btn-danger delete delete-particle" name="delete_{{ p._id }}" value="Delete" />
     </td>
   </tr>
   {% endfor %}
@@ -60,30 +60,35 @@ Logged in as {{ current_user.id }}. <a href="/logout">Logout</a>
     <table class="table-striped" id="decays_table" style="width: 100%">
       <tr>
           <td style="width: 10%"><strong>Mother</strong></td>
-          <td style="width: 35%"><strong>Daughters</strong></td>
-          <td style="width: 15%"><strong>Source</strong></td>
-          <td style="width: 15%"><strong>Comment</strong></td>
+          <td style="width: 30%"><strong>Daughters</strong></td>
+          <td style="width: 10%"><strong>Source</strong></td>
+          <td style="width: 10%"><strong>Comment</strong></td>
           <td style="width: 10%"><strong>Branching</strong></td>
           <td style="width: 10%"><strong>Status</strong></td>
+          <td style="width: 20%"><strong>Action</strong></td>
       </tr>
       {% for d in decs_approved %}
       <tr id="row_decays_{{ d._id }}">
       <td style="width: 10%">{{ d.mother }}</td>
-      <td style="width: 35%">{{ d.daughters }}</td>
-          <td style="width: 15%">{{ d.source }}</td>
-          <td style="width: 15%">{{ d.comment }}</td>
+      <td style="width: 30%">{{ d.daughters }}</td>
+          <td style="width: 10%">{{ d.source }}</td>
+          <td style="width: 10%">{{ d.comment }}</td>
           <td style="width: 10%">{{ d.br_frac }}</td>
           <td style="width: 10%">Approved</td>
+          <td style="width: 20%"><input type="submit" class="btn btn-warning reconsider reconsider-decay" name="reconsider_{{ d._id }}" value="Reconsider" />
+          </td>
       </tr>
       {% endfor %}
       {% for d in decs_declined %}
       <tr id="row_decays_{{ d._id }}">
       <td style="width: 10%">{{ d.mother }}</td>
-      <td style="width: 35%">{{ d.daughters }}</td>
-          <td style="width: 15%">{{ d.source }}</td>
-          <td style="width: 15%">{{ d.comment }}</td>
+      <td style="width: 30%">{{ d.daughters }}</td>
+          <td style="width: 10%">{{ d.source }}</td>
+          <td style="width: 10%">{{ d.comment }}</td>
           <td style="width: 10%">{{ d.br_frac }}</td>
           <td style="width: 10%">Declined</td>
+          <td style="width: 20%"><input type="submit" class="btn btn-warning reconsider reconsider-decay" name="reconsider_{{ d._id }}" value="Reconsider" /> 
+          </td>
       </tr>
       {% endfor %}
     </table>
@@ -227,6 +232,33 @@ Logged in as {{ current_user.id }}. <a href="/logout">Logout</a>
   }
   )
 
+  $('.reconsider').click(function(){
+    var type = ""
+    
+    //Find Type:
+    if ($(this).hasClass("reconsider-particle")){
+      type="particle"
+    }
+    else{
+      type="decay"
+    }
+
+    //Extract ID:
+    var id = $(this).attr("name").substring(11)
+    alert(type+" "+id)
+
+    $.getJSON('/admin_panel/reconsider/'+type+"/"+id, function(data) {
+      if (data['result']){
+        removeRow(type, id)
+      }
+      else{
+        alert("There was an error reconsidering the row from the table: "+data["err"]+"\n Please try again later.")
+      }
+  });
+  }
+  )
+
+
   $('.delete').click(function(){
     var type = ""
     
@@ -247,7 +279,7 @@ Logged in as {{ current_user.id }}. <a href="/logout">Logout</a>
         removeRow(type, id)
       }
       else{
-        alert("There was an error removing the row from the table: "+data["err"]+"\n Please try again later.")
+        alert("There was an error deleting the row from the table: "+data["err"]+"\n Please try again later.")
       }
   });
   }
@@ -274,7 +306,7 @@ Logged in as {{ current_user.id }}. <a href="/logout">Logout</a>
         removeRow(type, id)
       }
       else{
-        alert("There was an error removing the row from the table: "+data["err"]+"\n Please try again later.")
+        alert("There was an error approving the row from the table: "+data["err"]+"\n Please try again later.")
       }
   });
   }

@@ -214,12 +214,19 @@ def getNewPhysics(t, status):
     rows = new_physics.find({"type": t, "status":status})
     return [i for i in rows]
 
+def user_key_from_document(document):
+    try:
+        return "{} --> {}".format(document["father"], ' '.join(document["daughters"]))
+    except:
+        print "Failed to create user key, returning empty"
+        return ""
 
 def addDecayLive(document):
     """Adds decay specified by document to the live fstate decays table"""
+    user_key = user_key_from_document(document)
     thread.start_new_thread(add_decay, (document["father"], 
                                         {"branching":document["branching"], 
-                                        "daughters":document["daughters"]}, "", document["daughters"]))
+                                        "daughters":document["daughters"]}, "", user_key, document["daughters"]))
     pass
 
 def addParticleLive(document):
@@ -229,6 +236,31 @@ def addParticleLive(document):
                         mass = document["mass"],
                         antiparticle = document["antiparticle"])
     pass
+
+def delete_decays_by_key(key):
+    for d in Decay.objects(user_keys__contains = key):
+        d.delete()
+
+@app.route("/admin_panel/reconsider/<table>/<id>")
+@login_required
+def reconsiderNewPhys(table,id):
+    for ret in new_physics.find({"_id":ObjectId(id), "type": table}):
+        if ret["status"]=="declined":
+            return rmNewPhys(table,id, "pending")
+        if table == 'decay':
+            if ret["status"]=="approved":
+                document = {"father":ret['mother'], 
+                        "branching":ret["br_frac"], 
+                        "daughters":ret["daughters"]}
+                user_key = user_key_from_document(document)
+                if user_key != "":
+                    thread.start_new_thread(delete_decays_by_key, (user_key,))
+                    return rmNewPhys(table,id, "pending")
+                else:
+                    err = "Failed to create user key for decay"
+                    return Response(json_dump({'result' : False, "err": str(err)}), mimetype='application/json')
+        else:
+            return rmNewPhys(table,id, "pending")
 
 @app.route("/admin_panel/rm/<table>/<id>")
 @login_required

@@ -10,7 +10,7 @@ import copy
 from config import br_cutoff, max_decay_chain
 
 
-def add_decay(father, decay, history = "", uniterated_daughters = [], test_mode=False):
+def add_decay(father, decay, user_keys="", history = "", uniterated_daughters = [], test_mode=False):
     """
     Father = <Name of a particle from particle DB>
     decay = {
@@ -29,6 +29,8 @@ def add_decay(father, decay, history = "", uniterated_daughters = [], test_mode=
 
     if history == "":
         history = "{} --> {}".format(father, ' '.join(decay['daughters']))
+    if user_keys == "":
+        user_keys = history
     for d in decay['daughters']:
         if not check_if_particle_exist(d):
             print "Trying to add decay of "+father
@@ -36,7 +38,7 @@ def add_decay(father, decay, history = "", uniterated_daughters = [], test_mode=
             print "with unexisting particle   "+d
             return False
     if ((decay["branching"]>br_cutoff) and (1<len(decay["daughters"])<max_decay_chain)):
-        db_dec = Decay(father = father, scheme = history, branching = decay["branching"], fstate = ' '.join(decay["daughters"])).order_history()
+        db_dec = Decay(father = father, scheme = history, branching = decay["branching"], fstate = ' '.join(decay["daughters"]), user_keys = user_keys).order_history()
         if test_mode:
             print "Trying to save decay:"
             db_dec.printdecay()
@@ -83,6 +85,7 @@ def add_decay(father, decay, history = "", uniterated_daughters = [], test_mode=
                         print "decay: "+saved_dec.scheme
                     subst = history.split('; ') + saved_dec.scheme.split('; ')
                     new_history = '; '.join(subst[:1] + sorted(subst[1:]))
+                    new_user_keys = saved_dec.user_keys+user_keys
                     daughters = []
                     for d in decay["daughters"]:
                         if d!=daughter:
@@ -96,9 +99,9 @@ def add_decay(father, decay, history = "", uniterated_daughters = [], test_mode=
                     branching = decay["branching"]*saved_dec.branching
                     new_decay = {"branching":branching, "daughters":copy.deepcopy(daughters)}
                     if i == 0:
-                        add_decay(father, new_decay, new_history, new_uniterated_daughters, test_mode)
+                        add_decay(father, new_decay, new_user_keys, new_history, new_uniterated_daughters, test_mode)
                     else:
-                        add_decay(father, new_decay, new_history, [], test_mode)
+                        add_decay(father, new_decay, new_user_keys, new_history, [], test_mode)
     return True
 
 if __name__ == '__main__':

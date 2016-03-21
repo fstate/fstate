@@ -39,7 +39,7 @@ class Decay(Document):
 
 
     def save(self, *args, **kwargs):
-        if self.scheme.count(";")==1:
+        if self.scheme.count("-->")==1:
             self.primal_decay = True
         return super(Decay, self).save(*args, **kwargs)    
 
