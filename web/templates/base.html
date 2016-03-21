@@ -71,21 +71,7 @@ function refilter(fathers_list)
   return;
 }
 
-function show_results(data)
-{
-    for ( var i in data['result']) {
-      var result = data['result'][i];
-      var father = data['result'][i]['father'];
 
-      $('#results tr:last').after("<tr class=\"decay father-"+father+"\">\
-      <td>"+ (father in data["p_list"] ? data["p_list"][father]["mass"] : "---") +"</td>\
-      <td>"+ result['branching'] +"</td>\
-      <td>"+ result['scheme'] +"</td>\
-      </tr>");
-    }
-
-    $("#search_results").append("<hr/><p>Generated in "+ data['time'] +"</p>");
-}
 
 function create_filters(data)
 {
@@ -232,6 +218,29 @@ function do_search()
     -->
 
     <script type="text/javascript">
+
+      function show_results(data)
+      {
+          document.getElementById('results').innerHTML="            <tr>\
+                      <td><strong>Father mass, MeV</strong></td>\
+                      <td><strong>Approximate branching fraction &darr;</strong></td>\
+                      <td><strong>Mode</strong></td>\
+                  </tr>";
+      
+          for ( var i in data['result']) {
+            var result = data['result'][i];
+            var father = data['result'][i]['father'];
+      
+            $('#results tr:last').after("<tr class=\"decay father-"+father+"\">\
+            <td>"+ (father in data["p_list"] ? data["p_list"][father]["mass"] : "---") +"</td>\
+            <td>"+ result['branching'] +"</td>\
+            <td>"+ result['scheme'] +"</td>\
+            </tr>");
+          }
+      
+          $("#search_results").append("<hr/><p>Generated in "+ data['time'] +"</p>");
+      }
+
       var dataList = document.getElementById('queries');
       var input = document.getElementById('query');
       var request = new XMLHttpRequest();
