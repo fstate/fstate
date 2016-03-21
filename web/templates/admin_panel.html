@@ -7,20 +7,23 @@ Logged in as {{ current_user.id }}. <a href="/logout">Logout</a>
 <table class="table-striped" id="decays_table" style="width: 100%">
   <tr>
       <td style="width: 10%"><strong>Mother</strong></td>
-      <td style="width: 35%"><strong>Daughters</strong></td>
-      <td style="width: 15%"><strong>Source</strong></td>
-      <td style="width: 15%"><strong>Comment</strong></td>
+      <td style="width: 30%"><strong>Daughters</strong></td>
+      <td style="width: 10%"><strong>Source</strong></td>
+      <td style="width: 10%"><strong>Comment</strong></td>
       <td style="width: 10%"><strong>Branching</strong></td>
-      <td style="width: 15%"><strong>Action</strong></td>
+      <td style="width: 30%"><strong>Action</strong></td>
   </tr>
   {% for d in decs_pending %}
   <tr id="row_decays_{{ d._id }}">
       <td style="width: 10%"><span name="mother" class="text-editable" id="mother_{{ d._id }}">{{ d.mother }}</span><input class="input-editable" id="mother_{{ d._id }}_input" style="display: none"></input></td>
-      <td style="width: 35%"><span name="daughters" class="text-editable" id="daughters_{{ d._id }}">{{ d.daughters }}</span> <input class="input-editable" id="daughters_{{ d._id }}_input" style="display: none"></input></td>
-      <td style="width: 15%">{{ d.source }}</td>
-      <td style="width: 15%">{{ d.comment }}</td>
+      <td style="width: 30%"><span name="daughters" class="text-editable" id="daughters_{{ d._id }}">{{ d.daughters }}</span> <input class="input-editable" id="daughters_{{ d._id }}_input" style="display: none"></input></td>
+      <td style="width: 10%">{{ d.source }}</td>
+      <td style="width: 10%">{{ d.comment }}</td>
       <td style="width: 10%">{{ d.br_frac }}</td>
-      <td style="width: 15%"><input type="submit" class="btn btn-success approve approve-decay" name="approve_{{ d._id }}" value="Approve" /> <input type="submit" class="btn btn-danger deny deny-decay" name="deny_{{ d._id }}" value="Deny" /></td>
+      <td style="width: 30%">
+      <input type="submit" class="btn btn-success approve approve-decay" name="approve_{{ d._id }}" value="Approve" /> 
+      <input type="submit" class="btn btn-warning deny deny-decay" name="deny_{{ d._id }}" value="Deny" />
+      <input type="submit" class="btn btn-danger delete delete-decay" name="delete_{{ d._id }}" value="Delete" /></td>
   </tr>
   {% endfor %}
 </table>
@@ -33,9 +36,9 @@ Logged in as {{ current_user.id }}. <a href="/logout">Logout</a>
       <td style="width: 10%"><strong>Mass (GeV)</strong></td>
       <td style="width: 10%"><strong>Charge (e)</strong></td>
       <td style="width: 15%"><strong>Antiparticle</strong></td>
-      <td style="width: 15%"><strong>Source</strong></td>
-      <td style="width: 20%"><strong>Comment</strong></td>
-      <td style="width: 15%"><strong>Action</strong></td>
+      <td style="width: 10%"><strong>Source</strong></td>
+      <td style="width: 10%"><strong>Comment</strong></td>
+      <td style="width: 30%"><strong>Action</strong></td>
   </tr>
   {% for p in particles_pending %}
   <tr id="row_particles_{{ p._id }}">
@@ -43,9 +46,11 @@ Logged in as {{ current_user.id }}. <a href="/logout">Logout</a>
       <td style="width: 10%"><span name="mass"  class="text-editable" id="mass_{{ p._id }}">{{ p.mass }}</span> <input class="input-editable" id="mass_{{ p._id }}_input" style="display: none"></input></td>
       <td style="width: 10%">{{ p.charge }}</td>
       <td style="width: 15%">{{ p.antiparticle }}</td>
-      <td style="width: 15%">{{ p.source }}</td>
-      <td style="width: 20%">{{ p.comment }}</td>
-      <td style="width: 15%"><input type="submit" class="btn btn-success approve approve-particle" name="approve_{{ p._id }}" value="Approve" /> <input type="submit" class="btn btn-danger deny deny-particle" name="deny_{{ p._id }}" value="Deny" /></td>
+      <td style="width: 10%">{{ p.source }}</td>
+      <td style="width: 10%">{{ p.comment }}</td>
+      <td style="width: 30%"><input type="submit" class="btn btn-success approve approve-particle" name="approve_{{ p._id }}" value="Approve" /> <input type="submit" class="btn btn-warning deny deny-particle" name="deny_{{ p._id }}" value="Deny" />
+      <input type="submit" class="btn btn-danger delete delete-particle" name="delete_{{ d._id }}" value="Delete" />
+    </td>
   </tr>
   {% endfor %}
   </table>
@@ -221,6 +226,33 @@ Logged in as {{ current_user.id }}. <a href="/logout">Logout</a>
   });
   }
   )
+
+  $('.delete').click(function(){
+    var type = ""
+    
+    //Find Type:
+    if ($(this).hasClass("delete-particle")){
+      type="particle"
+    }
+    else{
+      type="decay"
+    }
+
+    //Extract ID:
+    var id = $(this).attr("name").substring(7)
+    alert(type+" "+id)
+
+    $.getJSON('/admin_panel/delete/'+type+"/"+id, function(data) {
+      if (data['result']){
+        removeRow(type, id)
+      }
+      else{
+        alert("There was an error removing the row from the table: "+data["err"]+"\n Please try again later.")
+      }
+  });
+  }
+  )
+
 
   $('.approve').click(function(){
     var type = ""

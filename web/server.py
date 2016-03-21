@@ -66,6 +66,16 @@ def howtosearch():
         p_list.append(p.to_print())
     return render_template('HowToSearch.html', p_list = p_list)
 
+@app.route("/knowndecays/<query>")
+def knowndecays(query):
+    d_list = []
+    for d in Decay.objects(father = query, primal_decay = True):
+        d_list.append(d.to_dict())
+    for d in d_list:
+        d['branching'] = nice_br(d['branching'])
+    return render_template('SingleParticle.html', particle = query, d_list = d_list)
+
+
 #@app.route("/results/<query>")
 #def showResults(query):
 
@@ -234,6 +244,20 @@ def rmNewPhys(table,id, status = "declined"):
             return Response(json_dump({'result' : False, "err": "%i rows removed" % ret['n'] }), mimetype='application/json') 
     except Exception as err:
         return Response(json_dump({'result' : true, "err": str(err)}), mimetype='application/json')
+
+@app.route("/admin_panel/delete/<table>/<id>")
+@login_required
+def spamNewPhys(table,id, status = "declined"):
+    """also accepts post arguments that let you remove a preliminary decay/particle or add it to the live table"""
+    try:
+        ret=new_physics.remove({"_id":ObjectId(id), "type": table})
+        if ret['n'] == 1:
+            return Response(json_dump({'result' : True, "err": ""}), mimetype='application/json')
+        else:
+            return Response(json_dump({'result' : False, "err": "%i rows removed" % ret['n'] }), mimetype='application/json') 
+    except Exception as err:
+        return Response(json_dump({'result' : False, "err": str(err)}), mimetype='application/json')
+
 
 @app.route("/admin_panel/add/<table>/<id>")
 @login_required
