@@ -97,13 +97,49 @@ function checkdecay() {
 	}
 
 
-    if(document.addnewdecay.branching_fraction.value == "") {
-        alert("Please enter a branching fraction.");
+    if(!isNumeric(document.addnewdecay.branching_fraction.value)) {
+        alert("Please enter a numeric branching fraction.");
         return false;
     }
-    document.addnewdecay.submit();
 
+    if(isNumeric(document.addnewdecay.branching_fraction.value)<0) {
+        alert("Please enter positive branching fraction.");
+        return false;
+    }
+    if(isNumeric(document.addnewdecay.branching_fraction.value)>1) {
+        alert("Please branching fraction which is lower than 1.");
+        return false;
+    }    
+
+    document.addnewdecay.submit();
 }
+
+
+function isNumeric(value) {
+    if(/^(\-|\+)?[0-9]+(\.[0-9]+)?(e(\-)?[0-9]+)?$/
+      .test(value))
+      return Number(value);
+  return NaN;
+}
+
+
+function checkparticle() {
+	if(!isNumeric(document.addnewparticle.new_particle_charge.value)){
+	    alert("Particle charge should be a number.");
+        return false;	
+	}
+	if(!isNumeric(document.addnewparticle.new_particle_mass.value)){
+	    alert("Particle mass should be a number.");
+        return false;	
+	}	
+	if(isNumeric(document.addnewparticle.new_particle_mass.value)<0){
+	    alert("Particle mass should be positive.");
+        return false;	
+	}	
+
+    document.addnewparticle.submit();
+}
+
 
 </script>
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -123,7 +159,7 @@ function checkdecay() {
 		      <option>{{ p.name|safe }}</option>
 		     {% endfor %}
 			</datalist> 
-		    <input list="particles" name="mother" placeholder="Mother Particle" /> <font size="6">&rArr;</font>
+		    <input list="particles" name="mother" placeholder="Mother Particle" required/> <font size="6">&rArr;</font>
 		    <span id="daughter_text_boxes">
 		    	<input list="particles" name="daughter1" id="daughter1"placeholder="Daughter 1" /> <font size="6">+</font>
 		    	<input list="particles" name="daughter2" id="daughter2" placeholder="Daughter 2" /> 
@@ -135,7 +171,7 @@ function checkdecay() {
 			</span>
 
 		    <p><textarea name="decay_comment" style="height: 28px; width: 500px" id="decay_comment" placeholder="Comment" onkeyup="adjust_textarea(this)"></textarea> <br />
-		    <input type="text" name="branching_fraction" id="branching_fraction"placeholder="Branching Fraction" /> <input type="text" name="decay_source" id="decay_source"placeholder="Link to Source" data-toggle="tooltip" title="Please include a link to a citation of the decay if one can be provided"/></p>
+		    <input type="text" name="branching_fraction" id="branching_fraction" placeholder="Branching Fraction" required/> <input type="text" name="decay_source" id="decay_source"placeholder="Link to Source" data-toggle="tooltip" title="Please include a link to a citation of the decay if one can be provided"/></p>
 		    <p><input class="btn btn-primary" value="Add Decay" onClick="return checkdecay();"/></p>
 	  </form>
 	</div>
@@ -145,12 +181,14 @@ function checkdecay() {
 	<h2 class="text-left">Submit A New Particle</h2>
 	<p>If you have noticed there is a particle missing from the list on the <a href="howto-search">how to search</a> page, we greatly appreciate your help in notifying us with the form below!</p>
 	<div class="col-sm-8 text-center" id="new-particle">
-		<form action="/add_particle" method="post">
-		    <input type="text" name="new_particle_name" placeholder="Particle Name"> <input type="text" name="new_particle_mass" placeholder="Mass (GeV)"> 
-		    <br><input type="text" name="new_particle_charge" placeholder="Particle Charge (e)"> <input type="text" name="new_particle_antiparticle" placeholder="Antiparticle (Blank for self)"> 
+		<form name=addnewparticle action="/add_particle" method="post">
+		    <input type="text" name="new_particle_name" placeholder="Particle Name" required>
+		    <input type="text" name="new_particle_mass" id="new_particle_mass" placeholder="Mass (GeV)" required> 
+		    <br><input type="text" name="new_particle_charge" id="new_particle_charge" placeholder="Particle Charge (e)" required>
+		    <input type="text" name="new_particle_antiparticle" placeholder="Antiparticle (Blank for self)"> 
 		    <p><textarea style="height: 28px; width: 500px" name="new_particle_comment" id="new_particle_comment" placeholder="Comment" onkeyup="adjust_textarea(this)"></textarea> <br />
 		    <input type="text" name="new_particle_source" id="new_particle_source" placeholder="Link to Source" data-toggle="tooltip" title="Please include a link to a citation of an observation of the particle if one can be provided"/></p>
-		    <p><input type="submit" class="btn btn-primary" value="Add Particle" /></p></span>
+		    <p><input class="btn btn-primary" value="Add Particle" onClick="return checkparticle();"/></p></span>
 	  </form>
 	</div>
 </div>
