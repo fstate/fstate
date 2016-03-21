@@ -69,11 +69,11 @@ def howtosearch():
 @app.route("/knowndecays/<query>")
 def knowndecays(query):
     d_list = []
-    for d in Decay.objects(father = query, primal_decay = True):
+    for d in Decay.objects(father = query.replace("__","/"), primal_decay = True):
         d_list.append(d.to_dict())
     for d in d_list:
         d['branching'] = nice_br(d['branching'])
-    return render_template('SingleParticle.html', particle = query, d_list = d_list)
+    return render_template('SingleParticle.html', particle = query.replace("__","/"), d_list = d_list)
 
 
 #@app.route("/results/<query>")

@@ -45,6 +45,7 @@ class Particle(Document):
         particle = {
             "name" : self.name,
             "name_js" : "\""+self.name.replace("'","\'")+"\"",
+            "name_html" : self.name.replace("/","__"),
             "charge" : self.charge,
             "mass" : mass,
             "alias" : self.alias,
