@@ -44,6 +44,7 @@ class Particle(Document):
                 mass = str(self.mass)+" MeV"
         particle = {
             "name" : self.name,
+            "name_js" : "\""+self.name.replace("'","\'")+"\"",
             "charge" : self.charge,
             "mass" : mass,
             "alias" : self.alias,

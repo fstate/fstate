@@ -18,6 +18,8 @@ function add_daughter(){
 	var daughter = document.createElement("input");
 	daughter.list="particles";
 	daughter.placeholder="Daughter "+num_daughters.toString();
+	daughter.id=d_name;
+	daughter.setAttribute('list', 'particles');
 	daughter.name=d_name;
 
 	var boxes = document.getElementById("daughter_text_boxes");
@@ -74,6 +76,35 @@ function adjust_textarea(h) {
     h.style.height = (h.scrollHeight)+"px";
 }
 
+var particles = [
+			     {% for p in p_list %}
+		      {{ p.name_js|safe }},
+		     {% endfor %}
+]
+
+function checkdecay() {
+    if (!particles.includes(document.addnewdecay.mother.value)){
+    	alert("Mother particle is not known. Please use one from list or submit a new particle to the system. (If you add a new particle, it will be considered by admins before appearing in database)");
+        return false;
+    }
+
+    for (var i = 1; i<=num_daughters;i+=1){
+    	var d_name = document.getElementById("daughter"+i.toString()).value
+    	if (!particles.includes(d_name)){
+    		alert("Daughter "+d_name+" is not known. Please use one from list or submit a new particle to the system. (If you add a new particle, it will be considered by admins before appearing in database)");
+    		return false;
+    	}	
+	}
+
+
+    if(document.addnewdecay.branching_fraction.value == "") {
+        alert("Please enter a branching fraction.");
+        return false;
+    }
+    document.addnewdecay.submit();
+
+}
+
 </script>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="/static/css/pretty-form2.css">
@@ -85,11 +116,11 @@ function adjust_textarea(h) {
 	<p>If you have noticed there is a decay which is not in our system, we greatly appreciate your help in notifying us with the form below!</p>
 	<div class="col-sm-8 text-center" id="decay-channel">
 
-		<form action="/add_decay" method="post">
+		<form name=addnewdecay action="/add_decay" method="post">
 			<span id="decay_boxes">
 			<datalist id="particles">
 		     {% for p in p_list %}
-		      <option>{{ p.name }}</option>
+		      <option>{{ p.name|safe }}</option>
 		     {% endfor %}
 			</datalist> 
 		    <input list="particles" name="mother" placeholder="Mother Particle" /> <font size="6">&rArr;</font>
@@ -105,7 +136,7 @@ function adjust_textarea(h) {
 
 		    <p><textarea name="decay_comment" style="height: 28px; width: 500px" id="decay_comment" placeholder="Comment" onkeyup="adjust_textarea(this)"></textarea> <br />
 		    <input type="text" name="branching_fraction" id="branching_fraction"placeholder="Branching Fraction" /> <input type="text" name="decay_source" id="decay_source"placeholder="Link to Source" data-toggle="tooltip" title="Please include a link to a citation of the decay if one can be provided"/></p>
-		    <p><input type="submit" class="btn btn-primary" value="Add Decay" /></p>
+		    <p><input class="btn btn-primary" value="Add Decay" onClick="return checkdecay();"/></p>
 	  </form>
 	</div>
 </div>

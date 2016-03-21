@@ -186,6 +186,23 @@ def addDecay():
         if "daughter" in i:
             document["daughters"].append(request.form[i])
 
+    p_list = []
+    for p in Particle.objects():
+        p_list.append(p.to_dict()["name"])
+
+    if document["mother"] not in p_list:
+        return render_template("physics-not-added.html", reason = "Mother particle is unknown. Add it to the db or use drop-down menu")
+
+    for d in document["daughters"]:
+        if d not in p_list:
+            return render_template("physics-not-added.html", reason = "One of the daughter ("+d+") particles is unknown. Add it to the db or use drop-down menu")
+
+    try:
+        b = float(document["br_frac"])
+        if (b>1) or (b<0):
+            return render_template("physics-not-added.html", reason = "Branching fraction should be in range (0, 1)")
+    except:
+        return render_template("physics-not-added.html", reason = "Branching fraction should be a number in range (0, 1)")
 
     new_physics.insert_one(document)
 
@@ -204,6 +221,19 @@ def addParticle():
     document["comment"] = request.form["new_particle_comment"]
     document["charge"] = request.form["new_particle_charge"]
     document["antiparticle"] = request.form["new_particle_antiparticle"]
+
+    try:
+        m = float(document["mass"])
+        if m<0:
+            return render_template("physics-not-added.html", reason = "Particles shouldn't have negative mass")
+    except:
+        return render_template("physics-not-added.html", reason = "Particle mass should be a number")
+
+    try:
+        e = float(document["charge"])
+    except:
+        return render_template("physics-not-added.html", reason = "Particle charge should be a number")
+
 
     new_physics.insert_one(document)
 
