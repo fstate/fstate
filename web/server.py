@@ -15,11 +15,8 @@ from parrticleparser.particle_model import Particle
 from createdatabase.save_decay import add_decay
 from parrticleparser.save_particle import save_particle_to_db
 import thread
-
-app = Flask(__name__)
-# mc = pylibmc.Client(["127.0.0.1"], binary=True,
-#                      behaviors={"tcp_nodelay": True,
-#                                 "ketama": True})
+from web import app
+from auth import *
 
 def cache_key(query):
     return str(" ".join(query))
@@ -224,6 +221,7 @@ def addParticleLive(document):
     pass
 
 @app.route("/admin_panel/rm/<table>/<id>")
+@login_required
 def rmNewPhys(table,id, status = "declined"):
     """also accepts post arguments that let you remove a preliminary decay/particle or add it to the live table"""
     try:
@@ -238,6 +236,7 @@ def rmNewPhys(table,id, status = "declined"):
         return Response(json_dump({'result' : true, "err": str(err)}), mimetype='application/json')
 
 @app.route("/admin_panel/add/<table>/<id>")
+@login_required
 def addNewPhys(table,id):
     for ret in new_physics.find({"_id":ObjectId(id), "type": table}):
         if table == 'particle':
@@ -263,6 +262,7 @@ def addNewPhys(table,id):
             return rmNewPhys(table,id, "approved")
 
 @app.route("/admin_panel")
+@login_required
 def adminPanel():
     """Renders admin panel"""
     decs_pending = getNewPhysics("decay","pending")

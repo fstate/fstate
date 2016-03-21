@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 
 {% block content %}
+Logged in as {{ current_user.id }}. <a href="/logout">Logout</a>
 <h2 class="text-left">New Decays:</h2>
 
 <table class="table-striped" id="decays_table" style="width: 100%">
