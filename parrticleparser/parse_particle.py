@@ -60,7 +60,6 @@ def line_to_dict(line):
 def main():
 
     lines = read_lines_from_decaydec()
-
     Particle.objects().delete()
     for part in Particle.objects():
         part.printparticle()

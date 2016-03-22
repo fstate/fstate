@@ -25,6 +25,10 @@ login_manager.init_app(app)
 #                      behaviors={"tcp_nodelay": True,
 #                                 "ketama": True})
 
+from web import app
+from auth import *
+
+
 def cache_key(query):
     return str(" ".join(query))
 
@@ -72,6 +76,16 @@ def howtosearch():
     for p in Particle.objects():
         p_list.append(p.to_print())
     return render_template('HowToSearch.html', p_list = p_list)
+
+@app.route("/knowndecays/<query>")
+def knowndecays(query):
+    d_list = []
+    for d in Decay.objects(father = query.replace("__","/"), primal_decay = True):
+        d_list.append(d.to_dict())
+    for d in d_list:
+        d['branching'] = nice_br(d['branching'])
+    return render_template('SingleParticle.html', particle = query.replace("__","/"), d_list = d_list)
+
 
 #@app.route("/results/<query>")
 #def showResults(query):
@@ -183,6 +197,23 @@ def addDecay():
         if "daughter" in i:
             document["daughters"].append(request.form[i])
 
+    p_list = []
+    for p in Particle.objects():
+        p_list.append(p.to_dict()["name"])
+
+    if document["mother"] not in p_list:
+        return render_template("physics-not-added.html", reason = "Mother particle is unknown. Add it to the db or use drop-down menu")
+
+    for d in document["daughters"]:
+        if d not in p_list:
+            return render_template("physics-not-added.html", reason = "One of the daughter ("+d+") particles is unknown. Add it to the db or use drop-down menu")
+
+    try:
+        b = float(document["br_frac"])
+        if (b>1) or (b<0):
+            return render_template("physics-not-added.html", reason = "Branching fraction should be in range (0, 1)")
+    except:
+        return render_template("physics-not-added.html", reason = "Branching fraction should be a number in range (0, 1)")
 
     new_physics.insert_one(document)
 
@@ -202,6 +233,19 @@ def addParticle():
     document["charge"] = request.form["new_particle_charge"]
     document["antiparticle"] = request.form["new_particle_antiparticle"]
 
+    try:
+        m = float(document["mass"])
+        if m<0:
+            return render_template("physics-not-added.html", reason = "Particles shouldn't have negative mass")
+    except:
+        return render_template("physics-not-added.html", reason = "Particle mass should be a number")
+
+    try:
+        e = float(document["charge"])
+    except:
+        return render_template("physics-not-added.html", reason = "Particle charge should be a number")
+
+
     new_physics.insert_one(document)
 
     return render_template("physics-added.html")
@@ -211,6 +255,12 @@ def getNewPhysics(t, status):
     rows = new_physics.find({"type": t, "status":status})
     return [i for i in rows]
 
+def user_key_from_document(document):
+    try:
+        return "{} --> {}".format(document["father"], ' '.join(document["daughters"]))
+    except:
+        print "Failed to create user key, returning empty"
+        return ""
 
 def addDecayLive(document):
     """Spawns a thread that calls the add_decay method to insert the decay specified by document to the live fstate decays table"""
@@ -227,7 +277,33 @@ def addParticleLive(document):
                         antiparticle = document["antiparticle"])
     pass
 
+def delete_decays_by_key(key):
+    for d in Decay.objects(user_keys__contains = key):
+        d.delete()
+
+@app.route("/admin_panel/reconsider/<table>/<id>")
+@login_required
+def reconsiderNewPhys(table,id):
+    for ret in new_physics.find({"_id":ObjectId(id), "type": table}):
+        if ret["status"]=="declined":
+            return rmNewPhys(table,id, "pending")
+        if table == 'decay':
+            if ret["status"]=="approved":
+                document = {"father":ret['mother'], 
+                        "branching":ret["br_frac"], 
+                        "daughters":ret["daughters"]}
+                user_key = user_key_from_document(document)
+                if user_key != "":
+                    thread.start_new_thread(delete_decays_by_key, (user_key,))
+                    return rmNewPhys(table,id, "pending")
+                else:
+                    err = "Failed to create user key for decay"
+                    return Response(json_dump({'result' : False, "err": str(err)}), mimetype='application/json')
+        else:
+            return rmNewPhys(table,id, "pending")
+
 @app.route("/admin_panel/rm/<table>/<id>")
+@login_required
 def rmNewPhys(table,id, status = "declined"):
     """also accepts post arguments that let you remove a preliminary decay/particle or add it to the live table"""
     try:
@@ -241,7 +317,22 @@ def rmNewPhys(table,id, status = "declined"):
     except Exception as err:
         return Response(json_dump({'result' : true, "err": str(err)}), mimetype='application/json')
 
+@app.route("/admin_panel/delete/<table>/<id>")
+@login_required
+def spamNewPhys(table,id, status = "declined"):
+    """also accepts post arguments that let you remove a preliminary decay/particle or add it to the live table"""
+    try:
+        ret=new_physics.remove({"_id":ObjectId(id), "type": table})
+        if ret['n'] == 1:
+            return Response(json_dump({'result' : True, "err": ""}), mimetype='application/json')
+        else:
+            return Response(json_dump({'result' : False, "err": "%i rows removed" % ret['n'] }), mimetype='application/json') 
+    except Exception as err:
+        return Response(json_dump({'result' : False, "err": str(err)}), mimetype='application/json')
+
+
 @app.route("/admin_panel/add/<table>/<id>")
+@login_required
 def addNewPhys(table,id):
     for ret in new_physics.find({"_id":ObjectId(id), "type": table}):
         if table == 'particle':
@@ -267,6 +358,7 @@ def addNewPhys(table,id):
             return rmNewPhys(table,id, "approved")
 
 @app.route("/admin_panel")
+@login_required
 def adminPanel():
     """Renders admin panel"""
     decs_pending = getNewPhysics("decay","pending")

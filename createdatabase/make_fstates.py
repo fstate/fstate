@@ -5,7 +5,7 @@ from multiprocessing import Pool, cpu_count
 from mongoengine import connect
 from weight_split import get_jobs
 from decay_model import Decay
-from config import br_cutoff
+from config import br_cutoff, db_name
 
 import pickle
 
@@ -33,7 +33,7 @@ for father in test_set['decays']:
 
 def do_work(fathers):
     global db
-    connect("fstate")
+    connect(db_name)
     for father in fathers:
         start = datetime.now()
         
@@ -51,7 +51,7 @@ def do_work(fathers):
 
 if __name__ == "__main__":
     from fstate import get_fstates
-    connect("fstate")
+    connect(db_name)
     Decay.objects().delete()
     #fstates.drop()
     #fstates.create_index("fstate")
@@ -59,7 +59,7 @@ if __name__ == "__main__":
 
 
     #do_work(test_set['decays'].keys())
-
+    
     print "DB build started on {}.".format(datetime.now())
     
     start = datetime.now()
@@ -72,3 +72,4 @@ if __name__ == "__main__":
     end = datetime.now()
     
     print "Took {} to build!".format(end - start)
+    

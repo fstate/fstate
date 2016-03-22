@@ -7,6 +7,7 @@ from parrticleparser.particle_model import Particle
 particles = {}
 for part in Particle.objects():
     particles[part.name]=part.to_dict()
+from config import db_name
 
 
 def order_particles(p_list):
@@ -28,17 +29,27 @@ class Decay(Document):
     scheme = StringField(required = True, unique=True)
     branching = FloatField(required = True)
     fstate = StringField(required = True)
+    user_keys = StringField(default = "")
+    primal_decay = BooleanField(default=False)
 
     meta = {
         'ordering': ['branching'],
         'indexes': ['fstate']
     }
+
+
+    def save(self, *args, **kwargs):
+        if self.scheme.count("-->")==1:
+            self.primal_decay = True
+        return super(Decay, self).save(*args, **kwargs)    
+
     def printdecay(self):
         decay = {
             "father" : self.father,
             "scheme" : self.scheme,
             "branching" : self.branching,
-            "fstate" : self.fstate}
+            "fstate" : self.fstate,
+            "user_keys": self.user_keys}
         print(json.dumps(decay,sort_keys=True, indent=4))
         return True
 
@@ -47,7 +58,8 @@ class Decay(Document):
             "father" : self.father,
             "scheme" : self.scheme,
             "branching" : self.branching,
-            "fstate" : self.fstate}
+            "fstate" : self.fstate,
+            "user_keys": self.user_keys}
         return decay
 
     def order_history(self):
@@ -92,7 +104,8 @@ class Decay(Document):
             new_dec = Decay(father = d.father,
                             scheme = new_scheme,
                             branching = new_br,
-                            fstate = ' '.join(new_fstate)).order_history()
+                            fstate = ' '.join(new_fstate),
+                            user_keys = d.user_keys+self.user_keys).order_history()
             #new_dec.printdecay()
             new_dec.save()
 
@@ -130,7 +143,8 @@ class Decay(Document):
         new_dec = Decay(father = cc_father,
                         scheme = cc_scheme,
                         branching = self.branching,
-                        fstate = cc_fstate).order_history()
+                        fstate = cc_fstate,
+                        user_keys = self.user_keys).order_history()
         if cc_is_done:
             #print "Decay cc-ed:"
             #self.printdecay()
@@ -143,4 +157,4 @@ class Decay(Document):
             return False
 
 
-connect("fstate")
+connect(db_name)

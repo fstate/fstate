@@ -20,7 +20,7 @@
 
   {% for p in p_list %}
   <tr>
-      <td style="width: 20%">{{ p.name }}</td>
+      <td style="width: 20%"><a href="/knowndecays/{{ p.name_html }}">{{ p.name }}</a></td>
       <td style="width: 20%">{{ p.charge }}</td>
       <td style="width: 20%">{{ p.mass }}</td>
       <td style="width: 20%">{{ p.alias }}</td>

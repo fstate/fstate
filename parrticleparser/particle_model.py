@@ -1,5 +1,9 @@
 from mongoengine import *
 import json
+import sys
+import os
+sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+from createdatabase.config import db_name
 
 class Particle(Document):
     name = StringField(required=True)
@@ -40,10 +44,12 @@ class Particle(Document):
                 mass = str(self.mass)+" MeV"
         particle = {
             "name" : self.name,
+            "name_js" : "\""+self.name.replace("'","\'")+"\"",
+            "name_html" : self.name.replace("/","__"),
             "charge" : self.charge,
             "mass" : mass,
             "alias" : self.alias,
             "antiparticle" : self.antiparticle}
         return particle
 
-connect("fstate")
+connect(db_name)

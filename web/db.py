@@ -2,7 +2,7 @@ from pymongo import MongoClient
 from pymongo.database import DBRef
 
 client = MongoClient()
-db = client.fstate
+db = client.temp_db
 
 #decays = db.decays # Decays collection
 #fstates = db.fstates # Fstates collection
