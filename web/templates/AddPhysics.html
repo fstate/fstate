@@ -85,7 +85,7 @@ var particles = [
 
 function checkdecay() {
     if (!particles.includes(document.addnewdecay.mother.value)){
-    	alert("Mother particle is not known. Please use one from list or submit a new particle to the system. (If you add a new particle, it will be considered by admins before appearing in database)");
+    	alert("The mother particle entered is not known. Please use one from list or submit a new particle to the system.");
         return false;
     }
 
@@ -99,7 +99,7 @@ function checkdecay() {
 
 
     if(!isNumeric(document.addnewdecay.branching_fraction.value)) {
-        alert("Please enter a numeric branching fraction.");
+        alert("There was an issue with the entered branching fraction. Please enter a number: e.g. 0.23");
         return false;
     }
 
@@ -118,6 +118,9 @@ function checkdecay() {
 
 function isNumeric(value) {
     if(/^(\-|\+)?[0-9]+(\.[0-9]+)?(e(\-)?[0-9]+)?$/
+      .test(value))
+      return Number(value);
+  	else if (/^(\.[0-9]+)?(e(\-)?[0-9]+)?$/
       .test(value))
       return Number(value);
   return NaN;
@@ -150,7 +153,8 @@ function checkparticle() {
 {% block content %}
 <div class="row">
 	<h2 class="text-left">Submit A New Decay Channel</h2>
-	<p>If you have noticed there is a decay which is not in our system, we greatly appreciate your help in notifying us with the form below!</p>
+	<p>If you have noticed there is a decay which is not in our system, we greatly appreciate your help in notifying us with the form below! </p>
+	<p style="color: red;">NOTE: If this decay contains a particle new to our system, you'll have to add a new particle first, and it will need to be considered by admins before appearing in the database.</p>
 	<div class="col-sm-8 text-center" id="decay-channel">
 
 		<form name=addnewdecay action="/add_decay" method="post">
@@ -182,9 +186,9 @@ function checkparticle() {
 	<h2 class="text-left">Submit A New Particle</h2>
 	<p>If you have noticed there is a particle missing from the list on the <a href="howto-search">how to search</a> page, we greatly appreciate your help in notifying us with the form below!</p>
 	<div class="col-sm-8 text-center" id="new-particle">
-		<form action="/add_particle" method="post">
-		    <input type="text" name="new_particle_name" placeholder="Particle Name"> <input type="text" name="new_particle_mass" placeholder="Mass (GeV)"><br>
-		    <input type="text" name="new_particle_charge" placeholder="Particle Charge (e)"> <input type="text" name="new_particle_antiparticle" placeholder="Antiparticle (Blank for self)"> 
+		<form name="addnewparticle" action="/add_particle" method="post">
+		    <input type="text" name="new_particle_name" id="new_particle_name" placeholder="Particle Name"> <input type="text" name="new_particle_mass" placeholder="Mass (GeV)"><br>
+		    <input type="text" name="new_particle_charge" id="new_particle_charge" placeholder="Particle Charge (e)"> <input type="text" name="new_particle_antiparticle" placeholder="Antiparticle (Blank for self)"> 
 		    <p><textarea style="height: 28px; width: 500px" name="new_particle_comment" id="new_particle_comment" placeholder="Comment" onkeyup="adjust_textarea(this)"></textarea><br />
 		    <input type="text" name="new_particle_source" id="new_particle_source" placeholder="Link to Source" data-toggle="tooltip" title="Please include a link to a citation of an observation of the particle if one can be provided"/></p>
 		    <p><input class="btn btn-primary" value="Add Particle" onClick="return checkparticle();"/></p></span>

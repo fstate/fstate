@@ -42,3 +42,6 @@ env/*
 
 #database dump
 fstate_dump/*
+
+#Authentification data
+web/.htpasswd

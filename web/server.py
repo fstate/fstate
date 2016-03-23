@@ -1,6 +1,6 @@
 from flask import *
-from flask.ext.login import LoginManager
-# import pylibmc
+from flask.ext.htpasswd import HtPasswdAuth
+
 from db import *
 from itertools import permutations
 from datetime import datetime
@@ -18,16 +18,15 @@ from parrticleparser.save_particle import save_particle_to_db
 import threading
 
 app = Flask(__name__)
-login_manager=LoginManager()
-login_manager.init_app(app)
+app.config['FLASK_HTPASSWD_PATH'] = '/home/bobak/Documents/Projects/fstate/web/.htpasswd'
+app.config['FLASK_SECRET'] = 'Hey Hey Kids, secure me!'
+
+htpasswd = HtPasswdAuth(app)
+
 
 # mc = pylibmc.Client(["127.0.0.1"], binary=True,
 #                      behaviors={"tcp_nodelay": True,
 #                                 "ketama": True})
-
-from web import app
-from auth import *
-
 
 def cache_key(query):
     return str(" ".join(query))
@@ -281,9 +280,10 @@ def delete_decays_by_key(key):
     for d in Decay.objects(user_keys__contains = key):
         d.delete()
 
+#@login_required
 @app.route("/admin_panel/reconsider/<table>/<id>")
-@login_required
-def reconsiderNewPhys(table,id):
+@htpasswd.required
+def reconsiderNewPhys(table,id, user):
     for ret in new_physics.find({"_id":ObjectId(id), "type": table}):
         if ret["status"]=="declined":
             return rmNewPhys(table,id, "pending")
@@ -291,7 +291,7 @@ def reconsiderNewPhys(table,id):
             if ret["status"]=="approved":
                 document = {"father":ret['mother'], 
                         "branching":ret["br_frac"], 
-                        "daughters":ret["daughters"]}
+                         "daughters":ret["daughters"]}
                 user_key = user_key_from_document(document)
                 if user_key != "":
                     thread.start_new_thread(delete_decays_by_key, (user_key,))
@@ -303,8 +303,8 @@ def reconsiderNewPhys(table,id):
             return rmNewPhys(table,id, "pending")
 
 @app.route("/admin_panel/rm/<table>/<id>")
-@login_required
-def rmNewPhys(table,id, status = "declined"):
+@htpasswd.required
+def rmNewPhys(table,id, user, status = "declined"):
     """also accepts post arguments that let you remove a preliminary decay/particle or add it to the live table"""
     try:
         #ret=new_physics.remove({"_id":ObjectId(id), "type": table})
@@ -318,8 +318,8 @@ def rmNewPhys(table,id, status = "declined"):
         return Response(json_dump({'result' : true, "err": str(err)}), mimetype='application/json')
 
 @app.route("/admin_panel/delete/<table>/<id>")
-@login_required
-def spamNewPhys(table,id, status = "declined"):
+@htpasswd.required
+def spamNewPhys(table,id, user, status = "declined"):
     """also accepts post arguments that let you remove a preliminary decay/particle or add it to the live table"""
     try:
         ret=new_physics.remove({"_id":ObjectId(id), "type": table})
@@ -332,8 +332,8 @@ def spamNewPhys(table,id, status = "declined"):
 
 
 @app.route("/admin_panel/add/<table>/<id>")
-@login_required
-def addNewPhys(table,id):
+@htpasswd.required
+def addNewPhys(table,id,user):
     for ret in new_physics.find({"_id":ObjectId(id), "type": table}):
         if table == 'particle':
             if not ret["antiparticle"] == "":
@@ -358,8 +358,8 @@ def addNewPhys(table,id):
             return rmNewPhys(table,id, "approved")
 
 @app.route("/admin_panel")
-@login_required
-def adminPanel():
+@htpasswd.required
+def adminPanel(user):
     """Renders admin panel"""
     decs_pending = getNewPhysics("decay","pending")
     particles_pending = getNewPhysics("particle","pending")
