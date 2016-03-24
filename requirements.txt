@@ -11,4 +11,4 @@ ptyprocess==0.5
 pymongo==3.2
 simplegeneric==0.8.1
 traitlets==4.1.0
-flask-login==0.3.2
+flask-htpasswd==0.3.0
