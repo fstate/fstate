@@ -18,8 +18,8 @@ from parrticleparser.save_particle import save_particle_to_db
 import threading
 
 app = Flask(__name__)
-app.config['FLASK_HTPASSWD_PATH'] = '/home/bobak/Documents/Projects/fstate/web/.htpasswd'
-app.config['FLASK_SECRET'] = 'Hey Hey Kids, secure me!'
+app.config['FLASK_HTPASSWD_PATH'] = '/path/to/.htpasswd'
+app.config['FLASK_SECRET'] = 'Security Secret'
 
 htpasswd = HtPasswdAuth(app)
 
