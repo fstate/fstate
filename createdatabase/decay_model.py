@@ -71,6 +71,7 @@ class Decay(Document):
         """
         #return True
         new_history = []
+        #print(self.scheme)
         decs = self.scheme.split("; ")
         p_decs={}
         for d in decs:
@@ -86,6 +87,7 @@ class Decay(Document):
     def update_ancestors(self):
         print("Trying to update ancestors")
         for d in Decay.objects(fstate__contains = self.father):
+            #print("Updating "+d.scheme)
             new_fstate = []
             #d.printdecay()
             #print "Oparations of fstate"
@@ -101,12 +103,13 @@ class Decay(Document):
             new_br = self.branching*d.branching
             subst = self.scheme.split('; ') + d.scheme.split('; ')
             new_scheme = '; '.join(subst)
+            #print("updated scheme: "+new_scheme)
             new_dec = Decay(father = d.father,
                             scheme = new_scheme,
                             branching = new_br,
                             fstate = ' '.join(new_fstate),
                             user_keys = d.user_keys+self.user_keys).order_history()
-            #new_dec.printdecay()
+            new_dec.printdecay()
             new_dec.save()
 
         return True

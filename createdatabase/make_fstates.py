@@ -6,6 +6,11 @@ from mongoengine import connect
 from weight_split import get_jobs
 from decay_model import Decay
 from config import br_cutoff, db_name
+import os
+import sys
+sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+from parrticleparser.particle_model import Particle
+
 
 import pickle
 
@@ -70,6 +75,21 @@ if __name__ == "__main__":
     
     
     end = datetime.now()
-    
     print "Took {} to build!".format(end - start)
+    print "Cleaning partilce DB starte at {}.".format(datetime.now())
+    start = datetime.now()
+    for p in Particle.objects():
+        remove_part = True
+        for d in Decay.objects(father = p.name):
+            remove_part = False
+            break
+        for d in Decay.objects(fstate__contains = p.name):
+            remove_part = False
+            break
+        if remove_part:
+            print "Unused particle "+p.name
+            p.delete()
+    end = datetime.now()
+    print "Took {} to clean!".format(end - start)
+
     

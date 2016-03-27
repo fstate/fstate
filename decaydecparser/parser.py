@@ -126,6 +126,7 @@ def main():
     #print json.dumps(result, sort_keys=True, indent=4)
     with open('parsed_decays.pkl', 'wb') as basket:
         pickle.dump(result, basket)
+    #    return p.name
     #print result['decays'].keys()
 
 

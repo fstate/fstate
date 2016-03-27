@@ -15,10 +15,12 @@ from createdatabase.decay_model import Decay
 from parrticleparser.particle_model import Particle
 from createdatabase.save_decay import add_decay
 from parrticleparser.save_particle import save_particle_to_db
+from createdatabase.config import br_cutoff, max_decay_chain
 import threading
+import thread
 
 app = Flask(__name__)
-app.config['FLASK_HTPASSWD_PATH'] = '/path/to/.htpasswd'
+app.config['FLASK_HTPASSWD_PATH'] = '.htpasswd'
 app.config['FLASK_SECRET'] = 'Security Secret'
 
 htpasswd = HtPasswdAuth(app)
@@ -66,6 +68,8 @@ def do_search(query):
 
 @app.route("/about")
 def about():
+    print br_cutoff
+    print max_decay_chain
     return render_template('about.html')
 
 
@@ -95,7 +99,7 @@ def index():
     query = request.args.get('query')
     
     if not query:
-        return render_template('index.html')
+        return render_template('index.html', br_cutoff = str(br_cutoff), max_decay_chain = max_decay_chain)
 
     query = [x for x in query.split(' ') if x != '']
 
@@ -265,7 +269,7 @@ def addDecayLive(document):
     """Spawns a thread that calls the add_decay method to insert the decay specified by document to the live fstate decays table"""
     t=threading.Thread(target=add_decay, args=(document["father"], 
                                         {"branching":document["branching"], 
-                                        "daughters":document["daughters"]}, "", document["daughters"]))
+                                        "daughters":document["daughters"]}, "","", document["daughters"], True))
     t.start()
 
 def addParticleLive(document):
@@ -278,6 +282,8 @@ def addParticleLive(document):
 
 def delete_decays_by_key(key):
     for d in Decay.objects(user_keys__contains = key):
+        #print("Deleting decay:")
+        #d.printdecay()
         d.delete()
 
 #@login_required
@@ -286,7 +292,7 @@ def delete_decays_by_key(key):
 def reconsiderNewPhys(table,id, user):
     for ret in new_physics.find({"_id":ObjectId(id), "type": table}):
         if ret["status"]=="declined":
-            return rmNewPhys(table,id, "pending")
+            return rmNewPhys(table,id, user=user, status="pending")
         if table == 'decay':
             if ret["status"]=="approved":
                 document = {"father":ret['mother'], 
@@ -295,12 +301,12 @@ def reconsiderNewPhys(table,id, user):
                 user_key = user_key_from_document(document)
                 if user_key != "":
                     thread.start_new_thread(delete_decays_by_key, (user_key,))
-                    return rmNewPhys(table,id, "pending")
+                    return rmNewPhys(table,id,user=user, status="pending")
                 else:
                     err = "Failed to create user key for decay"
                     return Response(json_dump({'result' : False, "err": str(err)}), mimetype='application/json')
         else:
-            return rmNewPhys(table,id, "pending")
+            return rmNewPhys(table,id,user=user, status="pending")
 
 @app.route("/admin_panel/rm/<table>/<id>")
 @htpasswd.required
@@ -348,14 +354,14 @@ def addNewPhys(table,id,user):
                             "antiparticle": ret["name"]}
             addParticleLive(document)
             print("Particle added")
-            return rmNewPhys(table,id, "approved")
+            return rmNewPhys(table,id,user=user, status="approved")
         if table == 'decay':
             document = {"father":ret['mother'], 
                         "branching":ret["br_frac"], 
                         "daughters":ret["daughters"]}
             addDecayLive(document)
             print("Adding decay, may take some time.")
-            return rmNewPhys(table,id, "approved")
+            return rmNewPhys(table,id,user=user, status="approved")
 
 @app.route("/admin_panel")
 @htpasswd.required

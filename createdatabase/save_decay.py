@@ -8,7 +8,7 @@ import json
 from createdatabase.decay_model import Decay
 #import Decay
 import copy
-#from config import br_cutoff, max_decay_chain
+from config import br_cutoff, max_decay_chain
 
 
 def add_decay(father, decay, user_keys="", history = "", uniterated_daughters = [], test_mode=False):
@@ -97,7 +97,7 @@ def add_decay(father, decay, user_keys="", history = "", uniterated_daughters = 
                     for d in uniterated_daughters:
                         if d!=daughter:
                             new_uniterated_daughters.append(d)
-                    branching = decay["branching"]*saved_dec.branching
+                    branching = float(decay["branching"])*float(saved_dec.branching)
                     new_decay = {"branching":branching, "daughters":copy.deepcopy(daughters)}
                     if i == 0:
                         add_decay(father, new_decay, new_user_keys, new_history, new_uniterated_daughters, test_mode)
