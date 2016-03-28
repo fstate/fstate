@@ -8,7 +8,7 @@ sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from parrticleparser.particle_model import Particle
 
 DECAY_DEC_PATH = "DECAY.DEC"
-MODELS = set(["PHSP", "PHSP;", "HELAMP", "ISGW2;", "PHOTOS", "SVS", "SVS;", "SVV_HELAMP", "PYTHIA", "HQET2", "HQET2;", "ISGW2;","VVS_PWAVE","TAUSCALARNU","VSP_PWAVE;","VUB","VUB;","BTOXSGAMMA","SLN;","SLN","CB3PI-MPP","VSS","VSS;","VSS_BMIX","VVPIPI;","VVPIPI;2","PARTWAVE","BTO3PI_CP","CB3PI-P00","STS;","SVP_HELAMP","BTOSLLALI;","TAUSCALARNU;","TAUHADNU","TAUVECTORNU;","D_DALITZ;","D_DALITZ;","PARTWAVE","PI0_DALITZ;","ETA_DALITZ;","OMEGA_DALITZ;","SVP_HELAMP","VVPIPI;","PARTWAVE","VVP","VLL;","BaryonPCR","TSS;","TVS_PWAVE"])
+MODELS = set(["PHSP", "PHSP;", "PHSP; ", "HELAMP", "ISGW2;", "PHOTOS", "SVS", "SVS;", "SVV_HELAMP", "PYTHIA", "HQET2", "HQET2;", "ISGW2;","VVS_PWAVE","TAUSCALARNU","VSP_PWAVE;","VUB","VUB;","BTOXSGAMMA","SLN;","SLN","CB3PI-MPP","VSS","VSS;", "VSS; ","VSS_BMIX","VVPIPI;","VVPIPI;2","PARTWAVE","BTO3PI_CP","CB3PI-P00","STS;","SVP_HELAMP","BTOSLLALI;","TAUSCALARNU;","TAUHADNU","TAUVECTORNU;","D_DALITZ;","D_DALITZ;","PARTWAVE","PI0_DALITZ;","ETA_DALITZ;","OMEGA_DALITZ;","SVP_HELAMP","VVPIPI;","PARTWAVE","VVP","VLL;","BaryonPCR","TSS;","TVS_PWAVE"])
 
 ALIAS = {"K*L": "K*0",
          "K*S": "K*0",
@@ -47,6 +47,8 @@ def check_if_particle_exist(particle):
         return p.name
     for p in Particle.objects(name=particle):
         return p.name
+    if particle in ALIAS.keys():
+        return check_if_particle_exist(ALIAS[particle])
     return False
 
 def read_lines_from_decaydec():
@@ -80,9 +82,9 @@ def process_decay(tokens):
         #We have a big enough list of Models, we need to add more smart things here.
         if not check_if_particle_exist(d):
             print("Unknown particle "+d)
-            break
-        else:
-            d=check_if_particle_exist(d)
+            #break
+            return False
+        d=check_if_particle_exist(d)
         result['daughters'].append(d)
     if result['daughters'] == []:
         print("Empty fstate!")
@@ -100,6 +102,8 @@ def process_tokens(tokens):
         result[tokens[0]][key] = value
     elif tokens[0] == "Decay":
         if not check_if_particle_exist(tokens[1]):
+            print ("Please add alias for "+tokens[1])
+            current_particle = None
             return "Please add alias for "+tokens[1]
         current_particle = check_if_particle_exist(tokens[1])
         result["decays"][current_particle] = []
@@ -131,4 +135,5 @@ def main():
 
 
 if __name__ == '__main__':
+    print("Check c-hadrons: "+str(check_if_particle_exist('c-hadron')))
     main()

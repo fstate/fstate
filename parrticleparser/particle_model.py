@@ -12,6 +12,10 @@ class Particle(Document):
     alias = ListField(required=True)
     antiparticle = StringField(required=True)
 
+    meta = {
+        'ordering': ['mass']
+    }    
+
     def printparticle(self):
         particle = {
             "name" : self.name,

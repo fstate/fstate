@@ -41,7 +41,9 @@ def do_work(fathers):
     connect(db_name)
     for father in fathers:
         start = datetime.now()
-        
+        if not father in db:
+            print ("Father not found in db: "+father)
+            continue
         for decay in db[father]:
             work_copy = deepcopy(decay)
             work_copy['history'] = "{} --> {}".format(
@@ -76,20 +78,20 @@ if __name__ == "__main__":
     
     end = datetime.now()
     print "Took {} to build!".format(end - start)
-    print "Cleaning partilce DB starte at {}.".format(datetime.now())
-    start = datetime.now()
-    for p in Particle.objects():
-        remove_part = True
-        for d in Decay.objects(father = p.name):
-            remove_part = False
-            break
-        for d in Decay.objects(fstate__contains = p.name):
-            remove_part = False
-            break
-        if remove_part:
-            print "Unused particle "+p.name
-            p.delete()
-    end = datetime.now()
-    print "Took {} to clean!".format(end - start)
+    #print "Cleaning partilce DB starte at {}.".format(datetime.now())
+    #start = datetime.now()
+    #for p in Particle.objects():
+        #remove_part = True
+        #for d in Decay.objects(father = p.name):
+            #remove_part = False
+            #break
+        #for d in Decay.objects(fstate__contains = p.name):
+            #remove_part = False
+            #break
+        #if remove_part:
+            #print "Unused particle "+p.name
+            #p.delete()
+    #end = datetime.now()
+    #print "Took {} to clean!".format(end - start)
 
     

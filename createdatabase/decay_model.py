@@ -34,7 +34,7 @@ class Decay(Document):
 
     meta = {
         'ordering': ['branching'],
-        'indexes': ['fstate']
+        'indexes': ['fstate', 'father', 'user_keys']
     }
 
 

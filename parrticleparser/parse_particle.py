@@ -1,7 +1,8 @@
 import json
 import pickle
 from particle_model import Particle
-PARTICLES_LIST_PATH = "particles.txt"
+#PARTICLES_LIST_PATH = "particles.txt"
+PARTICLES_LIST_PATH = "particles_physical.txt"
 #from database import *
 
 def read_lines_from_decaydec():
