@@ -62,8 +62,10 @@ def add_decay(father, decay, user_keys="", history = "", uniterated_daughters = 
         
         if test_mode:
             print("cc-ing decay")
-        db_dec_cc = db_dec.do_cc().order_history()
-        if db_dec_cc:
+
+        db_dec_cc_test = db_dec.do_cc()
+        if db_dec_cc_test:
+            db_dec_cc = db_dec_cc_test.order_history()
             if test_mode:
                 print("decay cc-ed")
             try:

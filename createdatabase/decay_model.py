@@ -155,8 +155,8 @@ class Decay(Document):
             #new_dec.printdecay()
             return new_dec
         else:
-            #print "Failed to cc decay:"
-            #self.printdecay()
+            print "Failed to cc decay:"
+            self.printdecay()
             return False
 
 
