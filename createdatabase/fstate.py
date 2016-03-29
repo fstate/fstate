@@ -12,7 +12,10 @@ def get_fstates(decay):
     global br_cutoff
     if decay['branching'] < br_cutoff:
         return
-
+    if decay['branching'] > 1:
+        return
+    if len(decay['products'])>=max_decay_chain:
+        return
     #print decay['history'], decay['products']
     db_dec = Decay(father = decay['father'], scheme = decay['history'], branching = decay["branching"], fstate = ' '.join(decay['products'])).order_history()
     #db_dec.printdecay()

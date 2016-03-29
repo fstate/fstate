@@ -8,7 +8,7 @@ particles = {}
 for part in Particle.objects():
     particles[part.name]=part.to_dict()
 from config import db_name
-
+from config import br_cutoff, max_decay_chain
 
 def order_particles(p_list):
     DATA=[]
@@ -34,7 +34,14 @@ class Decay(Document):
 
     meta = {
         'ordering': ['branching'],
-        'indexes': ['fstate', 'father', 'user_keys']
+        'indexes': ['fstate',
+                    #{'fields': ['$fstate'],
+                    #'default_language': 'english',
+                    #'weights': {'fstate': 1}
+                    #},
+                    'father',
+                    #'$father',
+                    'user_keys']
     }
 
 
@@ -85,8 +92,16 @@ class Decay(Document):
         return self
 
     def update_ancestors(self):
-        print("Trying to update ancestors")
+        #print("Trying to update ancestors")
         for d in Decay.objects(fstate__contains = self.father):
+        #for d in Decay.objects.search_text(self.father):
+            if (len(d.fstate.split(" "))-1+len(self.fstate.split(" "))) >= max_decay_chain:
+                #print ("Ancestor has too many daughters")
+                continue
+            if self.father not in d.fstate:
+                #print "Tried to add decay of "+self.father+" to decay, but "+self.father+" not found in final state:"
+                #d.printdecay()
+                continue
             #print("Updating "+d.scheme)
             new_fstate = []
             #d.printdecay()
@@ -101,6 +116,9 @@ class Decay(Document):
             for p in self.fstate.split(" "):
                 new_fstate.append(p)
             new_br = self.branching*d.branching
+            if new_br < br_cutoff:
+                #print ("Ancestor has too small branching.")
+                continue
             subst = self.scheme.split('; ') + d.scheme.split('; ')
             new_scheme = '; '.join(subst)
             #print("updated scheme: "+new_scheme)
@@ -110,7 +128,10 @@ class Decay(Document):
                             fstate = ' '.join(new_fstate),
                             user_keys = d.user_keys+self.user_keys).order_history()
             new_dec.printdecay()
-            new_dec.save()
+            try:
+                new_dec.save()
+            except NotUniqueError:
+                pass
 
         return True
 
@@ -155,8 +176,8 @@ class Decay(Document):
             #new_dec.printdecay()
             return new_dec
         else:
-            print "Failed to cc decay:"
-            self.printdecay()
+            #print "Failed to cc decay:"
+            #self.printdecay()
             return False
 
 

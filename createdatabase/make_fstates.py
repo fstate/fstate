@@ -5,7 +5,7 @@ from multiprocessing import Pool, cpu_count
 from mongoengine import connect
 from weight_split import get_jobs
 from decay_model import Decay
-from config import br_cutoff, db_name
+from config import br_cutoff, db_name, max_decay_chain
 import os
 import sys
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
@@ -27,8 +27,8 @@ for father in test_set['decays']:
     for d in test_set['decays'][father]:
         if d['branching'] < br_cutoff:
             continue    
-        if d['branching'] >= 1:
-            continue    
+        if d['branching'] > 1:
+            continue
         db[father].append({
             'branching': d['branching'],
             'father': father,

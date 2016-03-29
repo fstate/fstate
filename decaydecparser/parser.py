@@ -6,6 +6,7 @@ sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 #from database import *
 from parrticleparser.particle_model import Particle
+from createdatabase.config import br_cutoff, max_decay_chain
 
 DECAY_DEC_PATH = "DECAY.DEC"
 MODELS = set(["PHSP", "PHSP;", "PHSP; ", "HELAMP", "ISGW2;", "PHOTOS", "SVS", "SVS;", "SVV_HELAMP", "PYTHIA", "HQET2", "HQET2;", "ISGW2;","VVS_PWAVE","TAUSCALARNU","VSP_PWAVE;","VUB","VUB;","BTOXSGAMMA","SLN;","SLN","CB3PI-MPP","VSS","VSS;", "VSS; ","VSS_BMIX","VVPIPI;","VVPIPI;2","PARTWAVE","BTO3PI_CP","CB3PI-P00","STS;","SVP_HELAMP","BTOSLLALI;","TAUSCALARNU;","TAUHADNU","TAUVECTORNU;","D_DALITZ;","D_DALITZ;","PARTWAVE","PI0_DALITZ;","ETA_DALITZ;","OMEGA_DALITZ;","SVP_HELAMP","VVPIPI;","PARTWAVE","VVP","VLL;","BaryonPCR","TSS;","TVS_PWAVE"])
@@ -88,6 +89,12 @@ def process_decay(tokens):
         result['daughters'].append(d)
     if result['daughters'] == []:
         print("Empty fstate!")
+        return False
+    if len(result['daughters'])>max_decay_chain:
+        print("Too many daughters"+' '.join(result['daughters']))
+        return False
+    if result["branching"]<br_cutoff:
+        print("Too small branching: "+str(result["branching"]))
         return False
     return result
 

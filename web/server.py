@@ -269,7 +269,7 @@ def addDecayLive(document):
     """Spawns a thread that calls the add_decay method to insert the decay specified by document to the live fstate decays table"""
     t=threading.Thread(target=add_decay, args=(document["father"], 
                                         {"branching":document["branching"], 
-                                        "daughters":document["daughters"]}, "","", document["daughters"], True))
+                                        "daughters":document["daughters"]}, "","", document["daughters"], False))
     t.start()
 
 def addParticleLive(document):

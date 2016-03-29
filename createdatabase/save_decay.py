@@ -57,8 +57,9 @@ def add_decay(father, decay, user_keys="", history = "", uniterated_daughters = 
             if test_mode:
                 print("Ancestors updated!")
         except:
-            print("Failed to update ancestors")
-            db_dec.printdecay()
+            if test_mode:
+                print("Failed to update ancestors")
+                db_dec.printdecay()
         
         if test_mode:
             print("cc-ing decay")
@@ -72,7 +73,8 @@ def add_decay(father, decay, user_keys="", history = "", uniterated_daughters = 
                 db_dec_cc.save()
                 db_dec_cc.update_ancestors()
             except:
-                print("Failed to save decay!")
+                if test_mode:
+                    print("Failed to save decay!")
                 db_dec_cc.printdecay()
         elif test_mode:
             print("failed to cc decay")
@@ -91,8 +93,10 @@ def add_decay(father, decay, user_keys="", history = "", uniterated_daughters = 
                     new_user_keys = saved_dec.user_keys+user_keys
                     daughters = []
                     for d in decay["daughters"]:
-                        if d!=daughter:
-                            daughters.append(d)
+                        daughters.append(d)
+                    daughters.remove(daughter)
+                        #if d!=daughter:
+                        #    daughters.append(d)
                     for d in saved_dec.fstate.split(' '):
                         daughters.append(d)
                     new_uniterated_daughters = []
