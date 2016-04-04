@@ -84,9 +84,14 @@ class Decay(Document):
         for d in decs:
             father = d.split(" ")[0]
             daughters = d.split(" --> ")[1].split(" ")
-            p_decs[father]=father+' --> '+' '.join(order_particles(daughters))
+            if father not in p_decs: 
+                p_decs[father]=[father+' --> '+' '.join(order_particles(daughters))]
+            else:
+                p_decs[father].append(father+' --> '+' '.join(order_particles(daughters)))
         for f in order_particles(p_decs.keys()):
-            new_history.append(p_decs[f])
+            for x in p_decs[f]:
+                new_history.append(x)
+            #new_history.append([x for x in p_decs[f]])
         #print "history ordered from "+self.scheme+" to "+'; '.join(new_history)
         self.scheme='; '.join(new_history)
         return self

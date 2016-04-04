@@ -14,8 +14,10 @@ def get_fstates(decay):
         return
     if decay['branching'] > 1:
         return
-    if len(decay['products'])>=max_decay_chain:
+    if len(decay['products'])>max_decay_chain:
         return
+    if len(decay['products'])<1:
+        return 
     #print decay['history'], decay['products']
     db_dec = Decay(father = decay['father'], scheme = decay['history'], branching = decay["branching"], fstate = ' '.join(decay['products'])).order_history()
     #db_dec.printdecay()
@@ -36,9 +38,9 @@ def get_fstates(decay):
     #except pymongo.errors.DuplicateKeyError:
     #    return
 
-    if not 1 < len(decay['products']) < max_decay_chain: # Not full db build
+    #if not 1 <= len(decay['products']) <= max_decay_chain: # Not full db build
     #if len(decay['products']) == 1: # Full DB build
-        return
+    #    return
 
     for p in decay['products']:
         if not p in db:

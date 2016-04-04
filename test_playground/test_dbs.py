@@ -10,6 +10,19 @@ from datetime import datetime
 from itertools import permutations, combinations
 lazy_result = {}
 
+def query_with_ME(query, energy = 100):
+    start = datetime.now()
+    queries = []
+    for p in Particle.objects(mass__lt = energy):
+        queries.append(query+" "+p.name)
+    for q in queries:
+        query_test(q, False)
+    end = datetime.now()
+    print "Search for "+query+" with missed energy "+str(energy)+" MeV took {}".format(end-start)
+    return True
+
+def query_with_MISID(query):
+    return True
 
 def lazy_query(particles, history=False, br = 1, last_hist=False):
     global lazy_result
@@ -55,7 +68,7 @@ def normal_query(particles):
         result.append(d.scheme)
     return result
 
-def query_test(query):
+def query_test(query, verbose = True):
     particles = query.split(" ")
     
     start = datetime.now()
@@ -63,6 +76,10 @@ def query_test(query):
     end = datetime.now()
     print "Search for "+query+" took {}".format(end-start)
     print "found "+str(len(lazy_result))
+    if verbose:
+        for l in set(lazy_result):
+            print l+"  :  "+lazy_result[l]
+
     return True
 
 if __name__ == "__main__":
@@ -70,10 +87,11 @@ if __name__ == "__main__":
     connect(db_name)
     print "connected"
 
-    query_test("pi+ pi- mu+ mu-")
-    query_test("pi+ pi-")
-    query_test("pi+ pi- K+ K-")    
-    query_test("pi+ pi+ pi+ pi- pi- pi-")
+    #query_test("pi+ pi- mu+ mu-")
+    #query_test("pi+ pi-")
+    #query_test("pi+ pi- K+ K-")    
+    #query_test("K+ pi+ pi- mu+ mu-")
+    query_with_ME("pi+ pi- mu+", 200)
 
     #connect("fstate_big")
     #start = datetime.now()

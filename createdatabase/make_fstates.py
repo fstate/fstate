@@ -57,7 +57,8 @@ def do_work(fathers):
 
 
 if __name__ == "__main__":
-    from fstate import get_fstates
+    from fstate_lazy import get_fstates
+    #from fstate import get_fstates
     connect(db_name)
     Decay.objects().delete()
     #fstates.drop()
