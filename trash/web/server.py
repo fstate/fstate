@@ -13,7 +13,7 @@ import os
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from createdatabase.decay_model import Decay
 from parrticleparser.particle_model import Particle
-#from createdatabase.save_decay import add_decay
+from createdatabase.save_decay import add_decay
 from parrticleparser.save_particle import save_particle_to_db
 from createdatabase.config import br_cutoff, max_decay_chain
 import threading
@@ -44,33 +44,32 @@ def add_physics():
         p_list.append(p.to_print())
     return render_template('AddPhysics.html', p_list = p_list)
 
-from db_managment.quering import iterative_search, list_result
-from db_managment.quering import do_search
 
-#def do_search(query):
-#    # Set conversion is done for duplicate removing
-#    query_permutations = [" ".join(x) for x in set(permutations(query, len(query)))]
 
-#    # Cache check
-#    # if cache_key(query) in mc:
-#    #     return mc[cache_key(query)]
-#    #Decay.objects(fstate_in = query_permutations)
-#    #for d in Decay.objects(fstate__in = query_permutations):
-#    #    d.printdecay()
-#        #json_dump(d.to_json)
-#    #result = sorted(Decay.objects(fstate__in = query_permutations),  key=lambda x: -x['branching'])
-#    result = []
-#    for d in Decay.objects(fstate__in = query_permutations):
-#        result.append(d.to_dict())
+def do_search(query):
+    # Set conversion is done for duplicate removing
+    query_permutations = [" ".join(x) for x in set(permutations(query, len(query)))]
 
-#    #result = sorted(list(fstates.find(
-#    #        {"fstate": {"$in": query_permutations}}, 
-#    #        {"_id": False})),  key=lambda x: -x['branching'][0])
+    # Cache check
+    # if cache_key(query) in mc:
+    #     return mc[cache_key(query)]
+    #Decay.objects(fstate_in = query_permutations)
+    #for d in Decay.objects(fstate__in = query_permutations):
+    #    d.printdecay()
+        #json_dump(d.to_json)
+    #result = sorted(Decay.objects(fstate__in = query_permutations),  key=lambda x: -x['branching'])
+    result = []
+    for d in Decay.objects(fstate__in = query_permutations):
+        result.append(d.to_dict())
 
-#    # for q in query_permutations:
-#    #     mc[cache_key(q)] = result
+    #result = sorted(list(fstates.find(
+    #        {"fstate": {"$in": query_permutations}}, 
+    #        {"_id": False})),  key=lambda x: -x['branching'][0])
 
-#    return result
+    # for q in query_permutations:
+    #     mc[cache_key(q)] = result
+
+    return result
 
 
 @app.route("/about")
@@ -90,7 +89,7 @@ def howtosearch():
 @app.route("/knowndecays/<query>")
 def knowndecays(query):
     d_list = []
-    for d in Decay.objects(parent = query.replace("__","/")):
+    for d in Decay.objects(father = query.replace("__","/"), primal_decay = True):
         d_list.append(d.to_dict())
     for d in d_list:
         d['branching'] = nice_br(d['branching'])
@@ -196,27 +195,27 @@ def addDecay():
     """Adds POST data to new_physics collection, displays a thank you message"""
     request.get_data()
     
-    document = {"type": "decay", "parent": "", "childs": [], "source": "", "comment": "", "br_frac": "", "status":"pending"}
+    document = {"type": "decay", "mother": "", "daughters": [], "source": "", "comment": "", "br_frac": "", "status":"pending"}
 
-    document["parent"] = request.form["parent"]
+    document["mother"] = request.form["mother"]
     document["source"] = request.form["decay_source"]
     document["comment"] = request.form["decay_comment"]
     document["br_frac"] = request.form["branching_fraction"]
 
     for i in request.form:
-        if "child" in i:
-            document["childs"].append(request.form[i])
+        if "daughter" in i:
+            document["daughters"].append(request.form[i])
 
     p_list = []
     for p in Particle.objects():
         p_list.append(p.to_dict()["name"])
 
-    if document["parent"] not in p_list:
-        return render_template("physics-not-added.html", reason = "Parent particle is unknown. Add it to the db or use drop-down menu")
+    if document["mother"] not in p_list:
+        return render_template("physics-not-added.html", reason = "Mother particle is unknown. Add it to the db or use drop-down menu")
 
-    for d in document["childs"]:
+    for d in document["daughters"]:
         if d not in p_list:
-            return render_template("physics-not-added.html", reason = "One of the child ("+d+") particles is unknown. Add it to the db or use drop-down menu")
+            return render_template("physics-not-added.html", reason = "One of the daughter ("+d+") particles is unknown. Add it to the db or use drop-down menu")
 
     try:
         b = float(document["br_frac"])
@@ -267,33 +266,17 @@ def getNewPhysics(t, status):
 
 def user_key_from_document(document):
     try:
-        return "{} --> {}".format(document["parent"], ' '.join(document["childs"]))
+        return "{} --> {}".format(document["father"], ' '.join(document["daughters"]))
     except:
         print "Failed to create user key, returning empty"
         return ""
 
-#def addDecayLive(document):
-#    """Spawns a thread that calls the add_decay method to insert the decay specified by document to the live fstate decays table"""
-#    t=threading.Thread(target=add_decay, args=(document["father"], 
-#                                        {"branching":document["branching"], 
-#                                        "childs":document["childs"]}, "","", document["childs"], True))
-#    t.start()
-
 def addDecayLive(document):
-    db_dec = Decay(parent = document['parent'], childs = document['childs'], branching = document["branching"], user_keys = user_key_from_document(document))
-    try:
-        db_dec.save()
-    except:
-        print "Failed to save decay!"
-        db_dec.printdecay()
-        return
-    db_dec_cc_test = db_dec.do_cc()
-    try:
-        db_dec_cc_test.save()
-    except:
-        print "Failed to save cc-ed decay"
-        return
-
+    """Spawns a thread that calls the add_decay method to insert the decay specified by document to the live fstate decays table"""
+    t=threading.Thread(target=add_decay, args=(document["father"], 
+                                        {"branching":document["branching"], 
+                                        "daughters":document["daughters"]}, "","", document["daughters"], True))
+    t.start()
 
 def addParticleLive(document):
     """Adds decay specified by document to the live fstate decays table"""
@@ -318,9 +301,9 @@ def reconsiderNewPhys(table,id, user):
             return rmNewPhys(table,id, user=user, status="pending")
         if table == 'decay':
             if ret["status"]=="approved":
-                document = {"parent":ret['parent'], 
+                document = {"father":ret['mother'], 
                         "branching":ret["br_frac"], 
-                         "childs":ret["childs"]}
+                         "daughters":ret["daughters"]}
                 user_key = user_key_from_document(document)
                 if user_key != "":
                     thread.start_new_thread(delete_decays_by_key, (user_key,))
@@ -379,9 +362,9 @@ def addNewPhys(table,id,user):
             print("Particle added")
             return rmNewPhys(table,id,user=user, status="approved")
         if table == 'decay':
-            document = {"parent":ret['parent'], 
+            document = {"father":ret['mother'], 
                         "branching":ret["br_frac"], 
-                        "childs":ret["childs"]}
+                        "daughters":ret["daughters"]}
             addDecayLive(document)
             print("Adding decay, may take some time.")
             return rmNewPhys(table,id,user=user, status="approved")

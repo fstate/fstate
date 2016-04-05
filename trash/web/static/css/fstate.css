@@ -1,0 +1,19 @@
+#loading {
+    margin-top: 100px;
+}
+
+#about {
+    margin-top: 20%;
+}
+
+.search-no-results {
+    margin-top: 30%
+}
+
+.search-with-results * {
+    margin-top: 100px;
+}
+
+.hidden * {
+    display: none;
+}

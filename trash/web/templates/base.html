@@ -66,18 +66,18 @@ var opts = {
 
 var global_data;
 
-function refilter(parents_list)
+function refilter(fathers_list)
 {
-  if(parents_list.length == 0) {
+  if(fathers_list.length == 0) {
     $(".decay").show();
     return;
   }
 
   $(".decay").hide();
 
-  for(var f in parents_list) {
-    var parent = parents_list[f];
-    $('tr[class|="decay parent-'+parent+'"]').show();
+  for(var f in fathers_list) {
+    var father = fathers_list[f];
+    $('tr[class|="decay father-'+father+'"]').show();
   }
   return;
 }
@@ -86,18 +86,18 @@ function refilter(parents_list)
 
 function create_filters(data)
 {
-  var parents = {};
+  var fathers = {};
 
   for ( var i in data['result']) 
   {
-      var parent = data['result'][i]['parent'];
-      if(parent in parents)
+      var father = data['result'][i]['father'];
+      if(father in fathers)
         continue;
 
-      parents[parent] = true;
+      fathers[father] = true;
   }
 
-  var availableTags = Object.keys(parents);
+  var availableTags = Object.keys(fathers);
 
   function split( val ) {
     return val.split( /,\s*/ );
@@ -204,14 +204,14 @@ function do_search()
 
       <div id="search_results" class="hidden">
         <div class="ui-widget">
-          <label for="tags">Filter by parents: </label>
+          <label for="tags">Filter by fathers: </label>
           <input id="tags" size="50" />
         </div>
         <hr/>
         <span id="res_table">
           <table id="results" class="table-striped">
             <tr>
-                <td><strong>Parent mass, MeV</strong></td>
+                <td><strong>Father mass, MeV</strong></td>
                 <td><strong>Approximate branching fraction &darr;</strong></td>
                 <td><strong>Mode</strong></td>
             </tr>
@@ -233,17 +233,17 @@ function do_search()
       function show_results(data)
       {
           document.getElementById('results').innerHTML="            <tr>\
-                      <td><strong>Parent mass, MeV</strong></td>\
+                      <td><strong>Father mass, MeV</strong></td>\
                       <td><strong>Approximate branching fraction &darr;</strong></td>\
                       <td><strong>Mode</strong></td>\
                   </tr>";
       
           for ( var i in data['result']) {
             var result = data['result'][i];
-            var parent = data['result'][i]['parent'];
+            var father = data['result'][i]['father'];
       
-            $('#results tr:last').after("<tr class=\"decay parent-"+parent+"\">\
-            <td>"+ (parent in data["p_list"] ? data["p_list"][parent]["mass"] : "---") +"</td>\
+            $('#results tr:last').after("<tr class=\"decay father-"+father+"\">\
+            <td>"+ (father in data["p_list"] ? data["p_list"][father]["mass"] : "---") +"</td>\
             <td>"+ result['branching'] +"</td>\
             <td>"+ result['scheme'] +"</td>\
             </tr>");

@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div id="AboutTop">
+<h1 id="AboutLabel">About <strong>fstate</strong>.</h1>
+</div>
+<div id="AboutMain">
+<h2 style = "color:red">Important!</h2>
+<P><strong>All branching fractions given in our project are very approximate and can differ from a real values by a few orders. If you want to know correct values, plaese check them at <a href="pdg.lbl.gov">PDG website</a>. Also, the list of the possible decay modes is not full, since we only use decays listed in LHCb DECAY.DEC file. However, due to your help we expect the database to be constantly replenished!</strong></p>
+<h2>What is <strong>fstate</strong>?</h2>
+<p><strong>fstate</strong> is a project of <a href="mailto:a.baranov@cern.ch">Alexander Baranov</a>, <a href="mailto:bthashemi@ucsd.edu">Bobak Hashemi</a> and <a href="mailto:ilya.komarov@epfl.ch">Ilya Komarov</a> designed to help to the particle physicists. The most common case of usage of  <strong>fstate</strong> is a search of the possible backgrounds which can contribute to your selection. Just type your final state particles into a search form, press find button and get (obviously not full) list of possible decays.</p>
+<strong>While we created database using .dec files of LHCb, the list of decay modes used in it is not full. <a href="/add-physics">Please help us to complete it!</a></strong>
+<h2>How it works?</h2>
+<p>We have used LHCb python configuration file to get a list of decay modes, created database, added search and made this website. Here is a list of tools, used in this project: </p>
+<ul>
+	<li> 
+		For database:
+		<ul>
+			<li><a href="http://www.mongodb.org">mongoDB</a></li>
+			<li><a href="http://pypy.org">PyPy</a></li>
+		</ul>
+	</li>
+	<li> 
+		For server:
+		<ul>
+			<li><a href="http://www.debian.org">Debian 6</a></li>
+			<li><a href="http://uwsgi-docs.readthedocs.org/en/latest/">uWSGI</a></li>
+			<li><a href="http://nginx.org">nginx</a></li>
+			<li><a href="http://memcached.org/">Memcached</a></li>
+		</ul>
+	</li>
+	<li> 
+		Web libs:
+		<ul>
+			<li><a href="http://flask.pocoo.org/">Flask</a></li>
+			<li><a href="http://sendapatch.se/projects/pylibmc/">pylibmc</a></li>
+		</ul>
+	</li>
+</ul>
+<!--<p>Also, you can take a look at this <a href="/static/files/Presentation.pdf">presentation</a></p>-->
+<p> You are very welcome to help the project by adding missing decays or by joining developers team! Also, please feel free to send us your comments and suggestions.</p>
+</div>
+<div id="AboutBottom">
+</div>
+
+{% endblock %}

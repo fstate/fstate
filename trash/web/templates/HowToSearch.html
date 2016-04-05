@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div id="AboutTop" class="span6 offset3 text-center">
+<h1 id="AboutLabel">How to search?</h1>
+</div>
+
+
+<div class="span6 offset3 text-center">
+	<h2>Table of particles</h2>
+
+<table border ="1">
+  <tr>
+    <td style="width: 20%">Name</td>
+    <td style="width: 20%">Charge</td>
+    <td style="width: 20%">Mass</td>
+    <td style="width: 20%">Alias</td>
+    <td style="width: 20%">Antiparticle</td>
+  </tr>
+
+  {% for p in p_list %}
+  <tr>
+      <td style="width: 20%"><a href="/knowndecays/{{ p.name_html }}">{{ p.name_code }}</a></td>
+      <td style="width: 20%">{{ p.charge }}</td>
+      <td style="width: 20%">{{ p.mass }}</td>
+      <td style="width: 20%">{{ p.alias }}</td>
+      <td style="width: 20%">{{ p.antiparticle }}</td>
+  </tr>
+  {% endfor %}
+</table>
+</div>
+
+<div id="AboutBottom">
+</div>
+
+{% endblock %}

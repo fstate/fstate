@@ -73,7 +73,7 @@ def process_decay(tokens):
     # Example: ['0.000127000', 'anti-Sigma+', 'gamma', 'PHSP;']
     result = {
         "branching": float(tokens[0]),
-        "childs": []
+        "daughters": []
     }
     for d in tokens[1:]:
         if d in MODELS:
@@ -86,12 +86,12 @@ def process_decay(tokens):
             #break
             return False
         d=check_if_particle_exist(d)
-        result['childs'].append(d)
-    if result['childs'] == []:
+        result['daughters'].append(d)
+    if result['daughters'] == []:
         print("Empty fstate!")
         return False
-    if len(result['childs'])>max_decay_chain:
-        print("Too many childs"+' '.join(result['childs']))
+    if len(result['daughters'])>max_decay_chain:
+        print("Too many daughters"+' '.join(result['daughters']))
         return False
     if result["branching"]<br_cutoff:
         print("Too small branching: "+str(result["branching"]))

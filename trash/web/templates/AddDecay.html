@@ -1,0 +1,82 @@
+{% extends "base.html" %}
+
+{% block head_before %}
+<script type="text/javascript">
+//auto expand textarea
+
+var num_daughters=2;
+
+function add_daughter(){
+	num_daughters++;
+
+	var plus_sign = document.createElement("font");
+	plus_sign.appendChild(document.createTextNode("+"))
+	plus_sign.size=6;
+
+	var d_name = "daughter"+num_daughters.toString();
+	
+	var daughter = document.createElement("input");
+	daughter.type="text";
+	daughter.placeholder="Daughter "+num_daughters.toString();
+	daughter.name=d_name;
+
+	var boxes = document.getElementById("daughter_text_boxes");
+
+	boxes.appendChild(document.createTextNode(" "));
+	boxes.appendChild(plus_sign);
+	boxes.appendChild(document.createTextNode(" "));
+    boxes.appendChild(daughter);
+}
+
+function rm_daughter(){
+
+	var boxes = document.getElementById("daughter_text_boxes");
+	
+	if (boxes.childNodes.length > 2){
+		boxes.removeChild(boxes.lastChild);
+		boxes.removeChild(boxes.lastChild);
+		boxes.removeChild(boxes.lastChild);
+		boxes.removeChild(boxes.lastChild);
+		num_daughters--;
+	}
+}
+
+function adjust_textarea(h) {
+    h.style.height = "20px";
+    h.style.height = (h.scrollHeight)+"px";
+}
+
+</script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="/static/css/pretty-form2.css">
+{% endblock %}
+
+{% block content %}
+<div class="row">
+	<h2 class="text-left">Add A Decay Channel</h2>
+	<p>If you have noticed there is a decay which is not in our system, we greatly appreciate your help in notifying us with the form below!</p>
+	<div class="col-sm-8 text-center" id="decay-channel">
+
+		<form>
+		    <input type="text" name="mother" placeholder="Mother Particle" /> <font size="6">&rArr;</font>
+		    <span id="daughter_text_boxes"><input type="text" name="daughter1" id="daughter1"placeholder="Daughter 1" /> <font size="6">+</font>
+		    <input type="text" name="daughter2" id="daughter2"placeholder="Daughter 2" /> </span>
+		    
+		    <input type="button" class="btn btn-success" value="+" style="vertical-align: top" onclick="add_daughter()" data-toggle="tooltip" title="Add Daughter"/>
+
+		    <input type="button" class="btn btn-danger" value="-" style="vertical-align: top" onclick="rm_daughter()" data-toggle="tooltip" title="Remove Daughter"/>
+
+		    <p><textarea placeholder="Comment" onkeyup="adjust_textarea(this)"></textarea>
+
+		    <input type="button" value="Add Decay" /></p>
+	  </form>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col-sm-8 text-center" id="about-add-decay">
+		
+	</div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div id="AboutTop" class="span6 offset3 text-center">
+<h1 id="AboutLabel">Known decays of {{ particle }}</h1>
+<h2 id="AboutLabel">(Only the first generation of decays, no cascades)</h2>
+</div>
+
+
+<div class="span6 offset3 text-center">
+
+<table border ="1">
+  <tr>
+    <td style="width: 30%"><strong>Final state</strong></td>
+    <td style="width: 10%"><strong>Branching</strong></td>
+  </tr>
+
+  {% for d in d_list %}
+  <tr>
+      <td style="width: 30%">{{ d.nice_decay }}</td>
+      <td style="width: 10%">{{ d.branching }}</td>
+  </tr>
+  {% endfor %}
+</table>
+</div>
+
+<div id="AboutBottom">
+</div>
+
+{% endblock %}
