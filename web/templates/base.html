@@ -19,6 +19,14 @@
     <link rel="stylesheet" href="/static/css/fstate.css">
     <link rel="stylesheet" href="/static/css/jquery-ui-1.10.3.custom.min.css">
     <link rel="stylesheet" href="/static/css/pretty_form.css">
+    <script src="/static/js/jquery.js"></script>
+    <script src="/static/js/bootstrap.min.js"></script>
+    <script src="/static/js/spin.min.js"></script>
+    <script src="/static/js/jquery-ui-1.10.3.custom.min.js"></script>
+    <script src="/static/js/masses.js"></script>
+
+    <script type="text/javascript" async src="/static/js/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});</script>
 
 
 
@@ -28,13 +36,6 @@
     <![endif]-->
 {% block head_before %} {% endblock %}
 
-<script src="/static/js/jquery.js"></script>
-<script src="/static/js/bootstrap.min.js"></script>
-<script src="/static/js/spin.min.js"></script>
-<script src="/static/js/jquery-ui-1.10.3.custom.min.js"></script>
-<script src="/static/js/masses.js"></script>
-<script type="text/javascript" src="/static/js/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-<script type="text/x-mathjax-config">MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});</script>
 
 <!--<script type="text/x-mathjax-config">
   MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
@@ -249,6 +250,8 @@ function do_search()
           }
       
           $("#search_results").append("<hr/><p>Generated in "+ data['time'] +"</p>");
+          MathJax.Hub.Queue(["Typeset",MathJax.Hub]);
+          //MathJax.Hub.Configured()
       }
 
       var dataList = document.getElementById('queries');
@@ -298,6 +301,8 @@ function do_search()
          return false;
         }
       }); 
+
     </script>
+
   </body>
 </html>

@@ -9,6 +9,7 @@ from copy import copy
 from datetime import datetime
 from itertools import permutations, combinations
 lazy_result = {}
+list_lazy_result = []
 
 def query_with_ME(query, energy = 100):
     start = datetime.now()
@@ -25,14 +26,15 @@ def query_with_MISID(query):
     return True
 
 def lazy_query(particles, history="", br = 1, last_hist=False):
-    global lazy_result
+    global list_lazy_result
     query_permutations = order_particles(particles)
     for d in Decay.objects(__raw__ = {'childs':query_permutations}):
         if br*d.branching>=br_cutoff:
-            if d.nice_decay+"; "+history not in lazy_result:
-                lazy_result[d.nice_decay+"; "+history]=br*d.branching
-            else:
-                lazy_result[d.nice_decay+"; "+history]+=br*d.branching
+            list_lazy_result.append({'father':d.parent, 'branching':br*d.branching, 'scheme':d.nice_decay+"; "+history})
+            #if d.nice_decay+"; "+history not in lazy_result:
+            #    lazy_result[d.nice_decay+"; "+history]=br*d.branching
+            #else:
+            #    lazy_result[d.nice_decay+"; "+history]+=br*d.branching
     small_query_subsets = []
     for len_part in range(2, len(particles)):
         for comb in set(combinations(particles, len_part)):
@@ -51,18 +53,23 @@ def lazy_query(particles, history="", br = 1, last_hist=False):
 
 
 def query_test(query, verbose = True):
-    particles = query.split(" ")
-    
+    global list_lazy_result
+    list_lazy_result = []
+    if str(type(query)) == "<type 'str'>":
+        particles = query.split(" ")    
+    else:
+        particles = query
     start = datetime.now()
     lazy_query(particles)
     end = datetime.now()
-    print "Search for "+query+" took {}".format(end-start)
-    print "found "+str(len(lazy_result))
-    if verbose:
-        for l in lazy_result:
-            print l+"  :  "+str(lazy_result[l])
+    #print "Search for "+' '.join(particles)+" took {}".format(end-start)
+    #if verbose:
+    #    for l in list_lazy_result:
+    #        print l
+    #print "found "+str(len(list_lazy_result))
+    #print "unique "+str(len(set(list_lazy_result)))
 
-    return True
+    return list_lazy_result
 
 if __name__ == "__main__":
     from createdatabase.config import db_name

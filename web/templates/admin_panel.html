@@ -5,7 +5,7 @@
 
 <table class="table-striped" id="decays_table" style="width: 100%">
   <tr>
-      <td style="width: 10%"><strong>Mother</strong></td>
+      <td style="width: 10%"><strong>Parent</strong></td>
       <td style="width: 30%"><strong>Daughters</strong></td>
       <td style="width: 10%"><strong>Source</strong></td>
       <td style="width: 10%"><strong>Comment</strong></td>
@@ -14,8 +14,8 @@
   </tr>
   {% for d in decs_pending %}
   <tr id="row_decays_{{ d._id }}">
-      <td style="width: 10%"><span name="mother" class="text-editable" id="mother_{{ d._id }}">{{ d.mother }}</span><input class="input-editable" id="mother_{{ d._id }}_input" style="display: none"></input></td>
-      <td style="width: 30%"><span name="daughters" class="text-editable" id="daughters_{{ d._id }}">{{ d.daughters }}</span> <input class="input-editable" id="daughters_{{ d._id }}_input" style="display: none"></input></td>
+      <td style="width: 10%"><span name="parent" class="text-editable" id="parent_{{ d._id }}">{{ d.parent }}</span><input class="input-editable" id="parent_{{ d._id }}_input" style="display: none"></input></td>
+      <td style="width: 30%"><span name="childs" class="text-editable" id="childs_{{ d._id }}">{{ d.childs }}</span> <input class="input-editable" id="childs_{{ d._id }}_input" style="display: none"></input></td>
       <td style="width: 10%">{{ d.source }}</td>
       <td style="width: 10%">{{ d.comment }}</td>
       <td style="width: 10%">{{ d.br_frac }}</td>
@@ -58,7 +58,7 @@
     
     <table class="table-striped" id="decays_table" style="width: 100%">
       <tr>
-          <td style="width: 10%"><strong>Mother</strong></td>
+          <td style="width: 10%"><strong>Parent</strong></td>
           <td style="width: 30%"><strong>Daughters</strong></td>
           <td style="width: 10%"><strong>Source</strong></td>
           <td style="width: 10%"><strong>Comment</strong></td>
@@ -68,8 +68,8 @@
       </tr>
       {% for d in decs_approved %}
       <tr id="row_decays_{{ d._id }}">
-      <td style="width: 10%">{{ d.mother }}</td>
-      <td style="width: 30%">{{ d.daughters }}</td>
+      <td style="width: 10%">{{ d.parent }}</td>
+      <td style="width: 30%">{{ d.childs }}</td>
           <td style="width: 10%">{{ d.source }}</td>
           <td style="width: 10%">{{ d.comment }}</td>
           <td style="width: 10%">{{ d.br_frac }}</td>
@@ -80,8 +80,8 @@
       {% endfor %}
       {% for d in decs_declined %}
       <tr id="row_decays_{{ d._id }}">
-      <td style="width: 10%">{{ d.mother }}</td>
-      <td style="width: 30%">{{ d.daughters }}</td>
+      <td style="width: 10%">{{ d.parent }}</td>
+      <td style="width: 30%">{{ d.childs }}</td>
           <td style="width: 10%">{{ d.source }}</td>
           <td style="width: 10%">{{ d.comment }}</td>
           <td style="width: 10%">{{ d.br_frac }}</td>
@@ -129,7 +129,7 @@
       </table>
 
 
-<!-- This makes the mother and daughter text editable for decays -->
+<!-- This makes the parent and child text editable for decays -->
 <script type="text/javascript">
   
   // ================================================
@@ -137,7 +137,7 @@
   // ================================================
 
   function checkValidList(input){
-    if(input.attr("id").substring(0,9) != "daughters"){
+    if(input.attr("id").substring(0,9) != "childs"){
       return true
     }
     else{
@@ -145,9 +145,9 @@
       str=str.replace(/ /g, "")
       if(str.charAt(0) == '[' && str.charAt(str.length-1) == ']')
       {
-        daughters=str.slice(1,-1).split(",")
-        for (var i=0; i<daughters.length; i+=1){
-          var d=daughters[i]
+        childs=str.slice(1,-1).split(",")
+        for (var i=0; i<childs.length; i+=1){
+          var d=childs[i]
           if (! (d.charAt(0) == '\'' && d.charAt(d.length-1) == '\'')){
             alert("The string is not properly formatted, check that each element is wrapped in a \'")
             return false

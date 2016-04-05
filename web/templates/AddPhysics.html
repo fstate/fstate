@@ -4,43 +4,43 @@
 <script type="text/javascript">
 //auto expand textarea
 
-var num_daughters=2;
+var num_childs=2;
 
-function add_daughter(){
-	num_daughters++;
+function add_child(){
+	num_childs++;
 
 	var plus_sign = document.createElement("font");
 	plus_sign.appendChild(document.createTextNode("+"))
 	plus_sign.size=6;
 
-	var d_name = "daughter"+num_daughters.toString();
+	var d_name = "child"+num_childs.toString();
 	
-	var daughter = document.createElement("input");
-	daughter.type="text"
-	daughter.list="particles";
-	daughter.placeholder="Daughter "+num_daughters.toString();
-	daughter.id=d_name;
-	daughter.setAttribute('list', 'particles');
-	daughter.name=d_name;
+	var child = document.createElement("input");
+	child.type="text"
+	child.list="particles";
+	child.placeholder="Child "+num_childs.toString();
+	child.id=d_name;
+	child.setAttribute('list', 'particles');
+	child.name=d_name;
 
-	var boxes = document.getElementById("daughter_text_boxes");
+	var boxes = document.getElementById("child_text_boxes");
 
 	boxes.appendChild(document.createTextNode(" "));
 	boxes.appendChild(plus_sign);
 	boxes.appendChild(document.createTextNode(" "));
-    boxes.appendChild(daughter);
+    boxes.appendChild(child);
 }
 
-function rm_daughter(){
+function rm_child(){
 
-	var boxes = document.getElementById("daughter_text_boxes");
+	var boxes = document.getElementById("child_text_boxes");
 	
 	if (boxes.childNodes.length > 3){
 		boxes.removeChild(boxes.lastChild);
 		boxes.removeChild(boxes.lastChild);
 		boxes.removeChild(boxes.lastChild);
 		boxes.removeChild(boxes.lastChild);
-		num_daughters--;
+		num_childs--;
 	}
 }
 
@@ -84,15 +84,15 @@ var particles = [
 ]
 
 function checkdecay() {
-    if (!particles.includes(document.addnewdecay.mother.value)){
-    	alert("The mother particle entered is not known. Please use one from list or submit a new particle to the system.");
+    if (!particles.includes(document.addnewdecay.parent.value)){
+    	alert("The parent particle entered is not known. Please use one from list or submit a new particle to the system.");
         return false;
     }
 
-    for (var i = 1; i<=num_daughters;i+=1){
-    	var d_name = document.getElementById("daughter"+i.toString()).value
+    for (var i = 1; i<=num_childs;i+=1){
+    	var d_name = document.getElementById("child"+i.toString()).value
     	if (!particles.includes(d_name)){
-    		alert("Daughter "+d_name+" is not known. Please use one from list or submit a new particle to the system. (If you add a new particle, it will be considered by admins before appearing in database)");
+    		alert("Child "+d_name+" is not known. Please use one from list or submit a new particle to the system. (If you add a new particle, it will be considered by admins before appearing in database)");
     		return false;
     	}	
 	}
@@ -164,15 +164,15 @@ function checkparticle() {
 		      <option>{{ p.name|safe }}</option>
 		     {% endfor %}
 			</datalist> 
-		    <input type="text" list="particles" name="mother" placeholder="Mother Particle" /> <font size="6">&rArr;</font>
-		    <span id="daughter_text_boxes">
-		    	<input type="text" list="particles" name="daughter1" id="daughter1"placeholder="Daughter 1" /> <font size="6">+</font>
-		    	<input type="text" list="particles" name="daughter2" id="daughter2" placeholder="Daughter 2" /> 
+		    <input type="text" list="particles" name="parent" placeholder="Parent Particle" /> <font size="6">&rArr;</font>
+		    <span id="child_text_boxes">
+		    	<input type="text" list="particles" name="child1" id="child1"placeholder="Child 1" /> <font size="6">+</font>
+		    	<input type="text" list="particles" name="child2" id="child2" placeholder="Child 2" /> 
 			</span>
 		    
-		    <input type="button" class="btn btn-success" value="+" style="vertical-align: top" onclick="add_daughter()" data-toggle="tooltip" title="Add Daughter"/>
+		    <input type="button" class="btn btn-success" value="+" style="vertical-align: top" onclick="add_child()" data-toggle="tooltip" title="Add Child"/>
 
-		    <input type="button" class="btn btn-danger" value="-" style="vertical-align: top" onclick="rm_daughter()" data-toggle="tooltip" title="Remove Daughter"/>
+		    <input type="button" class="btn btn-danger" value="-" style="vertical-align: top" onclick="rm_child()" data-toggle="tooltip" title="Remove Child"/>
 			</span>
 
 		    <p><textarea name="decay_comment" style="height: 28px; width: 500px" id="decay_comment" placeholder="Comment" onkeyup="adjust_textarea(this)"></textarea> <br />
