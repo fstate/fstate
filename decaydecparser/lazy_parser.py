@@ -6,7 +6,7 @@ sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 #from database import *
 from parrticleparser.particle_model import Particle
-from config import br_cutoff, max_decay_chain
+from createdatabase.config import br_cutoff, max_decay_chain
 
 DECAY_DEC_PATH = "DECAY.DEC"
 MODELS = set(["PHSP", "PHSP;", "PHSP; ", "HELAMP", "ISGW2;", "PHOTOS", "SVS", "SVS;", "SVV_HELAMP", "PYTHIA", "HQET2", "HQET2;", "ISGW2;","VVS_PWAVE","TAUSCALARNU","VSP_PWAVE;","VUB","VUB;","BTOXSGAMMA","SLN;","SLN","CB3PI-MPP","VSS","VSS;", "VSS; ","VSS_BMIX","VVPIPI;","VVPIPI;2","PARTWAVE","BTO3PI_CP","CB3PI-P00","STS;","SVP_HELAMP","BTOSLLALI;","TAUSCALARNU;","TAUHADNU","TAUVECTORNU;","D_DALITZ;","D_DALITZ;","PARTWAVE","PI0_DALITZ;","ETA_DALITZ;","OMEGA_DALITZ;","SVP_HELAMP","VVPIPI;","PARTWAVE","VVP","VLL;","BaryonPCR","TSS;","TVS_PWAVE"])
@@ -73,7 +73,7 @@ def process_decay(tokens):
     # Example: ['0.000127000', 'anti-Sigma+', 'gamma', 'PHSP;']
     result = {
         "branching": float(tokens[0]),
-        "daughters": []
+        "childs": []
     }
     for d in tokens[1:]:
         if d in MODELS:
@@ -86,12 +86,12 @@ def process_decay(tokens):
             #break
             return False
         d=check_if_particle_exist(d)
-        result['daughters'].append(d)
-    if result['daughters'] == []:
+        result['childs'].append(d)
+    if result['childs'] == []:
         print("Empty fstate!")
         return False
-    if len(result['daughters'])>max_decay_chain:
-        print("Too many daughters"+' '.join(result['daughters']))
+    if len(result['childs'])>max_decay_chain:
+        print("Too many childs"+' '.join(result['childs']))
         return False
     if result["branching"]<br_cutoff:
         print("Too small branching: "+str(result["branching"]))

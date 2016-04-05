@@ -4,6 +4,8 @@ import sys
 import os
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from createdatabase.config import db_name
+import re
+from nice_name import nice_name
 
 class Particle(Document):
     name = StringField(required=True)
@@ -50,10 +52,11 @@ class Particle(Document):
             "name" : self.name,
             "name_js" : "\""+self.name.replace("'","\'")+"\"",
             "name_html" : self.name.replace("/","__"),
+            "name_code" : nice_name(self.name),
             "charge" : self.charge,
             "mass" : mass,
             "alias" : self.alias,
-            "antiparticle" : self.antiparticle}
+            "antiparticle" : nice_name(self.antiparticle)}
         return particle
 
 connect(db_name)

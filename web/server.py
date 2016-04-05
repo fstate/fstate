@@ -19,6 +19,10 @@ from createdatabase.config import br_cutoff, max_decay_chain
 import threading
 import thread
 
+#Decay.objects(fstate__in = query_permutations)
+#Decay.objects(father = query.replace("__","/"), primal_decay = True):
+#Decay.objects(user_keys__contains = key):
+
 app = Flask(__name__)
 app.config['FLASK_HTPASSWD_PATH'] = '.htpasswd'
 app.config['FLASK_SECRET'] = 'Security Secret'
@@ -39,6 +43,8 @@ def add_physics():
     for p in Particle.objects():
         p_list.append(p.to_print())
     return render_template('AddPhysics.html', p_list = p_list)
+
+
 
 def do_search(query):
     # Set conversion is done for duplicate removing

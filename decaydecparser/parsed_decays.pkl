@@ -827,7 +827,7 @@ p413
 S'branching'
 p416
 F0.08
-sS'daughters'
+sS'childs'
 p417
 (lp418
 Ve+
