@@ -1,7 +1,6 @@
 from flask import *
-from flask.ext.htpasswd import HtPasswdAuth
+from flask_htpasswd import HtPasswdAuth
 
-from db import *
 from itertools import permutations
 from datetime import datetime
 from copy import deepcopy
@@ -11,28 +10,20 @@ from bson import ObjectId
 import sys
 import os
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+from web.db import ctc, new_physics
 from createdatabase.decay_model import Decay
 from parrticleparser.particle_model import Particle
-#from createdatabase.save_decay import add_decay
 from parrticleparser.save_particle import save_particle_to_db
 from createdatabase.config import br_cutoff, max_decay_chain
 import threading
 import thread
 
-#Decay.objects(fstate__in = query_permutations)
-#Decay.objects(father = query.replace("__","/"), primal_decay = True):
-#Decay.objects(user_keys__contains = key):
 
 app = Flask(__name__)
 app.config['FLASK_HTPASSWD_PATH'] = '.htpasswd'
 app.config['FLASK_SECRET'] = 'Security Secret'
 
 htpasswd = HtPasswdAuth(app)
-
-
-# mc = pylibmc.Client(["127.0.0.1"], binary=True,
-#                      behaviors={"tcp_nodelay": True,
-#                                 "ketama": True})
 
 def cache_key(query):
     return str(" ".join(query))
@@ -46,32 +37,6 @@ def add_physics():
 
 from db_managment.quering import iterative_search, list_result
 from db_managment.quering import do_search
-
-#def do_search(query):
-#    # Set conversion is done for duplicate removing
-#    query_permutations = [" ".join(x) for x in set(permutations(query, len(query)))]
-
-#    # Cache check
-#    # if cache_key(query) in mc:
-#    #     return mc[cache_key(query)]
-#    #Decay.objects(fstate_in = query_permutations)
-#    #for d in Decay.objects(fstate__in = query_permutations):
-#    #    d.printdecay()
-#        #json_dump(d.to_json)
-#    #result = sorted(Decay.objects(fstate__in = query_permutations),  key=lambda x: -x['branching'])
-#    result = []
-#    for d in Decay.objects(fstate__in = query_permutations):
-#        result.append(d.to_dict())
-
-#    #result = sorted(list(fstates.find(
-#    #        {"fstate": {"$in": query_permutations}}, 
-#    #        {"_id": False})),  key=lambda x: -x['branching'][0])
-
-#    # for q in query_permutations:
-#    #     mc[cache_key(q)] = result
-
-#    return result
-
 
 @app.route("/about")
 def about():
@@ -95,10 +60,6 @@ def knowndecays(query):
     for d in d_list:
         d['branching'] = nice_br(d['branching'])
     return render_template('SingleParticle.html', particle = query.replace("__","/"), d_list = d_list)
-
-
-#@app.route("/results/<query>")
-#def showResults(query):
 
 
 @app.route("/")
@@ -183,8 +144,6 @@ def txt(query):
 
     for r in result:
         r['branching'] = nice_br(r['branching'])
-        #r['branching'] = "%0.4g" % r['branching']
-        #r['branching'] = "%0.4g" % r['branching'][0]
     
     return Response(TablePrinter(format, ul='-')(result), mimetype='text/plain')
 
@@ -404,4 +363,4 @@ def adminPanel(user):
 
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(host='0.0.0.0', debug=True)

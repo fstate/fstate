@@ -3,6 +3,7 @@ import json
 import sys
 import os
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+from web.db import ctc
 from parrticleparser.particle_model import Particle
 particles = {}
 for part in Particle.objects():
@@ -10,6 +11,7 @@ for part in Particle.objects():
 from config import db_name
 from config import br_cutoff, max_decay_chain
 from parrticleparser.nice_name import nice_name
+
 
 def order_particles(p_list):
     DATA=[]
@@ -95,6 +97,3 @@ class Decay(Document):
             #print "Failed to cc decay:"
             #self.printdecay()
             return False
-
-
-connect(db_name)

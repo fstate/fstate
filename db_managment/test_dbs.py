@@ -2,6 +2,7 @@ from mongoengine import connect
 import sys
 import os
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+from web.db import ctc
 from createdatabase.decay_model import Decay, order_particles
 from createdatabase.config import br_cutoff, max_decay_chain
 from parrticleparser.particle_model import Particle
@@ -83,15 +84,17 @@ def query_test(query, verbose = True):
     return True
 
 if __name__ == "__main__":
-    from config import db_name
-    connect(db_name)
-    print "connected"
+    print "Hi"
+    con_stat = connect(db_name)
+    print "Connection type: "+str(type(con_stat))
+    print "Connection status: "+str(con_stat)
+    #print Particle.objects()
 
     #query_test("pi+ pi- mu+ mu-")
     #query_test("pi+ pi-")
     #query_test("pi+ pi- K+ K-")    
     #query_test("K+ pi+ pi- mu+ mu-")
-    query_with_ME("pi+ pi- mu+", 200)
+    #query_with_ME("pi+ pi- mu+", 200)
 
     #connect("fstate_big")
     #start = datetime.now()

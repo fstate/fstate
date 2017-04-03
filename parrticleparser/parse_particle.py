@@ -1,6 +1,12 @@
 import json
 import pickle
 from particle_model import Particle
+from mongoengine import connect
+import sys
+import os
+sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+from web.db import ctc
+
 #PARTICLES_LIST_PATH = "particles.txt"
 PARTICLES_LIST_PATH = "particles_physical.txt"
 #from database import *

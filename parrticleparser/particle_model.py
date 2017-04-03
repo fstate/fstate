@@ -3,7 +3,7 @@ import json
 import sys
 import os
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-from createdatabase.config import db_name
+from web.db import ctc
 import re
 from nice_name import nice_name
 
@@ -58,5 +58,3 @@ class Particle(Document):
             "alias" : self.alias,
             "antiparticle" : nice_name(self.antiparticle)}
         return particle
-
-connect(db_name)

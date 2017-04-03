@@ -9,6 +9,7 @@ from config import br_cutoff, db_name, max_decay_chain
 import os
 import sys
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+from web.db import ctc
 from parrticleparser.particle_model import Particle
 
 
@@ -37,8 +38,8 @@ for parent in test_set['decays']:
 
 
 def do_work(parents):
-    global db
-    connect(db_name)
+    #global db
+    #connect(db_name)
     for parent in parents:
         start = datetime.now()
         if not parent in db:
@@ -59,7 +60,6 @@ def do_work(parents):
 if __name__ == "__main__":
     from fstate import get_fstates
     #from fstate import get_fstates
-    connect(db_name)
     Decay.objects().delete()
     #fstates.drop()
     #fstates.create_index("fstate")
