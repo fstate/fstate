@@ -6,17 +6,8 @@ flask:
     - mongodb
   ports:
     - "5000:5000"
-  #command: ls -lt
-  command: python web/server.py
-  #command: bash -c "cd parrticleparser && python parse_particle.py && cd ../decaydecparser && python parser.py && cd ../createdatabase && python make_fstates.py && cd ../web && python server.py "
-  #command: bash -c "cd createdatabase && python make_fstates.py && cd ../web && python server.py "
+  command: bash -c "source docker-entrypoint.sh"
 
 mongodb:
 
   image: mongo:3.4.3
-#  build: Dockerfiles/mongo
-#  volumes:
-#    - data:/data
-#  ports:
-#    - "27017:27017"
-#  command: mongod
